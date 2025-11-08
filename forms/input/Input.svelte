@@ -4,7 +4,7 @@
   import { input } from "./theme";
   import { clampSize } from "./index";
   import type { InputProps, InputValue, SizeType } from "$lib/types";
-  import { getTheme } from "../../theme";
+  import { getTheme } from "../../utils/close-button/theme";
   import { CloseButton, createDismissableContext } from "../../utils";
 
   let {
@@ -62,11 +62,11 @@
       {onfocus}
       {onblur}
       {onkeydown}
-      class={[base(), inputCls({ class: clsx(theme?.input, className) })]}
+      class={[base(), inputCls({ class: clsx(className) })]}
     />
     {#if value !== undefined && value !== "" && clearable}
       <CloseButton
-        class={close({ class: clsx(theme?.close) })}
+        class={close({ class: clsx() })}
         aria-label="Clear search value"
       />
     {/if}

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { Classes } from "../../utils";
-// Variants
+
 export type TextareaVariants = VariantProps<typeof textarea> &
   Classes<typeof textarea>;
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { createDismissableContext } from "../../utils";
-  import CloseButton from "../../utils/CloseButton.svelte";
+  import CloseButton from "../../utils/close-button/CloseButton.svelte";
   import { textarea } from "./theme";
   import clsx from "clsx";
   import type { TextareaProps } from "./types";

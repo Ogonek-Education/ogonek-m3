@@ -5,7 +5,13 @@
   import CloseButton from "$lib/utils/CloseButton.svelte";
   import { tags } from "./theme";
   import { getTheme, warnThemeDeprecation } from "$lib/theme/themeUtils";
-  import { computePosition, offset, flip, shift, autoUpdate } from "@floating-ui/dom";
+  import {
+    computePosition,
+    offset,
+    flip,
+    shift,
+    autoUpdate,
+  } from "@floating-ui/dom";
   import { onDestroy } from "svelte";
 
   let {
@@ -28,19 +34,37 @@
     ...restProps
   }: TagsProps = $props();
 
-  warnThemeDeprecation("Tags", { itemClass, spanClass, closeClass, inputClass }, { itemClass: "tag", spanClass: "span", closeClass: "close", inputClass: "input" });
+  warnThemeDeprecation(
+    "Tags",
+    { itemClass, spanClass, closeClass, inputClass },
+    {
+      itemClass: "tag",
+      spanClass: "span",
+      closeClass: "close",
+      inputClass: "input",
+    },
+  );
   const styling = $derived(
     classes ?? {
       tag: itemClass,
       span: spanClass,
       close: closeClass,
-      input: inputClass
-    }
+      input: inputClass,
+    },
   );
 
   const theme = getTheme("tags");
 
-  const { base, tag: tagCls, span: spanCls, close, input: inputCls, info, warning, error } = $derived(tags());
+  const {
+    base,
+    tag: tagCls,
+    span: spanCls,
+    close,
+    input: inputCls,
+    info,
+    warning,
+    error,
+  } = $derived(tags());
 
   let contents: string = $state("");
   let errorMessage: string = $state("");
@@ -55,18 +79,26 @@
 
     cleanupFloating?.();
 
-    cleanupFloating = autoUpdate(inputContainer!, dropdownElement!, async () => {
-      const { x, y } = await computePosition(inputContainer!, dropdownElement!, {
-        placement: "bottom-start",
-        middleware: [offset(4), flip(), shift()]
-      });
+    cleanupFloating = autoUpdate(
+      inputContainer!,
+      dropdownElement!,
+      async () => {
+        const { x, y } = await computePosition(
+          inputContainer!,
+          dropdownElement!,
+          {
+            placement: "bottom-start",
+            middleware: [offset(4), flip(), shift()],
+          },
+        );
 
-      Object.assign(dropdownElement!.style, {
-        position: "absolute",
-        left: `${x}px`,
-        top: `${y}px`
-      });
-    });
+        Object.assign(dropdownElement!.style, {
+          position: "absolute",
+          left: `${x}px`,
+          top: `${y}px`,
+        });
+      },
+    );
   }
 
   const handleKeys = (event: KeyboardEvent) => {
@@ -78,13 +110,18 @@
 
       // Add validation: if allowNewTags is false and availableTags is empty, show error
       if (!allowNewTags && availableTags.length === 0) {
-        errorMessage = "No available tags provided. Please add available tags or enable allowNewTags.";
+        errorMessage =
+          "No available tags provided. Please add available tags or enable allowNewTags.";
         return;
       }
 
-      const isInAvailable = availableTags.length === 0 || availableTags.some((tag) => tag.toLowerCase() === newTag.toLowerCase());
+      const isInAvailable =
+        availableTags.length === 0 ||
+        availableTags.some((tag) => tag.toLowerCase() === newTag.toLowerCase());
 
-      const alreadyExists = value.some((tag) => tag.toLowerCase() === newTag.toLowerCase());
+      const alreadyExists = value.some(
+        (tag) => tag.toLowerCase() === newTag.toLowerCase(),
+      );
 
       if (!allowNewTags && !isInAvailable) {
         errorMessage = `"${newTag}" is not in the available tags.`;
@@ -124,14 +161,22 @@
   $effect(() => {
     const trimmed = contents.trim();
 
-    const shouldShow = availableTags.length > 0 && trimmed !== "" && inputContainer && dropdownElement;
+    const shouldShow =
+      availableTags.length > 0 &&
+      trimmed !== "" &&
+      inputContainer &&
+      dropdownElement;
 
     if (!shouldShow) {
       cleanupFloating?.();
       return;
     }
 
-    const filtered = availableTags.filter((tag) => tag.toLowerCase().includes(trimmed.toLowerCase()) && (!unique || !value.some((t) => t.toLowerCase() === tag.toLowerCase())));
+    const filtered = availableTags.filter(
+      (tag) =>
+        tag.toLowerCase().includes(trimmed.toLowerCase()) &&
+        (!unique || !value.some((t) => t.toLowerCase() === tag.toLowerCase())),
+    );
 
     if (filtered.length > 0) {
       updateDropdownPosition();
@@ -148,14 +193,24 @@
 <svelte:window />
 
 {#if showAvailableTags && availableTags.length > 0}
-  <P class={clsx(info(), classes?.info)}>Available tags: {availableTags.join(", ")}</P>
+  <P class={clsx(info(), classes?.info)}
+    >Available tags: {availableTags.join(", ")}</P
+  >
 {/if}
 
 {#if showHelper && contents.trim().length > 0}
-  {#if unique && value.some((tag) => tag.toLowerCase() === contents.trim().toLowerCase())}
-    <P class={clsx(warning(), classes?.warning)}>"{contents.trim()}" is already added.</P>
-  {:else if availableTags.length > 0 && !allowNewTags && !availableTags.some((tag) => tag.toLowerCase() === contents.trim().toLowerCase())}
-    <P class={clsx(error(), classes?.error)}>"{contents.trim()}" is not in the available tags.</P>
+  {#if unique && value.some((tag) => tag.toLowerCase() === contents
+          .trim()
+          .toLowerCase())}
+    <P class={clsx(warning(), classes?.warning)}
+      >"{contents.trim()}" is already added.</P
+    >
+  {:else if availableTags.length > 0 && !allowNewTags && !availableTags.some((tag) => tag.toLowerCase() === contents
+          .trim()
+          .toLowerCase())}
+    <P class={clsx(error(), classes?.error)}
+      >"{contents.trim()}" is not in the available tags.</P
+    >
   {/if}
 {/if}
 
@@ -166,15 +221,20 @@
 <div
   {...restProps}
   class={base({
-    class: clsx(theme?.base, className)
+    class: clsx(className),
   })}
 >
   {#each value as tag, index}
-    <div class={tagCls({ class: clsx(theme?.tag, styling.tag) })}>
-      <span class={spanCls({ class: clsx(theme?.span, styling.span) })}>
+    <div class={tagCls({ class: clsx(styling.tag) })}>
+      <span class={spanCls({ class: clsx(styling.span) })}>
         {tag}
       </span>
-      <CloseButton {disabled} size={closeBtnSize} class={close({ class: clsx(theme?.close, styling.close) })} onclick={() => deleteField(index)} />
+      <CloseButton
+        {disabled}
+        size={closeBtnSize}
+        class={close({ class: clsx(styling.close) })}
+        onclick={() => deleteField(index)}
+      />
     </div>
   {/each}
   <div class="relative w-full" bind:this={inputContainer}>
@@ -190,9 +250,18 @@
       class={inputCls({ class: clsx(styling.input) })}
     />
     {#if availableTags.length > 0 && contents.trim() !== ""}
-      {@const filteredSuggestions = availableTags.filter((tag) => tag.toLowerCase().includes(contents.trim().toLowerCase()) && (!unique || !value.some((t) => t.toLowerCase() === tag.toLowerCase())))}
+      {@const filteredSuggestions = availableTags.filter(
+        (tag) =>
+          tag.toLowerCase().includes(contents.trim().toLowerCase()) &&
+          (!unique ||
+            !value.some((t) => t.toLowerCase() === tag.toLowerCase())),
+      )}
       {#if filteredSuggestions.length > 0}
-        <ul bind:this={dropdownElement} class="z-10 max-h-48 w-full overflow-auto rounded border border-gray-300 bg-white shadow" style="position: absolute;">
+        <ul
+          bind:this={dropdownElement}
+          class="z-10 max-h-48 w-full overflow-auto rounded border border-gray-300 bg-white shadow"
+          style="position: absolute;"
+        >
           {#each filteredSuggestions as suggestion}
             <li>
               <button

@@ -2,7 +2,7 @@
   import clsx from "clsx";
   import type { CloseButtonProps } from "$lib/types";
   import { closeButton } from "./theme";
-  import { useDismiss } from "./dismissable";
+  import { useDismiss } from "../dismissable";
 
   let {
     children,

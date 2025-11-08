@@ -1,5 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "../../theme";
+import type { Classes } from "../../utils";
 
 export type TimepickerVariants = VariantProps<typeof timepicker> &
   Classes<typeof timepicker>;

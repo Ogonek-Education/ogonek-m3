@@ -22,16 +22,29 @@
     ...restProps
   }: RadioProps<T> = $props();
 
-  warnThemeDeprecation("Radio", { inputClass, labelClass }, { inputClass: "class", labelClass: "label" });
+  warnThemeDeprecation(
+    "Radio",
+    { inputClass, labelClass },
+    { inputClass: "class", labelClass: "label" },
+  );
   const styling = $derived(classes ?? { label: labelClass });
 
   const theme = getTheme("radio");
 
-  const { input, label } = $derived(radio({ color, tinted: !!getContext("background"), custom, inline }));
+  const { input, label } = $derived(
+    radio({ color, tinted: !!getContext("background"), custom, inline }),
+  );
 </script>
 
-<Label class={label({ class: clsx(theme?.label, styling.label) })}>
-  <input type="radio" bind:group {value} aria-describedby={ariaDescribedby} {...restProps} class={input({ class: clsx(theme?.input, className ?? inputClass) })} />
+<Label class={label({ class: clsx(styling.label) })}>
+  <input
+    type="radio"
+    bind:group
+    {value}
+    aria-describedby={ariaDescribedby}
+    {...restProps}
+    class={input({ class: clsx(className ?? inputClass) })}
+  />
   {@render children?.()}
 </Label>
 

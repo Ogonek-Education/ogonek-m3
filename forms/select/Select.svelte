@@ -29,13 +29,29 @@
   }: SelectProps<T> = $props();
 
   // clearableSvgClass, clearableClass, selectClass
-  warnThemeDeprecation("Select", { selectClass, clearableSvgClass, clearableClass }, { selectClass: "select", clearableSvgClass: "svg", clearableClass: "close" });
-  const styling = $derived(classes ?? { select: selectClass, svg: clearableSvgClass, close: clearableClass });
+  warnThemeDeprecation(
+    "Select",
+    { selectClass, clearableSvgClass, clearableClass },
+    {
+      selectClass: "select",
+      clearableSvgClass: "svg",
+      clearableClass: "close",
+    },
+  );
+  const styling = $derived(
+    classes ?? {
+      select: selectClass,
+      svg: clearableSvgClass,
+      close: clearableClass,
+    },
+  );
 
   const theme = getTheme("select");
 
   let group: { size: SizeType } = getContext("group");
-  const { base, select, close } = $derived(selectCls({ underline, size, disabled, grouped: !!group }));
+  const { base, select, close } = $derived(
+    selectCls({ underline, size, disabled, grouped: !!group }),
+  );
 
   const clearAll = () => {
     if (elementRef) {
@@ -56,10 +72,18 @@
   createDismissableContext(clearAll);
 </script>
 
-<div class={base({ class: clsx(theme?.base, className) })}>
-  <select {disabled} {...restProps} bind:value bind:this={elementRef} class={select({ class: clsx(theme?.select, styling.select) })}>
+<div class={base({ class: clsx(className) })}>
+  <select
+    {disabled}
+    {...restProps}
+    bind:value
+    bind:this={elementRef}
+    class={select({ class: clsx(styling.select) })}
+  >
     {#if placeholder}
-      <option disabled selected={value === "" || value === undefined} value="">{placeholder}</option>
+      <option disabled selected={value === "" || value === undefined} value=""
+        >{placeholder}</option
+      >
     {/if}
 
     {#if items}
@@ -73,6 +97,12 @@
     {/if}
   </select>
   {#if value !== undefined && value !== "" && clearable}
-    <CloseButton class={close({ class: clsx(theme?.close, styling.close) })} color={clearableColor} aria-label="Clear search value" svgClass={clsx(styling.svg)} {disabled} />
+    <CloseButton
+      class={close({ class: clsx(styling.close) })}
+      color={clearableColor}
+      aria-label="Clear search value"
+      svgClass={clsx(styling.svg)}
+      {disabled}
+    />
   {/if}
 </div>
