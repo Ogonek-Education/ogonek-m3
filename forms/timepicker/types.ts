@@ -1,7 +1,7 @@
-import type { InputProps } from "$lib/types";
 import type { Icon } from "@lucide/svelte";
 import type { ClassValue } from "svelte/elements";
 import type { ButtonGroupVariants } from "../../buttons/theme";
+import type { InputProps } from "../input/types";
 
 export type TimePickerOption = {
   name: string;

@@ -1,7 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "../../theme";
+import type { Classes } from "../../utils";
 
-// Variants
 export type ToggleVariants = VariantProps<typeof toggle> &
   Classes<typeof toggle>;
 

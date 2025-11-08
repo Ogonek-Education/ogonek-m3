@@ -9,9 +9,11 @@ export type DismissableContext = {
   dismiss: (event: MouseEvent) => void;
 };
 
-export function createDismissableContext(onDismiss: (event: MouseEvent) => void) {
+export function createDismissableContext(
+  onDismiss: (event: MouseEvent) => void,
+) {
   const context = {
-    dismiss: onDismiss
+    dismiss: onDismiss,
   };
 
   return setContext<DismissableContext>(DISMISSABLE_KEY, context);

@@ -5,7 +5,7 @@ import type { VariantProps } from "tailwind-variants";
 
 export type InputVariants = VariantProps<typeof input>;
 
-export type InputValue = string | number | string[] | undefined;
+export type InputValue = string | number | string[] | undefined | null;
 
 export interface InputProps<T extends InputValue = string>
   extends InputVariants,
@@ -18,10 +18,10 @@ export interface InputProps<T extends InputValue = string>
       >,
     ]
   >;
-  size?: InputVariants["size"];
   clearable?: boolean;
   value?: T;
   elementRef?: HTMLInputElement;
+  clarification?: Snippet;
   color?: InputVariants["color"];
   onSelect?: (item: string) => void;
   oninput?: (event: Event) => void;

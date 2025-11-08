@@ -27,7 +27,7 @@ export const label = tv({
       purple: "text-purple-700 dark:text-purple-500",
       fuchsia: "text-fuchsia-700 dark:text-fuchsia-500",
       pink: "text-pink-700 dark:text-pink-500",
-      rose: "text-rose-700 dark:text-rose-500"
-    }
-  }
+      rose: "text-rose-700 dark:text-rose-500",
+    },
+  },
 });

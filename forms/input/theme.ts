@@ -1,5 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "../../theme/theme";
+import type { Classes } from "../../utils";
 
 export type InputVariants = VariantProps<typeof input> & Classes<typeof input>;
 
@@ -12,11 +12,6 @@ export const input = tv({
       "absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black",
   },
   variants: {
-    size: {
-      sm: { input: "text-xs px-2 py-1" },
-      md: { input: "text-sm px-2.5 py-2.5" },
-      lg: { input: "sm:text-base px-3 py-3" },
-    },
     color: {
       default: {
         input:

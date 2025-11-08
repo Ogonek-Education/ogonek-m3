@@ -158,8 +158,8 @@
         class: clsx(styles.inputWithIcon(), inputClass),
       })}
       bind:value
-      oninput={(e) => handleTimeChange(e)}
-      onchange={(e) => handleTimeChange(e)}
+      oninput={(e: any) => handleTimeChange(e)}
+      onchange={(e: any) => handleTimeChange(e)}
     />
     <div class={styles.iconWrapper()}>
       {#if Icon}
@@ -182,8 +182,8 @@
           class: clsx(styles.rangeInput(), inputClass),
         })}
         bind:value
-        oninput={(e) => handleTimeChange(e)}
-        onchange={(e) => handleTimeChange(e)}
+        oninput={(e: any) => handleTimeChange(e)}
+        onchange={(e: any) => handleTimeChange(e)}
       />
       <button
         type="button"
@@ -212,8 +212,8 @@
           class: clsx(styles.rangeInput()),
         })}
         bind:value={endValue}
-        oninput={(e) => handleTimeChange(e, true)}
-        onchange={(e) => handleTimeChange(e, true)}
+        oninput={(e: any) => handleTimeChange(e, true)}
+        onchange={(e: any) => handleTimeChange(e, true)}
       />
       <button
         type="button"
