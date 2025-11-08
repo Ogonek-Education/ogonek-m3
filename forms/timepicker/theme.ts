@@ -1,23 +1,28 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "$lib/theme/themeUtils";
+import type { Classes } from "../../theme";
 
-export type TimepickerVariants = VariantProps<typeof timepicker> & Classes<typeof timepicker>;
+export type TimepickerVariants = VariantProps<typeof timepicker> &
+  Classes<typeof timepicker>;
 
 export const timepicker = tv({
   slots: {
     buttonGroup: "inline-flex rounded-lg shadow-sm relative",
-    input: "block disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right focus:ring-0 focus:outline-none",
+    input:
+      "block disabled:cursor-not-allowed disabled:opacity-50 rtl:text-right focus:ring-0 focus:outline-none",
     inputWithIcon: "relative px-2 pr-8",
-    iconWrapper: "pointer-events-none absolute inset-y-0 end-0 top-0 flex items-center pe-3.5",
+    iconWrapper:
+      "pointer-events-none absolute inset-y-0 end-0 top-0 flex items-center pe-3.5",
     icon: "h-4 w-4 text-gray-500 dark:text-gray-400",
     select:
       "text-gray-900 disabled:text-gray-400 bg-gray-50 border border-gray-300 focus:ring-0 focus:outline-none block w-full border-l-1 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:disabled:text-gray-500 dark:focus:ring-primary-500 dark:focus:border-primary-500",
     button: "!rounded-r-lg",
     buttonIcon: "ml-2 h-4 w-4",
-    rangeSeparator: "flex items-center justify-center px-2 text-gray-500 dark:text-gray-400",
+    rangeSeparator:
+      "flex items-center justify-center px-2 text-gray-500 dark:text-gray-400",
     rangeInputWrapper: "relative",
     rangeInput: "relative pr-8",
-    rangeButton: "pointer-events-none absolute inset-y-0 top-0 right-0 flex items-center border-0 bg-transparent pe-3.5",
+    rangeButton:
+      "pointer-events-none absolute inset-y-0 top-0 right-0 flex items-center border-0 bg-transparent pe-3.5",
     dropdownContent: "p-4 last:rounded-r-lg",
     dropdownInner: "flex flex-col space-y-4",
     dropdownTimeRow: "flex space-x-4",
@@ -30,48 +35,48 @@ export const timepicker = tv({
     toggleTimeCol: "flex flex-col",
     toggleTimeInput: "w-24 rounded-lg !border-r px-2",
     inlineGrid: "grid w-full gap-2",
-    inlineButton: "rounded-lg"
+    inlineButton: "rounded-lg",
   },
   variants: {
     type: {
       default: {
-        input: "rounded-e-lg"
+        input: "rounded-e-lg",
       },
       select: {
         input: "w-1/3 rounded-l-lg rounded-e-none",
-        select: "rounded-r-lg rounded-l-none"
+        select: "rounded-r-lg rounded-l-none",
       },
       dropdown: {
-        input: "rounded-l-lg rounded-e-none"
+        input: "rounded-l-lg rounded-e-none",
       },
       range: {},
       "timerange-dropdown": {},
       "timerange-toggle": {},
-      "inline-buttons": {}
+      "inline-buttons": {},
     },
     columns: {
       1: {
-        inlineGrid: "grid-cols-1"
+        inlineGrid: "grid-cols-1",
       },
       2: {
-        inlineGrid: "grid-cols-2"
+        inlineGrid: "grid-cols-2",
       },
       3: {
-        inlineGrid: "grid-cols-3"
+        inlineGrid: "grid-cols-3",
       },
       4: {
-        inlineGrid: "grid-cols-4"
-      }
+        inlineGrid: "grid-cols-4",
+      },
     },
     disabled: {
       true: {
-        input: "disabled:cursor-not-allowed disabled:opacity-50"
-      }
-    }
+        input: "disabled:cursor-not-allowed disabled:opacity-50",
+      },
+    },
   },
   defaultVariants: {
     type: "default",
     columns: 2,
-    disabled: false
-  }
+    disabled: false,
+  },
 });

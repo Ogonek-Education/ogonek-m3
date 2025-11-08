@@ -1,10 +1,9 @@
 <script lang="ts">
+  import { createDismissableContext } from "../../utils";
+  import CloseButton from "../../utils/CloseButton.svelte";
   import { textarea } from "./theme";
   import clsx from "clsx";
-  import type { TextareaProps } from "$lib";
-  import CloseButton from "$lib/utils/CloseButton.svelte";
-  import { getTheme, warnThemeDeprecation } from "$lib/theme/themeUtils";
-  import { createDismissableContext } from "$lib/utils/dismissable";
+  import type { TextareaProps } from "./types";
 
   let {
     header,
@@ -29,11 +28,6 @@
     ...restProps
   }: TextareaProps = $props();
 
-  warnThemeDeprecation(
-    "Textarea",
-    { divClass, innerClass, headerClass, footerClass, addonClass, textareaClass, clearableClass, clearableSvgClass },
-    { divClass: "div", innerClass: "inner", headerClass: "header", footerClass: "footer", addonClass: "addon", textareaClass: "class", clearableClass: "close", clearableSvgClass: "svg" }
-  );
   const styling = $derived(
     classes ?? {
       div: divClass,
@@ -43,18 +37,25 @@
       addon: addonClass,
       textarea: textareaClass,
       close: clearableClass,
-      svg: clearableSvgClass
-    }
+      svg: clearableSvgClass,
+    },
   );
-
-  const theme = getTheme("textarea");
 
   let hasHeader = $derived(!!header);
   let hasFooter = $derived(!!footer);
   let hasAddon = $derived(!!addon);
   let wrapped: boolean = $derived(hasHeader || hasFooter || hasAddon);
 
-  const { div, base, wrapper, inner, header: headerCls, footer: footerCls, addon: addonCls, close } = $derived(textarea({ wrapped, hasHeader, hasFooter }));
+  const {
+    div,
+    base,
+    wrapper,
+    inner,
+    header: headerCls,
+    footer: footerCls,
+    addon: addonCls,
+    close,
+  } = $derived(textarea({ wrapped, hasHeader, hasFooter }));
 
   const clearAll = () => {
     if (elementRef) {
@@ -67,60 +68,49 @@
   createDismissableContext(clearAll);
 </script>
 
-<div class={div({ class: clsx(theme?.div, styling.div) })}>
+<div class={div({ class: clsx(styling.div) })}>
   {#if !wrapped}
-    <textarea bind:value bind:this={elementRef} {disabled} {...restProps} class={wrapper({ class: clsx(className, classes?.wrapper) })}></textarea>
+    <textarea
+      bind:value
+      bind:this={elementRef}
+      {disabled}
+      {...restProps}
+      class={wrapper({ class: clsx(className, classes?.wrapper) })}
+    ></textarea>
   {:else}
-    <div class={wrapper({ class: clsx(theme?.wrapper, classes?.wrapper) })}>
+    <div class={wrapper({ class: clsx(wrapper, classes?.wrapper) })}>
       {#if header}
-        <div class={headerCls({ class: clsx(theme?.header, styling.header) })}>
+        <div class={headerCls({ class: clsx(header, styling.header) })}>
           {@render header()}
         </div>
       {/if}
-      <div class={inner({ class: clsx(theme?.inner, styling.inner) })}>
+      <div class={inner({ class: clsx(inner, styling.inner) })}>
         {#if addon}
-          <div class={addonCls({ class: clsx(theme?.addon, styling.addon) })}>
+          <div class={addonCls({ class: clsx(addon, styling.addon) })}>
             {@render addon()}
           </div>
         {/if}
-        <textarea bind:value bind:this={elementRef} {disabled} {...restProps} class={base({ class: clsx(theme?.base, className) })}></textarea>
+        <textarea
+          bind:value
+          bind:this={elementRef}
+          {disabled}
+          {...restProps}
+          class={base({ class: clsx(base, className) })}
+        ></textarea>
       </div>
       {#if footer}
-        <div class={footerCls({ class: clsx(theme?.footer, styling.footer) })}>
+        <div class={footerCls({ class: clsx(styling.footer) })}>
           {@render footer()}
         </div>
       {/if}
     </div>
   {/if}
   {#if value !== undefined && value !== "" && clearable}
-    <CloseButton class={close({ class: clsx(theme?.close, styling.close) })} color={clearableColor} aria-label="Clear search value" svgClass={clsx(styling.svg)} />
+    <CloseButton
+      class={close({ class: clsx(close, styling.close) })}
+      color={clearableColor}
+      aria-label="Clear search value"
+      svgClass={clsx(styling.svg)}
+    />
   {/if}
 </div>
-
-<!--
-@component
-[Go to docs](https://flowbite-svelte.com/)
-## Type
-[TextareaProps](https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L985)
-## Props
-@prop header
-@prop footer
-@prop addon
-@prop value = $bindable()
-@prop elementRef = $bindable()
-@prop divClass
-@prop innerClass
-@prop headerClass
-@prop footerClass
-@prop addonClass
-@prop disabled
-@prop class: className
-@prop classes
-@prop clearable
-@prop clearableSvgClass
-@prop clearableColor = "none"
-@prop clearableClass
-@prop clearableOnClick
-@prop textareaClass
-@prop ...restProps
--->

@@ -14,3 +14,12 @@ let n = Date.now();
 export function idGenerator() {
   return (++n).toString(36);
 }
+
+type Slots<T extends { slots: Record<string, unknown> }> = Omit<
+  T["slots"],
+  "base"
+>;
+
+export type Classes<T extends { slots: Record<string, unknown> }> = {
+  classes?: Partial<{ [K in keyof Slots<T>]: ClassValue }>;
+};

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { checkbox } from "./theme";
   import clsx from "clsx";
-  import { type CheckboxProps } from "$lib";
   import { Label } from "../label";
+  import type { CheckboxProps } from "./types";
 
   let {
     children,
@@ -24,8 +24,6 @@
   }: CheckboxProps = $props();
 
   const styling = $derived(classes ?? { div: divClass });
-
-  const theme = getTheme("checkbox");
 
   const { base, div: divStyle } = $derived(
     checkbox({
@@ -69,7 +67,7 @@
     <Label
       show={!!children || !!choice.label}
       {...labelProps}
-      class={divStyle({ class: clsx(theme?.div, styling.div) })}
+      class={divStyle({ class: clsx(styling.div) })}
     >
       <input
         type="checkbox"
@@ -78,7 +76,7 @@
         {disabled}
         bind:group
         {...restProps}
-        class={base({ class: clsx(theme?.base, className) })}
+        class={base({ class: clsx(className) })}
       />
       {#if children}
         {@render children({
@@ -95,7 +93,7 @@
   <Label
     show={!!children}
     {...labelProps}
-    class={divStyle({ class: clsx(theme?.div, styling.div) })}
+    class={divStyle({ class: clsx(styling.div) })}
   >
     <input
       type="checkbox"
@@ -103,7 +101,7 @@
       bind:checked
       {disabled}
       {...restProps}
-      class={base({ class: clsx(theme?.base, className) })}
+      class={base({ class: clsx(className) })}
     />
     {#if children}
       {@render children({ value, checked, disabled })}
