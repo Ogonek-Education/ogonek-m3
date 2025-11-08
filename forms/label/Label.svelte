@@ -2,9 +2,13 @@
   import { label } from "./theme";
   import clsx from "clsx";
   import type { LabelProps } from "./types";
+  import Secondary from "../../typography/secondary/Secondary.svelte";
+  import { P } from "../../typography";
 
   let {
     children,
+    name,
+    clarification,
     color = "gray",
     show = true,
     class: className,
@@ -15,9 +19,21 @@
 </script>
 
 {#if show}
-  <label {...restProps} class={base}>
-    {@render children()}
-  </label>
+  <div
+    class="gap-default padding-default relative grid grid-cols-2 items-center justify-between tracking-tight"
+  >
+    <div class="flex flex-col">
+      <P class="text-xl font-semibold ">{name}</P>
+      {#if clarification}
+        <Secondary>
+          {@render clarification()}
+        </Secondary>
+      {/if}
+    </div>
+    <div class="gap-default flex flex-col">
+      {@render children()}
+    </div>
+  </div>
 {:else}
   {@render children()}
 {/if}

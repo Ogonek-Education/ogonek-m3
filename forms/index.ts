@@ -5,5 +5,6 @@ export * from "./helper";
 export * from "./input";
 export * from "./label";
 export * from "./search";
+export * from "./select";
 export * from "./textarea";
 export * from "./toggle";

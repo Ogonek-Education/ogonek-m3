@@ -1,8 +1,6 @@
 <script lang="ts">
-  import { getContext } from "svelte";
   import clsx from "clsx";
   import { input } from "./theme";
-  import { clampSize } from "./index";
   import { CloseButton, createDismissableContext } from "../../utils";
   import type { InputProps, InputValue } from "./types";
 
@@ -11,6 +9,7 @@
     value = $bindable(),
     elementRef = $bindable(),
     color = "default",
+    size = "md",
     class: className,
     onSelect,
     oninput,
@@ -21,7 +20,7 @@
     ...restProps
   }: InputProps<InputValue> = $props();
 
-  const { base, input: inputCls, close } = $derived(input({ color }));
+  const { base, input: inputCls, close } = $derived(input({ color, size }));
 
   const clearAll = () => {
     if (elementRef) {

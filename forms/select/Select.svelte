@@ -7,9 +7,10 @@
     children,
     items,
     value = $bindable(),
-    underline = false,
     disabled = false,
     selectClass,
+    size = "md",
+    color = "default",
     elementRef = $bindable(),
     placeholder = "Choose option ...",
     classes,
@@ -21,7 +22,7 @@
       select: selectClass,
     },
   );
-  const { base, select } = $derived(selectCls({ underline, disabled }));
+  const { base, select } = $derived(selectCls({ disabled, size, color }));
 </script>
 
 <div class={base({ class: clsx(className) })}>

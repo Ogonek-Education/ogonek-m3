@@ -1,5 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { Classes } from "../../utils";
+import { input } from "../input";
 
 export type SelectVariants = VariantProps<typeof select> &
   Classes<typeof select>;
@@ -12,29 +13,26 @@ export const select = tv({
     select: "block w-full rtl:text-right",
   },
   variants: {
-    underline: {
-      true: {
-        select:
-          "text-gray-500 bg-transparent rounded-none! border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-hidden focus:ring-0 focus:border-gray-200 peer px-0!",
-      },
-      false: {
-        select:
-          "text-gray-900 bg-gray-50 border border-gray-300 focus:outline-hidden focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500",
-      },
-    },
-
     disabled: {
       true: {
         select: "cursor-not-allowed opacity-50",
       },
       false: {},
     },
+    size: {
+      sm: "padding-narrow",
+      md: "padding-default",
+      lg: "padding-default text-xl md:text-2xl",
+    },
+    color: {
+      default: input["variants"]["color"]["default"]["input"],
+    },
     grouped: {
-      false: { base: "rounded-lg", select: "rounded-lg" },
+      false: { base: "rounded-2xl", select: "rounded-2xl" },
       true: {
-        base: "first:rounded-s-lg last:rounded-e-lg not-first:-ms-px group",
+        base: "first:rounded-s-2xl last:rounded-e-2xl not-first:-ms-px group",
         select:
-          "group-first:rounded-s-lg group-last:rounded-e-lg group-not-first:-ms-px h-full",
+          "group-first:rounded-s-2xl group-last:rounded-e-2xl group-not-first:-ms-px h-full",
       },
     },
   },
@@ -45,8 +43,8 @@ export const multiSelect = tv({
     base: "relative border border-gray-300 w-full flex items-center gap-2 dark:border-gray-600 ring-primary-500 dark:ring-primary-500 focus-visible:outline-hidden",
     select: "",
     dropdown:
-      "absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 start-0 top-[calc(100%+1rem)] rounded-lg cursor-pointer overflow-y-scroll w-full",
-    item: "py-2 px-3 rounded-lg text-gray-600 hover:text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-gray-600",
+      "absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 start-0 top-[calc(100%+1rem)] rounded-2xl cursor-pointer overflow-y-scroll w-full",
+    item: "py-2 px-3 rounded-2xl text-gray-600 hover:text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-gray-600",
     close: "p-0 focus:ring-gray-400 dark:text-white",
     span: "",
     placeholder: "text-gray-400",
@@ -79,11 +77,11 @@ export const multiSelect = tv({
       },
     },
     grouped: {
-      false: { base: "rounded-lg", select: "rounded-lg" },
+      false: { base: "rounded-2xl", select: "rounded-2xl" },
       true: {
-        base: "first:rounded-s-lg last:rounded-e-lg not-first:-ms-px group",
+        base: "first:rounded-s-2xl last:rounded-e-2xl not-first:-ms-px group",
         select:
-          "group-first:rounded-s-lg group-last:rounded-e-lg group-not-first:-ms-px h-full",
+          "group-first:rounded-s-2xl group-last:rounded-e-2xl group-not-first:-ms-px h-full",
       },
     },
   },

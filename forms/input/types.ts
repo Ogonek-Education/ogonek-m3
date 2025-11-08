@@ -23,6 +23,7 @@ export interface InputProps<T extends InputValue = string>
   elementRef?: HTMLInputElement;
   clarification?: Snippet;
   color?: InputVariants["color"];
+  size?: InputVariants["size"];
   onSelect?: (item: string) => void;
   oninput?: (event: Event) => void;
   onfocus?: (event: FocusEvent) => void;

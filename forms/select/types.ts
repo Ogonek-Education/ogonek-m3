@@ -16,7 +16,7 @@ export type SelectOptionType<T> = {
 
 export interface SelectProps<T>
   extends SelectVariants,
-    Omit<HTMLSelectAttributes, "size" | "disabled"> {
+    Omit<HTMLSelectAttributes, "size" | "disabled" | "color"> {
   children?: Snippet;
   items?: SelectOptionType<T>[];
   selectClass?: ClassValue;
