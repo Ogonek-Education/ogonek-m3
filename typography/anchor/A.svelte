@@ -1,8 +1,7 @@
 <script lang="ts">
   import clsx from "clsx";
   import { anchor } from "./theme";
-  import type { AnchorProps } from "$lib/types";
-  import { getTheme } from "$lib/theme/themeUtils";
+  import type { AnchorProps } from "./types";
 
   let {
     children,
@@ -14,9 +13,7 @@
     ...restProps
   }: AnchorProps = $props();
 
-  const theme = getTheme("anchor");
-
-  let linkCls = $derived(anchor({ color, class: clsx(theme, className) }));
+  let linkCls = $derived(anchor({ color, class: clsx(className) }));
 
   // Handle click events when in button mode
   function handleClick(event: MouseEvent) {
@@ -46,18 +43,3 @@
     {@render children()}
   </a>
 {/if}
-
-<!--
-@component
-[Go to docs](https://flowbite-svelte.com/)
-## Type
-[AnchorProps](https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L1895)
-## Props
-@prop children
-@prop color = "primary"
-@prop asButton = false
-@prop onclick
-@prop href = "#"
-@prop class: className
-@prop ...restProps
--->

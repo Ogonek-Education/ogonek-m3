@@ -1,7 +1,7 @@
 <script lang="ts">
   import clsx from "clsx";
   import { heading } from "./theme";
-  import type { HeadingProps } from "$lib/types";
+  import type { HeadingProps } from "./types";
 
   let {
     children,
