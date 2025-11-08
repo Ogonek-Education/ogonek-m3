@@ -27,7 +27,7 @@ export const helper = tv({
       purple: "text-purple-500 dark:text-purple-400",
       fuchsia: "text-fuchsia-500 dark:text-fuchsia-400",
       pink: "text-pink-500 dark:text-pink-400",
-      rose: "text-rose-500 dark:text-rose-400"
-    }
-  }
+      rose: "text-rose-500 dark:text-rose-400",
+    },
+  },
 });
