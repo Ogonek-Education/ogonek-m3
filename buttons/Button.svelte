@@ -6,10 +6,11 @@
 
   let {
     children,
-    pill,
     size = "md",
     color,
     tag = "button",
+    group = false,
+    position = "center",
     disabled,
     loading = false,
     class: className,
@@ -22,8 +23,8 @@
     button({
       color,
       size,
+      position,
       disabled: isDisabled,
-      pill,
     }),
   );
   let btnCls = $derived(

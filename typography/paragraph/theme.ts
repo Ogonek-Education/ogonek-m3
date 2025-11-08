@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type ParagraphVariants = VariantProps<typeof paragraph>;
 
 export const paragraph = tv({
-  base: "text-primary",
+  base: "",
   variants: {
     align: {
       left: "text-left",
