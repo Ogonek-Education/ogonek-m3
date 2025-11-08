@@ -1,15 +1,12 @@
 <script lang="ts">
   import { search } from "./theme";
   import clsx from "clsx";
-  import type { SearchProps } from "$lib";
-  import CloseButton from "$lib/utils/CloseButton.svelte";
-  import { getTheme, warnThemeDeprecation } from "$lib/theme/themeUtils";
-  import { createDismissableContext } from "$lib/utils/dismissable";
+  import type { SearchProps } from "./types";
+  import CloseButton from "../../utils/close-button/CloseButton.svelte";
 
   let {
     children,
     inputClass,
-    size,
     placeholder = "Search",
     value = $bindable(),
     elementRef = $bindable(),
@@ -22,12 +19,6 @@
     classes,
     ...restProps
   }: SearchProps = $props();
-
-  warnThemeDeprecation(
-    "Search",
-    { inputClass, clearableSvgClass, clearableClass },
-    { inputClass: "input", clearableSvgClass: "svg", clearableClass: "close" },
-  );
   const styling = $derived(
     classes ?? {
       input: inputClass,
@@ -35,9 +26,6 @@
       close: clearableClass,
     },
   );
-
-  const theme = getTheme("search");
-
   const {
     base,
     content,
@@ -45,17 +33,7 @@
     close,
     input: inputCls,
     left,
-  } = $derived(search({ size }));
-
-  const clearAll = () => {
-    if (elementRef) {
-      elementRef.value = "";
-      value = undefined;
-    }
-    if (clearableOnClick) clearableOnClick();
-  };
-
-  createDismissableContext(clearAll);
+  } = $derived(search());
 </script>
 
 <div class={base({ class: clsx(className) })}>
@@ -99,25 +77,3 @@
     />
   {/if}
 </div>
-
-<!--
-@component
-[Go to docs](https://flowbite-svelte.com/)
-## Type
-[SearchProps](https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L876)
-## Props
-@prop children
-@prop inputClass
-@prop size
-@prop placeholder = "Search"
-@prop value = $bindable()
-@prop elementRef = $bindable()
-@prop clearable = false
-@prop clearableSvgClass
-@prop clearableColor = "none"
-@prop clearableClass
-@prop clearableOnClick
-@prop class: className
-@prop classes
-@prop ...restProps
--->

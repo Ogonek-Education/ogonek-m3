@@ -5,6 +5,7 @@ export * from "./close-button";
 export { default as CloseButton } from "./close-button/CloseButton.svelte";
 export * from "./dismissable";
 export * from "./theme";
+export * from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
