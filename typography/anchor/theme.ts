@@ -8,7 +8,7 @@ export const anchor = tv({
     color: {
       primary: "text-link-default",
       secondary: "text-secondary-600 dark:text-secondary-500",
-      gray: "text-gray-600 dark:text-gray-500",
+      gray: "text-stone-600 dark:text-stone-500",
     },
   },
 });

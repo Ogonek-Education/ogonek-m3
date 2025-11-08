@@ -3,7 +3,7 @@ import type { Classes } from "../../utils";
 
 export const checkbox = tv({
   slots: {
-    base: "w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 me-2 rounded-sm",
+    base: "w-4 h-4 bg-stone-100 border-stone-300 dark:ring-offset-stone-800 focus:ring-2 me-2 rounded-sm",
     div: "flex items-center",
   },
   variants: {
@@ -16,7 +16,7 @@ export const checkbox = tv({
         base: "text-secondary-600 focus:ring-secondary-500 dark:focus:ring-secondary-600",
       },
       gray: {
-        base: "text-gray-600 focus:ring-gray-600 dark:ring-offset-gray-800 dark:focus:ring-gray-600",
+        base: "text-stone-600 focus:ring-stone-600 dark:ring-offset-stone-800 dark:focus:ring-stone-600",
       },
       red: {
         base: "text-red-600 focus:ring-red-600 dark:ring-offset-red-600 dark:focus:ring-red-600",
@@ -71,8 +71,8 @@ export const checkbox = tv({
       },
     },
     tinted: {
-      true: { base: "dark:bg-gray-600 dark:border-gray-500" },
-      false: { base: "dark:bg-gray-700 dark:border-gray-600" },
+      true: { base: "dark:bg-stone-600 dark:border-stone-500" },
+      false: { base: "dark:bg-stone-700 dark:border-stone-600" },
     },
     custom: {
       true: { base: "sr-only peer" },
@@ -88,7 +88,7 @@ export const checkbox = tv({
     },
     disabled: {
       true: {
-        base: "cursor-not-allowed opacity-50 bg-gray-200 border-gray-300",
+        base: "cursor-not-allowed opacity-50 bg-stone-200 border-stone-300",
         div: "cursor-not-allowed opacity-70",
       },
       false: {},

@@ -48,7 +48,7 @@
     classes,
     monthColor = "alternative",
     monthBtnSelected = "bg-primary-500 text-white",
-    monthBtn = "text-gray-700 dark:text-gray-300",
+    monthBtn = "text-stone-700 dark:text-stone-300",
     class: className,
     elementRef = $bindable(),
     actionSlot,
@@ -581,7 +581,7 @@
         aria-label={isOpen ? "Close date picker" : "Open date picker"}
       >
         <svg
-          class="h-4 w-4 text-gray-500 dark:text-gray-400"
+          class="h-4 w-4 text-stone-500 dark:text-stone-400"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -652,7 +652,7 @@
             type="button"
             class={polite({
               class: clsx(
-                "cursor-pointer rounded px-2 py-1 hover:bg-gray-100 dark:hover:bg-gray-700",
+                "cursor-pointer rounded px-2 py-1 hover:bg-stone-100 dark:hover:bg-stone-700",
                 classes?.polite,
               ),
             })}

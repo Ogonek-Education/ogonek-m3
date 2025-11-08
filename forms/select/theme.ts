@@ -40,15 +40,15 @@ export const select = tv({
 
 export const multiSelect = tv({
   slots: {
-    base: "relative border border-gray-300 w-full flex items-center gap-2 dark:border-gray-600 ring-primary-500 dark:ring-primary-500 focus-visible:outline-hidden",
+    base: "relative border border-stone-300 w-full flex items-center gap-2 dark:border-stone-600 ring-primary-500 dark:ring-primary-500 focus-visible:outline-hidden",
     select: "",
     dropdown:
-      "absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-gray-300 dark:bg-gray-700 dark:border-gray-600 start-0 top-[calc(100%+1rem)] rounded-2xl cursor-pointer overflow-y-scroll w-full",
-    item: "py-2 px-3 rounded-2xl text-gray-600 hover:text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:text-gray-300 dark:hover:bg-gray-600",
-    close: "p-0 focus:ring-gray-400 dark:text-white",
+      "absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-stone-300 dark:bg-stone-700 dark:border-stone-600 start-0 top-[calc(100%+1rem)] rounded-2xl cursor-pointer overflow-y-scroll w-full",
+    item: "py-2 px-3 rounded-2xl text-stone-600 hover:text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:text-stone-300 dark:hover:bg-stone-600",
+    close: "p-0 focus:ring-stone-400 dark:text-white",
     span: "",
-    placeholder: "text-gray-400",
-    svg: "ms-1 h-3 w-3 cursor-pointer text-gray-800 dark:text-white",
+    placeholder: "text-stone-400",
+    svg: "ms-1 h-3 w-3 cursor-pointer text-stone-800 dark:text-white",
   },
   variants: {
     size: {
@@ -73,7 +73,7 @@ export const multiSelect = tv({
     },
     selected: {
       true: {
-        item: "bg-gray-100 text-black font-semibold hover:text-black dark:text-white dark:bg-gray-600 dark:hover:text-white",
+        item: "bg-stone-100 text-black font-semibold hover:text-black dark:text-white dark:bg-stone-600 dark:hover:text-white",
       },
     },
     grouped: {

@@ -19,7 +19,7 @@
     disabled = false,
     inputColor,
     Icon,
-    iconClass = "h-5 w-5 text-gray-500 dark:text-gray-400",
+    iconClass = "h-5 w-5 text-stone-500 dark:text-stone-400",
     optionLabel = "Options",
     options = [],
     size = "md",

@@ -6,23 +6,23 @@ export type DatepickerVariants = VariantProps<typeof datepicker> &
 
 export const datepicker = tv({
   slots: {
-    base: "inline-block rounded-lg bg-white dark:bg-gray-700 shadow-lg p-4",
+    base: "inline-block rounded-lg bg-white dark:bg-stone-700 shadow-lg p-4",
     input:
-      "w-full rounded-md border px-4 py-2 text-sm focus:ring-2 focus:outline-none outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-50 text-gray-900",
-    titleVariant: "mb-2 text-lg font-semibold text-gray-900 dark:text-white",
+      "w-full rounded-md border px-4 py-2 text-sm focus:ring-2 focus:outline-none outline-none dark:border-stone-600 dark:bg-stone-700 dark:text-white disabled:cursor-not-allowed disabled:opacity-50 border-stone-300 bg-stone-50 text-stone-900",
+    titleVariant: "mb-2 text-lg font-semibold text-stone-900 dark:text-white",
     polite:
-      "text-sm rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700 font-semibold py-2.5 px-5 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-200",
+      "text-sm rounded-lg text-stone-900 dark:text-white bg-white dark:bg-stone-700 font-semibold py-2.5 px-5 hover:bg-stone-100 dark:hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-200",
     button:
-      "absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 focus:outline-hidden dark:text-gray-400",
+      "absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 focus:outline-hidden dark:text-stone-400",
     actionButtons: "mt-4 flex justify-between",
     columnHeader:
-      "text-center text-sm font-medium text-gray-500 dark:text-gray-400",
+      "text-center text-sm font-medium text-stone-500 dark:text-stone-400",
     grid: "grid grid-cols-7 gap-1 w-64",
     nav: "mb-4 flex items-center justify-between",
     dayButton:
       "h-8 w-full block flex-1 leading-9 border-0 rounded-lg cursor-pointer text-center font-semibold text-sm day p-0",
     monthButton:
-      "rounded-lg px-3 py-2 text-sm hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:hover:bg-gray-700",
+      "rounded-lg px-3 py-2 text-sm hover:bg-stone-100 focus:ring-2 focus:ring-blue-500 dark:hover:bg-stone-700",
     actionSlot: "",
   },
   variants: {
@@ -52,12 +52,12 @@ export const datepicker = tv({
         dayButton: "bg-purple-100 dark:bg-purple-900",
       },
       dark: {
-        input: "focus:ring-gray-500 dark:focus:ring-gray-400",
-        dayButton: "bg-gray-100 dark:bg-gray-900",
+        input: "focus:ring-stone-500 dark:focus:ring-stone-400",
+        dayButton: "bg-stone-100 dark:bg-stone-900",
       },
       light: {
-        input: "focus:ring-gray-500 dark:focus:ring-gray-400",
-        dayButton: "bg-gray-100 dark:bg-gray-900",
+        input: "focus:ring-stone-500 dark:focus:ring-stone-400",
+        dayButton: "bg-stone-100 dark:bg-stone-900",
       },
       alternative: {
         input: "focus:ring-alternative-500 dark:focus:ring-alternative-400",
@@ -68,8 +68,8 @@ export const datepicker = tv({
         dayButton: "bg-secondary-100 dark:bg-secondary-900",
       },
       gray: {
-        input: "focus:ring-gray-500 dark:focus:ring-gray-400",
-        dayButton: "bg-gray-100 dark:bg-gray-900",
+        input: "focus:ring-stone-500 dark:focus:ring-stone-400",
+        dayButton: "bg-stone-100 dark:bg-stone-900",
       },
       orange: {
         input: "focus:ring-orange-500 dark:focus:ring-orange-400",
@@ -124,7 +124,7 @@ export const datepicker = tv({
       false: { base: "absolute z-10 mt-1" },
     },
     current: {
-      true: { dayButton: "text-gray-400 dark:text-gray-500" },
+      true: { dayButton: "text-stone-400 dark:text-stone-500" },
     },
     today: {
       true: { dayButton: "font-bold" },
@@ -132,7 +132,7 @@ export const datepicker = tv({
     unavailable: {
       true: {
         dayButton:
-          "opacity-50 cursor-not-allowed hover:bg-gray-100 dark:hover:bg-gray-700",
+          "opacity-50 cursor-not-allowed hover:bg-stone-100 dark:hover:bg-stone-700",
       },
     },
   },

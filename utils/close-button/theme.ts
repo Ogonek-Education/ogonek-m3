@@ -13,7 +13,7 @@ export const closeButton = tv({
         "text-primary-500 focus:ring-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800 dark:hover:text-primary-300",
       secondary:
         "text-secondary-500 focus:ring-secondary-400 hover:bg-secondary-200 dark:hover:bg-secondary-800 dark:hover:text-secondary-300",
-      gray: "text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300",
+      gray: "text-stone-500 focus:ring-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 dark:hover:text-stone-300",
       none: "",
     },
     size: {

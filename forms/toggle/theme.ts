@@ -6,10 +6,10 @@ export type ToggleVariants = VariantProps<typeof toggle> &
 
 export const toggle = tv({
   slots: {
-    span: "me-3 shrink-0 bg-gray-200 rounded-full peer-focus:ring-4 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:bg-white after:border-gray-300 after:border after:rounded-full after:transition-all dark:bg-gray-600 dark:border-gray-500 relative ",
+    span: "me-3 shrink-0 bg-stone-200 rounded-full peer-focus:ring-4 peer-checked:after:translate-x-full peer-checked:rtl:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:bg-white after:border-stone-300 after:border after:rounded-full after:transition-all dark:bg-stone-600 dark:border-stone-500 relative ",
     label: "flex items-center",
     input:
-      "w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2 rounded-sm dark:bg-gray-700 dark:border-gray-600 sr-only peer",
+      "w-4 h-4 bg-stone-100 border-stone-300 dark:ring-offset-stone-800 focus:ring-2 rounded-sm dark:bg-stone-700 dark:border-stone-600 sr-only peer",
   },
   variants: {
     disabled: {
@@ -31,7 +31,7 @@ export const toggle = tv({
         span: "peer-focus:ring-secondary-300 dark:peer-focus:ring-secondary-800 peer-checked:bg-secondary-600",
       },
       gray: {
-        span: "peer-focus:ring-gray-300 dark:peer-focus:ring-gray-800 peer-checked:bg-gray-500",
+        span: "peer-focus:ring-stone-300 dark:peer-focus:ring-stone-800 peer-checked:bg-stone-500",
       },
     },
     size: {

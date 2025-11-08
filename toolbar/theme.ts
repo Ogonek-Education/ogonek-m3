@@ -19,52 +19,52 @@ export const toolbar = tv({
     },
     color: {
       default: {
-        base: "bg-gray-50 dark:bg-gray-800 dark:border-gray-600",
-        content: "divide-gray-300 dark:divide-gray-800",
+        base: "bg-stone-50 dark:bg-stone-800 dark:border-stone-600",
+        content: "divide-stone-300 dark:divide-stone-800",
       },
       primary: {
-        base: "bg-primary-50 dark:bg-gray-800 dark:border-primary-800",
+        base: "bg-primary-50 dark:bg-stone-800 dark:border-primary-800",
         content: "divide-primary-300 dark:divide-primary-800",
       },
       secondary: {
-        base: "bg-secondary-50 dark:bg-gray-800 dark:border-secondary-800",
+        base: "bg-secondary-50 dark:bg-stone-800 dark:border-secondary-800",
         content: "divide-secondary-300 dark:divide-primary-800",
       },
       gray: {
-        base: "bg-gray-50 dark:bg-gray-800 dark:border-gray-800",
-        content: "divide-gray-300 dark:divide-gray-800",
+        base: "bg-stone-50 dark:bg-stone-800 dark:border-stone-800",
+        content: "divide-stone-300 dark:divide-stone-800",
       },
       red: {
-        base: "bg-red-50 dark:bg-gray-800 dark:border-red-800",
+        base: "bg-red-50 dark:bg-stone-800 dark:border-red-800",
         content: "divide-red-300 dark:divide-red-800",
       },
       yellow: {
-        base: "bg-yellow-50 dark:bg-gray-800 dark:border-yellow-800",
+        base: "bg-yellow-50 dark:bg-stone-800 dark:border-yellow-800",
         content: "divide-yellow-300 dark:divide-yellow-800",
       },
       green: {
-        base: "bg-green-50 dark:bg-gray-800 dark:border-green-800",
+        base: "bg-green-50 dark:bg-stone-800 dark:border-green-800",
         content: "divide-green-300 dark:divide-green-800",
       },
       indigo: {
-        base: "bg-indigo-50 dark:bg-gray-800 dark:border-indigo-800",
+        base: "bg-indigo-50 dark:bg-stone-800 dark:border-indigo-800",
         content: "divide-indigo-300 dark:divide-indigo-800",
       },
       purple: {
-        base: "bg-purple-50 dark:bg-gray-800 dark:border-purple-800",
+        base: "bg-purple-50 dark:bg-stone-800 dark:border-purple-800",
         content: "divide-purple-300 dark:divide-purple-800",
       },
       pink: {
-        base: "bg-pink-50 dark:bg-gray-800 dark:border-pink-800",
+        base: "bg-pink-50 dark:bg-stone-800 dark:border-pink-800",
         content: "divide-pink-300 dark:divide-pink-800",
       },
       blue: {
-        base: "bg-blue-50 dark:bg-gray-800 dark:border-blue-800",
+        base: "bg-blue-50 dark:bg-stone-800 dark:border-blue-800",
         content: "divide-blue-300 dark:divide-blue-800",
       },
       dark: {
-        base: "bg-gray-50 dark:bg-gray-800 dark:border-gray-800",
-        content: "divide-gray-300 dark:divide-gray-800",
+        base: "bg-stone-50 dark:bg-stone-800 dark:border-stone-800",
+        content: "divide-stone-300 dark:divide-stone-800",
       },
     },
     separators: {
@@ -123,8 +123,8 @@ export const toolbarButton = tv({
   base: "focus:outline-hidden whitespace-normal",
   variants: {
     color: {
-      dark: "text-gray-500 hover:text-gray-900 hover:bg-gray-200 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600",
-      gray: "text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 dark:hover:text-gray-300",
+      dark: "text-stone-500 hover:text-stone-900 hover:bg-stone-200 dark:text-stone-400 dark:hover:text-white dark:hover:bg-stone-600",
+      gray: "text-stone-500 focus:ring-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 dark:hover:text-stone-300",
       red: "text-red-500 focus:ring-red-400 hover:bg-red-200 dark:hover:bg-red-800 dark:hover:text-red-300",
       yellow:
         "text-yellow-500 focus:ring-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-800 dark:hover:text-yellow-300",
@@ -139,7 +139,7 @@ export const toolbarButton = tv({
       primary:
         "text-primary-500 focus:ring-primary-400 hover:bg-primary-200 dark:hover:bg-primary-800 dark:hover:text-primary-300",
       default:
-        "focus:ring-gray-400 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-50",
+        "focus:ring-stone-400 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-50",
     },
     size: {
       xs: "m-0.5 rounded-xs focus:ring-1 p-0.5",
@@ -156,12 +156,12 @@ export const toolbarButton = tv({
     {
       color: "default",
       background: true,
-      class: "dark:hover:bg-gray-600",
+      class: "dark:hover:bg-stone-600",
     },
     {
       color: "default",
       background: false,
-      class: "dark:hover:bg-gray-700",
+      class: "dark:hover:bg-stone-700",
     },
   ],
   defaultVariants: {
