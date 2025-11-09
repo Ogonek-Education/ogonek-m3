@@ -22,7 +22,7 @@
   );
 </script>
 
-<Button tag="label" {pill} {size} {color} class={buttonClass}>
+<Button tag="label" {size} {color} class={buttonClass}>
   <Checkbox bind:group bind:checked {...restProps} class="sr-only"></Checkbox>
   {@render children?.()}
 </Button>

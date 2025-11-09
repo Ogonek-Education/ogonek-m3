@@ -3,6 +3,10 @@
 // folder re-exports (export everything from these folders)
 export * from "./presets";
 
+// re-export TS/JS modules from this folder
+export * from "./theme";
+export * from "./types";
+
 // default exports for components in this folder
 export { default as Button } from "./Button.svelte";
 export { default as ButtonGroup } from "./ButtonGroup.svelte";

@@ -6,16 +6,14 @@
     href,
     children,
     styling = "",
-    aria-label = "",
-    data-cy = "clickable-card",
     deactivate = false,
+    ...rest
   }: {
     href: string;
     styling?: string;
-    aria-label?: string;
     children?: Snippet;
-    data-cy?: string;
     deactivate?: boolean;
+    [key: string]: unknown;
   } = $props();
 
   const baseStyle = `group bg-clickable gap-default border-fat transition-all-100 relative flex min-h-40 w-full flex-col justify-between p-5 ${deactivate ? "" : "hover:none"}`;
@@ -25,8 +23,6 @@
   <a
     in:fly={{ y: 20 }}
     {href}
-    data-cy={data - cy}
-    aria-label={aria - label}
     class="
 {styling} {baseStyle}
      "
@@ -36,8 +32,6 @@
 {:else}
   <div
     in:fly={{ y: 20 }}
-    data-cy={data - cy}
-    aria-label={aria - label}
     class="
 {styling} {baseStyle}
      "

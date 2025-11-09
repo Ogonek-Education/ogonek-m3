@@ -9,7 +9,7 @@
     color = "gray",
     onclick: onclickorg,
     name = "Close",
-    aria-label,
+    "aria-label": ariaLabel,
     size = "md",
     class: className,
     svgClass,
@@ -33,7 +33,7 @@
     {...restProps}
     class={base({ class: clsx(className) })}
     {onclick}
-    aria-label={aria - label ?? name}
+    aria-label={ariaLabel ?? name}
   >
     {#if name}<span class="sr-only">{name}</span>{/if}
     {#if children}
@@ -58,7 +58,7 @@
     {...restProps}
     {onclick}
     class={base({ class: clsx(className) })}
-    aria-label={aria - label ?? name}
+    aria-label={ariaLabel ?? name}
   >
     {#if name}<span class="sr-only">{name}</span>{/if}
     {#if children}

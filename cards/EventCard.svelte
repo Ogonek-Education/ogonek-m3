@@ -2,9 +2,8 @@
   import { page } from "$app/state";
   import type { EventSmall } from "$lib/types/api/calendar";
   import { formatEventTime, getVideoCallService } from "$lib/utils";
-  import { VStack } from "../library";
-  import { P, Heading } from "../library/typography";
-  import { Divider } from "../UI";
+  import { Divider, VStack } from "../layout";
+  import { Heading, P } from "../typography";
 
   import CardClickable from "./CardClickable.svelte";
 

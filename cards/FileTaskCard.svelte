@@ -10,8 +10,9 @@
     Paperclip,
     TextInitial,
   } from "@lucide/svelte";
-  import { Button } from "../UI";
-  import { Secondary, VStack } from "../library";
+  import { Secondary } from "../typography";
+  import { Button } from "../buttons";
+  import { VStack } from "../layout";
 
   let { file, userId }: { file: FileSmall; userId?: string } = $props();
   let downloading = $state(false);

@@ -2,12 +2,12 @@
   import { formatDateOnly } from "$lib/utils";
   import CardClickable from "./CardClickable.svelte";
   import Badge from "./Badge.svelte";
-  import { Heading } from "../library/typography";
   import { getBadgeConfig } from "$lib/utils";
   import SeenBadge from "./SeenBadge.svelte";
-  import { VStack } from "../library";
   import type { TaskSmall } from "$lib/types";
   import { page } from "$app/state";
+  import { VStack } from "../layout";
+  import { Heading } from "../typography";
 
   let { task }: { task: TaskSmall } = $props();
   const formattedDate: string = formatDateOnly(task.dueDate);

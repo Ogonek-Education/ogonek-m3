@@ -1,8 +1,7 @@
 <script lang="ts">
   import { ChevronLeft, ChevronRight } from "@lucide/svelte";
-  import Button from "../../forms/buttons/Button.svelte";
   import { currentPage } from "$lib/stores";
-  import { Secondary } from "$lib/components/library";
+  import { Button, Secondary } from "$lib/components/library";
 
   const { page, count, perPage, totalPages } = $props();
   const isFirstPage = $derived(page === 1);
@@ -20,14 +19,14 @@
       <Button
         tooltipContent="Предыдущая"
         Icon={ChevronLeft}
-        disable={isFirstPage}
+        disabled={isFirstPage}
         onclick={() => currentPage.decrease()}
       />
 
       <Button
         tooltipContent="Следующая"
         Icon={ChevronRight}
-        disable={isLastPage}
+        disabled={isLastPage}
         onclick={() => {
           currentPage.increase();
         }}

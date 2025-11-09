@@ -6,9 +6,8 @@
     addMinutes,
     differenceInMinutes,
   } from "date-fns";
-  import { HStack, VStack } from "../../layout";
+  import { HStack, VStack, Divider } from "../../layout";
   import { Helper, Input, Label } from "..";
-  import { Divider } from "$lib/components/UI/toolbar";
 
   let {
     dtstartTime,

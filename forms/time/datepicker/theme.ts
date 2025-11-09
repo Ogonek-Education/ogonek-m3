@@ -31,6 +31,9 @@ export const datepicker = tv({
         input: "focus:ring-primary-500 dark:focus:ring-primary-400",
         dayButton: "bg-primary-100 dark:bg-primary-900",
       },
+      prominent: {
+        input: "",
+      },
       blue: {
         input: "focus:ring-blue-500 dark:focus:ring-blue-400",
         dayButton: "bg-blue-100 dark:bg-blue-900",

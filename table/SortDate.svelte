@@ -7,7 +7,7 @@
     CalendarArrowDown,
     CalendarArrowUp,
   } from "@lucide/svelte";
-  import { Button } from "../../forms";
+  import { Button } from "../buttons";
 
   const sortFields: { value: SortBy; label: string; isTime: boolean }[] = [
     { value: "created_at", label: "Создание", isTime: true },

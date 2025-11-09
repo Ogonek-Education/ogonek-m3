@@ -1,5 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "../theme";
+import type { Classes } from "../classes";
 
 // Variants
 export type CloseButtonVariants = VariantProps<typeof closeButton> &

@@ -6,7 +6,7 @@
   let {
     children,
     class: className,
-    color = "gray",
+    color = "primary",
     ...restProps
   }: HelperProps = $props();
 

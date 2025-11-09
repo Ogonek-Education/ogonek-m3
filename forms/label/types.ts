@@ -4,7 +4,7 @@ import type { LabelVariants } from "./theme";
 
 export interface LabelProps extends HTMLLabelAttributes {
   children: Snippet;
-  name: string;
+  name?: string;
   clarification?: Snippet;
   color?: LabelVariants["color"];
   show?: boolean;

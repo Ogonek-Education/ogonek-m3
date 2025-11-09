@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { P, Heading } from "../library";
+  import { Heading, P } from "../typography";
 
   let { children, title = "Title" } = $props();
 </script>

@@ -9,7 +9,7 @@
     lightIcon,
     darkIcon,
     size = "md",
-    aria-label = "Dark mode",
+    "aria-label": ariaLabel = "Dark mode",
     ...restProps
   }: DarkmodeProps = $props();
 
@@ -44,7 +44,7 @@
 
 <button
   onclick={toggleTheme}
-  aria-label={aria - label}
+  aria-label={ariaLabel}
   type="button"
   {...restProps}
   class={darkmode({ class: clsx(className) })}

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import type { Card } from "$lib/types";
-  import { P } from "../library/typography";
+  import { P } from "../typography";
 
   let {
     toggleCard,

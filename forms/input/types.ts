@@ -1,9 +1,6 @@
-import type { input } from "$lib/components";
 import type { Snippet } from "svelte";
 import type { HTMLInputAttributes } from "svelte/elements";
-import type { VariantProps } from "tailwind-variants";
-
-export type InputVariants = VariantProps<typeof input>;
+import type { InputVariants } from "./theme";
 
 export type InputValue = string | number | string[] | undefined | null;
 

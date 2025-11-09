@@ -4,10 +4,15 @@
   import logger from "$lib/logger";
   import { formatPercentage } from "$lib/utils";
   import ProgressBar from "../../progress/ProgressBar.svelte";
-  import { Button } from "../../../UI/forms";
-  import { HStack, VStack } from "../../../UI";
-  import Divider from "../../../UI/toolbar/Divider.svelte";
-  import { Helper, P, Secondary } from "$lib/components/library";
+  import {
+    Button,
+    Divider,
+    Helper,
+    HStack,
+    P,
+    Secondary,
+    VStack,
+  } from "$lib/components/library";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 

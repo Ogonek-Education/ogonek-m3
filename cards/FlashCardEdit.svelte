@@ -1,8 +1,7 @@
 <script lang="ts">
   import { X } from "@lucide/svelte";
   import type { Card } from "$lib/types";
-  import { Input } from "../UI";
-  import TextareaHuge from "../UI/forms/TextareaHuge.svelte";
+  import { Input, Label, Textarea } from "../forms";
 
   let {
     index,
@@ -11,6 +10,8 @@
   }: { card: Card; index: number; removeCard: (index: number) => void } =
     $props();
 </script>
+
+import {Label} from '$lib/components';
 
 <div class="group border-fat padding-default relative">
   <button
@@ -23,18 +24,16 @@
   </button>
 
   <div class="gap-default flex flex-col">
-    <Input
-      labelName="Лицо"
-      name={`cards[${index}][front]`}
-      bind:value={card.front}
-      placeholder="Apple (n)"
-    />
+    <Label name="Лицо">
+      <Input name={`cards[${index}][front]`} placeholder="Apple (n)" />
+    </Label>
 
-    <TextareaHuge
-      labelName="Оборот"
-      name={`cards[${index}][back]`}
-      bind:value={card.back}
-      placeholder="The creator of the Mac"
-    />
+    <Label name="Оборот">
+      <Textarea
+        name={`cards[${index}][back]`}
+        bind:value={card.back}
+        placeholder="The creator of the Mac"
+      />
+    </Label>
   </div>
 </div>

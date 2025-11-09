@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Helper, P } from "../library";
   import type { BadgeConfig } from "$lib/types";
+  import { P } from "../typography";
 
   const {
     config = "normal",

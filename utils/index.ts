@@ -2,5 +2,9 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./close-button";
-export * from "./theme";
 
+// re-export TS/JS modules from this folder
+export * from "./actions";
+export * from "./classes";
+export * from "./dismissable";
+export * from "./types";

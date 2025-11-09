@@ -9,7 +9,7 @@ export interface TextareaProps
   header?: Snippet;
   footer?: Snippet;
   addon?: Snippet;
-  value?: string;
+  value?: string | null;
   elementRef?: HTMLTextAreaElement;
   wrapped?: boolean;
   divClass?: ClassValue;

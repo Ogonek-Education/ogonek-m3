@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TickMorph from "../TickMorph.svelte";
+  import { TickMorph } from "$lib/components/legacy";
   import TableRow from "./TableRow.svelte";
 
   let { children, value, href, selected = $bindable() } = $props();
