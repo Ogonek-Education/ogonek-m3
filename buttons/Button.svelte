@@ -10,7 +10,7 @@
     color,
     tag = "button",
     group = false,
-    position = "center",
+    position = "end",
     disabled,
     loading = false,
     class: className,

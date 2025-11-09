@@ -14,6 +14,7 @@ export const button = tv({
       primary: "focus-within:ring-stone-400 dark:focus-within:ring-stone-600",
       secondary:
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
+      alternative: "",
       gray: "text-white bg-stone-700 hover:bg-stone-800 dark:bg-stone-600 dark:hover:bg-stone-700 focus-within:ring-stone-300 dark:focus-within:ring-stone-800",
       red: "text-white bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 focus-within:ring-red-300 dark:focus-within:ring-red-900",
     },
@@ -23,7 +24,7 @@ export const button = tv({
       lg: "padding-wider text-base",
     },
     position: {
-      center: "text-center items-center justify-center size-max",
+      center: "text-center items-center justify-center",
       end: "text-left items-end h-full justify-start",
     },
     group: {
