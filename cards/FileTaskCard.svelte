@@ -79,7 +79,7 @@
     >
       <input type="hidden" value={file.id} name="fileId" />
       <Button
-        content="Удалить файл"
+        tooltipContent="Удалить файл"
         Icon={X}
         formaction="?/deleteFile"
         type="submit"

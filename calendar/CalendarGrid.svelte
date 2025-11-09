@@ -4,9 +4,15 @@
   import { getLocaleFromCookie } from "$lib/utils";
   import { generateMonthDays, type MonthDay } from "$lib/utils/time/calendar";
   import { Calendar1, ChevronLeft, ChevronRight } from "@lucide/svelte";
-  import Divider from "../../UI/toolbar/Divider.svelte";
   import { fly } from "svelte/transition";
-  import { Heading, HStack, P, VStack } from "$lib/components/library";
+  import {
+    Button,
+    Heading,
+    HStack,
+    P,
+    VStack,
+    Divider,
+  } from "$lib/components/library";
 
   const { events }: { events: EventSmall[] } = $props();
 
@@ -131,28 +137,28 @@
   </div>
 </div>
 
-<ToolbarLegacy>
+<VStack>
   <HStack>
     <Heading>Московское время</Heading>
     <VStack>
       <Heading class="capitalize">{monthName} {year}</Heading>
       <Divider></Divider>
       <Button
-        content="Предыдущий месяц"
+        tooltipContent="Предыдущий месяц"
         href={navigationUrls.prev}
         Icon={ChevronLeft}
       />
       <Button
-        content="Сегодня"
-        variant="prominent"
+        tooltipContent="Сегодня"
+        color="prominent"
         href={todayUrl}
         Icon={Calendar1}
       ></Button>
       <Button
-        content="Следующий месяц"
+        tooltipContent="Следующий месяц"
         href={navigationUrls.next}
         Icon={ChevronRight}
       />
     </VStack>
   </HStack>
-</ToolbarLegacy>
+</VStack>

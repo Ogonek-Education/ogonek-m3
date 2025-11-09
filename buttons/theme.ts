@@ -12,11 +12,12 @@ export const button = tv({
   variants: {
     color: {
       primary: "focus-within:ring-stone-400 dark:focus-within:ring-stone-600",
+      prominent: "bg-accent text-stone-50 border-fat-accent",
       secondary:
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",
       gray: "text-white bg-stone-700 hover:bg-stone-800 dark:bg-stone-600 dark:hover:bg-stone-700 focus-within:ring-stone-300 dark:focus-within:ring-stone-800",
-      red: "text-white bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 focus-within:ring-red-300 dark:focus-within:ring-red-900",
+      red: "text-red-50 bg-red-700 hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 focus-within:ring-red-300 dark:focus-within:ring-red-900",
     },
     size: {
       sm: "padding-narrow text-sm",

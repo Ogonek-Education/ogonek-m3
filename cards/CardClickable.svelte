@@ -6,15 +6,15 @@
     href,
     children,
     styling = "",
-    ariaLabel = "",
-    dataCy = "clickable-card",
+    aria-label = "",
+    data-cy = "clickable-card",
     deactivate = false,
   }: {
     href: string;
     styling?: string;
-    ariaLabel?: string;
+    aria-label?: string;
     children?: Snippet;
-    dataCy?: string;
+    data-cy?: string;
     deactivate?: boolean;
   } = $props();
 
@@ -25,8 +25,8 @@
   <a
     in:fly={{ y: 20 }}
     {href}
-    data-cy={dataCy}
-    aria-label={ariaLabel}
+    data-cy={data - cy}
+    aria-label={aria - label}
     class="
 {styling} {baseStyle}
      "
@@ -36,8 +36,8 @@
 {:else}
   <div
     in:fly={{ y: 20 }}
-    data-cy={dataCy}
-    aria-label={ariaLabel}
+    data-cy={data - cy}
+    aria-label={aria - label}
     class="
 {styling} {baseStyle}
      "

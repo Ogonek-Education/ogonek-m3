@@ -17,7 +17,7 @@
   const badgeConfig = getBadgeConfig(task.dueDate);
 </script>
 
-<CardClickable dataCy="task-card" {href}>
+<CardClickable data-cy="task-card" {href}>
   <Heading tag="h3">
     {task.title}
   </Heading>

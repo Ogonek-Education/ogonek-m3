@@ -1,4 +1,5 @@
 import type { AnchorButtonAttributes } from "$lib/types";
+import type { Icon } from "@lucide/svelte";
 import type { Snippet } from "svelte";
 import type {
   HTMLAnchorAttributes,
@@ -24,4 +25,7 @@ export type ButtonProps = ButtonVariants &
     tag?: string;
     disabled?: boolean;
     loading?: boolean;
+    tooltipContent?: string;
+    Icon?: typeof Icon;
+    withModal?: boolean;
   };

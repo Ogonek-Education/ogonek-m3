@@ -5,5 +5,5 @@ export interface DarkmodeProps extends HTMLButtonAttributes {
   lightIcon?: Snippet;
   darkIcon?: Snippet;
   size?: "sm" | "md" | "lg";
-  ariaLabel?: string;
+  aria-label?: string;
 }

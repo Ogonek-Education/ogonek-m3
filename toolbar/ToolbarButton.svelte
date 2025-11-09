@@ -9,7 +9,7 @@
     children,
     color,
     name,
-    "aria-label": ariaLabel,
+    "aria-label": aria-label,
     size,
     class: className,
     ...restProps
@@ -30,13 +30,13 @@
     type="button"
     {...restProps}
     class={buttonCls}
-    aria-label={ariaLabel ?? name}
+    aria-label={aria - label ?? name}
   >
     {#if name}<span class="sr-only">{name}</span>{/if}
     {@render children?.()}
   </button>
 {:else}
-  <a {...restProps} class={buttonCls} aria-label={ariaLabel ?? name}>
+  <a {...restProps} class={buttonCls} aria-label={aria - label ?? name}>
     {#if name}<span class="sr-only">{name}</span>{/if}
     {@render children?.()}
   </a>

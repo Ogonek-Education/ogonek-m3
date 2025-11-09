@@ -1,7 +1,7 @@
 <script lang="ts">
   import { X } from "@lucide/svelte";
   import type { Card } from "$lib/types";
-  import { InputHuge } from "../UI";
+  import { Input } from "../UI";
   import TextareaHuge from "../UI/forms/TextareaHuge.svelte";
 
   let {
@@ -23,7 +23,7 @@
   </button>
 
   <div class="gap-default flex flex-col">
-    <InputHuge
+    <Input
       labelName="Лицо"
       name={`cards[${index}][front]`}
       bind:value={card.front}

@@ -21,7 +21,7 @@ export type CloseButtonProps = CloseButtonVariants &
   AnchorButtonAttributes & {
     onclick?: (ev: MouseEvent) => void;
     name?: string;
-    ariaLabel?: string;
+    aria-label?: string;
     class?: string;
     svgClass?: string;
   };

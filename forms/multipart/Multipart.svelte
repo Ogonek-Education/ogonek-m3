@@ -369,7 +369,7 @@
 
           <Divider></Divider>
           <Button
-            content="Удалить файл"
+            tooltipContent="Удалить файл"
             Icon={X}
             type="button"
             onclick={() => removeFile(fileState)}

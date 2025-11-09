@@ -5,9 +5,9 @@
 </script>
 
 <Button
-  shouldConfirm={true}
+  withModal={true}
   Icon={Shredder}
   formaction="?/delete"
-  content={texts.crud.delete}
-  config="danger"
+  tooltipContent={texts.crud.delete}
+  color="red"
 ></Button>

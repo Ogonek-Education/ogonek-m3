@@ -18,14 +18,14 @@
   <div class="gap-default flex">
     {#if count > perPage}
       <Button
-        content="Предыдущая"
+        tooltipContent="Предыдущая"
         Icon={ChevronLeft}
         disable={isFirstPage}
         onclick={() => currentPage.decrease()}
       />
 
       <Button
-        content="Следующая"
+        tooltipContent="Следующая"
         Icon={ChevronRight}
         disable={isLastPage}
         onclick={() => {

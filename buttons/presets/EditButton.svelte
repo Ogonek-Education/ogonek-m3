@@ -7,11 +7,11 @@
 </script>
 
 <Button
-  variant="prominent"
-  content={texts.crud.edit}
-  dataCy="edit-button"
+  color="prominent"
+  tooltipContent={texts.crud.edit}
+  data-cy="edit-button"
   type="submit"
-  ariaLabel="Edit"
+  aria-label="Edit"
   Icon={Pencil}
   {href}
 ></Button>

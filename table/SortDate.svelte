@@ -22,7 +22,7 @@
 </script>
 
 <Button
-  content="Сортировка"
+  tooltipContent="Сортировка"
   Icon={isTimeSort
     ? $sortOrder === "asc"
       ? CalendarArrowUp
