@@ -4,6 +4,7 @@ export * from "./dropzone";
 export * from "./helper";
 export * from "./input";
 export * from "./label";
+export * from "./multipart";
 export * from "./search";
 export * from "./select";
 export * from "./textarea";
