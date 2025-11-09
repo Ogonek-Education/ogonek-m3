@@ -1,5 +1,4 @@
 export * from "./checkbox";
-export * from "./datepicker";
 export * from "./dropzone";
 export * from "./helper";
 export * from "./input";
@@ -8,4 +7,5 @@ export * from "./multipart";
 export * from "./search";
 export * from "./select";
 export * from "./textarea";
+export * from "./time";
 export * from "./toggle";

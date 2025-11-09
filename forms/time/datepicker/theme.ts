@@ -1,5 +1,5 @@
+import type { Classes } from "$lib/components/library/utils";
 import { tv, type VariantProps } from "tailwind-variants";
-import type { Classes } from "../../utils";
 
 export type DatepickerVariants = VariantProps<typeof datepicker> &
   Classes<typeof datepicker>;

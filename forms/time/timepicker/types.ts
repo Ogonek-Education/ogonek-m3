@@ -1,7 +1,5 @@
 import type { Icon } from "@lucide/svelte";
 import type { ClassValue } from "svelte/elements";
-import type { ButtonGroupVariants } from "../../buttons/theme";
-import type { InputProps } from "../input/types";
 
 export type TimePickerOption = {
   name: string;
@@ -20,14 +18,14 @@ export interface TimepickerProps {
   required?: boolean;
   type?: TimePickerType;
   disabled?: boolean;
-  inputColor?: InputProps["color"];
   Icon?: typeof Icon;
   iconClass?: string;
   optionLabel?: string;
   options?: TimePickerOption[];
-  size?: ButtonGroupVariants["size"];
   divClass?: ClassValue;
   inputClass?: ClassValue;
+  oninput?: () => void;
+  onchange?: (value: string) => void;
   onselect?: (data: {
     time: string;
     endTime: string;

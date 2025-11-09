@@ -1,3 +1,4 @@
+import type { ButtonProps } from "$lib/components/library/buttons";
 import type { Day } from "date-fns";
 import type { Snippet } from "svelte";
 import type {
@@ -5,7 +6,6 @@ import type {
   HTMLAttributes,
   HTMLInputAttributes,
 } from "svelte/elements";
-import type { ButtonProps } from "../../buttons";
 import type { DatepickerVariants } from "./theme";
 
 export type DateOrRange = Date | { from?: Date; to?: Date };

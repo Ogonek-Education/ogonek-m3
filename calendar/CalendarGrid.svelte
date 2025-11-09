@@ -4,8 +4,6 @@
   import { getLocaleFromCookie } from "$lib/utils";
   import { generateMonthDays, type MonthDay } from "$lib/utils/time/calendar";
   import { Calendar1, ChevronLeft, ChevronRight } from "@lucide/svelte";
-  import { ToolbarLegacy } from "../../UI";
-  import Button from "../../UI/forms/buttons/Button.svelte";
   import Divider from "../../UI/toolbar/Divider.svelte";
   import { fly } from "svelte/transition";
   import { Heading, HStack, P, VStack } from "$lib/components/library";
