@@ -10,8 +10,8 @@ export const helper = tv({
       disabled: "text-stone-400 dark:text-stone-500",
       primary: "text-primary-500 dark:text-primary-400",
       secondary: "text-secondary-500 dark:text-secondary-400",
-      green: "text-apple-dark dark:text-apple",
-      red: "text-red-500 dark:text-red-400",
+      green: "text-green",
+      red: "text-danger",
     },
   },
 });

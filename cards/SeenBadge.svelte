@@ -4,7 +4,7 @@
 
 {#if !seen}
   <block
-    class="absolute top-1 right-1 flex aspect-square size-4 rounded-full bg-red-500"
+    class="bg-red absolute top-1 right-1 flex aspect-square size-4 rounded-full"
   >
   </block>
 {/if}

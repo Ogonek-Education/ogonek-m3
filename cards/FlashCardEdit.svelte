@@ -15,7 +15,7 @@
   <button
     type="button"
     onclick={() => removeCard(index)}
-    class="absolute top-0.5 left-0.5 z-10 hidden rounded-full bg-stone-200 p-1 text-stone-900 transition-colors hover:bg-red-500 hover:text-red-50 md:block dark:bg-stone-900 dark:text-stone-200"
+    class="hover:bg-red absolute top-0.5 left-0.5 z-10 hidden rounded-full bg-stone-200 p-1 text-stone-900 transition-colors hover:text-red-50 md:block dark:bg-stone-900 dark:text-stone-200"
     title="Убрать"
   >
     <X class="size-4" />

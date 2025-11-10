@@ -14,28 +14,24 @@
       case "overdue":
         return {
           text: "Просрочено",
-          color:
-            "bg-red-600/12 text-red-700 dark:text-red-500 border-red-600  ",
+          color: "bg-red/12 text-red border-red",
         };
       case "yellow":
         return {
-          color: "bg-school/12 dark:text-school text-school-dark border-school",
+          color: "bg-yellow/12 text-yellow border-yellow",
         };
       case "green":
         return {
-          color:
-            "bg-apple/12 dark:border-apple-dark border-apple text-apple-dark dark:text-apple",
+          color: "bg-green/12 border-green ",
         };
       case "red":
         return {
-          color:
-            "bg-red-600/12 text-red-700 dark:text-red-500 border-red-600  ",
+          color: "bg-red/12 text-red border-red",
         };
       case "normal":
       default:
         return {
-          color:
-            "bg-moonstone/12 border-moonstone/60 text-moonstone-dark dark:text-moonstone dark:bg-moonstone-dark-100/12",
+          color: "bg-blue/12 border-blue/60 ",
         };
     }
   }
@@ -45,7 +41,7 @@
 
 <div
   class={`
-      inline-flex min-w-fit items-center rounded-2xl border-3 px-2.5 py-1
+      inline-flex min-w-fit items-center  rounded-2xl border-3 px-2.5 py-1
       font-medium
       ${badgeConfig.color} ${styling}
     `}

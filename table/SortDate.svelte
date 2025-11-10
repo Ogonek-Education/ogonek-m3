@@ -8,7 +8,7 @@
     CalendarArrowUp,
   } from "@lucide/svelte";
   import { Button } from "../buttons";
-    import { Select, type SelectOptionType } from "../forms";
+  import { Select, type SelectOptionType } from "../forms";
 
   const sortFields: SelectOptionType<string>[] = [
     { value: "created_at", name: "Создание", isTime: true },
@@ -21,7 +21,9 @@
     sortFields.find((f) => f.value === $sortBy)?.isTime ?? false,
   );
 </script>
+
 <Button
+  type="button"
   tooltipContent="Сортировка"
   Icon={isTimeSort
     ? $sortOrder === "asc"

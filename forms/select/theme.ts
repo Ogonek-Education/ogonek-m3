@@ -9,7 +9,7 @@ export type MultiSelectVariants = VariantProps<typeof multiSelect> &
 
 export const select = tv({
   slots: {
-    base: "relative w-full w-max",
+    base: "input-default",
   },
   variants: {
     disabled: {
@@ -36,7 +36,7 @@ export const multiSelect = tv({
     item: "py-2 px-3 rounded-2xl text-stone-600 hover:text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:text-stone-300 dark:hover:bg-stone-600",
     close: "p-0 focus:ring-stone-400 dark:text-white",
     span: "",
-    placeholder: "text-stone-400",
+    placeholder: "text-text-placeholder",
     svg: "ms-1 h-3 w-3 cursor-pointer text-stone-800 dark:text-white",
   },
   variants: {

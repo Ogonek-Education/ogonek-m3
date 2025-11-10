@@ -14,8 +14,7 @@ export const input = tv({
   variants: {
     color: {
       default: {
-        input:
-          "focus:border-accent-light focus:ring-accent-light w-full placeholder-stone-600 transition-all duration-150 ease-out focus:ring-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60 bg-stone-100/20 hover:bg-stone-100/80 active:bg-stone-100 dark:bg-stone-900/30 dark:hover:bg-stone-900 active:dark:bg-stone-800 transition-colors duration-150 rounded-2xl border-2 border-stone-300 hover:border-stone-400 focus:border-transparent dark:border-stone-800 dark:hover:border-stone-700",
+        input: "input-default",
       },
       primary: {
         input:
