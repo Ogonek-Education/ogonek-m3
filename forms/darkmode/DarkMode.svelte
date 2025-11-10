@@ -29,8 +29,6 @@
     { value: "light", label: "Light", Icon: Sun },
     { value: "dark", label: "Dark", Icon: Moon },
     { value: "griso", label: "Griso", Icon: Palette },
-    { value: "gruvbox", label: "Gruvbox", Icon: Palette },
-    { value: "nord", label: "Nord", Icon: Palette },
   ];
 
   // Initialize theme on mount
@@ -85,14 +83,7 @@
   <script>
     (function () {
       const stored = localStorage.getItem("THEME_PREFERENCE_KEY");
-      const themes = [
-        "light",
-        "dark",
-        "catppuccin-dark",
-        "catppuccin-light",
-        "gruvbox",
-        "nord",
-      ];
+      const themes = ["light", "dark", "griso"];
 
       if (stored && themes.includes(stored)) {
         if (stored === "dark") {
@@ -108,7 +99,6 @@
 </svelte:head>
 
 {#if showThemeSelector}
-  <!-- Dropdown selector for all themes -->
   <div class="relative">
     <button
       onclick={() => (showDropdown = !showDropdown)}
@@ -123,7 +113,7 @@
 
     {#if showDropdown}
       <div
-        class="bg-bg-solid border-border-default absolute right-0 z-50 mt-2 w-48 rounded-lg border shadow-lg"
+        class="bg-solid border-border-default absolute right-0 z-50 w-48"
         role="menu"
       >
         {#each themes as theme}

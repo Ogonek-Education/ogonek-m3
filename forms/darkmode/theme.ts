@@ -1,5 +1,5 @@
 import { tv } from "tailwind-variants";
 
 export const darkmode = tv({
-  base: "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden rounded-lg text-sm p-2.5"
+  base: "text-stone-500 flex dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 focus:outline-hidden rounded-2xl text-sm padding-default",
 });

@@ -12,7 +12,7 @@ export const button = tv({
   variants: {
     color: {
       primary: "bg-clickable border-primary",
-      prominent: "bg-prominent text-stone-50 border-primary-accent ",
+      prominent: "bg-prominent text-stone-50 border-primary-accent",
       secondary:
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",
