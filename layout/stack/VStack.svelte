@@ -1,30 +1,21 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
+  import clsx from "clsx";
+  import { stack } from "./theme";
+  import type { StackProps } from "./types";
 
   let {
     children,
-    styling = "items-end",
-    align = "left",
-    override = "gap-default",
-  }: {
-    children: Snippet;
-    styling?: string;
-    align?: "center" | "left" | "right";
-    override?: string;
-  } = $props();
+    type = "vstack",
+    align = "end",
+    gap = "md",
+    justify = "center",
+    size = "h",
+    class: className,
+  }: StackProps = $props();
 
-  const layout = $derived.by(() => {
-    switch (align) {
-      case "center":
-        return "justify-center";
-      case "left":
-        return "justify-start";
-      case "right":
-        return "justify-end";
-    }
-  });
+  const styling = $derived(stack({ align, gap, justify, type, size }));
 </script>
 
-<div class="relative flex h-full {override} {layout} {styling}">
+<div class={clsx(styling, className)}>
   {@render children()}
 </div>

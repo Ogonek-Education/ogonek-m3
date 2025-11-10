@@ -9,9 +9,8 @@
   let {
     children,
     size = "md",
-    color,
+    color = "primary",
     tag = "button",
-    group = false,
     position = "end",
     disabled,
     loading = false,
@@ -23,12 +22,12 @@
   }: ButtonProps = $props();
 
   let isDisabled = $derived(Boolean(disabled) || loading);
-
+  const _position = $derived(Icon ? "center" : position);
   const { base } = $derived(
     button({
       color,
       size,
-      position,
+      position: _position,
       disabled: isDisabled,
     }),
   );
@@ -39,14 +38,16 @@
   );
 
   const showTooltip = $derived(!!Icon);
+
   let showModal = $state(false);
 
-  function handleClick(e: Event) {
+  function handleClick(e: any) {
     if (color === "red" && withModal) {
       e.preventDefault();
       showModal = true;
-    } else {
-      restProps.onclick;
+      return;
+    } else if (restProps.onclick) {
+      restProps.onclick(e);
     }
   }
 </script>
@@ -69,7 +70,7 @@
     type="button"
     {...restProps}
     class={btnCls}
-    onclick={handleClick}
+    onclick={(e) => handleClick(e)}
     disabled={isDisabled}
   >
     {#if Icon}

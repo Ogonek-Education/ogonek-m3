@@ -5,10 +5,10 @@ export type HrVariants = VariantProps<typeof hr> & Classes<typeof hr>;
 
 export const hr = tv({
   slots: {
-    base: "h-px my-8 border-0",
+    base: "h-[3px] my-2 border-0 bg-material-solid",
     div: "inline-flex items-center justify-center w-full",
     content:
-      "absolute px-4 -translate-x-1/2 rtl:translate-x-1/2 bg-white start-1/2 dark:bg-gray-900",
+      "absolute px-4 -translate-x-1/2 rtl:translate-x-1/2 bg-white start-1/2 dark:bg-solid",
     bg: "",
   },
   variants: {

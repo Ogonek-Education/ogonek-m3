@@ -5,15 +5,14 @@
 
   let {
     children,
-    type = "hstack",
-    align = "start",
+    align = "center",
     gap = "md",
-    size = "w",
-    justify = "start",
+    justify = "center",
+    type = "zstack",
     class: className,
   }: StackProps = $props();
 
-  const styling = $derived(stack({ align, gap, justify, type, size }));
+  const styling = $derived(stack({ align, gap, justify, type }));
 </script>
 
 <div class={clsx(styling, className)}>

@@ -4,7 +4,6 @@
   import { formatEventTime, getVideoCallService } from "$lib/utils";
   import { Divider, VStack } from "../layout";
   import { Heading, P } from "../typography";
-
   import CardClickable from "./CardClickable.svelte";
 
   const {
@@ -18,11 +17,11 @@
 </script>
 
 <CardClickable {deactivate} href="{page.params.day}/{event.id}">
-  <Heading>
-    {formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
-  </Heading>
   <VStack>
-    <Heading class={event.status === "cancelled" ? "line-through" : ""}>
+    <Heading
+      tag="h3"
+      class={event.status === "cancelled" ? "line-through" : ""}
+    >
       {page.params.role === "t" ? event.title : "Занятие"}
     </Heading>
     {#if event.location}
@@ -36,4 +35,7 @@
       {/if}
     {/if}
   </VStack>
+  <Heading>
+    {formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
+  </Heading>
 </CardClickable>

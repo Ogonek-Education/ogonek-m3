@@ -339,7 +339,7 @@
   }
 </script>
 
-<HStack styling="flex-1">
+<HStack class="flex-1">
   <label
     for="fileInput"
     ondragover={handleDragOver}

@@ -6,13 +6,13 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 
 export const button = tv({
   slots: {
-    base: "w-full bg-clickable font-medium flex border-fat",
+    base: "w-full  font-medium flex active:scale-[97%]",
     outline: "bg-transparent border-fat",
   },
   variants: {
     color: {
-      primary: "focus-within:ring-stone-400 dark:focus-within:ring-stone-600",
-      prominent: "bg-accent text-stone-50 border-fat-accent",
+      primary: "bg-clickable border-fat",
+      prominent: "bg-accent text-stone-50 border-fat-accent ",
       secondary:
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",
@@ -27,10 +27,6 @@ export const button = tv({
     position: {
       center: "text-center items-center justify-center",
       end: "text-left items-end h-full justify-start",
-    },
-    group: {
-      true: "focus-within:ring-2 focus-within:z-10 [&:not(:first-child)]:rounded-s-none [&:not(:last-child)]:rounded-e-none [&:not(:last-child)]:border-e-0",
-      false: "focus-within:ring-4 focus-within:outline-hidden",
     },
     disabled: {
       true: "cursor-not-allowed opacity-50",

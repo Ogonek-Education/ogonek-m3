@@ -32,7 +32,7 @@
   {/if}
 {/snippet}
 
-<VStack styling="items-start">
+<VStack align="start">
   <form
     method="POST"
     action="?/download"

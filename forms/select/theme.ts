@@ -9,8 +9,8 @@ export type MultiSelectVariants = VariantProps<typeof multiSelect> &
 
 export const select = tv({
   slots: {
-    base: "relative w-full",
-    select: "block w-full rtl:text-right",
+    base: "relative w-full w-max",
+    select: "block rtl:text-right w-max",
   },
   variants: {
     disabled: {

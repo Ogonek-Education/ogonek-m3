@@ -8,19 +8,19 @@
     CalendarArrowUp,
   } from "@lucide/svelte";
   import { Button } from "../buttons";
+    import { Select, type SelectOptionType } from "../forms";
 
-  const sortFields: { value: SortBy; label: string; isTime: boolean }[] = [
-    { value: "created_at", label: "Создание", isTime: true },
-    { value: "updated_at", label: "Обновление", isTime: true },
-    { value: "title", label: "Название", isTime: false },
-    { value: "due_date", label: "Срок", isTime: true },
+  const sortFields: SelectOptionType<string>[] = [
+    { value: "created_at", name: "Создание", isTime: true },
+    { value: "updated_at", name: "Обновление", isTime: true },
+    { value: "title", name: "Название", isTime: false },
+    { value: "due_date", name: "Срок", isTime: true },
   ];
 
   const isTimeSort = $derived(
     sortFields.find((f) => f.value === $sortBy)?.isTime ?? false,
   );
 </script>
-
 <Button
   tooltipContent="Сортировка"
   Icon={isTimeSort
@@ -32,13 +32,4 @@
       : ArrowDownAZ}
   onclick={() => ($sortOrder = $sortOrder === "asc" ? "desc" : "asc")}
 />
-
-<select
-  name="sort"
-  bind:value={$sortBy}
-  class="bg-clickable border-fat padding-default flex h-13 w-max items-center justify-center text-center font-medium transition-all"
->
-  {#each sortFields as field}
-    <option value={field.value}>{field.label}</option>
-  {/each}
-</select>
+<Select items={sortFields} name="sort" bind:value={$sortBy} />
