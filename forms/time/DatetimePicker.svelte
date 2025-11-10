@@ -1,12 +1,8 @@
 <script lang="ts">
-  import {
-    format,
-    parse,
-    isValid,
-    addMinutes,
-    differenceInMinutes,
-  } from "date-fns";
-  import { Helper, Input, Label } from "..";
+  import { format, fromZonedTime, toZonedTime } from "date-fns-tz";
+  import { isValid, parse } from "date-fns";
+  import { Hr, HStack, VStack } from "../../layout";
+  import { Input } from "../input";
 
   let {
     dtstartTime,
@@ -18,129 +14,72 @@
     form?: any;
   } = $props();
 
-  let localDateString = $state("");
-  let dtstartLocalTimeString = $state("");
-  let dtendLocalTimeString = $state("");
-  let storedDurationMinutes = $state(60);
-  let isInitialized = $state(false);
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
+  // Local state for inputs
+  let dateString = $state("");
+  let startTimeString = $state("");
+  let endTimeString = $state("");
+
+  // Initialize from UTC timestamps
   $effect(() => {
     if (isValid(new Date(dtstartTime))) {
-      const localStart = new Date(dtstartTime);
-      localDateString = format(localStart, "yyyy-MM-dd");
-      dtstartLocalTimeString = format(localStart, "HH:mm");
+      const localStart = toZonedTime(dtstartTime, userTimezone);
+      dateString = format(localStart, "yyyy-MM-dd");
+      startTimeString = format(localStart, "HH:mm");
 
       if (dtendTime && isValid(new Date(dtendTime))) {
-        const localEnd = new Date(dtendTime);
-        dtendLocalTimeString = format(localEnd, "HH:mm");
-
-        if (!isInitialized) {
-          storedDurationMinutes = differenceInMinutes(localEnd, localStart);
-          isInitialized = true;
-        }
-      } else if (!isInitialized) {
-        isInitialized = true;
-        updateEndTimeFromDuration();
+        const localEnd = toZonedTime(dtendTime, userTimezone);
+        endTimeString = format(localEnd, "HH:mm");
       }
     }
   });
 
-  function updateEndTimeFromDuration() {
-    if (!localDateString || !dtstartLocalTimeString) return;
+  // Convert local date + time → UTC ISO string
+  function localToUTC(date: string, time: string): string | null {
+    if (!date || !time) return null;
 
-    const localStartDateTimeString = `${localDateString} ${dtstartLocalTimeString}`;
-    const localStartDateTime = parse(
-      localStartDateTimeString,
+    const localDateTime = parse(
+      `${date} ${time}`,
       "yyyy-MM-dd HH:mm",
       new Date(),
     );
 
-    if (!isValid(localStartDateTime)) return;
+    if (!isValid(localDateTime)) return null;
 
-    const localEndDateTime = addMinutes(
-      localStartDateTime,
-      storedDurationMinutes,
-    );
-    dtendLocalTimeString = format(localEndDateTime, "HH:mm");
-
-    dtstartTime = localStartDateTime.toISOString();
-    dtendTime = localEndDateTime.toISOString();
+    return fromZonedTime(localDateTime, userTimezone).toISOString();
   }
 
-  function handleStartTimeChange() {
-    updateEndTimeFromDuration();
-  }
+  // Update hidden inputs whenever local values change
+  $effect(() => {
+    const start = localToUTC(dateString, startTimeString);
+    if (start) dtstartTime = start;
 
-  function handleEndTimeChange() {
-    if (!localDateString || !dtstartLocalTimeString || !dtendLocalTimeString)
-      return;
-
-    const localStartDateTimeString = `${localDateString} ${dtstartLocalTimeString}`;
-    const localStartDateTime = parse(
-      localStartDateTimeString,
-      "yyyy-MM-dd HH:mm",
-      new Date(),
-    );
-
-    let localEndDateTimeString = `${localDateString} ${dtendLocalTimeString}`;
-    let localEndDateTime = parse(
-      localEndDateTimeString,
-      "yyyy-MM-dd HH:mm",
-      new Date(),
-    );
-
-    if (localEndDateTime <= localStartDateTime) {
-      localEndDateTime = addMinutes(localEndDateTime, 24 * 60);
-    }
-
-    if (!isValid(localStartDateTime) || !isValid(localEndDateTime)) return;
-
-    storedDurationMinutes = differenceInMinutes(
-      localEndDateTime,
-      localStartDateTime,
-    );
-
-    dtstartTime = localStartDateTime.toISOString();
-    dtendTime = localEndDateTime.toISOString();
-  }
-
-  function handleDateChange() {
-    updateEndTimeFromDuration();
-  }
+    const end = localToUTC(dateString, endTimeString);
+    if (end) dtendTime = end;
+  });
 </script>
 
-<input type="hidden" name="dtstartTime" bind:value={dtstartTime} />
-<input type="hidden" name="dtendTime" bind:value={dtendTime} />
+<HStack>
+  <!-- Hidden inputs for form submission -->
+  <input type="hidden" name="dtstartTime" value={dtstartTime} />
+  <input type="hidden" name="dtendTime" value={dtendTime || ""} />
 
-<Label name="Дата">
-  <Input
-    type="date"
-    name="date"
-    onchange={handleDateChange}
-    bind:value={localDateString}
-  />
-</Label>
+  <VStack>
+    <Input type="date" name="date" bind:value={dateString} />
 
-<Label name="Начало">
-  <Input
-    type="time"
-    name="startTime"
-    onchange={handleStartTimeChange}
-    bind:value={dtstartLocalTimeString}
-  />
-  {#if form?.noDtstart}
-    <Helper color="red">Тут нет мужского начала</Helper>
+    <Hr />
+
+    <Input type="time" name="startTime" bind:value={startTimeString} />
+
+    <Input type="time" name="endTime" bind:value={endTimeString} />
+  </VStack>
+
+  {#if import.meta.env.DEV}
+    <div class="mt-2 text-xs text-stone-500">
+      Start UTC: {dtstartTime}<br />
+      End UTC: {dtendTime}<br />
+      TZ: {userTimezone}
+    </div>
   {/if}
-</Label>
-
-<Label name="Конец">
-  <Input
-    type="time"
-    name="endTime"
-    onchange={handleEndTimeChange}
-    bind:value={dtendLocalTimeString}
-  />
-  {#if form?.endBeforeStart}
-    <Helper color="red">Проверьте время</Helper>
-  {/if}
-</Label>
+</HStack>
