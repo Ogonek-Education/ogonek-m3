@@ -11,8 +11,10 @@
     size = "md",
     color = "primary",
     tag = "button",
+    scale = "sm",
     position = "end",
     disabled,
+    formaction,
     loading = false,
     withModal,
     Icon,
@@ -23,12 +25,14 @@
 
   let isDisabled = $derived(Boolean(disabled) || loading);
   const _position = $derived(Icon ? "center" : position);
+  const _scale = $derived(Icon ? "lg" : scale);
   const { base } = $derived(
     button({
       color,
       size,
       position: _position,
       disabled: isDisabled,
+      scale: _scale,
     }),
   );
   let btnCls = $derived(
@@ -67,9 +71,9 @@
 {:else if tag === "button"}
   <button
     {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
-    type="button"
     {...restProps}
     class={btnCls}
+    {formaction}
     onclick={(e) => handleClick(e)}
     disabled={isDisabled}
   >
@@ -102,5 +106,5 @@
 {/if}
 
 {#if showModal}
-  <ConfirmDelete bind:showModal />
+  <ConfirmDelete {formaction} bind:showModal />
 {/if}

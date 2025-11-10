@@ -21,7 +21,7 @@
   <Heading tag="h3">
     {task.title}
   </Heading>
-  <VStack>
+  <VStack justify="start">
     {#if !task.completed}
       <Badge config={badgeConfig}>{badgeText}</Badge>
     {:else}

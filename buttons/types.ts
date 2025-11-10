@@ -28,4 +28,5 @@ export type ButtonProps = ButtonVariants &
     tooltipContent?: string;
     Icon?: typeof Icon;
     withModal?: boolean;
+    formaction?: string;
   };

@@ -5,7 +5,7 @@
 </script>
 
 <div
-  class="border-fat padding-default grid max-h-max shrink"
+  class="border-fat padding-default grid max-h-max w-full shrink"
   in:fly={{ y: 20 }}
 >
   {@render children()}

@@ -3,6 +3,6 @@
   import texts from "$lib/texts";
 </script>
 
-<Button formaction="?/delete" color="red">
+<Button withModal formaction="?/delete" color="red">
   <Heading tag="h3">{texts.crud.delete}</Heading>
 </Button>

@@ -58,7 +58,7 @@
   }
 </script>
 
-<Button type="submit" formaction="?/downloadAll"
+<Button class="h-full" type="submit" formaction="?/downloadAll"
   ><Heading tag="h3">Загрузить</Heading></Button
 >
 

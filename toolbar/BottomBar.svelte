@@ -9,7 +9,7 @@
   }: { children: Snippet; title: string; subtitle?: string } = $props();
 </script>
 
-<div class="grid grid-cols-3 items-end">
+<div class="grid w-full grid-cols-3 items-end">
   <div class="col-span-2">
     <Heading tag="hero">
       {title}

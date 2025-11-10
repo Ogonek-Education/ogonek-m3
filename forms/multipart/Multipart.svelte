@@ -339,16 +339,16 @@
   }
 </script>
 
-<HStack class="flex-1">
+<HStack class="flex-1" size="full" justify="center" align="center">
   <label
     for="fileInput"
     ondragover={handleDragOver}
     ondragleave={handleDragLeave}
     ondrop={handleDrop}
     aria-label="File upload area"
-    class="relative flex flex-1 cursor-pointer
-			 flex-col items-center justify-center
-			 border-dashed p-12 duration-150
+    class="gap-default relative flex w-full flex-1
+			 cursor-pointer flex-col items-center justify-center
+			 border-dashed p-12 text-center duration-150
 			 {isDragging ? 'border-accent bg-accent/12' : 'border-fat'}"
   >
     <input
@@ -359,7 +359,9 @@
       multiple
       class="hidden"
     />
+
     <Upload class="self-center" />
+    <Secondary>Вы можете загрузить сюда любые файлы</Secondary>
   </label>
 
   {#if fileUploads.length > 0}
@@ -392,5 +394,7 @@
       </div>
     {/each}
   {/if}
-  <Secondary>Максимальный размер файла – 100 Мб</Secondary>
+  <Secondary class="self-align-left"
+    >Максимальный размер файла – 100 Мб</Secondary
+  >
 </HStack>

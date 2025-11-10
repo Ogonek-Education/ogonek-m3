@@ -14,6 +14,7 @@ export const stack = tv({
       sm: "gap-narrow",
       md: "gap-default",
       lg: "gap-wider",
+      none: "gap-0",
     },
     align: {
       left: "items-left",

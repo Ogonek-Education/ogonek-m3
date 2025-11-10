@@ -11,14 +11,12 @@
     $props();
 </script>
 
-import {Label} from '$lib/components';
-
 <div class="group border-fat padding-default relative">
   <button
     type="button"
     onclick={() => removeCard(index)}
-    class="absolute -top-2 -right-2 z-10 hidden bg-stone-700 p-1.5 text-stone-50 hover:bg-red-700 focus:ring focus:ring-red-400 md:block"
-    title="Remove card"
+    class="absolute top-0.5 left-0.5 z-10 hidden rounded-full bg-stone-200 p-1 text-stone-900 transition-colors hover:bg-red-500 hover:text-red-50 md:block dark:bg-stone-900 dark:text-stone-200"
+    title="Убрать"
   >
     <X class="size-4" />
   </button>
@@ -30,6 +28,8 @@ import {Label} from '$lib/components';
 
     <Label name="Оборот">
       <Textarea
+        rows={3}
+        class="resize-none"
         name={`cards[${index}][back]`}
         bind:value={card.back}
         placeholder="The creator of the Mac"
