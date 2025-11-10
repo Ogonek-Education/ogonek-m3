@@ -23,7 +23,11 @@
 
   <div class="gap-default flex flex-col">
     <Label name="Лицо">
-      <Input name={`cards[${index}][front]`} placeholder="Apple (n)" />
+      <Input
+        name={`cards[${index}][front]`}
+        placeholder="Apple (n)"
+        bind:value={card.front}
+      />
     </Label>
 
     <Label name="Оборот">
