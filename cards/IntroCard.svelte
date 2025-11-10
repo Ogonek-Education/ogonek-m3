@@ -5,7 +5,7 @@
 </script>
 
 <section
-  class="gap-default border-fat flex h-60 flex-col justify-between p-5 md:h-[318px] md:p-2.5"
+  class="gap-default border-primary flex h-60 flex-col justify-between p-5 md:h-[318px] md:p-2.5"
 >
   <P>
     {@render children?.()}

@@ -349,7 +349,7 @@
     class="gap-default relative flex w-full flex-1
 			 cursor-pointer flex-col items-center justify-center
 			 border-dashed p-12 text-center duration-150
-			 {isDragging ? 'border-accent bg-accent/12' : 'border-fat'}"
+			 {isDragging ? 'border-accent bg-accent/12' : 'border-primary'}"
   >
     <input
       id="fileInput"
@@ -366,7 +366,7 @@
 
   {#if fileUploads.length > 0}
     {#each fileUploads as fileState, index (index)}
-      <div class="border-fat gap-default padding-default flex flex-col">
+      <div class="border-primary gap-default padding-default flex flex-col">
         <VStack>
           <P>
             {fileState.file.name.length > 15

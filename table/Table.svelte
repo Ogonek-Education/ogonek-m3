@@ -11,7 +11,7 @@
 </script>
 
 <form
-  class="border-fat bg-solid flex h-[80dvh] w-full flex-col justify-between overflow-x-visible"
+  class="border-primary bg-solid flex h-[80dvh] w-full flex-col justify-between overflow-x-visible"
   aria-label="Data table"
   method="POST"
   use:enhance={enhanceForm({

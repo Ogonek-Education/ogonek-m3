@@ -10,14 +10,11 @@ export type MultiSelectVariants = VariantProps<typeof multiSelect> &
 export const select = tv({
   slots: {
     base: "relative w-full w-max",
-    select: "block rtl:text-right w-max",
   },
   variants: {
     disabled: {
-      true: {
-        select: "cursor-not-allowed opacity-50",
-      },
-      false: {},
+      true: "cursor-not-allowed opacity-50",
+      false: "",
     },
     size: {
       sm: "padding-narrow",
@@ -26,14 +23,6 @@ export const select = tv({
     },
     color: {
       default: input["variants"]["color"]["default"]["input"],
-    },
-    grouped: {
-      false: { base: "rounded-2xl", select: "rounded-2xl" },
-      true: {
-        base: "first:rounded-s-2xl last:rounded-e-2xl not-first:-ms-px group",
-        select:
-          "group-first:rounded-s-2xl group-last:rounded-e-2xl group-not-first:-ms-px h-full",
-      },
     },
   },
 });

@@ -11,7 +11,7 @@
     $props();
 </script>
 
-<div class="group border-fat padding-default relative">
+<div class="group border-primary padding-default relative">
   <button
     type="button"
     onclick={() => removeCard(index)}

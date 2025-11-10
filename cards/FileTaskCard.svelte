@@ -58,7 +58,7 @@
       type="submit"
       data-cy="file-task-card"
       disabled={downloading}
-      class="group border-fat bg-clickable gap-default padding-default relative flex h-13 w-full items-center justify-between"
+      class="group border-primary bg-clickable gap-default padding-default relative flex h-13 w-full items-center justify-between"
     >
       <Secondary>
         {file.name.split(".").shift()?.slice(0, 15)}

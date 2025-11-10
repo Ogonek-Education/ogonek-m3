@@ -19,7 +19,6 @@ export interface SelectProps<T>
     Omit<HTMLSelectAttributes, "size" | "disabled" | "color"> {
   children?: Snippet;
   items?: SelectOptionType<T>[];
-  selectClass?: ClassValue;
   elementRef?: HTMLSelectElement;
   disabled?: boolean;
   placeholder?: string;

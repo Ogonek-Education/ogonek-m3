@@ -16,7 +16,7 @@
     [key: string]: unknown;
   } = $props();
 
-  const baseStyle = `group bg-clickable gap-default border-fat transition-all-100 relative flex min-h-40 w-full flex-col justify-between p-5 ${deactivate ? "" : "hover:none"}`;
+  const baseStyle = `group bg-clickable gap-default border-primary transition-all-100 relative flex min-h-40 w-full flex-col justify-between p-5 ${deactivate ? "" : "hover:none"}`;
 </script>
 
 {#if !deactivate}

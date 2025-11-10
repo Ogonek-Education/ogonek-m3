@@ -6,7 +6,6 @@
     addMinutes,
     differenceInMinutes,
   } from "date-fns";
-  import { HStack, VStack, Divider } from "../../layout";
   import { Helper, Input, Label } from "..";
 
   let {
@@ -16,7 +15,7 @@
   }: {
     dtstartTime: string;
     dtendTime?: string | null;
-    form: any;
+    form?: any;
   } = $props();
 
   let localDateString = $state("");
@@ -110,44 +109,38 @@
   }
 </script>
 
-<HStack>
-  <input type="hidden" name="dtstartTime" bind:value={dtstartTime} />
-  <input type="hidden" name="dtendTime" bind:value={dtendTime} />
+<input type="hidden" name="dtstartTime" bind:value={dtstartTime} />
+<input type="hidden" name="dtendTime" bind:value={dtendTime} />
 
-  <VStack>
-    <Label name="Дата">
-      <Input
-        type="date"
-        name="date"
-        onchange={handleDateChange}
-        bind:value={localDateString}
-      />
-    </Label>
+<Label name="Дата">
+  <Input
+    type="date"
+    name="date"
+    onchange={handleDateChange}
+    bind:value={localDateString}
+  />
+</Label>
 
-    <Divider />
+<Label name="Начало">
+  <Input
+    type="time"
+    name="startTime"
+    onchange={handleStartTimeChange}
+    bind:value={dtstartLocalTimeString}
+  />
+  {#if form?.noDtstart}
+    <Helper color="red">Тут нет мужского начала</Helper>
+  {/if}
+</Label>
 
-    <Label name="Начало">
-      <Input
-        type="time"
-        name="startTime"
-        onchange={handleStartTimeChange}
-        bind:value={dtstartLocalTimeString}
-      />
-      {#if form.noDtstart}
-        <Helper color="red">Тут нет мужского начала</Helper>
-      {/if}
-    </Label>
-
-    <Label name="Конец">
-      <Input
-        type="time"
-        name="endTime"
-        onchange={handleEndTimeChange}
-        bind:value={dtendLocalTimeString}
-      />
-      {#if form.endBeforeStart}
-        <Helper color="red">Проверьте время</Helper>
-      {/if}
-    </Label>
-  </VStack>
-</HStack>
+<Label name="Конец">
+  <Input
+    type="time"
+    name="endTime"
+    onchange={handleEndTimeChange}
+    bind:value={dtendLocalTimeString}
+  />
+  {#if form?.endBeforeStart}
+    <Helper color="red">Проверьте время</Helper>
+  {/if}
+</Label>
