@@ -17,7 +17,7 @@ export const button = tv({
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",
       gray: "text-white bg-stone-700 hover:bg-stone-800 dark:bg-stone-600 dark:hover:bg-stone-700 focus-within:ring-stone-300 dark:focus-within:ring-stone-800",
-      red: "border-danger bg-danger",
+      red: "border-danger hover:bg-red/10",
     },
     size: {
       sm: "padding-narrow text-sm active:scale-95",

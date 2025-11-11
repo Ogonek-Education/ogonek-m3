@@ -31,8 +31,7 @@
     <Paperclip class="text-default size-5" />
   {/if}
 {/snippet}
-
-<VStack align="start">
+<div class="gap-narrow flex w-full">
   <form
     method="POST"
     action="?/download"
@@ -87,4 +86,4 @@
       ></Button>
     </form>
   {/if}
-</VStack>
+</div>
