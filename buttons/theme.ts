@@ -6,13 +6,13 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 
 export const button = tv({
   slots: {
-    base: "w-full font-medium flex b transition-all",
+    base: "w-full font-medium flex transition-all",
     outline: "bg-transparent border-primary",
   },
   variants: {
     color: {
       primary: "bg-clickable border-primary",
-      prominent: "bg-prominent text-secondary border-primary-accent",
+      prominent: "bg-clickable border-primary-accent",
       secondary:
         "text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",

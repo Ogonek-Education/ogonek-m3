@@ -34,7 +34,6 @@
   aria-label={isFlipped ? "Show front of card" : "Show back of card"}
 >
   {#if !isFlipped}
-    <!-- Card Front -->
     <div
       in:fly={{ x: -20, duration: 300 }}
       out:fly={{ x: -20, duration: 300 }}

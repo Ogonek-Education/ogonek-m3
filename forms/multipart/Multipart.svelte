@@ -348,7 +348,7 @@
     aria-label="File upload area"
     class="gap-default relative flex w-full flex-1
 			 cursor-pointer flex-col items-center justify-center
-			 border-dashed p-12 text-center duration-150
+			 border-dashed p-12 text-center duration-300
 			 {isDragging ? 'border-accent bg-accent/12' : 'border-primary'}"
   >
     <input

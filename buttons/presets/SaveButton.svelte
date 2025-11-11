@@ -3,7 +3,7 @@
   import texts from "$lib/texts";
 </script>
 
-<Button type="submit">
+<Button color="prominent" type="submit">
   <Heading tag="h3">
     {texts.crud.save}
   </Heading>
