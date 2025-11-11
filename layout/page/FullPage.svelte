@@ -14,7 +14,7 @@
     iconClass,
     padding,
     flexCol,
-    position = "left",
+    position,
   }: PageProps = $props();
 
   const showBack = $derived.by(() => {
@@ -61,13 +61,13 @@
   );
 </script>
 
-<div class={base()}>
+<div class={base({ class: clsx(base) })}>
   {#if showBack && !removeBackButton}
-    <a {href} class={button({ class: clsx(styling.button) })}
-      ><MoveLeft class={icon({ class: clsx(styling.icon) })} /></a
+    <a {href} class={button({ class: clsx(button, styling.button) })}
+      ><MoveLeft class={icon({ class: clsx(icon, styling.icon) })} /></a
     >
   {/if}
-  <div class={content({ class: clsx(styling.content) })}>
+  <div class={content({ class: clsx(content, styling.content) })}>
     {@render children()}
   </div>
 </div>

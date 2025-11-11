@@ -69,29 +69,30 @@
   });
 </script>
 
-<HStack>
+<HStack class="padding-default">
   <!-- Hidden inputs for form submission -->
   <input type="hidden" name="dtstartTime" value={dtstartTime} />
   <input type="hidden" name="dtendTime" value={dtendTime || ""} />
 
-  <VStack size="w" justify="between">
-    <Label name="Дата">
+  <VStack size="w">
+    <HStack>
+      <Heading tag="h3">Дата</Heading>
       <Input type="date" name="date" bind:value={dateString} />
-    </Label>
-    <Label name="Старт">
+    </HStack>
+    <HStack>
+      <Heading tag="h3">Начало</Heading>
       <Input type="time" name="startTime" bind:value={startTimeString} />
-    </Label>
+    </HStack>
   </VStack>
-
   <Heading tag="h3">Длительность</Heading>
   <VStack>
     {#each durations as duration}
       <button
         type="button"
-        class="rounded px-3 py-1.5 text-sm font-medium transition-colors
+        class="rounded-2xl border px-3 py-1.5 text-sm font-medium transition-colors
                  {selectedDuration === duration
-          ? 'bg-accent text-white'
-          : 'bg-stone-200 text-stone-700 hover:bg-stone-300'}"
+          ? 'bg-accent/20 border-accent text-white'
+          : 'bg-bg-secondary text-text-tertiary border-border-primary'}"
         onclick={() => (selectedDuration = duration)}
       >
         {duration}м
