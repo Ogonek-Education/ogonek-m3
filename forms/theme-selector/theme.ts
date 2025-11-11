@@ -14,11 +14,16 @@ export const themeSelector = tv({
   base: "text-accent flex bg-clickable  focus:outline-hidden border-primary text-sm padding-default",
 });
 
-export const themes: { value: Theme; label: string; Icon?: typeof Icon }[] = [
-  { value: "auto", label: "Auto", Icon: Monitor },
-  { value: "light", label: "Light", Icon: Sun },
-  { value: "dark", label: "Dark", Icon: Moon },
+export const themes: {
+  value: Theme;
+  label: string;
+  Icon?: typeof Icon;
+  fav?: boolean;
+}[] = [
+  { value: "auto", label: "Авто", Icon: Monitor },
+  { value: "light", label: "Огонёк", Icon: Sun },
+  { value: "dark", label: "Уголёк", Icon: Moon },
   { value: "griso", label: "Griso", Icon: Coffee },
-  { value: "gruvbox", label: "Gruvbox", Icon: TreeDeciduous },
+  { value: "gruvbox", label: "Gruvbox", Icon: TreeDeciduous, fav: true },
   { value: "atom", label: "Atom", Icon: Atom },
 ];

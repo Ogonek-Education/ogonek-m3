@@ -10,7 +10,7 @@ export const pageLayout = tv({
     content:
       "border-primary rounded-none border-collapse border-x-0 border-t-0 flex w-full flex-1 overflow-visible",
     button:
-      "bg-clickable border-primary flex min-h-dvh w-20 items-start justify-center rounded-none border-t-0 border-l-0",
+      "bg-clickable border-primary flex min-h-dvh w-20 pt-3 md:pt-7 items-start justify-center rounded-none border-t-0 border-l-0",
     icon: "size-12",
   },
   variants: {

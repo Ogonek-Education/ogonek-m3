@@ -6,7 +6,7 @@
     children,
     title,
     subtitle = undefined,
-  }: { children: Snippet; title: string; subtitle?: string } = $props();
+  }: { children?: Snippet; title: string; subtitle?: string } = $props();
 </script>
 
 <div class="grid w-full grid-cols-3 items-end">

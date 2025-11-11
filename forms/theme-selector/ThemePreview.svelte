@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Label } from "../label";
   import type { Theme } from "./types";
 
   let {
@@ -10,15 +11,6 @@
     onclick?: () => void;
     selected?: boolean;
   } = $props();
-
-  const labels: Record<Theme, string> = {
-    light: "Светлая",
-    dark: "Темная",
-    griso: "Griso",
-    gruvbox: "Gruvbox",
-    atom: "Atom",
-    auto: "Авто",
-  };
 
   // Hardcode the actual color values for each theme
   const themeColors: Record<
@@ -160,12 +152,6 @@
         </div>
       </div>
     </div>
-    <div
-      class="pt-1 text-center text-sm font-medium"
-      style="color: {colors.primary}; background-color: {colors.bgSolid};"
-    >
-      {labels[theme]}
-    </div>
   {:else}
     <!-- Regular theme preview -->
     <div class="space-y-3 p-4" style="background-color: {colors.bgSolid};">
@@ -209,12 +195,6 @@
           class="h-6 flex-1 rounded border px-3"
           style="border-color: {colors.border};"
         ></div>
-      </div>
-      <div
-        class="pt-1 text-center text-sm font-medium"
-        style="color: {colors.primary};"
-      >
-        {labels[theme]}
       </div>
     </div>
   {/if}
