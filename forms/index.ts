@@ -2,7 +2,6 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./checkbox";
-export * from "./darkmode";
 export * from "./dropzone";
 export * from "./helper";
 export * from "./input";
@@ -11,6 +10,7 @@ export * from "./multipart";
 export * from "./search";
 export * from "./select";
 export * from "./textarea";
+export * from "./theme-selector";
 export * from "./time";
 export * from "./toggle";
 
