@@ -38,7 +38,7 @@
     <div
       in:fly={{ x: -20, duration: 300 }}
       out:fly={{ x: -20, duration: 300 }}
-      class="border-primary bg-solid padding-default absolute inset-0 flex items-center justify-center backface-hidden"
+      class="border-primary bg-bg-secondary padding-default absolute inset-0 flex items-center justify-center backface-hidden"
     >
       <div class="flex flex-col items-center justify-center">
         <P class={truncateIfNeeded(card.front)}>
@@ -63,7 +63,7 @@
     <div
       in:fly={{ y: 20, duration: 300 }}
       out:fly={{ y: 20, duration: 300 }}
-      class="bg-solid border-primary-accent padding-default absolute flex size-full items-center justify-center backface-hidden"
+      class="bg-primary border-primary-accent padding-default absolute flex size-full items-center justify-center backface-hidden"
     >
       <div class="flex h-full w-full flex-col items-center justify-center">
         <P class={truncateIfNeeded(card.back)}>

@@ -34,4 +34,9 @@
       : ArrowDownAZ}
   onclick={() => ($sortOrder = $sortOrder === "asc" ? "desc" : "asc")}
 />
-<Select items={sortFields} name="sort" bind:value={$sortBy} />
+<Select
+  placeholder="По чему сортировка"
+  items={sortFields}
+  name="sort"
+  bind:value={$sortBy}
+/>

@@ -14,6 +14,8 @@
   import { themes, themeSelector } from "./theme";
   import { onMount } from "svelte";
   import ThemePreview from "./ThemePreview.svelte";
+  import { Heading } from "../../typography";
+  import { HStack } from "../../layout";
 
   let {
     class: className,
@@ -118,14 +120,14 @@
     {#if showDropdown}
       <div
         use:clickOutside={() => (showDropdown = false)}
-        class="bg-bg-solid border-primary absolute right-0 bottom-10 z-50 w-48 border"
+        class="bg-bg-primary border-primary absolute right-0 bottom-10 z-50 w-48 border"
         role="menu"
       >
         {#each themes as theme}
           <button
             onclick={() => setTheme(theme.value)}
             class={clsx(
-              "hover:bg-bg-material flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors first:rounded-t-2xl last:rounded-b-2xl",
+              "hover:bg-bg-secondary flex w-full items-center gap-2 px-4 py-2 text-left text-sm transition-colors first:rounded-t-2xl last:rounded-b-2xl",
               currentTheme === theme.value && "text-accent ",
             )}
             role="menuitem"
@@ -142,14 +144,17 @@
       </div>
     {/if}
   {:else}
-    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-      {#each themes as theme}
-        <ThemePreview
-          theme={theme.value}
-          selected={currentTheme === theme.value}
-          onclick={() => setTheme(theme.value)}
-        />
-      {/each}
-    </div>
+    <HStack justify="between" size="full">
+      <Heading>Тема</Heading>
+      <div class="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {#each themes as theme}
+          <ThemePreview
+            theme={theme.value}
+            selected={currentTheme === theme.value}
+            onclick={() => setTheme(theme.value)}
+          />
+        {/each}
+      </div>
+    </HStack>
   {/if}
 </div>

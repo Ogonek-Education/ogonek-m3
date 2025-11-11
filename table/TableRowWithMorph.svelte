@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="padding-default bg-solid bg-clickable border-transient flex items-center"
+  class="padding-default bg-primary border-transient flex items-center transition-all"
 >
   <TickMorph bind:group={selected} {value} />
   <TableRow {href}>

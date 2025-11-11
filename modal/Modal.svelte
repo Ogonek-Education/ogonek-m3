@@ -18,7 +18,7 @@
     : 'bg-stone-900/20'} backdrop-grayscale"
 >
   <div
-    class="border-primary bg-bg-solid gap-default bg-solid padding-wider relative z-50 flex w-full max-w-4xl flex-col items-center justify-between"
+    class="border-primary bg-bg-primary gap-default bg-primary padding-wider relative z-50 flex w-full max-w-4xl flex-col items-center justify-between"
     use:clickOutside={() => {
       if (withState) {
         window.history.back();

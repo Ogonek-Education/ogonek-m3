@@ -11,7 +11,7 @@
     size = "md",
     color = "default",
     elementRef = $bindable(),
-    placeholder = "Choose option ...",
+    placeholder = "Выберите вариант ...",
     class: className,
     ...restProps
   }: SelectProps<T> = $props();

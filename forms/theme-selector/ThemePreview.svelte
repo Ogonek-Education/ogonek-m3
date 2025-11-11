@@ -25,7 +25,7 @@
     Theme,
     {
       bgSolid: string;
-      bgMaterial: string;
+      bgSecondary: string;
       accent: string;
       primary: string;
       secondary: string;
@@ -35,7 +35,7 @@
   > = {
     light: {
       bgSolid: "#ffffff",
-      bgMaterial: "#f5f5f4",
+      bgSecondary: "#f5f5f4",
       accent: "#e85f5c",
       primary: "#0c0a09",
       secondary: "#57534e",
@@ -44,7 +44,7 @@
     },
     dark: {
       bgSolid: "#0c0a09",
-      bgMaterial: "#1c1917",
+      bgSecondary: "#1c1917",
       accent: "#e85f5c",
       primary: "#fafaf9",
       secondary: "#a8a29e",
@@ -53,16 +53,16 @@
     },
     griso: {
       bgSolid: "#1e1e2e",
-      bgMaterial: "#313244",
-      accent: "#a3a3a3",
-      primary: "#e5e5e5",
-      secondary: "#a3a3a3",
-      tertiary: "#737373",
-      border: "#404040",
+      bgSecondary: "#313244",
+      accent: "#f38ba8",
+      primary: "#cdd6f4",
+      secondary: "#bac2de",
+      tertiary: "#a6adc8",
+      border: "#45475a",
     },
     gruvbox: {
       bgSolid: "#282828",
-      bgMaterial: "#3c3836",
+      bgSecondary: "#3c3836",
       accent: "#fabd2f",
       primary: "#ebdbb2",
       secondary: "#d5c4a1",
@@ -71,7 +71,7 @@
     },
     atom: {
       bgSolid: "#1d1f21",
-      bgMaterial: "#282a2e",
+      bgSecondary: "#282a2e",
       accent: "#81a2be",
       primary: "#c5c8c6",
       secondary: "#969896",
@@ -80,7 +80,7 @@
     },
     auto: {
       bgSolid: "#ffffff",
-      bgMaterial: "#f5f5f4",
+      bgSecondary: "#f5f5f4",
       accent: "#e85f5c",
       primary: "#0c0a09",
       secondary: "#57534e",
@@ -95,9 +95,10 @@
 
 <button
   {onclick}
-  class="group relative w-full overflow-hidden rounded-lg border-2 transition-all hover:scale-[1.02]"
+  type="button"
+  class="group relative w-full overflow-hidden rounded-2xl border-2"
   class:border-accent={selected}
-  class:border-stone-300={!selected}
+  class:border-primary={!selected}
 >
   {#if theme === "auto"}
     <!-- Split preview for auto -->
@@ -118,7 +119,7 @@
         </div>
         <div
           class="space-y-1.5 rounded p-2"
-          style="background-color: {colors.bgMaterial};"
+          style="background-color: {colors.bgSecondary};"
         >
           <div
             class="h-1.5 w-3/4 rounded"
@@ -146,7 +147,7 @@
         </div>
         <div
           class="space-y-1.5 rounded p-2"
-          style="background-color: {darkColors.bgMaterial};"
+          style="background-color: {darkColors.bgSecondary};"
         >
           <div
             class="h-1.5 w-3/4 rounded"
@@ -184,7 +185,7 @@
       </div>
       <div
         class="space-y-2 rounded p-3"
-        style="background-color: {colors.bgMaterial};"
+        style="background-color: {colors.bgSecondary};"
       >
         <div
           class="h-2 w-3/4 rounded"
