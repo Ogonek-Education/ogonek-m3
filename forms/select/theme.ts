@@ -34,10 +34,10 @@ export const multiSelect = tv({
     dropdown:
       "absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-stone-300 dark:bg-stone-700 dark:border-stone-600 start-0 top-[calc(100%+1rem)] rounded-2xl cursor-pointer overflow-y-scroll w-full",
     item: "py-2 px-3 rounded-2xl text-stone-600 hover:text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:text-stone-300 dark:hover:bg-stone-600",
-    close: "p-0 focus:ring-stone-400 dark:text-white",
+    close: "p-0 focus:ring-stone-400 dark:text-text-white",
     span: "",
     placeholder: "text-text-tertiary",
-    svg: "ms-1 h-3 w-3 cursor-pointer text-stone-800 dark:text-white",
+    svg: "ms-1 h-3 w-3 cursor-pointer text-stone-800 dark:text-text-white",
   },
   variants: {
     size: {
@@ -62,7 +62,7 @@ export const multiSelect = tv({
     },
     selected: {
       true: {
-        item: "bg-stone-100 text-black font-semibold hover:text-black dark:text-white dark:bg-stone-600 dark:hover:text-white",
+        item: "bg-stone-100 text-black font-semibold hover:text-black dark:text-text-white dark:bg-stone-600 dark:hover:text-text-white",
       },
     },
     grouped: {

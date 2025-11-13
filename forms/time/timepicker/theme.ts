@@ -14,7 +14,7 @@ export const timepicker = tv({
       "pointer-events-none absolute inset-y-0 end-0 top-0 flex items-center pe-3.5",
     icon: "h-4 w-4 text-stone-500 dark:text-stone-400",
     select:
-      "text-stone-900 disabled:text-stone-400 bg-stone-50 border border-stone-300 focus:ring-0 focus:outline-none block w-full border-l-1 focus:ring-primary-500 focus:border-primary-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-white dark:disabled:text-stone-500 dark:focus:ring-primary-500 dark:focus:border-primary-500",
+      "text-stone-900 disabled:text-stone-400 bg-stone-50 border border-stone-300 focus:ring-0 focus:outline-none block w-full border-l-1 focus:ring-primary-500 focus:border-primary-500 dark:bg-stone-700 dark:border-stone-600 dark:placeholder-stone-400 dark:text-text-white dark:disabled:text-stone-500 dark:focus:ring-primary-500 dark:focus:border-primary-500",
     button: "!rounded-r-lg",
     buttonIcon: "ml-2 h-4 w-4",
     rangeSeparator:

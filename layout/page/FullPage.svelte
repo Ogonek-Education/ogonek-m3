@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { MoveLeft } from "@lucide/svelte";
+  import { MoveLeft, Sidebar } from "@lucide/svelte";
   import { page } from "$app/state";
   import type { PageProps } from "./types";
   import { pageLayout } from "./theme";
@@ -12,8 +12,9 @@
     buttonClass,
     innerDivClass,
     iconClass,
-    padding,
-    flexCol,
+    sidebar,
+    padding = "lg",
+    flexCol = true,
     position,
   }: PageProps = $props();
 
@@ -70,4 +71,9 @@
   <div class={content({ class: clsx(content, styling.content) })}>
     {@render children()}
   </div>
+  {#if sidebar}
+    <div>
+      {@render sidebar()}
+    </div>
+  {/if}
 </div>

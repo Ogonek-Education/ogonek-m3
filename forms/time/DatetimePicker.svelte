@@ -91,7 +91,7 @@
         type="button"
         class="rounded-2xl border px-3 py-1.5 text-sm font-medium transition-colors
                  {selectedDuration === duration
-          ? 'bg-accent/20 border-accent text-white'
+          ? 'bg-accent/20 border-accent text-text-white'
           : 'bg-bg-secondary text-text-tertiary border-border-primary'}"
         onclick={() => (selectedDuration = duration)}
       >

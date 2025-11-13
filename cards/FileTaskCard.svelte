@@ -12,7 +12,6 @@
   } from "@lucide/svelte";
   import { Secondary } from "../typography";
   import { Button } from "../buttons";
-  import { VStack } from "../layout";
 
   let { file, userId }: { file: FileSmall; userId?: string } = $props();
   let downloading = $state(false);

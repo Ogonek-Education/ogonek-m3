@@ -8,10 +8,11 @@ export const datepicker = tv({
   slots: {
     base: "inline-block rounded-lg bg-white dark:bg-stone-700 shadow-lg p-4",
     input:
-      "w-full rounded-md border px-4 py-2 text-sm focus:ring-2 focus:outline-none outline-none dark:border-stone-600 dark:bg-stone-700 dark:text-white disabled:cursor-not-allowed disabled:opacity-50 border-stone-300 bg-stone-50 text-stone-900",
-    titleVariant: "mb-2 text-lg font-semibold text-stone-900 dark:text-white",
+      "w-full rounded-md border px-4 py-2 text-sm focus:ring-2 focus:outline-none outline-none dark:border-stone-600 dark:bg-stone-700 dark:text-text-white disabled:cursor-not-allowed disabled:opacity-50 border-stone-300 bg-stone-50 text-stone-900",
+    titleVariant:
+      "mb-2 text-lg font-semibold text-stone-900 dark:text-text-white",
     polite:
-      "text-sm rounded-lg text-stone-900 dark:text-white bg-white dark:bg-stone-700 font-semibold py-2.5 px-5 hover:bg-stone-100 dark:hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-200",
+      "text-sm rounded-lg text-stone-900 dark:text-text-white bg-white dark:bg-stone-700 font-semibold py-2.5 px-5 hover:bg-stone-100 dark:hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-200",
     button:
       "absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 focus:outline-hidden dark:text-stone-400",
     actionButtons: "mt-4 flex justify-between",

@@ -47,7 +47,7 @@
     inputmode = "none",
     classes,
     monthColor = "alternative",
-    monthBtnSelected = "bg-primary-500 text-white",
+    monthBtnSelected = "bg-primary-500 text-text-white",
     monthBtn = "text-stone-700 dark:text-stone-300",
     class: className,
     elementRef = $bindable(),

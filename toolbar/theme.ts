@@ -123,7 +123,7 @@ export const toolbarButton = tv({
   base: "focus:outline-hidden whitespace-normal",
   variants: {
     color: {
-      dark: "text-stone-500 hover:text-stone-900 hover:bg-stone-200 dark:text-stone-400 dark:hover:text-white dark:hover:bg-stone-600",
+      dark: "text-stone-500 hover:text-stone-900 hover:bg-stone-200 dark:text-stone-400 dark:hover:text-text-white dark:hover:bg-stone-600",
       gray: "text-stone-500 focus:ring-stone-400 hover:bg-stone-200 dark:hover:bg-stone-800 dark:hover:text-stone-300",
       red: "text-red-500 focus:ring-red-400 hover:bg-red-200 dark:hover:bg-red-800 dark:hover:text-red-300",
       yellow:

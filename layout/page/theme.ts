@@ -6,27 +6,37 @@ export type PageLayoutVariants = VariantProps<typeof pageLayout> &
 
 export const pageLayout = tv({
   slots: {
-    base: "min-h-dvh flex  overflow-visible",
+    base: "min-h-dvh flex overflow-visible",
     content:
-      "border-primary rounded-none border-collapse border-x-0 border-t-0 flex w-full flex-1 overflow-visible",
+      "border-primary rounded-none border-collapse border-x-0 border-t-0 flex w-full flex-1 overflow-visible justify-between gap-default",
     button:
-      "bg-clickable border-primary flex min-h-dvh w-20 pt-3 md:pt-7 items-start justify-center rounded-none border-t-0 border-l-0",
+      "bg-clickable border-primary hidden md:flex min-h-dvh w-20 pt-3 md:pt-7 items-start justify-center rounded-none border-t-0 border-l-0",
     icon: "size-12",
   },
   variants: {
     position: {
       centre: "items-center justify-center m-auto padding-default",
-      left: "items-start justify-between",
+      left: "items-start justify-between h-full",
     },
     flexCol: {
-      true: "flex-col",
-      false: "flex-row",
+      true: {
+        content: "flex-col",
+      },
+      false: {
+        content: "flex-row",
+      },
     },
     padding: {
       none: "p-0",
-      sm: "padding-narrow",
-      md: "padding-default",
-      lg: "padding-wider",
+      sm: {
+        content: "padding-narrow",
+      },
+      md: {
+        content: "padding-default",
+      },
+      lg: {
+        content: "padding-wider",
+      },
     },
   },
 });
