@@ -20,7 +20,7 @@
 
 {#if show}
   <div
-    class="gap-default padding-default relative grid items-center justify-between px-0 tracking-tight md:grid-cols-2 md:px-2.5"
+    class="gap-narrow padding-default relative grid items-center justify-between px-0 tracking-tight md:grid-cols-2 md:px-2.5"
   >
     <div class="flex w-full flex-col">
       <Heading tag="h3">

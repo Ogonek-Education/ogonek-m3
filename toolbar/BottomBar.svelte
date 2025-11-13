@@ -1,12 +1,19 @@
 <script lang="ts">
-  import { Heading } from "$lib/components/library";
+  import { A, Heading } from "$lib/components/library";
+  import { sub } from "date-fns";
   import type { Snippet } from "svelte";
 
   let {
     children,
     title,
     subtitle = undefined,
-  }: { children?: Snippet; title: string; subtitle?: string } = $props();
+    href = undefined,
+  }: {
+    children?: Snippet;
+    title: string;
+    subtitle?: string;
+    href?: string;
+  } = $props();
 </script>
 
 <div
@@ -16,9 +23,15 @@
     <Heading tag="hero">
       {title}
     </Heading>
-    {#if subtitle}
+    {#if subtitle && !href}
       <Heading tag="h2">
         {subtitle}
+      </Heading>
+    {:else if subtitle && href}
+      <Heading tag="h4">
+        <A class="underline" {href}>
+          {subtitle}
+        </A>
       </Heading>
     {/if}
   </div>
