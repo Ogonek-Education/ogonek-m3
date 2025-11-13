@@ -2,6 +2,7 @@
   import { CircleUserRound, Menu } from "@lucide/svelte";
   import type { Snippet } from "svelte";
   import { page } from "$app/state";
+  import { breadNameStore } from "$lib/stores";
   import Breadcrumb from "./breadcrumb/Breadcrumb.svelte";
   import BreadcrumbItem from "./breadcrumb/BreadcrumbItem.svelte";
   import type { BreadcrumbSegment, NavPage } from "./types";
@@ -36,7 +37,7 @@
       .map((seg) => ({
         segment: seg,
         label: navLabels[seg as NavPage],
-        href: `/${seg}`,
+        href: `/${page.params.role}/${seg}`,
       }));
   });
 
@@ -59,7 +60,9 @@
         class="max-w-max active:scale-95"
         onclick={() => (showModal = !showModal)}><Menu /></button
       >
-      <Heading class="text-center font-serif">Ogonëk</Heading>
+      <a href={`/${role}/dashboard`}>
+        <Heading class="text-center font-serif">Ogonëk</Heading>
+      </a>
       <a
         href={`/${role}/settings/account`}
         class="max-w-max place-self-end active:scale-95"
@@ -72,6 +75,11 @@
       {#each breadcrumbs as crumb}
         <BreadcrumbItem href={crumb.href}>{crumb.label}</BreadcrumbItem>
       {/each}
+      {#if $breadNameStore}
+        <BreadcrumbItem href={$breadNameStore.href}
+          >{$breadNameStore.label}</BreadcrumbItem
+        >
+      {/if}
     </Breadcrumb>
   </div>
 </nav>

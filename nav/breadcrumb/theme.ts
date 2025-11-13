@@ -16,7 +16,7 @@ export const breadcrumb = tv({
 
 export const breadcrumbItem = tv({
   slots: {
-    base: "inline-flex items-center gap-1",
+    base: "inline-flex items-center gap-1 text-sm active:text-accent",
     separator: "size-4",
   },
   variants: {
@@ -25,8 +25,8 @@ export const breadcrumbItem = tv({
       false: "",
     },
     hasHref: {
-      true: "",
-      false: "",
+      true: "hover:text-primary transition-colors max-w-[200px] truncate",
+      false: "text-tertiary max-w-[200px] truncate",
     },
   },
 });

@@ -8,7 +8,7 @@ export type NavPage =
   | "settings";
 
 export interface BreadcrumbSegment {
-  segment: string;
+  segment?: string;
   label: string;
   href: string;
 }

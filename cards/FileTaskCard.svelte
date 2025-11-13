@@ -30,7 +30,7 @@
     <Paperclip class="text-default size-5" />
   {/if}
 {/snippet}
-<div class="gap-narrow flex w-full">
+<div class="gap-default flex w-full items-center">
   <form
     method="POST"
     action="?/download"
