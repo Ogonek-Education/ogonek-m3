@@ -3,7 +3,7 @@
   import clsx from "clsx";
   import type { LabelProps } from "./types";
   import Secondary from "../../typography/secondary/Secondary.svelte";
-  import { P } from "../../typography";
+  import { Heading, P } from "../../typography";
 
   let {
     children,
@@ -20,17 +20,19 @@
 
 {#if show}
   <div
-    class="gap-default padding-default relative grid grid-cols-2 items-center justify-between tracking-tight"
+    class="gap-default padding-default relative grid items-center justify-between px-0 tracking-tight md:grid-cols-2 md:px-2.5"
   >
-    <div class="flex flex-col">
-      <P class="text-text-secondary text-xl font-semibold">{name}</P>
+    <div class="flex w-full flex-col">
+      <Heading tag="h3">
+        {name}
+      </Heading>
       {#if clarification}
         <Secondary>
           {@render clarification()}
         </Secondary>
       {/if}
     </div>
-    <div class="gap-default flex flex-col">
+    <div class="gap-default flex w-full flex-col">
       {@render children()}
     </div>
   </div>

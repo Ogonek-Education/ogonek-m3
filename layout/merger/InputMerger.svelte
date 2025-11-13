@@ -8,7 +8,7 @@
 <div
   class={clsx(
     className,
-    "border-primary padding-default grid max-h-max w-full shrink",
+    "border-primary padding-default grid max-h-max w-full shrink rounded-none border-x-0 md:rounded-2xl md:border-x-2 md:px-2.5",
   )}
   in:fly={{ y: 20 }}
 >
