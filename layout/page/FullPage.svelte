@@ -19,9 +19,10 @@
     position,
   }: PageProps = $props();
 
-  const showBack = $derived.by(() => {
-    const segments = page.url.pathname.split("/").filter(Boolean);
+  const segments = $derived(page.url.pathname.split("/").filter(Boolean));
+  const [role, section, maybeId] = $derived(segments);
 
+  const showBack = $derived.by(() => {
     const [firstSegment] = segments;
 
     if (!isAppRoot(firstSegment)) {
@@ -29,8 +30,6 @@
     }
 
     if (segments.length < 2) return false;
-
-    const [role, section, maybeId] = segments;
 
     if (
       section === "dashboard" ||
@@ -63,7 +62,6 @@
   );
 </script>
 
-<Navbar children={sidebar} />
 <div class={base({ class: clsx(base) })}>
   {#if showBack && !removeBackButton}
     <a {href} class={button({ class: clsx(button, styling.button) })}
@@ -74,7 +72,7 @@
     {@render children()}
   </div>
   {#if sidebar}
-    <div>
+    <div class="hidden md:block">
       {@render sidebar()}
     </div>
   {/if}

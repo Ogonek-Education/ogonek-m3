@@ -44,34 +44,34 @@
   });
 
   let scrollY = $state(0);
+
+  const { role } = $derived(page.params);
 </script>
 
 <svelte:window bind:scrollY />
 
 <nav
-  class="bg-bg-primary sticky top-0 z-40 w-full justify-between px-2 pb-1 md:hidden {scrollY >
+  class="bg-bg-primary sticky top-0 z-40 w-full justify-between px-5 pb-1 md:hidden {scrollY >
   10
     ? 'border-border-primary border-b-2'
     : ''}"
 >
   <div class="flex flex-col items-center gap-1">
-    <div class="grid w-full grid-cols-3 items-center justify-between">
-      <Button
-        class="max-w-max"
-        Icon={Menu}
-        tooltipContent="Открыть меню"
-        onclick={() => (showModal = !showModal)}
-      />
+    <div class="grid w-full grid-cols-3 items-end justify-between">
+      <button
+        class="max-w-max active:scale-95"
+        onclick={() => (showModal = !showModal)}><Menu /></button
+      >
       <Heading class="text-center font-serif">Ogonëk</Heading>
-      <Button
-        href={`/${page.params.role}/settings/profile`}
-        Icon={CircleUserRound}
-        class="max-w-max place-self-end"
-        tooltipContent="Настройки"
-      />
+      <a
+        href={`/${role}/settings/account`}
+        class="max-w-max place-self-end active:scale-95"
+      >
+        <CircleUserRound />
+      </a>
     </div>
     <Breadcrumb>
-      <BreadcrumbItem href="/" home>Главная</BreadcrumbItem>
+      <BreadcrumbItem href={`/${role}/dashboard`} home>Главная</BreadcrumbItem>
       {#each breadcrumbs as crumb}
         <BreadcrumbItem href={crumb.href}>{crumb.label}</BreadcrumbItem>
       {/each}
@@ -81,7 +81,7 @@
 
 {#if showModal}
   <ul
-    class="flex flex-col overflow-auto"
+    class="flex flex-col overflow-auto md:hidden"
     in:fly={{ x: 20, duration: 100, easing: quintOut }}
   >
     <button
