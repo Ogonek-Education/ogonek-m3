@@ -9,8 +9,10 @@
   }: { children?: Snippet; title: string; subtitle?: string } = $props();
 </script>
 
-<div class="grid w-full grid-cols-3 items-end">
-  <div class="col-span-2">
+<div
+  class="gap-default order-1 grid w-full items-end md:order-2 md:grid-cols-3"
+>
+  <div class="md:col-span-2">
     <Heading tag="hero">
       {title}
     </Heading>

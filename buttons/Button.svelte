@@ -5,6 +5,7 @@
   import { LoaderCircle } from "@lucide/svelte";
   import { tooltip } from "$lib/utils";
   import ConfirmDelete from "$lib/components/ConfirmDelete.svelte";
+  import { VStack } from "../layout";
 
   let {
     children,
@@ -18,6 +19,7 @@
     loading = false,
     withModal,
     Icon,
+    withIcon = false,
     tooltipContent,
     class: className,
     ...restProps
@@ -26,7 +28,7 @@
   let isDisabled = $derived(Boolean(disabled) || loading);
   const _position = $derived(Icon ? "center" : position);
   const _scale = $derived(Icon ? "lg" : scale);
-  const { base } = $derived(
+  const { base, icon } = $derived(
     button({
       color,
       size,
@@ -41,7 +43,7 @@
     }),
   );
 
-  const showTooltip = $derived(!!Icon);
+  const showTooltip = $derived(!!Icon && !withIcon);
 
   let showModal = $state(false);
 
@@ -62,8 +64,13 @@
     {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
     class={btnCls}
   >
-    {#if Icon}
+    {#if Icon && !withIcon}
       <Icon />
+    {:else if Icon && withIcon}
+      <VStack class="relative" justify="between" size="w">
+        {@render children?.()}
+        <Icon class={icon()} />
+      </VStack>
     {:else}
       {@render children?.()}
     {/if}
@@ -77,12 +84,19 @@
     onclick={(e) => handleClick(e)}
     disabled={isDisabled}
   >
-    {#if Icon}
+    {#if Icon && !withIcon}
       {#if loading}
         <LoaderCircle class="animate-spin" />
       {:else}
         <Icon />
       {/if}
+    {:else if Icon && withIcon}
+      {#if loading}
+        <LoaderCircle class="animate-spin {icon()}" />
+      {:else}
+        <Icon class={icon()} />
+      {/if}
+      {@render children?.()}
     {:else}
       {@render children?.()}
       {#if loading}
