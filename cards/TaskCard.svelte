@@ -1,7 +1,7 @@
 <script lang="ts">
   import { formatDateOnly } from "$lib/utils";
   import CardClickable from "./CardClickable.svelte";
-  import Badge from "./Badge.svelte";
+  import Badge from "./badge/Badge.svelte";
   import { getBadgeConfig } from "$lib/utils";
   import SeenBadge from "./SeenBadge.svelte";
   import type { TaskSmall } from "$lib/types";
@@ -23,9 +23,9 @@
   </Heading>
   <VStack justify="start">
     {#if !task.completed}
-      <Badge config={badgeConfig}>{badgeText}</Badge>
+      <Badge color={badgeConfig}>{badgeText}</Badge>
     {:else}
-      <Badge config="green">Выполнено</Badge>
+      <Badge color="green">Выполнено</Badge>
     {/if}
   </VStack>
   <SeenBadge seen={task.seen} />
