@@ -15,13 +15,11 @@
     ...restProps
   }: LabelProps = $props();
 
-  let base = $derived(label({ color, class: clsx(className) }));
+  let base = $derived(label({ class: clsx(className) }));
 </script>
 
 {#if show}
-  <div
-    class="gap-narrow padding-default relative grid items-center justify-between px-0 tracking-tight md:grid-cols-2 md:px-2.5"
-  >
+  <div class={base}>
     <div class="flex w-full flex-col">
       <Heading tag="h3">
         {name}
@@ -32,7 +30,7 @@
         </Secondary>
       {/if}
     </div>
-    <div class="gap-default flex w-full flex-col">
+    <div class="gap-default flex flex-col">
       {@render children()}
     </div>
   </div>

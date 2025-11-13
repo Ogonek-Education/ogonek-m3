@@ -5,12 +5,12 @@ export interface DarkmodeProps extends HTMLButtonAttributes {
   "aria-label"?: string;
 }
 export const themeKeys = [
-  "auto",
   "light",
   "dark",
   "griso",
   "gruvbox",
   "nord",
+  "auto",
 ] as const;
 
 export type Theme = (typeof themeKeys)[number];

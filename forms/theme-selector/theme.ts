@@ -14,20 +14,6 @@ export const themeSelector = tv({
 });
 
 export const themes: Record<Theme, ThemeInfo> = {
-  auto: {
-    label: "Авто",
-    Icon: Monitor,
-    description: "Для тех, кто в потоке",
-    colors: {
-      bgSolid: "#ffffff",
-      bgSecondary: "#f5f5f4",
-      accent: "#e85f5c",
-      primary: "#0c0a09",
-      secondary: "#57534e",
-      tertiary: "#a8a29e",
-      border: "#e7e5e4",
-    },
-  },
   light: {
     label: "Огонёк",
     Icon: Flame,
@@ -101,6 +87,20 @@ export const themes: Record<Theme, ThemeInfo> = {
       secondary: "#e5e9f0",
       tertiary: "#d8dee9",
       border: "#3e4451",
+    },
+  },
+  auto: {
+    label: "Авто",
+    Icon: Monitor,
+    description: "Для тех, кто в потоке",
+    colors: {
+      bgSolid: "#ffffff",
+      bgSecondary: "#f5f5f4",
+      accent: "#e85f5c",
+      primary: "#0c0a09",
+      secondary: "#57534e",
+      tertiary: "#a8a29e",
+      border: "#e7e5e4",
     },
   },
 };

@@ -68,17 +68,15 @@
   };
 </script>
 
-<HStack class="justify-between">
+<HStack class="order-2 justify-between md:order-1">
   <Heading>Тема</Heading>
-  <div class="grid w-full grid-cols-2 gap-4 md:grid-cols-2">
+  <div class="gap-default grid w-full grid-cols-1 md:grid-cols-2">
     {#each themeKeys as key}
-      <InputMerger>
-        <ThemePreview
-          theme={key}
-          selected={currentTheme === key}
-          onclick={() => setTheme(key)}
-        />
-      </InputMerger>
+      <ThemePreview
+        theme={key}
+        selected={currentTheme === key}
+        onclick={() => setTheme(key)}
+      />
     {/each}
   </div>
 </HStack>

@@ -27,7 +27,7 @@
   <div
     in:fly={{ x: -10 }}
     out:fly={{ x: 10 }}
-    class="bg-bg-primary border-primary gap-default padding-default fixed top-5 left-1/2 z-50 flex max-w-sm -translate-x-1/2 items-center
+    class="bg-bg-primary border-primary gap-default padding-default fixed top-5 left-1/2 z-50 flex -translate-x-1/2 items-center text-left
 "
   >
     {#if $notification.type === "success"}

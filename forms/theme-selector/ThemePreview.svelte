@@ -8,10 +8,12 @@
     theme,
     onclick,
     selected = false,
+    class: className,
   }: {
     theme: Theme;
     onclick?: () => void;
     selected?: boolean;
+    class?: string;
   } = $props();
 
   const { colors, description, label } = $derived(themes[theme]);
@@ -94,54 +96,56 @@
 {/snippet}
 
 {#snippet autoTheme()}
-  <div class="space-y-3 p-4" style="background-color: {colors.bgSolid};">
-    <div class="flex items-center gap-1">
+  <div class="flex flex-col items-stretch">
+    <div class=" space-y-3 p-4" style="background-color: {colors.bgSolid};">
+      <div class="flex items-center gap-1">
+        <div
+          class="h-2 w-2 rounded-full"
+          style="background-color: {colors.accent};"
+        ></div>
+        <div
+          class="h-2 w-2 rounded-full"
+          style="background-color: {colors.secondary};"
+        ></div>
+      </div>
       <div
-        class="h-2 w-2 rounded-full"
-        style="background-color: {colors.accent};"
-      ></div>
-      <div
-        class="h-2 w-2 rounded-full"
-        style="background-color: {colors.secondary};"
-      ></div>
+        class="space-y-1.5 rounded p-2"
+        style="background-color: {colors.bgSecondary};"
+      >
+        <div
+          class="h-1.5 w-3/4 rounded"
+          style="background-color: {colors.primary};"
+        ></div>
+        <div
+          class="h-1.5 w-full rounded"
+          style="background-color: {colors.secondary};"
+        ></div>
+      </div>
     </div>
-    <div
-      class="space-y-1.5 rounded p-2"
-      style="background-color: {colors.bgSecondary};"
-    >
+    <div class="space-y-3 p-4" style="background-color: {darkColors.bgSolid};">
+      <div class="flex items-center gap-1">
+        <div
+          class="h-2 w-2 rounded-full"
+          style="background-color: {darkColors.accent};"
+        ></div>
+        <div
+          class="h-2 w-2 rounded-full"
+          style="background-color: {darkColors.secondary};"
+        ></div>
+      </div>
       <div
-        class="h-1.5 w-3/4 rounded"
-        style="background-color: {colors.primary};"
-      ></div>
-      <div
-        class="h-1.5 w-full rounded"
-        style="background-color: {colors.secondary};"
-      ></div>
-    </div>
-  </div>
-  <div class="space-y-3 p-4" style="background-color: {darkColors.bgSolid};">
-    <div class="flex items-center gap-1">
-      <div
-        class="h-2 w-2 rounded-full"
-        style="background-color: {darkColors.accent};"
-      ></div>
-      <div
-        class="h-2 w-2 rounded-full"
-        style="background-color: {darkColors.secondary};"
-      ></div>
-    </div>
-    <div
-      class="space-y-1.5 rounded p-2"
-      style="background-color: {darkColors.bgSecondary};"
-    >
-      <div
-        class="h-1.5 w-3/4 rounded"
-        style="background-color: {darkColors.primary};"
-      ></div>
-      <div
-        class="h-1.5 w-full rounded"
-        style="background-color: {darkColors.secondary};"
-      ></div>
+        class="space-y-1.5 rounded p-2"
+        style="background-color: {darkColors.bgSecondary};"
+      >
+        <div
+          class="h-1.5 w-3/4 rounded"
+          style="background-color: {darkColors.primary};"
+        ></div>
+        <div
+          class="h-1.5 w-full rounded"
+          style="background-color: {darkColors.secondary};"
+        ></div>
+      </div>
     </div>
   </div>
 {/snippet}
