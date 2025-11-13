@@ -1,9 +1,10 @@
 <script lang="ts">
   import { MoveLeft, Sidebar } from "@lucide/svelte";
   import { page } from "$app/state";
-  import type { PageProps } from "./types";
+  import { type PageProps } from "./types";
   import { pageLayout } from "./theme";
   import clsx from "clsx";
+  import Navbar from "../../nav/Navbar.svelte";
 
   const {
     children,
@@ -62,6 +63,7 @@
   );
 </script>
 
+<Navbar children={sidebar} />
 <div class={base({ class: clsx(base) })}>
   {#if showBack && !removeBackButton}
     <a {href} class={button({ class: clsx(button, styling.button) })}

@@ -6,9 +6,11 @@ export const stack = tv({
   base: "flex relative",
   variants: {
     type: {
-      vstack: "flex-row ",
-      hstack: "flex-col ",
-      zstack: "flex-col",
+      vstack: "flex-row",
+      hstack: "flex-col",
+      vFlip: "md:flex-row flex-col",
+      hFlip: "md: flex-col flex-row",
+      zstaack: "flex",
     },
     gap: {
       sm: "gap-narrow",
@@ -22,12 +24,6 @@ export const stack = tv({
       right: "items-right",
       end: "items-end",
       start: "items-start",
-    },
-    justify: {
-      start: "justify-start",
-      center: "justify-center",
-      end: "justify-end",
-      between: "justify-between",
     },
     size: {
       full: "size-full",

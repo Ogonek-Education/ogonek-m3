@@ -68,7 +68,7 @@
   };
 </script>
 
-<HStack justify="between">
+<HStack class="justify-between">
   <Heading>Тема</Heading>
   <div class="grid w-full grid-cols-2 gap-4 md:grid-cols-2">
     {#each themeKeys as key}

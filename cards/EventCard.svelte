@@ -17,7 +17,7 @@
 </script>
 
 <CardClickable {deactivate} href="{page.params.day}/{event.id}">
-  <VStack justify="start">
+  <VStack class="justify-start">
     <Heading
       tag="h3"
       class={event.status === "cancelled" ? "line-through" : ""}

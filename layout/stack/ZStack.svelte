@@ -7,12 +7,11 @@
     children,
     align = "center",
     gap = "md",
-    justify = "center",
-    type = "zstack",
+    type = "zstaack",
     class: className,
   }: StackProps = $props();
 
-  const styling = $derived(stack({ align, gap, justify, type }));
+  const styling = $derived(stack({ align, gap, type }));
 </script>
 
 <div class={clsx(styling, className)}>

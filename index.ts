@@ -7,6 +7,8 @@ export * from "./forms";
 export * from "./kbd";
 export * from "./layout";
 export * from "./modal";
+export * from "./nav";
+export * from "./notification";
 export * from "./progress";
 export * from "./table";
 export * from "./toolbar";

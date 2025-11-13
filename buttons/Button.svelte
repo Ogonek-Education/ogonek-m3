@@ -67,7 +67,7 @@
     {#if Icon && !withIcon}
       <Icon />
     {:else if Icon && withIcon}
-      <VStack class="relative" justify="between" size="w">
+      <VStack class="relative justify-between" size="w">
         {@render children?.()}
         <Icon class={icon()} />
       </VStack>
