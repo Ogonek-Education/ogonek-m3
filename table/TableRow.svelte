@@ -25,7 +25,7 @@
 
 <button
   in:fly={{ y: 20 }}
-  class="gap-default flex w-full items-center justify-between p-2.5 py-5 {styling}"
+  class="gap-default flex w-full items-center justify-between py-2 md:p-2.5 md:py-5 {styling}"
   type="button"
   onclick={(e) => handleRowClick(e)}
   onkeydown={(e) => handleRowClick(e)}

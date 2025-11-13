@@ -17,6 +17,7 @@
   <div class="gap-default flex">
     {#if count > perPage}
       <Button
+        type="button"
         tooltipContent="Предыдущая"
         Icon={ChevronLeft}
         disabled={isFirstPage}
@@ -24,6 +25,7 @@
       />
 
       <Button
+        type="button"
         tooltipContent="Следующая"
         Icon={ChevronRight}
         disabled={isLastPage}

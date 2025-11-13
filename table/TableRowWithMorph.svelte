@@ -6,9 +6,9 @@
 </script>
 
 <div
-  class="padding-default bg-primary border-transient flex items-center transition-all"
+  class="md:padding-default bg-primary border-transient flex items-center transition-all"
 >
-  <TickMorph bind:group={selected} {value} />
+  <TickMorph class="hidden md:inline-flex" bind:group={selected} {value} />
   <TableRow {href}>
     {@render children()}
   </TableRow>

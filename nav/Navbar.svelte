@@ -1,13 +1,10 @@
 <script lang="ts">
   import { CircleUserRound, Menu } from "@lucide/svelte";
   import type { Snippet } from "svelte";
-  import { Button } from "../buttons";
   import { page } from "$app/state";
-  import { quintOut } from "svelte/easing";
-  import { fly } from "svelte/transition";
   import Breadcrumb from "./breadcrumb/Breadcrumb.svelte";
   import BreadcrumbItem from "./breadcrumb/BreadcrumbItem.svelte";
-  import type { NavPage } from "./types";
+  import type { BreadcrumbSegment, NavPage } from "./types";
   import { Heading } from "../typography";
 
   let {
@@ -28,7 +25,7 @@
     lessons: "Занятия",
   } as const;
 
-  const breadcrumbs = $derived.by(() => {
+  const breadcrumbs: BreadcrumbSegment[] = $derived.by(() => {
     const segments = page.url.pathname.split("/").filter(Boolean);
 
     return segments
@@ -80,10 +77,7 @@
 </nav>
 
 {#if showModal}
-  <ul
-    class="flex flex-col overflow-auto md:hidden"
-    in:fly={{ x: 20, duration: 100, easing: quintOut }}
-  >
+  <ul class="flex flex-col overflow-auto md:hidden">
     <button
       onclick={() => {
         showModal = false;

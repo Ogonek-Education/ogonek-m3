@@ -6,3 +6,9 @@ export type NavPage =
   | "students"
   | "calendar"
   | "settings";
+
+export interface BreadcrumbSegment {
+  segment: string;
+  label: string;
+  href: string;
+}

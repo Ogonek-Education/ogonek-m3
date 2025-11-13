@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const badge = tv({
-  base: "inline-flex min-w-fit items-center  rounded-2xl border-3 px-2.5 py-1 font-medium ",
+  base: "inline-flex min-w-fit items-center rounded-2xl border-2 md:border-3 px-2.5 py-1 font-medium text-xs md:text-sm lg:text-base",
 
   variants: {
     color: {

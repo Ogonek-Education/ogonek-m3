@@ -3,6 +3,7 @@
   import { NotificationBadge } from "$lib/components";
   import { Heading } from "$lib/components/library";
   import { Icon as LucideIcon, SquareArrowUpRight } from "@lucide/svelte";
+  import clsx from "clsx";
 
   let {
     href = "/",
@@ -10,6 +11,7 @@
     external = false,
     badge = 0,
     disabled = false,
+    class: className,
     Icon,
     ...rest
   }: {
@@ -18,6 +20,7 @@
     external?: boolean;
     badge?: number;
     Icon: typeof LucideIcon;
+    class?: string;
     disabled?: boolean;
     [key: string]: unknown;
   } = $props();
@@ -35,11 +38,13 @@
   {target}
   {rel}
   {...rest}
-  class="group m-default gap-default group padding-default relative z-30 flex items-center rounded-2xl transition-all active:scale-[99%]
-      {isActive
-    ? ' text-accent bg-bg-secondary border-primary'
-    : 'text-text border-transient'}
-    "
+  class={clsx(
+    "group m-default gap-default group padding-default relative z-30 flex items-center rounded-2xl transition-all active:scale-[99%]",
+    isActive
+      ? " text-accent bg-bg-secondary border-primary"
+      : "text-text border-transient",
+    className,
+  )}
   class:pointer-events-none={disabled}
   aria-disabled={disabled}
   data-cy={`sidebar-${name}`}

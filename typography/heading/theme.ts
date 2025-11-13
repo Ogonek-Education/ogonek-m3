@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type HeadingVariants = VariantProps<typeof heading>;
 
 export const heading = tv({
-  base: "text-primary z-10 dark:text-dark-primary text-balance",
+  base: "text-primary z-10 dark:text-dark-primary text-balance text-left text-truncate",
   variants: {
     tag: {
       hero: "text-4xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl xl:text-8xl",

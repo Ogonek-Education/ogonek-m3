@@ -19,4 +19,9 @@
   });
 </script>
 
-<SidebarItem href={$href} name="Календарь" Icon={Calendar} />
+<SidebarItem
+  class="hidden md:flex"
+  href={$href}
+  name="Календарь"
+  Icon={Calendar}
+/>
