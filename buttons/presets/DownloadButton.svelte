@@ -58,14 +58,17 @@
   }
 </script>
 
-<Button class="h-full" type="submit" formaction="?/downloadAll"
-  ><Heading tag="h3">Загрузить</Heading></Button
->
+<Button
+  class="gap-narrow h-full items-end"
+  type="submit"
+  formaction="?/downloadAll"
+  ><Heading tag="h3">Загрузить</Heading>
 
-{#if urls}
-  <P class="mr-3 self-center">
-    {totalDownloads} / {downloadQueue.length +
-      currentDownloads +
-      totalDownloads}
-  </P>
-{/if}
+  {#if urls}
+    <P class="mr-3 self-center">
+      {totalDownloads} / {downloadQueue.length +
+        currentDownloads +
+        totalDownloads}
+    </P>
+  {/if}
+</Button>
