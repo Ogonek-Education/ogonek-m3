@@ -20,7 +20,7 @@
 
 {#if show}
   <div class={base}>
-    <div class="flex w-full flex-col">
+    <div class="space-y-2">
       <Heading tag="h3">
         {name}
       </Heading>
@@ -30,7 +30,7 @@
         </Secondary>
       {/if}
     </div>
-    <div class="gap-default flex flex-col">
+    <div class="gap-default flex w-full flex-col">
       {@render children()}
     </div>
   </div>

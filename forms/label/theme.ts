@@ -4,7 +4,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type LabelVariants = VariantProps<typeof label>;
 
 export const label = tv({
-  base: "gap-default padding-default relative grid items-center justify-between px-0 tracking-tight md:grid-cols-2 md:px-2.5",
+  base: "gap-default padding-default relative grid items-center justify-between px-0 tracking-tight grid-cols-1 md:grid-cols-2 md:px-2.5",
   variants: {
     color: {
       disabled: "text-stone-500 dark:text-stone-500",

@@ -1,14 +1,15 @@
 <script lang="ts">
-  import { notification, clearNotification } from "$lib/stores";
+  import { clearNotification, notificationStore } from "$lib/stores";
   import { fly } from "svelte/transition";
-  import { Check, X, Ban, CircleAlert } from "@lucide/svelte";
+  import { X } from "@lucide/svelte";
   import { onDestroy } from "svelte";
-  import { Heading, P } from "$lib/components/library";
+  import { P } from "$lib/components/library";
+  import { notificationTheme } from "./theme";
 
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
   $effect(() => {
-    if ($notification.message) {
+    if ($notificationStore.message) {
       if (timeout) clearTimeout(timeout);
       timeout = setTimeout(() => clearNotification(), 3000);
     }
@@ -21,33 +22,24 @@
   function handleDismiss() {
     clearNotification();
   }
+
+  const { base, button, icon } = $derived(
+    notificationTheme({ type: $notificationStore.type }),
+  );
 </script>
 
-{#if $notification.message}
-  <div
-    in:fly={{ x: -10 }}
-    out:fly={{ x: 10 }}
-    class="bg-bg-primary border-primary gap-default padding-default fixed top-5 left-1/2 z-50 flex -translate-x-1/2 items-center text-left
-"
-  >
-    {#if $notification.type === "success"}
-      <Check class="text-green size-5" />
-    {:else if $notification.type === "error"}
-      <Ban class="text-red size-5" />
-    {:else}
-      <CircleAlert class="text-yellow size-5" />
-    {/if}
-
+{#if $notificationStore.message}
+  <div in:fly={{ x: -10 }} out:fly={{ x: 10 }} class={base()}>
     <P>
-      {$notification.message}
+      {$notificationStore.message}
     </P>
 
     <button
       onclick={handleDismiss}
-      class="bg-clickable rounded-full p-1"
+      class={button()}
       aria-label="Dismiss notification"
     >
-      <X class="text-text size-4 rounded-full" />
+      <X class={icon()} />
     </button>
   </div>
 {/if}

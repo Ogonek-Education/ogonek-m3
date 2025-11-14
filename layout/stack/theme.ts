@@ -3,7 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type StackVariants = VariantProps<typeof stack>;
 
 export const stack = tv({
-  base: "flex relative gap-default",
+  base: "flex relative",
   variants: {
     type: {
       vstack: "flex-row",
@@ -16,6 +16,10 @@ export const stack = tv({
       full: "size-full",
       w: "w-full",
       h: "h-full",
+    },
+    gap: {
+      md: "gap-default",
+      none: "gap-0",
     },
   },
 });

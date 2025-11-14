@@ -6,19 +6,20 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 
 export const button = tv({
   slots: {
-    base: "w-full font-medium flex transition-all overflow-hidden relative",
+    base: "w-full font-medium flex transition-all min-w-max overflow-hidden relative",
     outline: "bg-transparent border-primary",
     icon: "size-24 z-0 -right-10 -bottom-10 text-bg-tertiary absolute",
   },
   variants: {
     color: {
       primary: "bg-clickable border-primary",
-      prominent: "bg-clickable border-primary-accent",
+      prominent:
+        "bg-clickable border-primary-accent bg-accent/6 hover:bg-accent/12",
       secondary:
         "text-text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
       alternative: "",
       gray: "text-text-white bg-stone-700 hover:bg-stone-800 dark:bg-stone-600 dark:hover:bg-stone-700 focus-within:ring-stone-300 dark:focus-within:ring-stone-800",
-      red: "border-danger hover:bg-red/10",
+      red: "border-danger bg-red/6 hover:bg-red/12",
     },
     size: {
       sm: "padding-narrow text-sm active:scale-95",
