@@ -22,7 +22,7 @@
   );
 </script>
 
-<VStack align="center" class="hidden md:flex">
+<VStack class="hidden items-center md:flex">
   <Button
     type="button"
     tooltipContent="Сортировка"

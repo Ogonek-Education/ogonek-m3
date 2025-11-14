@@ -7,6 +7,7 @@
   import BreadcrumbItem from "./breadcrumb/BreadcrumbItem.svelte";
   import type { BreadcrumbSegment, NavPage } from "./types";
   import { Heading } from "../typography";
+  import { clickOutside } from "$lib/actions";
 
   let {
     children,
@@ -87,6 +88,7 @@
 {#if showModal}
   <ul class="flex flex-col overflow-auto md:hidden">
     <button
+      use:clickOutside={() => (showModal = false)}
       onclick={() => {
         showModal = false;
       }}

@@ -6,7 +6,7 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 
 export const button = tv({
   slots: {
-    base: "w-full font-medium flex transition-all overflow-hidden",
+    base: "w-full font-medium flex transition-all overflow-hidden relative",
     outline: "bg-transparent border-primary",
     icon: "size-24 z-0 -right-10 -bottom-10 text-bg-tertiary absolute",
   },

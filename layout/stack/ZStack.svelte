@@ -3,15 +3,9 @@
   import { stack } from "./theme";
   import type { StackProps } from "./types";
 
-  let {
-    children,
-    align = "center",
-    gap = "md",
-    type = "zstaack",
-    class: className,
-  }: StackProps = $props();
+  let { children, type = "zstaack", class: className }: StackProps = $props();
 
-  const styling = $derived(stack({ align, gap, type }));
+  const styling = $derived(stack({ type }));
 </script>
 
 <div class={clsx(styling, className)}>

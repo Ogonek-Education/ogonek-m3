@@ -6,13 +6,11 @@
   let {
     children,
     type = "vstack",
-    align = "end",
-    gap = "md",
     size = "h",
     class: className,
   }: StackProps = $props();
 
-  const styling = $derived(stack({ align, gap, type, size }));
+  const styling = $derived(stack({ type, size }));
 </script>
 
 <div class={clsx(styling, className)}>

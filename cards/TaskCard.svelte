@@ -18,10 +18,10 @@
 </script>
 
 <CardClickable data-cy="task-card" {href}>
-  <Heading tag="h3">
+  <Heading class="text-center md:text-left" tag="h3">
     {task.title}
   </Heading>
-  <VStack class="justify-center md:justify-start">
+  <VStack class="items-end justify-center md:justify-start">
     {#if !task.completed}
       <Badge color={badgeConfig}>{badgeText}</Badge>
     {:else}

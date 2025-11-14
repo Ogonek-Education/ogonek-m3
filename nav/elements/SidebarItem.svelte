@@ -39,7 +39,7 @@
   {rel}
   {...rest}
   class={clsx(
-    "group m-default gap-default group padding-default relative z-30 flex items-center rounded-2xl transition-all active:scale-[99%]",
+    "group gap-default group padding-default relative z-30 mx-2.5 my-1.5 flex items-center rounded-2xl transition-all active:scale-[99%]",
     isActive
       ? " text-accent bg-bg-secondary border-primary"
       : "text-text border-transient",
@@ -55,7 +55,7 @@
       : 'text-text-tertiary'}"
   />
   <div class="flex min-w-0 flex-1 items-center justify-between">
-    <Heading tag="h4" class={isActive ? "text-accent" : "text-text-secondary"}>
+    <Heading tag="h3" class={isActive ? "text-accent" : "text-text-secondary"}>
       {name}
     </Heading>
 
