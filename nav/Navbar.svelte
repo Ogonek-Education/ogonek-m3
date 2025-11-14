@@ -32,6 +32,8 @@
     why: "Мотивация",
   } as const;
 
+  const { role } = $derived(page.params);
+
   const breadcrumbs: BreadcrumbSegment[] = $derived.by(() => {
     const segments = page.url.pathname.split("/").filter(Boolean);
 
@@ -48,8 +50,6 @@
   });
 
   let scrollY = $state(0);
-
-  const { role } = $derived(page.params);
 </script>
 
 <svelte:window bind:scrollY />

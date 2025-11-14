@@ -2,7 +2,8 @@ import { tv } from "tailwind-variants";
 
 export const notificationTheme = tv({
   slots: {
-    base: "gap-default bg-bg-primary rounded-2xl border-2 font-semibold padding-default fixed min-h-20 w-full px-4 top-6 left-1/2 z-50 flex -translate-x-1/2 items-center text-center md:text-left",
+    base: "gap-default bg-bg-primary rounded-2xl border-2 font-semibold padding-default fixed min-h-20 w-full md:w-auto md:max-w-lg px-4 top-6 left-1/2 -translate-x-1/2 z-50 flex items-center text-center md:text-left",
+
     button: "bg-clickable rounded-full p-1",
     icon: "size-4 rounded-full",
   },
