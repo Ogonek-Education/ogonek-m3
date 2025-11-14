@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { GraduationCap } from "@lucide/svelte";
+  import { Layers2 } from "@lucide/svelte";
   import SidebarItem from "./SidebarItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
@@ -18,7 +18,7 @@
 <SidebarItem
   data-cy="sidebar-flashcards"
   href={$href}
-  Icon={GraduationCap}
+  Icon={Layers2}
   name={texts.flashcards.title}
   badge={deckCount}
 />
