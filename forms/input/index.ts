@@ -6,4 +6,3 @@ export * from "./types";
 
 // default exports for components in this folder
 export { default as Input } from "./Input.svelte";
-

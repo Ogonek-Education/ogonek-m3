@@ -6,4 +6,3 @@ export { default as Custom } from "./Custom.svelte";
 export { default as Notifications } from "./Notifications.svelte";
 export { default as Security } from "./Security.svelte";
 export { default as Teacher } from "./Teacher.svelte";
-

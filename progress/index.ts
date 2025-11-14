@@ -2,4 +2,3 @@
 
 // default exports for components in this folder
 export { default as ProgressBar } from "./ProgressBar.svelte";
-

@@ -8,4 +8,3 @@ export * from "./stack";
 
 // default exports for components in this folder
 export { default as Divider } from "./Divider.svelte";
-

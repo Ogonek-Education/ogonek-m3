@@ -7,4 +7,3 @@ export * from "./types";
 // default exports for components in this folder
 export { default as Breadcrumb } from "./Breadcrumb.svelte";
 export { default as BreadcrumbItem } from "./BreadcrumbItem.svelte";
-

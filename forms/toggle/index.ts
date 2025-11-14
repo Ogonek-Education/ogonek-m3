@@ -6,4 +6,3 @@ export * from "./types";
 
 // default exports for components in this folder
 export { default as Toggle } from "./Toggle.svelte";
-

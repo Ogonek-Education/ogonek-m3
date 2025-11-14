@@ -13,4 +13,3 @@ export { default as NewCard } from "./NewCard.svelte";
 export { default as SeenBadge } from "./SeenBadge.svelte";
 export { default as TaskCard } from "./TaskCard.svelte";
 export { default as WordCard } from "./WordCard.svelte";
-
