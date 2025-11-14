@@ -4,7 +4,7 @@
 </script>
 
 <footer
-  class=" bg-bg-primary border-primary z-40 flex w-full flex-col items-center justify-center rounded-none border-x-0 border-b-0 text-sm font-medium md:text-base"
+  class=" bg-bg-primary border-primary z-40 flex w-full flex-col items-center justify-center rounded-none border-x-0 border-b-0 pb-20 text-sm font-medium md:text-base"
 >
   <dev
     class="mg:grid-cols-2 grid w-full justify-center gap-4 gap-y-8 md:gap-y-24 lg:grid-cols-4 lg:gap-24"
@@ -17,7 +17,7 @@
     </div>
 
     <div
-      class="md:border-primary padding-wider gap-narrow flex min-w-fit flex-1 flex-col rounded-none border-y-0"
+      class="padding-wider gap-narrow flex min-w-fit flex-1 flex-col rounded-none"
     >
       <P class="font-extrabold">ИП</P>
       <P>Волков Данила Олегович</P>
@@ -33,9 +33,6 @@
       <A href="/why">Наша мотивация</A>
       <A href="/pricing">Расценки</A>
     </div>
-    <P
-      class="padding-wider md:border-primary rounded-none border-y-0 border-r-0"
-      >© 2024-2025 Данила Волков</P
-    >
+    <P class="padding-wider ">© 2024-2025 Данила Волков</P>
   </dev>
 </footer>

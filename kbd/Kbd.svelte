@@ -3,9 +3,14 @@
   import clsx from "clsx";
   import type { KbdProps } from "./types";
 
-  let { children, class: className, ...restProps }: KbdProps = $props();
+  let {
+    children,
+    position = "absolute",
+    class: className,
+    ...restProps
+  }: KbdProps = $props();
 
-  const kbdCls = kbd({ class: clsx(className) });
+  const kbdCls = $derived(kbd({ class: clsx(className), position }));
 </script>
 
 <kbd {...restProps} class={kbdCls}>

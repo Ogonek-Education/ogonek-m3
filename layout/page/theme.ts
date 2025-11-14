@@ -6,9 +6,8 @@ export type PageLayoutVariants = VariantProps<typeof pageLayout> &
 
 export const pageLayout = tv({
   slots: {
-    base: "min-h-dvh flex overflow-visible",
-    content:
-      "border-primary rounded-none border-collapse border-x-0 border-t-0 flex w-full flex-1 overflow-visible justify-between gap-default",
+    base: "border-collapse min-h-dvh border-border-primary border-2 border-x-0 flex overflow-visible",
+    content: "flex w-full flex-1 overflow-visible justify-between gap-default",
     button:
       "bg-clickable border-primary hidden md:flex min-h-dvh w-20 pt-3 md:pt-7 items-start justify-center rounded-none border-t-0 border-l-0",
     icon: "size-12",
