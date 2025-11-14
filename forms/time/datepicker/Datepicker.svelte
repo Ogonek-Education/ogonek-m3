@@ -579,6 +579,7 @@
         onclick={() => (isOpen = !isOpen)}
         {disabled}
         aria-label={isOpen ? "Close date picker" : "Open date picker"}
+        data-cy="datepicker-toggle"
       >
         <svg
           class="h-4 w-4 text-stone-500 dark:text-stone-400"

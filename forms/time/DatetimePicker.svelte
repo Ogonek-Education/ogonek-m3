@@ -94,6 +94,7 @@
           ? 'bg-accent/20 border-accent text-text-white'
           : 'bg-bg-secondary text-text-tertiary border-border-primary'}"
         onclick={() => (selectedDuration = duration)}
+        data-cy={`duration-option-${duration}`}
       >
         {duration}м
       </button>

@@ -38,6 +38,7 @@
       onclick={handleDismiss}
       class={button()}
       aria-label="Dismiss notification"
+      data-cy="notification-dismiss"
     >
       <X class={icon()} />
     </button>

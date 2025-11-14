@@ -56,6 +56,12 @@
       restProps.onclick(e);
     }
   }
+
+  let buttonDataCy = $derived(restProps["data-cy"]);
+  let buttonProps = $derived(() => {
+    const { ["data-cy"]: _dataCy, ...others } = restProps;
+    return others;
+  });
 </script>
 
 {#if restProps.href !== undefined}
@@ -78,11 +84,12 @@
 {:else if tag === "button"}
   <button
     {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
-    {...restProps}
+    {...buttonProps}
     class={btnCls}
     {formaction}
     onclick={(e) => handleClick(e)}
     disabled={isDisabled}
+    data-cy={buttonDataCy ?? "library-button"}
   >
     {#if Icon && !withIcon}
       {#if loading}

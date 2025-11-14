@@ -59,7 +59,8 @@
     <div class="grid w-full grid-cols-3 items-end justify-between">
       <button
         class="max-w-max active:scale-95"
-        onclick={() => (showModal = !showModal)}><Menu /></button
+        onclick={() => (showModal = !showModal)}
+        data-cy="mobile-nav-toggle"><Menu /></button
       >
       <a href={`/${role}/dashboard`}>
         <Heading class="text-center font-serif">Ogonëk</Heading>
@@ -92,6 +93,7 @@
       onclick={() => {
         showModal = false;
       }}
+      data-cy="mobile-nav-overlay"
     >
       {@render children?.()}
     </button>

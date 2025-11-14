@@ -17,6 +17,7 @@
     onclick={() => removeCard(index)}
     class="hover:bg-red/12 hover:text-red absolute top-0.5 left-0.5 z-10 hidden rounded-full bg-stone-200 p-1 text-stone-900 transition-colors md:block dark:bg-stone-900 dark:text-stone-200"
     title="Убрать"
+    data-cy="flashcard-remove-button"
   >
     <X class="size-4" />
   </button>

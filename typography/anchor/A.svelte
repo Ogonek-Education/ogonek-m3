@@ -26,15 +26,29 @@
     }
   }
 
+  let anchorButtonDataCy = $derived(restProps["data-cy"]);
   let buttonProps = $derived(() => {
-    const { href, target, rel, download, ...filtered } = restProps;
+    const {
+      href,
+      target,
+      rel,
+      download,
+      ["data-cy"]: _dataCy,
+      ...filtered
+    } = restProps;
     return filtered;
   });
 </script>
 
 {#if asButton}
   <!-- Render as a button that looks like a link -->
-  <button type="button" class={linkCls} onclick={handleClick} {...buttonProps}>
+  <button
+    type="button"
+    class={linkCls}
+    onclick={handleClick}
+    {...buttonProps}
+    data-cy={anchorButtonDataCy ?? "anchor-button"}
+  >
     {@render children()}
   </button>
 {:else}

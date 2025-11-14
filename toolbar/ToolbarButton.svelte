@@ -22,15 +22,25 @@
       class: clsx(className),
     }),
   );
+  let toolbarDataCy = $derived(restProps["data-cy"] ?? "toolbar-button");
+  let forwardedProps = $derived(() => {
+    const { ["data-cy"]: _dataCy, ...others } = restProps;
+    return others;
+  });
 </script>
 
-{#if restProps.href === undefined}
-  <button type="button" {...restProps} class={buttonCls}>
+{#if forwardedProps.href === undefined}
+  <button
+    type="button"
+    {...forwardedProps}
+    class={buttonCls}
+    data-cy={toolbarDataCy}
+  >
     {#if name}<span class="sr-only">{name}</span>{/if}
     {@render children?.()}
   </button>
 {:else}
-  <a {...restProps} class={buttonCls}>
+  <a {...forwardedProps} class={buttonCls}>
     {#if name}<span class="sr-only">{name}</span>{/if}
     {@render children?.()}
   </a>

@@ -31,6 +31,7 @@
     class="group relative w-full overflow-hidden rounded-2xl border-2"
     class:border-accent={selected}
     class:border-primary={!selected}
+    data-cy={`theme-option-${theme}`}
   >
     {#if theme === "auto"}
       {@render autoTheme()}

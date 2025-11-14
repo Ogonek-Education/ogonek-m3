@@ -25,15 +25,22 @@
     if (event.defaultPrevented) return;
     context?.dismiss?.(event);
   }
+
+  let closeButtonDataCy = $derived(restProps["data-cy"]);
+  let buttonProps = $derived(() => {
+    const { ["data-cy"]: _dataCy, ...others } = restProps;
+    return others;
+  });
 </script>
 
 {#if restProps.href === undefined}
   <button
     type="button"
-    {...restProps}
+    {...buttonProps}
     class={base({ class: clsx(className) })}
     {onclick}
     aria-label={ariaLabel ?? name}
+    data-cy={closeButtonDataCy ?? "close-button"}
   >
     {#if name}<span class="sr-only">{name}</span>{/if}
     {#if children}
