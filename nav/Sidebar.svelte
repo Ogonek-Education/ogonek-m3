@@ -7,9 +7,9 @@
 
 <div
   class="
-    bg-bg-primary border-border-primary fixed z-40 h-full
-    w-full flex-col
-    overflow-visible rounded-none md:relative md:flex md:w-50 md:border-l-2 lg:w-60 xl:w-70 2xl:w-75"
+    bg-bg-primary border-border-primary hover:border-border-hover fixed z-40
+    h-full w-full
+    flex-col overflow-visible rounded-none py-2 transition-all md:relative md:flex md:w-50 md:border-l-2 lg:w-60 xl:w-70 2xl:w-75"
 >
   <ul
     class="flex flex-col overflow-visible"

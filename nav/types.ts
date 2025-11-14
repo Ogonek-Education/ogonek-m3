@@ -5,7 +5,10 @@ export type NavPage =
   | "tasks"
   | "students"
   | "calendar"
-  | "settings";
+  | "settings"
+  | "legal"
+  | "contact"
+  | "why";
 
 export interface BreadcrumbSegment {
   segment?: string;

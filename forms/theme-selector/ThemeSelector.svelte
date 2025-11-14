@@ -3,8 +3,9 @@
   import { themes } from "./theme";
   import { onMount } from "svelte";
   import ThemePreview from "./ThemePreview.svelte";
-  import { Heading, P } from "../../typography";
-  import { HStack, InputMerger } from "../../layout";
+  import { Heading } from "../../typography";
+  import { HStack } from "../../layout";
+  import { applyTheme } from "$lib/utils";
 
   let {
     class: className,
@@ -45,26 +46,10 @@
     }
   });
 
-  const applyTheme = (theme: Theme) => {
-    const doc = document.documentElement;
-
-    doc.classList.remove("dark");
-    doc.removeAttribute("data-theme");
-
-    if (theme === "auto") {
-      if (systemPreference === "dark") {
-        doc.setAttribute("data-theme", "dark");
-      }
-    } else if (theme === "light") {
-    } else {
-      doc.setAttribute("data-theme", theme);
-    }
-  };
-
   const setTheme = (theme: Theme) => {
     currentTheme = theme;
-    applyTheme(theme);
     localStorage.setItem("THEME_PREFERENCE_KEY", theme);
+    applyTheme(theme);
   };
 </script>
 

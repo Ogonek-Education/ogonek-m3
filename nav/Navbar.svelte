@@ -11,8 +11,10 @@
 
   let {
     children,
+    isApp = false,
   }: {
     children?: Snippet;
+    isApp?: boolean;
   } = $props();
 
   let showModal = $state(false);
@@ -25,6 +27,9 @@
     settings: "Настройки",
     flashcards: "Карточки",
     lessons: "Занятия",
+    legal: "Документы",
+    contact: "Контакт",
+    why: "Мотивация",
   } as const;
 
   const breadcrumbs: BreadcrumbSegment[] = $derived.by(() => {
@@ -38,7 +43,7 @@
       .map((seg) => ({
         segment: seg,
         label: navLabels[seg as NavPage],
-        href: `/${page.params.role}/${seg}`,
+        href: role ? `/${role}/${seg}` : `/${seg}`,
       }));
   });
 
@@ -56,24 +61,32 @@
     : ''}"
 >
   <div class="flex flex-col items-center gap-1">
-    <div class="grid w-full grid-cols-3 items-end justify-between">
-      <button
-        class="max-w-max active:scale-95"
-        onclick={() => (showModal = !showModal)}
-        data-cy="mobile-nav-toggle"><Menu /></button
-      >
-      <a href={`/${role}/dashboard`}>
+    {#if isApp}
+      <div class="grid w-full grid-cols-3 items-end justify-between">
+        <button
+          class="max-w-max active:scale-95"
+          onclick={() => (showModal = !showModal)}
+          data-cy="mobile-nav-toggle"><Menu /></button
+        >
+        <a href={`/${role}/dashboard`}>
+          <Heading class="text-center font-serif">Ogonëk</Heading>
+        </a>
+        <a
+          href={`/${role}/settings/account`}
+          class="max-w-max place-self-end active:scale-95"
+        >
+          <CircleUserRound />
+        </a>
+      </div>
+    {:else}
+      <a href="/">
         <Heading class="text-center font-serif">Ogonëk</Heading>
       </a>
-      <a
-        href={`/${role}/settings/account`}
-        class="max-w-max place-self-end active:scale-95"
-      >
-        <CircleUserRound />
-      </a>
-    </div>
+    {/if}
     <Breadcrumb>
-      <BreadcrumbItem href={`/${role}/dashboard`} home>Главная</BreadcrumbItem>
+      <BreadcrumbItem href={role ? `/${role}/dashboard` : `/`} home
+        >Главная</BreadcrumbItem
+      >
       {#each breadcrumbs as crumb}
         <BreadcrumbItem href={crumb.href}>{crumb.label}</BreadcrumbItem>
       {/each}

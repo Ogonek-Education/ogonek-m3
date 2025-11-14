@@ -366,17 +366,19 @@
 
   {#if fileUploads.length > 0}
     {#each fileUploads as fileState, index (index)}
-      <div class="border-primary gap-default padding-default flex flex-col">
-        <VStack>
+      <div
+        class="border-primary gap-default padding-default flex flex-col justify-between"
+      >
+        <VStack class="items-start justify-between">
           <P>
             {fileState.file.name.length > 15
               ? fileState.file.name.slice(0, 15) + "..."
               : fileState.file.name}
           </P>
 
-          <Divider></Divider>
           <Button
             tooltipContent="Удалить файл"
+            class="size-12"
             Icon={X}
             type="button"
             onclick={() => removeFile(fileState)}

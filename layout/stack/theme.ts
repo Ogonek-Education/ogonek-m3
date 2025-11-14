@@ -9,7 +9,7 @@ export const stack = tv({
       vstack: "flex-row",
       hstack: "flex-col",
       vFlip: "md:flex-row flex-col",
-      hFlip: "md: flex-col flex-row",
+      hFlip: "md:flex-col flex-row",
       zstaack: "flex",
     },
     size: {
