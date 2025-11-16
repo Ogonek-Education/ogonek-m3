@@ -100,15 +100,17 @@
 </nav>
 
 {#if showModal}
-  <ul class="flex flex-col overflow-auto md:hidden">
-    <button
+  <div class="md:hidden">
+    <div
+      class="flex flex-col overflow-auto"
       use:clickOutside={() => (showModal = false)}
       onclick={() => {
         showModal = false;
       }}
       data-cy="mobile-nav-overlay"
+      role="menu"
     >
       {@render children?.()}
-    </button>
-  </ul>
+    </div>
+  </div>
 {/if}

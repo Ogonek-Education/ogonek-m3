@@ -11,10 +11,10 @@
     h-full w-full
     flex-col overflow-visible rounded-none py-2 transition-all md:relative md:flex md:w-50 md:border-l-2 lg:w-60 xl:w-70 2xl:w-75"
 >
-  <ul
+  <div
     class="flex flex-col overflow-visible"
     in:fly={{ y: 20, duration: 400, easing: quintOut }}
   >
     {@render children?.()}
-  </ul>
+  </div>
 </div>
