@@ -4,6 +4,8 @@
   import { quintOut } from "svelte/easing";
   import { fly } from "svelte/transition";
   import { Heading } from "../typography";
+  import Button from "../buttons/Button.svelte";
+  import { HStack } from "$lib";
   let { children }: { children?: Snippet } = $props();
 </script>
 
@@ -20,8 +22,9 @@
     {@render children?.()}
   </div>
   {#if $readOnly}
-    <Heading tag="h2" class="padding-default mt-auto self-center italic"
-      >Режим чтения</Heading
-    >
+    <HStack class="padding-default mt-auto">
+      <Heading tag="h2" class="self-center">Режим чтения</Heading>
+      <Button href="/pricing">Купить подписку</Button>
+    </HStack>
   {/if}
 </div>

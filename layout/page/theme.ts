@@ -16,7 +16,7 @@ export const pageLayout = tv({
     position: {
       centre: {
         base: "items-center justify-center",
-        content: "m-auto max-w-3xl",
+        content: "m-auto max-w-3xl justify-center items-center",
       },
       left: "items-start justify-between h-full",
     },
