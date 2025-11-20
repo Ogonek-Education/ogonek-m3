@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { readOnly } from "$lib/stores";
   import type { Snippet } from "svelte";
   import { quintOut } from "svelte/easing";
   import { fly } from "svelte/transition";
+  import { Heading } from "../typography";
   let { children }: { children?: Snippet } = $props();
 </script>
 
@@ -17,4 +19,9 @@
   >
     {@render children?.()}
   </div>
+  {#if $readOnly}
+    <Heading tag="h2" class="padding-default mt-auto self-center italic"
+      >Режим чтения</Heading
+    >
+  {/if}
 </div>
