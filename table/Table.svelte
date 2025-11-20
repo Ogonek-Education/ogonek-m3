@@ -1,18 +1,28 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
   import { enhanceForm } from "$lib/utils";
+  import clsx from "clsx";
   import type { Snippet } from "svelte";
   interface Props {
     children: Snippet;
     selected?: string[];
+    class?: string;
     [key: string]: unknown;
   }
 
-  let { children, selected = $bindable(), ...rest }: Props = $props();
+  let {
+    children,
+    selected = $bindable(),
+    class: className,
+    ...rest
+  }: Props = $props();
 </script>
 
 <form
-  class="md:border-primary bg-primary order-2 flex h-[80dvh] w-full flex-col justify-between overflow-x-visible md:order-1"
+  class={clsx(
+    className,
+    "md:border-primary bg-bg-primary order-2 flex h-[80dvh] w-full flex-col justify-between overflow-x-visible md:order-1",
+  )}
   aria-label="Data table"
   {...rest}
   method="POST"

@@ -4,7 +4,7 @@
   import { fly } from "svelte/transition";
 
   interface Props {
-    href: string;
+    href?: string;
     children: Snippet;
     styling?: string;
   }
@@ -12,6 +12,9 @@
   const { href, children, styling = "" }: Props = $props();
 
   function handleRowClick(event: KeyboardEvent | MouseEvent) {
+    if (!href) {
+      return;
+    }
     if (
       event instanceof KeyboardEvent &&
       event.key !== "Enter" &&
