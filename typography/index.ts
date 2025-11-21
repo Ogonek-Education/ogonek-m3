@@ -2,8 +2,12 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./anchor";
-export * from "./blockquote";
-export * from "./descriptionlist";
+export * from "./body";
+export * from "./display";
 export * from "./heading";
+export * from "./headline";
+export * from "./label";
 export * from "./paragraph";
 export * from "./secondary";
+export * from "./title";
+

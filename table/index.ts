@@ -11,3 +11,4 @@ export { default as TableHead } from "./TableHead.svelte";
 export { default as TableHeadCell } from "./TableHeadCell.svelte";
 export { default as TableRow } from "./TableRow.svelte";
 export { default as TableRowWithMorph } from "./TableRowWithMorph.svelte";
+

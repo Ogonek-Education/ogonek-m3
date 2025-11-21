@@ -5,5 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as ThemePreview } from "./ThemePreview.svelte";
-export { default as ThemeSelector } from "./ThemeSelector.svelte";
+export { default as Headline } from "./Headline.svelte";
+

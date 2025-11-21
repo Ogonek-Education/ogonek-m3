@@ -5,4 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as Blockquote } from "./Blockquote.svelte";
+export { default as Display } from "./Display.svelte";
+

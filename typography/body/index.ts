@@ -5,4 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as DescriptionList } from "./DescriptionList.svelte";
+export { default as Body } from "./Body.svelte";
+

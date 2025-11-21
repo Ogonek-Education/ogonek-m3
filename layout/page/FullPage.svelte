@@ -63,6 +63,11 @@
 </script>
 
 <div class={base({ class: clsx(base) })}>
+  {#if sidebar}
+    <div class="hidden md:block">
+      {@render sidebar()}
+    </div>
+  {/if}
   {#if showBack && !removeBackButton}
     <a {href} class={button({ class: clsx(button, styling.button) })}
       ><MoveLeft class={icon({ class: clsx(icon, styling.icon) })} /></a
@@ -71,9 +76,4 @@
   <div class={content({ class: clsx(content, styling.content) })}>
     {@render children()}
   </div>
-  {#if sidebar}
-    <div class="hidden md:block">
-      {@render sidebar()}
-    </div>
-  {/if}
 </div>
