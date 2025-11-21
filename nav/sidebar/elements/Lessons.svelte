@@ -1,6 +1,6 @@
 <script lang="ts">
   import { BookOpenCheck } from "@lucide/svelte";
-  import SidebarItem from "./SidebarItem.svelte";
+  import SidebarItem from "../SidebarItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
 

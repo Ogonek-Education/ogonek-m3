@@ -1,9 +1,8 @@
 <script lang="ts">
   import { format, fromZonedTime, toZonedTime } from "date-fns-tz";
   import { isValid, parse, addMinutes } from "date-fns";
-  import { Hr, HStack, VStack } from "../../layout";
+  import { HStack, VStack } from "../../layout";
   import { Input } from "../input";
-  import { Label } from "../label";
   import { dev } from "$app/environment";
   import { Heading } from "../../typography";
 

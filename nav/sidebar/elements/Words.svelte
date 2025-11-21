@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Layers2 } from "@lucide/svelte";
-  import SidebarItem from "./SidebarItem.svelte";
+  import SidebarItem from "../SidebarItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
   import texts from "$lib/texts";

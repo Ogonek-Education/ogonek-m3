@@ -11,7 +11,6 @@ export { default as Dashboard } from "./Dashboard.svelte";
 export { default as Legal } from "./Legal.svelte";
 export { default as Lessons } from "./Lessons.svelte";
 export { default as Settings } from "./Settings.svelte";
-export { default as SidebarItem } from "./SidebarItem.svelte";
 export { default as Tasks } from "./Tasks.svelte";
 export { default as Words } from "./Words.svelte";
 

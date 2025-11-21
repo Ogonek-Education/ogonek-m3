@@ -2,7 +2,7 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./breadcrumb";
-export * from "./elements";
+export * from "./sidebar";
 
 // re-export TS/JS modules from this folder
 export * from "./types";
@@ -12,5 +12,4 @@ export { default as Footer } from "./Footer.svelte";
 export { default as Header } from "./Header.svelte";
 export { default as Loader } from "./Loader.svelte";
 export { default as Navbar } from "./Navbar.svelte";
-export { default as Sidebar } from "./Sidebar.svelte";
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Video } from "@lucide/svelte";
-  import SidebarItem from "../SidebarItem.svelte";
+  import SidebarItem from "../../SidebarItem.svelte";
 
   const { href } = $props();
 </script>

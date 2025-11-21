@@ -28,7 +28,7 @@
   let isDisabled = $derived(Boolean(disabled) || loading);
   const _position = $derived(Icon ? "center" : position);
   const _scale = $derived(Icon ? "lg" : scale);
-  const { base, icon } = $derived(
+  const { base, state, icon } = $derived(
     button({
       color,
       size,
@@ -48,7 +48,7 @@
   let showModal = $state(false);
 
   function handleClick(e: any) {
-    if (color === "red" && withModal) {
+    if (color === "error" && withModal) {
       e.preventDefault();
       showModal = true;
       return;
@@ -64,13 +64,9 @@
     {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
     class={btnCls}
   >
-    {#if Icon && !withIcon}
+    <span class={state()}> </span>
+    {#if Icon}
       <Icon />
-    {:else if Icon && withIcon}
-      <VStack class="relative justify-between" size="w">
-        {@render children?.()}
-        <Icon class={icon()} />
-      </VStack>
     {:else}
       {@render children?.()}
     {/if}
@@ -84,19 +80,14 @@
     onclick={(e) => handleClick(e)}
     disabled={isDisabled}
   >
-    {#if Icon && !withIcon}
+    <span class={state()}> </span>
+
+    {#if Icon}
       {#if loading}
         <LoaderCircle class="animate-spin" />
       {:else}
         <Icon />
       {/if}
-    {:else if Icon && withIcon}
-      {#if loading}
-        <LoaderCircle class="animate-spin {icon()}" />
-      {:else}
-        <Icon class={icon()} />
-      {/if}
-      {@render children?.()}
     {:else}
       {@render children?.()}
       {#if loading}

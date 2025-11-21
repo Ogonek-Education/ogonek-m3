@@ -6,17 +6,24 @@ export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 
 export const button = tv({
   slots: {
-    base: "w-full font-medium flex transition-all min-w-fit overflow-hidden relative",
-    outline: "bg-transparent border-primary",
+    base: "relative group inline-flex select-none items-center justify-center rounded-full min-h-[48px] min-w-[48px] padding-default overflow-hidden transition-colors",
+    state:
+      "transition-opacity duration-200 absolute inset-0 pointer-events-none group-hover:opacity-8 group-active:opacity-18",
     icon: "size-24 z-0 -right-10 -bottom-10 text-bg-tertiary absolute",
   },
   variants: {
     color: {
-      primary: "bg-clickable border-primary",
-      prominent:
-        "bg-clickable border-primary-accent bg-accent/6 hover:bg-accent/12",
+      primary: {
+        base: "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container",
+        state: "bg-md-sys-color-on-primary-container opacity-0",
+      },
       secondary:
         "text-text-white bg-secondary-700 hover:bg-secondary-800 dark:bg-secondary-600 dark:hover:bg-secondary-700 focus-within:ring-secondary-300 dark:focus-within:ring-secondary-800",
+      tertiary: "",
+      error: "",
+      // obsolete
+      prominent:
+        "bg-clickable border-primary-accent bg-accent/6 hover:bg-accent/12",
       alternative: "",
       gray: "text-text-white bg-stone-700 hover:bg-stone-800 dark:bg-stone-600 dark:hover:bg-stone-700 focus-within:ring-stone-300 dark:focus-within:ring-stone-800",
       red: "border-danger bg-red/6 hover:bg-red/12",

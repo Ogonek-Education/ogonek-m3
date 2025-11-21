@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ArrowLeft, House } from "@lucide/svelte";
-  import SidebarItem from "./SidebarItem.svelte";
+  import SidebarItem from "../SidebarItem.svelte";
   import { page } from "$app/state";
 
   function getHref(role: string) {
