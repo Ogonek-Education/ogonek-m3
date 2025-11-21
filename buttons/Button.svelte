@@ -5,7 +5,6 @@
   import { LoaderCircle } from "@lucide/svelte";
   import { tooltip } from "$lib/utils";
   import ConfirmDelete from "$lib/components/ConfirmDelete.svelte";
-  import { VStack } from "../layout";
 
   let {
     children,
@@ -71,7 +70,7 @@
       {@render children?.()}
     {/if}
   </a>
-{:else if tag === "button"}
+{:else}
   <button
     {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
     {...restProps}
@@ -95,19 +94,6 @@
       {/if}
     {/if}
   </button>
-{:else}
-  <svelte:element
-    this={tag}
-    {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
-    {...restProps}
-    class={btnCls}
-  >
-    {#if Icon}
-      <Icon />
-    {:else}
-      {@render children?.()}
-    {/if}
-  </svelte:element>
 {/if}
 
 {#if showModal}

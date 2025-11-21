@@ -5,6 +5,7 @@
   import { railElement } from "./theme";
   import { collapseStore } from "$lib/stores";
   import { LabelT } from "../../typography";
+  import { label } from "$lib";
 
   let {
     href = "/",
@@ -27,8 +28,9 @@
     content,
     icon,
     iconContainer,
+    label: labelClass,
     badge: badgeCls,
-  } = $derived(railElement({ active: isActive, collapsed: $collapseStore }));
+  } = $derived(railElement({ active: isActive, expanded: !$collapseStore }));
 </script>
 
 <a
@@ -43,9 +45,9 @@
     <div class={iconContainer()}>
       <Icon class={icon()} />
     </div>
-    <LabelT>
+    <p class={labelClass()}>
       {name}
-    </LabelT>
+    </p>
 
     {#if badge}
       <div class={badgeCls()}>

@@ -4,17 +4,23 @@
   import { fly } from "svelte/transition";
   import { Heading } from "../../typography";
   import Button from "../../buttons/Button.svelte";
-  import { HStack, rail, type RailProps } from "$lib/components";
+  import { FAB, HStack, rail, type RailProps } from "$lib/components";
+  import { Menu, Pencil, Plus, SquareChevronLeft } from "@lucide/svelte";
   let { children }: RailProps = $props();
 
   function collapse() {
     collapseStore.set(!$collapseStore);
   }
 
-  const { base, items } = $derived(rail());
+  const { base, items } = $derived(rail({ expanded: !$collapseStore }));
 </script>
 
 <div class={base()}>
+  <button onclick={() => collapse()}>
+    {#if $collapseStore}
+      <Menu />{:else}<SquareChevronLeft />{/if}
+  </button>
+  <FAB label="Добавить" expanded={!$collapseStore} Icon={Plus}></FAB>
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>
     {@render children?.()}
   </div>

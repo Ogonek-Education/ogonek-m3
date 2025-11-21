@@ -3,6 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 // Variants
 export type ButtonVariants = VariantProps<typeof button>;
 export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
+export type FABVariants = VariantProps<typeof fab>;
 
 export const button = tv({
   slots: {
@@ -64,5 +65,40 @@ export const buttonGroup = tv({
   },
   defaultVariants: {
     size: "md",
+  },
+});
+
+export const fab = tv({
+  slots: {
+    base: "relative group inline-flex select-none items-center justify-center  min-h-[48px] min-w-[48px] transition-all before:content-[''] before:absolute before:inset-0 before:transition-all",
+    icon: "",
+    label: "text-medium",
+  },
+  variants: {
+    config: {
+      primary: {
+        base: "bg-md-sys-color-primary shadow-elevation-1 hover:shadow-elevation-2 hover:before:bg-md-sys-color-on-primary/8 rounded-xl focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10",
+        icon: "text-md-sys-color-on-primary",
+        label: "text-md-sys-color-on-primary",
+      },
+    },
+    expanded: {
+      true: "gap-2 p-4",
+      false: "aspect-square",
+    },
+    size: {
+      regular: {
+        base: "h-14",
+        icon: "size-6",
+      },
+      medium: {
+        base: "h-20",
+        icon: "size-7",
+      },
+      large: {
+        base: "h-24",
+        icon: "size-9",
+      },
+    },
   },
 });
