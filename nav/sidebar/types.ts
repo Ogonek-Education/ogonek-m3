@@ -6,7 +6,6 @@ import type { RailItemVariants, RailVariants } from "./theme";
 export interface RailItemProps
   extends RailItemVariants,
     HTMLAttributes<HTMLAnchorElement> {
-  children: Snippet;
   Icon?: typeof LucideIcon;
   badge?: number;
   external?: boolean;
