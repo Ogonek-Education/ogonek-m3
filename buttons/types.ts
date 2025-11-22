@@ -7,7 +7,12 @@ import type {
   HTMLAttributes,
   HTMLButtonAttributes,
 } from "svelte/elements";
-import type { ButtonGroupVariants, ButtonVariants, FABVariants } from "./theme";
+import type {
+  ButtonGroupVariants,
+  ButtonMDVariants,
+  ButtonVariants,
+  FABVariants,
+} from "./theme";
 
 export interface ButtonGroupProps
   extends ButtonGroupVariants,
@@ -31,6 +36,14 @@ export type ButtonProps = ButtonVariants &
     withModal?: boolean;
     formaction?: string;
     withIcon?: boolean;
+  };
+
+export type ButtonMDProps = ButtonMDVariants &
+  AnchorButtonAttributes & {
+    disabled?: boolean;
+    iconProps?: IconProps;
+    formaction?: string;
+    loading?: boolean;
   };
 
 export type FABProps = FABVariants &

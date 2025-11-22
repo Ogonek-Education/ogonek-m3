@@ -42,7 +42,7 @@
 >
   <div class={content()}>
     <div class={iconContainer()}>
-      <Icon {...iconProps} class={icon()} />
+      <Icon {...iconProps} class={icon()} wght={isActive ? 600 : 400} />
     </div>
     <p class={labelClass()}>
       {name}

@@ -4,6 +4,38 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type ButtonVariants = VariantProps<typeof button>;
 export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 export type FABVariants = VariantProps<typeof fab>;
+export type ButtonMDVariants = VariantProps<typeof buttonMD>;
+
+export const buttonMD = tv({
+  slots: {
+    base: "md-component-button-base group max-w-max",
+    icon: "size-6",
+  },
+  variants: {
+    color: {
+      elevated: {},
+      filled: "md-component-button-filled",
+      tonal: "md-component-button-tonal",
+      outlined: "md-component-button-outline",
+      text: "md-component-button-text",
+    },
+    size: {
+      xs: "",
+      sm: "",
+      md: "h-14 px-6 gap-2",
+      lg: "",
+      xl: "",
+    },
+    shape: {
+      round: "rounded-full before:rounded-full",
+      square: "rounded-xl",
+    },
+    type: {
+      toggle: "",
+      default: "",
+    },
+  },
+});
 
 export const button = tv({
   slots: {
@@ -70,7 +102,7 @@ export const buttonGroup = tv({
 
 export const fab = tv({
   slots: {
-    base: "relative group inline-flex select-none items-center justify-center  min-h-[48px] min-w-[48px] transition-all before:content-[''] before:absolute before:inset-0 before:transition-all",
+    base: "md-component-button-base base",
     icon: "",
     label: "text-medium",
   },
