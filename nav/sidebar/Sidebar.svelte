@@ -20,7 +20,8 @@
     {#if $collapseStore}
       <Icon name="menu" />{:else}<Icon name="menu_open" />{/if}
   </button>
-  <FAB label="Добавить" expanded={!$collapseStore} Icon={Plus}></FAB>
+  <FAB label="Добавить" expanded={!$collapseStore} iconProps={{ name: "add" }}
+  ></FAB>
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>
     {@render children?.()}
   </div>

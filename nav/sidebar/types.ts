@@ -1,4 +1,4 @@
-import type { Icon as LucideIcon } from "@lucide/svelte";
+import type { IconProps } from "$lib/components";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { RailItemVariants, RailVariants } from "./theme";
@@ -6,7 +6,7 @@ import type { RailItemVariants, RailVariants } from "./theme";
 export interface RailItemProps
   extends RailItemVariants,
     HTMLAttributes<HTMLAnchorElement> {
-  Icon?: typeof LucideIcon;
+  iconProps: IconProps;
   badge?: number;
   external?: boolean;
   href: string;

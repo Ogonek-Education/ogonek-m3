@@ -7,4 +7,4 @@
   const name = "Уведомления";
 </script>
 
-<SidebarItem {href} {name} Icon={Bell} />
+<SidebarItem {href} {name} iconProps={{ name: "notifications" }} />

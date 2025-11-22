@@ -3,6 +3,7 @@
   import { fab } from "./theme";
   import type { FABProps } from "./types";
   import { tooltip } from "$lib/utils";
+  import Icon from "../icon/Icon.svelte";
 
   let {
     children,
@@ -11,7 +12,7 @@
     formaction,
     size = "regular",
     config = "primary",
-    Icon,
+    iconProps,
     label,
     expanded = false,
     class: className,
@@ -38,7 +39,7 @@
     {@attach tooltip({ content: label, condition: showTooltip })}
     class={btnCls}
   >
-    <Icon class={icon()} />
+    <Icon {...iconProps} class={icon()} />
     {#if expanded}
       <p class={labelClass()}>
         {label}
@@ -51,7 +52,7 @@
     {...restProps}
     class={btnCls}
   >
-    <Icon class={icon()} />
+    <Icon {...iconProps} class={icon()} />
     {#if expanded}
       <p class={labelClass()}>
         {label}

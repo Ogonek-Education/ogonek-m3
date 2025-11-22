@@ -8,5 +8,5 @@
 </script>
 
 {#if page.params.role === "t"}
-  <SidebarItem {href} {name} Icon={RussianRuble} />
+  <SidebarItem {href} {name} iconProps={{ name: "currency_ruble" }} />
 {/if}

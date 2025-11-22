@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Layers2 } from "@lucide/svelte";
   import SidebarItem from "../SidebarItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
@@ -18,7 +17,7 @@
 <SidebarItem
   data-cy="sidebar-flashcards"
   href={$href}
-  Icon={Layers2}
+  iconProps={{ name: "note_stack" }}
   name={texts.flashcards.title}
   badge={deckCount}
 />

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { ListTodo } from "@lucide/svelte";
   import SidebarItem from "../SidebarItem.svelte";
   import { page } from "$app/state";
   import { writable } from "svelte/store";
@@ -17,7 +16,7 @@
 <SidebarItem
   data-cy="sidebar-tasks"
   href={$href}
-  Icon={ListTodo}
+  iconProps={{ name: "assignment" }}
   name="Задания"
   badge={taskCount}
 />

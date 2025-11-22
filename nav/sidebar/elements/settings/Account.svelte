@@ -7,4 +7,4 @@
   const name = "Основные";
 </script>
 
-<SidebarItem {href} {name} Icon={CircleUserRound} />
+<SidebarItem {href} {name} iconProps={{ name: "settings" }} />

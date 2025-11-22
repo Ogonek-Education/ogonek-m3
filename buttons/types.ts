@@ -1,3 +1,4 @@
+import type { IconProps } from "$lib";
 import type { AnchorButtonAttributes } from "$lib/types";
 import type { Icon as LucideIcon } from "@lucide/svelte";
 import type { Snippet } from "svelte";
@@ -37,6 +38,6 @@ export type FABProps = FABVariants &
     disabled?: boolean;
     expanded?: boolean;
     label?: string;
-    Icon?: typeof LucideIcon;
+    iconProps: IconProps;
     formaction?: string;
   };

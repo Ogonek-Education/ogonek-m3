@@ -4,8 +4,7 @@
   import type { RailItemProps } from "./types";
   import { railElement } from "./theme";
   import { collapseStore } from "$lib/stores";
-  import { LabelT } from "../../typography";
-  import { label } from "$lib";
+  import Icon from "../../icon/Icon.svelte";
 
   let {
     href = "/",
@@ -13,7 +12,7 @@
     external = false,
     badge = 0,
     class: className,
-    Icon,
+    iconProps,
     ...rest
   }: RailItemProps = $props();
 
@@ -43,7 +42,7 @@
 >
   <div class={content()}>
     <div class={iconContainer()}>
-      <Icon class={icon()} />
+      <Icon {...iconProps} class={icon()} />
     </div>
     <p class={labelClass()}>
       {name}

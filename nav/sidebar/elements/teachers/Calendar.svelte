@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Calendar } from "@lucide/svelte";
   import SidebarItem from "../../SidebarItem.svelte";
   import { page } from "$app/state";
   import { writable } from "svelte/store";
@@ -23,5 +22,5 @@
   class="hidden md:flex"
   href={$href}
   name="Календарь"
-  Icon={Calendar}
+  iconProps={{ name: "calendar_month" }}
 />

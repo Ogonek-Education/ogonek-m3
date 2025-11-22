@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { BookOpenCheck } from "@lucide/svelte";
   import SidebarItem from "../SidebarItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
@@ -17,7 +16,7 @@
 <SidebarItem
   href={$href}
   data-cy="sidebar-lessons"
-  Icon={BookOpenCheck}
+  iconProps={{ name: "book" }}
   name="Занятия"
   badge={lessonCount}
 />

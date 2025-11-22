@@ -9,5 +9,5 @@
 </script>
 
 {#if page.params.role === "t"}
-  <SidebarItem {href} {name} Icon={Coffee} />
+  <SidebarItem {href} {name} iconProps={{ name: "coffee" }} />
 {/if}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { dev } from "$app/environment";
+  import type { IconProps } from "./types";
 
   const {
     name,
@@ -7,16 +7,12 @@
     wght = 400,
     grad = 0,
     opsz = 24,
-  }: {
-    name: string;
-    fill?: 0 | 1;
-    wght?: number; // 100..700
-    grad?: number; // -50..200
-    opsz?: number; // 20..48
-  } = $props();
+    class: className,
+  }: IconProps = $props();
 </script>
 
 <div
+  class={className}
   style="font-variation-settings: 'FILL' {fill}, 'wght' {wght}, 'GRAD' {grad}, 'opsz' {opsz};"
 >
   <span class="material-symbols-outlined">{name}</span>

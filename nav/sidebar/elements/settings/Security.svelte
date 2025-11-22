@@ -8,4 +8,4 @@
   const name = "Безопасность";
 </script>
 
-<SidebarItem {href} {name} Icon={Fingerprint} />
+<SidebarItem {href} {name} iconProps={{ name: "security" }} />
