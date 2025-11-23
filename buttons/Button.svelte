@@ -2,9 +2,9 @@
   import clsx from "clsx";
   import { button } from "./theme";
   import type { ButtonProps } from "./types";
-  import { LoaderCircle } from "@lucide/svelte";
   import { tooltip } from "$lib/utils";
   import ConfirmDelete from "$lib/components/ConfirmDelete.svelte";
+  import LoadingIndicator from "../icon/LoadingIndicator.svelte";
 
   let {
     children,
@@ -27,6 +27,7 @@
   let isDisabled = $derived(Boolean(disabled) || loading);
   const _position = $derived(Icon ? "center" : position);
   const _scale = $derived(Icon ? "lg" : scale);
+  let showModal = $state(false);
   const { base, state, icon } = $derived(
     button({
       color,
@@ -43,8 +44,6 @@
   );
 
   const showTooltip = $derived(!!Icon && !withIcon);
-
-  let showModal = $state(false);
 
   function handleClick(e: any) {
     if (color === "error" && withModal) {
@@ -83,14 +82,14 @@
 
     {#if Icon}
       {#if loading}
-        <LoaderCircle class="animate-spin" />
+        <LoadingIndicator />
       {:else}
         <Icon />
       {/if}
     {:else}
       {@render children?.()}
       {#if loading}
-        <LoaderCircle class="animate-spin" />
+        <LoadingIndicator />
       {/if}
     {/if}
   </button>

@@ -7,4 +7,4 @@
   const name = "Кастомизация";
 </script>
 
-<SidebarItem {href} {name} Icon={Palette} />
+<SidebarItem {href} {name} iconProps={{ name: "palette" }} />

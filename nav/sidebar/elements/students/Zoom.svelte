@@ -5,4 +5,9 @@
   const { href } = $props();
 </script>
 
-<SidebarItem {href} Icon={Video} name="Zoom" external={true} />
+<SidebarItem
+  {href}
+  iconProps={{ name: "video_call" }}
+  name="Zoom"
+  external={true}
+/>

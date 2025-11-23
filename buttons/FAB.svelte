@@ -4,6 +4,9 @@
   import type { FABProps } from "./types";
   import { tooltip } from "$lib/utils";
   import Icon from "../icon/Icon.svelte";
+  import ButtonMD from "./ButtonMD.svelte";
+  import FABMenu from "./FABMenu.svelte";
+  import ButtonIcon from "./ButtonIcon.svelte";
 
   let {
     children,
@@ -16,6 +19,7 @@
     label,
     expanded = false,
     class: className,
+    withMenu,
     ...restProps
   }: FABProps = $props();
 
@@ -31,6 +35,17 @@
   );
 
   const showTooltip = $derived(!expanded);
+  let showMenu = $state(false);
+
+  function handleClick(e: any) {
+    if (withMenu) {
+      e.preventDefault();
+      showMenu = true;
+      return;
+    } else if (restProps.onclick) {
+      restProps.onclick(e);
+    }
+  }
 </script>
 
 {#if restProps.href !== undefined}
@@ -47,16 +62,30 @@
     {/if}
   </a>
 {:else}
-  <button
-    {@attach tooltip({ content: label, condition: showTooltip })}
-    {...restProps}
-    class={btnCls}
-  >
-    <Icon {...iconProps} class={icon()} />
-    {#if expanded}
-      <p class={labelClass()}>
-        {label}
-      </p>
+  <div class="relative">
+    {#if withMenu && showMenu}
+      <FABMenu>
+        {@render children?.()}
+      </FABMenu>
+      <ButtonIcon
+        color="filled"
+        iconProps={{ name: "close" }}
+        onclick={() => (showMenu = !showMenu)}
+      />
+    {:else}
+      <button
+        {@attach tooltip({ content: label, condition: showTooltip })}
+        {...restProps}
+        class={btnCls}
+        onclick={(e) => handleClick(e)}
+      >
+        <Icon {...iconProps} class={icon()} />
+        {#if expanded}
+          <p class={labelClass()}>
+            {label}
+          </p>
+        {/if}
+      </button>
     {/if}
-  </button>
+  </div>
 {/if}

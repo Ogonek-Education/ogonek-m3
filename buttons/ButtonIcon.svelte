@@ -1,48 +1,42 @@
 <script lang="ts">
-  import type { ButtonMDProps } from "./types";
+  import type { ButtonIconProps, ButtonMDProps } from "./types";
   import Icon from "../icon/Icon.svelte";
-  import { buttonMD } from "./theme";
+  import { buttonIcon } from "./theme";
   import clsx from "clsx";
   import LoadingIndicator from "../icon/LoadingIndicator.svelte";
 
   let {
     children,
     iconProps,
-    color = "filled",
+    color = "text",
     size = "md",
     shape = "round",
     type = "default",
     disabled,
     formaction,
     loading,
+    width = "default",
     class: className,
     ...restProps
-  }: ButtonMDProps = $props();
+  }: ButtonIconProps = $props();
 
-  const { base, icon } = $derived(buttonMD({ color, shape, type, size }));
+  const { base, icon } = $derived(
+    buttonIcon({ color, shape, type, size, width }),
+  );
 
   const btnCls = $derived(clsx(base(), className));
 </script>
 
 {#if restProps.href !== undefined}
   <a {...restProps} class={btnCls}>
-    {#if iconProps}
-      <Icon class={icon()} {...iconProps} />
-    {/if}
-
-    {@render children?.()}
+    <Icon class={icon()} {...iconProps} />
   </a>
 {:else}
   <button {disabled} {...restProps} class={btnCls} {formaction}>
-    {#if iconProps}
-      {#if loading}
-        <LoadingIndicator />
-      {:else}
-        <Icon class={icon()} {...iconProps} />
-      {/if}
-    {:else if loading}
+    {#if loading}
       <LoadingIndicator />
+    {:else}
+      <Icon class={icon()} {...iconProps} />
     {/if}
-    {@render children?.()}
   </button>
 {/if}

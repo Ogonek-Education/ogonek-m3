@@ -1,27 +1,25 @@
 <script lang="ts">
-  import type { ButtonMDProps } from "./types";
-  import Icon from "../icon/Icon.svelte";
-  import { buttonMD } from "./theme";
   import clsx from "clsx";
-  import LoadingIndicator from "../icon/LoadingIndicator.svelte";
+  import {
+    fabMenuItem,
+    Icon,
+    LoadingIndicator,
+    type FABMenuItemProps,
+  } from "$lib/components";
 
   let {
+    class: className,
+    color = "secondary",
+    loading,
     children,
     iconProps,
-    color = "filled",
-    size = "md",
-    shape = "round",
-    type = "default",
-    disabled,
     formaction,
-    loading,
-    class: className,
     ...restProps
-  }: ButtonMDProps = $props();
+  }: FABMenuItemProps = $props();
 
-  const { base, icon } = $derived(buttonMD({ color, shape, type, size }));
+  const { base, icon } = $derived(fabMenuItem({ color }));
 
-  const btnCls = $derived(clsx(base(), className));
+  const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
 {#if restProps.href !== undefined}
@@ -33,7 +31,7 @@
     {@render children?.()}
   </a>
 {:else}
-  <button {disabled} {...restProps} class={btnCls} {formaction}>
+  <button {...restProps} class={btnCls} {formaction}>
     {#if iconProps}
       {#if loading}
         <LoadingIndicator />

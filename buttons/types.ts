@@ -9,8 +9,11 @@ import type {
 } from "svelte/elements";
 import type {
   ButtonGroupVariants,
+  ButtonIconVariants,
   ButtonMDVariants,
   ButtonVariants,
+  FABMenuItemVariants,
+  FABMenuVariants,
   FABVariants,
 } from "./theme";
 
@@ -46,11 +49,34 @@ export type ButtonMDProps = ButtonMDVariants &
     loading?: boolean;
   };
 
+export type ButtonIconProps = ButtonIconVariants &
+  AnchorButtonAttributes & {
+    disabled?: boolean;
+    iconProps: IconProps;
+    formaction?: string;
+    loading?: boolean;
+  };
+
 export type FABProps = FABVariants &
   AnchorButtonAttributes & {
     disabled?: boolean;
     expanded?: boolean;
     label?: string;
+    withMenu?: boolean;
+    iconProps: IconProps;
+    formaction?: string;
+    children?: Snippet;
+  };
+
+export type FABMenuProps = FABMenuVariants &
+  HTMLAttributes<HTMLUListElement> & {
+    children: Snippet;
+  };
+
+export type FABMenuItemProps = FABMenuItemVariants &
+  AnchorButtonAttributes & {
+    loading?: boolean;
+    children: Snippet;
     iconProps: IconProps;
     formaction?: string;
   };

@@ -4,7 +4,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export type ButtonVariants = VariantProps<typeof button>;
 export type ButtonGroupVariants = VariantProps<typeof buttonGroup>;
 export type FABVariants = VariantProps<typeof fab>;
+export type FABMenuVariants = VariantProps<typeof fabMenu>;
 export type ButtonMDVariants = VariantProps<typeof buttonMD>;
+export type ButtonIconVariants = VariantProps<typeof buttonIcon>;
+export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 
 export const buttonMD = tv({
   slots: {
@@ -25,6 +28,42 @@ export const buttonMD = tv({
       md: "h-14 px-6 gap-2",
       lg: "",
       xl: "",
+    },
+    shape: {
+      round: "rounded-full before:rounded-full",
+      square: "rounded-xl",
+    },
+    type: {
+      toggle: "",
+      default: "",
+    },
+  },
+});
+
+export const buttonIcon = tv({
+  slots: {
+    base: "md-component-button-base group max-w-max",
+    icon: "size-6",
+  },
+  variants: {
+    color: {
+      elevated: {},
+      filled: "md-component-button-filled",
+      tonal: "md-component-button-tonal",
+      outlined: "md-component-button-outline",
+      text: "md-component-button-text",
+    },
+    size: {
+      xs: "",
+      sm: "",
+      md: "h-14",
+      lg: "",
+      xl: "",
+    },
+    width: {
+      narrow: "",
+      wide: "",
+      default: "aspect-square",
     },
     shape: {
       round: "rounded-full before:rounded-full",
@@ -102,7 +141,7 @@ export const buttonGroup = tv({
 
 export const fab = tv({
   slots: {
-    base: "md-component-button-base base",
+    base: "md-component-button-base relative",
     icon: "",
     label: "text-medium",
   },
@@ -131,6 +170,29 @@ export const fab = tv({
         base: "h-24",
         icon: "size-9",
       },
+    },
+  },
+});
+
+export const fabMenu = tv({
+  slots: {
+    base: "gap-1 pb-2 flex flex-col absolute",
+  },
+  variants: {
+    position: { top: "top-16" },
+  },
+});
+
+export const fabMenuItem = tv({
+  slots: {
+    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6",
+    icon: "size-6",
+  },
+  variants: {
+    color: {
+      primary: "md-component-button-filled",
+      secondary: "md-component-button-tonal",
+      tertiary: "md-component-button-outline",
     },
   },
 });
