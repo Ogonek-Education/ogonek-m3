@@ -1,11 +1,16 @@
 <script lang="ts">
   import clsx from "clsx";
-  import { secondary } from "./theme";
-  import type { SecondaryProps } from "./types";
+  import { labelt } from "./theme";
+  import type { LabelTProps } from "./types";
 
-  let { children, class: className, ...restProps }: SecondaryProps = $props();
+  let {
+    children,
+    type = "default",
+    class: className,
+    ...restProps
+  }: LabelTProps = $props();
 </script>
 
-<small {...restProps} class={secondary({ class: clsx(className) })}>
+<small {...restProps} class={labelt({ class: clsx(className) })}>
   {@render children()}
 </small>

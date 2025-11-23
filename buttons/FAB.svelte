@@ -2,7 +2,6 @@
   import clsx from "clsx";
   import { fab } from "./theme";
   import type { FABProps } from "./types";
-  import { tooltip } from "$lib/utils";
   import Icon from "../icon/Icon.svelte";
   import ButtonMD from "./ButtonMD.svelte";
   import FABMenu from "./FABMenu.svelte";
@@ -34,7 +33,6 @@
     }),
   );
 
-  const showTooltip = $derived(!expanded);
   let showMenu = $state(false);
 
   function handleClick(e: any) {
@@ -49,11 +47,7 @@
 </script>
 
 {#if restProps.href !== undefined}
-  <a
-    {...restProps}
-    {@attach tooltip({ content: label, condition: showTooltip })}
-    class={btnCls}
-  >
+  <a {...restProps} class={btnCls}>
     <Icon {...iconProps} class={icon()} />
     {#if expanded}
       <p class={labelClass()}>
@@ -73,12 +67,7 @@
         onclick={() => (showMenu = !showMenu)}
       />
     {:else}
-      <button
-        {@attach tooltip({ content: label, condition: showTooltip })}
-        {...restProps}
-        class={btnCls}
-        onclick={(e) => handleClick(e)}
-      >
+      <button {...restProps} class={btnCls} onclick={(e) => handleClick(e)}>
         <Icon {...iconProps} class={icon()} />
         {#if expanded}
           <p class={labelClass()}>

@@ -1,5 +1,11 @@
 import { tv } from "tailwind-variants";
 
-export const secondary = tv({
-  base: "text-text-tertiary font-semibold",
+export const labelt = tv({
+  base: "font-medium text-tiny md:text-xs lg:text-sm",
+  variants: {
+    type: {
+      default: "font-medium",
+      prominent: "font-semibold",
+    },
+  },
 });
