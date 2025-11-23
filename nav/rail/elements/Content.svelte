@@ -1,8 +1,8 @@
 <script lang="ts">
-  import SidebarItem from "../RailItem.svelte";
+  import RailItem from "../RailItem.svelte";
 </script>
 
-<SidebarItem
+<RailItem
   href="/admin/content"
   name="Content"
   iconProps={{ name: "text_compare" }}

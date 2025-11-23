@@ -2,9 +2,6 @@
   import { page } from "$app/state";
   import type { EventSmall } from "$lib/types/api/calendar";
   import { formatEventTime, getVideoCallService } from "$lib/utils";
-  import { Divider, VStack } from "../layout";
-  import { Heading, P } from "../typography";
-  import CardClickable from "./CardClickable.svelte";
 
   const {
     event,
@@ -16,7 +13,7 @@
     : null;
 </script>
 
-<CardClickable {deactivate} href="{page.params.day}/{event.id}">
+<Card {deactivate} href="{page.params.day}/{event.id}">
   <VStack class="justify-start">
     <Heading
       tag="h3"
@@ -38,4 +35,4 @@
   <Heading>
     {formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
   </Heading>
-</CardClickable>
+</Card>

@@ -1,10 +1,9 @@
 <script lang="ts">
-  import { MoveLeft, Sidebar } from "@lucide/svelte";
+  import { MoveLeft } from "@lucide/svelte";
   import { page } from "$app/state";
   import { type PageProps } from "./types";
   import { pageLayout } from "./theme";
   import clsx from "clsx";
-  import Navbar from "../../nav/Navbar.svelte";
 
   const {
     children,
@@ -13,7 +12,7 @@
     buttonClass,
     innerDivClass,
     iconClass,
-    sidebar,
+    Rail,
     padding = "lg",
     flexCol = true,
     position,
@@ -63,9 +62,9 @@
 </script>
 
 <div class={base({ class: clsx(base) })}>
-  {#if sidebar}
+  {#if Rail}
     <div class="hidden md:block">
-      {@render sidebar()}
+      {@render Rail()}
     </div>
   {/if}
   {#if showBack && !removeBackButton}

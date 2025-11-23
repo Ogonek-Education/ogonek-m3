@@ -10,5 +10,5 @@ export interface PageProps
   buttonClass?: string;
   innerDivClass?: string;
   iconClass?: string;
-  sidebar?: Snippet;
+  Rail?: Snippet;
 }

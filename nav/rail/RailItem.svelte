@@ -38,7 +38,7 @@
   {rel}
   {...rest}
   class={clsx(base(), className)}
-  data-cy={`sidebar-${name}`}
+  data-cy={`Rail-${name}`}
 >
   <div class={content()}>
     <div class={iconContainer()}>

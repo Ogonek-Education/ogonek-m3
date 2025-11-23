@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../RailItem.svelte";
+  import RailItem from "../RailItem.svelte";
   import { page } from "$app/state";
 
   function getHref(role: string) {
@@ -15,4 +15,4 @@
   let href = getHref(page.params.role);
 </script>
 
-<SidebarItem {href} name="Главная" iconProps={{ name: "home" }}></SidebarItem>
+<RailItem {href} name="Главная" iconProps={{ name: "home" }}></RailItem>

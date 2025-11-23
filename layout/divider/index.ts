@@ -5,5 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as Dropzone } from "./Dropzone.svelte";
+export { default as Divider } from "./Divider.svelte";
 

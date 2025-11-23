@@ -1,7 +1,7 @@
 <script lang="ts">
   import { X } from "@lucide/svelte";
   import type { Card } from "$lib/types";
-  import { Input, Label, Textarea } from "../forms";
+  import { Input, Label, Textarea } from "../../forms";
 
   let {
     index,

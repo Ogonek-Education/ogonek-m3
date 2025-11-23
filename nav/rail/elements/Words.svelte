@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../RailItem.svelte";
+  import RailItem from "../RailItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
   import texts from "$lib/texts";
@@ -14,8 +14,8 @@
   });
 </script>
 
-<SidebarItem
-  data-cy="sidebar-flashcards"
+<RailItem
+  data-cy="Rail-flashcards"
   href={$href}
   iconProps={{ name: "note_stack" }}
   name={texts.flashcards.title}

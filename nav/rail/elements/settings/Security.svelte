@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Coffee, Fingerprint } from "@lucide/svelte";
-  import SidebarItem from "../../RailItem.svelte";
+  import RailItem from "../../RailItem.svelte";
 
   import { page } from "$app/state";
 
@@ -8,4 +8,4 @@
   const name = "Безопасность";
 </script>
 
-<SidebarItem {href} {name} iconProps={{ name: "security" }} />
+<RailItem {href} {name} iconProps={{ name: "security" }} />

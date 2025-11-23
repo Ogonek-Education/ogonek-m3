@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../RailItem.svelte";
+  import RailItem from "../RailItem.svelte";
   import { page } from "$app/state";
   import { writable } from "svelte/store";
 
@@ -13,8 +13,8 @@
   });
 </script>
 
-<SidebarItem
-  data-cy="sidebar-tasks"
+<RailItem
+  data-cy="Rail-tasks"
   href={$href}
   iconProps={{ name: "assignment" }}
   name="Задания"

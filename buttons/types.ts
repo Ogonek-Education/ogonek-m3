@@ -52,6 +52,7 @@ export type ButtonMDProps = ButtonMDVariants &
 export type ButtonIconProps = ButtonIconVariants &
   AnchorButtonAttributes & {
     disabled?: boolean;
+    tooltipContent?: string;
     iconProps: IconProps;
     formaction?: string;
     loading?: boolean;

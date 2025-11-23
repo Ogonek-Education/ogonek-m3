@@ -1,9 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../RailItem.svelte";
+  import RailItem from "../RailItem.svelte";
 </script>
 
-<SidebarItem
-  href="/admin/legal"
-  name="Legal"
-  iconProps={{ name: "signature" }}
-/>
+<RailItem href="/admin/legal" name="Legal" iconProps={{ name: "signature" }} />

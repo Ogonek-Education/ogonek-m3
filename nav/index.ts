@@ -8,8 +8,8 @@ export * from "./rail";
 export * from "./types";
 
 // default exports for components in this folder
+export { default as AppBar } from "./AppBar.svelte";
 export { default as Footer } from "./Footer.svelte";
 export { default as Header } from "./Header.svelte";
 export { default as Loader } from "./Loader.svelte";
-export { default as Navbar } from "./Navbar.svelte";
 

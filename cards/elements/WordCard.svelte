@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import type { Card } from "$lib/types";
-  import { P } from "../typography";
+  import { Body, LabelT } from "../../typography";
 
   let {
     toggleCard,
@@ -40,9 +40,9 @@
       class="border-primary bg-bg-secondary padding-default absolute inset-0 flex items-center justify-center backface-hidden"
     >
       <div class="flex flex-col items-center justify-center">
-        <P class={truncateIfNeeded(card.front)}>
+        <Body>
           {card.front}
-        </P>
+        </Body>
         {#if card.mediaUrl}
           <div class="absolute top-2 right-2">
             <img
@@ -53,7 +53,7 @@
           </div>
         {/if}
         <div class="absolute right-3 bottom-2">
-          <P>Клик перевернет</P>
+          <LabelT>Клик перевернет</LabelT>
         </div>
       </div>
     </div>
@@ -65,9 +65,9 @@
       class="bg-primary border-primary-accent padding-default absolute flex size-full items-center justify-center backface-hidden"
     >
       <div class="flex h-full w-full flex-col items-center justify-center">
-        <P class={truncateIfNeeded(card.back)}>
+        <Body>
           {card.back}
-        </P>
+        </Body>
       </div>
     </div>
   {/if}

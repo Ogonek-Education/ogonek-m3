@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../../RailItem.svelte";
+  import RailItem from "../../RailItem.svelte";
   import { page } from "$app/state";
   import { writable } from "svelte/store";
 
@@ -18,7 +18,7 @@
   });
 </script>
 
-<SidebarItem
+<RailItem
   class="hidden md:flex"
   href={$href}
   name="Календарь"

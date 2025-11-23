@@ -11,9 +11,10 @@
     color = "text",
     size = "md",
     shape = "round",
-    type = "default",
+    variation = "default",
     disabled,
     formaction,
+    tooltipContent,
     loading,
     width = "default",
     class: className,
@@ -21,7 +22,7 @@
   }: ButtonIconProps = $props();
 
   const { base, icon } = $derived(
-    buttonIcon({ color, shape, type, size, width }),
+    buttonIcon({ color, shape, variation, size, width }),
   );
 
   const btnCls = $derived(clsx(base(), className));

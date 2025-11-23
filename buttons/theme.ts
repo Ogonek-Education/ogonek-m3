@@ -33,7 +33,7 @@ export const buttonMD = tv({
       round: "rounded-full before:rounded-full",
       square: "rounded-xl",
     },
-    type: {
+    variation: {
       toggle: "",
       default: "",
     },
@@ -69,7 +69,7 @@ export const buttonIcon = tv({
       round: "rounded-full before:rounded-full",
       square: "rounded-xl",
     },
-    type: {
+    variation: {
       toggle: "",
       default: "",
     },
@@ -148,7 +148,7 @@ export const fab = tv({
   variants: {
     config: {
       primary: {
-        base: "bg-md-sys-color-primary shadow-elevation-1 hover:shadow-elevation-2 hover:before:bg-md-sys-color-on-primary/8 rounded-xl focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10",
+        base: "bg-md-sys-color-primary shadow-elevation-1 hover:shadow-elevation-2 hover:before:bg-md-sys-color-on-primary/8 rounded-xl focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10 ",
         icon: "text-md-sys-color-on-primary",
         label: "text-md-sys-color-on-primary",
       },

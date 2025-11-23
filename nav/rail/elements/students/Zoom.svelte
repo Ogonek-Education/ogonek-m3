@@ -1,11 +1,11 @@
 <script lang="ts">
   import { Video } from "@lucide/svelte";
-  import SidebarItem from "../../RailItem.svelte";
+  import RailItem from "../../RailItem.svelte";
 
   const { href } = $props();
 </script>
 
-<SidebarItem
+<RailItem
   {href}
   iconProps={{ name: "video_call" }}
   name="Zoom"

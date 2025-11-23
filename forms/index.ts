@@ -2,7 +2,6 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./checkbox";
-export * from "./dropzone";
 export * from "./helper";
 export * from "./input";
 export * from "./label";

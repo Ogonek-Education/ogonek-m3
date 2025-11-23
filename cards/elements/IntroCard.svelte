@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Heading, P } from "../typography";
+  import { Heading, P } from "../../typography";
   import type { Icon as LucideIcon } from "@lucide/svelte";
 
   let { children, title = "Title", Icon }: Props = $props();

@@ -10,8 +10,8 @@
     Paperclip,
     TextInitial,
   } from "@lucide/svelte";
-  import { Secondary } from "../typography";
-  import { Button } from "../buttons";
+  import { LabelT } from "../../typography";
+  import { ButtonIcon } from "../../buttons";
 
   let { file, userId }: { file: FileSmall; userId?: string } = $props();
   let downloading = $state(false);
@@ -58,9 +58,9 @@
       disabled={downloading}
       class="group border-primary bg-clickable gap-default padding-default relative flex h-13 w-full items-center justify-between"
     >
-      <Secondary>
+      <LabelT>
         {file.name.split(".").shift()?.slice(0, 15)}
-      </Secondary>
+      </LabelT>
 
       {@render icon(file.mimeType || "")}
     </button>
@@ -77,12 +77,12 @@
       })}
     >
       <input type="hidden" value={file.id} name="fileId" />
-      <Button
+      <ButtonIcon
         tooltipContent="Удалить файл"
-        Icon={X}
+        iconProps={{ name: "close" }}
         formaction="?/deleteFile"
         type="submit"
-      ></Button>
+      ></ButtonIcon>
     </form>
   {/if}
 </div>
