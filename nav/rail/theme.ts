@@ -22,16 +22,15 @@ export const railElement = tv({
     content:
       "flex min-w-0 items-center rounded-full gap-0.5 py-1.5 transition-all",
     icon: "size-6",
-    iconContainer: "rounded-full transition-colors",
-    badge:
-      "bg-red/12 text-red ring-red absolute -top-1 -right-1 flex h-5 min-w-5 items-center justify-center rounded-2xl px-1.5 font-bold ring-2 md:relative md:top-0.5 md:right-0 md:ml-2 md:size-7",
+    iconContainer: "relative rounded-full transition-colors",
+
     label: "tracking-wide",
   },
   variants: {
     active: {
       true: {
         content: "text-md-sys-color-on-secondary-container",
-        label: "font-semibold",
+        label: "font-semibold ",
         iconContainer:
           "group-hover:text-md-sys-color-secondary  bg-md-sys-color-secondary-container",
       },
@@ -45,13 +44,13 @@ export const railElement = tv({
         base: "justify-start",
         content: "items-center p-4 gap-3",
         iconContainer: "",
-        label: "text-sm",
+        label: "md-typescale-label-large",
       },
       false: {
         iconContainer: "py-1.5 px-4",
         base: "justify-center",
         content: "items-center flex-col",
-        label: "text-xs ",
+        label: "md-typescale-label-medium",
       },
     },
   },

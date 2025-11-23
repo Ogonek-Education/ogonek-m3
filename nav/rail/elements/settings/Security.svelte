@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Coffee, Fingerprint } from "@lucide/svelte";
-  import SidebarItem from "../../SidebarItem.svelte";
+  import SidebarItem from "../../RailItem.svelte";
 
   import { page } from "$app/state";
 

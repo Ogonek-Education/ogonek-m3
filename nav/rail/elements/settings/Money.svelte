@@ -1,6 +1,6 @@
 <script lang="ts">
   import { RussianRuble } from "@lucide/svelte";
-  import SidebarItem from "../../SidebarItem.svelte";
+  import SidebarItem from "../../RailItem.svelte";
   import { page } from "$app/state";
 
   const href = `/${page.params.role}/settings/money`;

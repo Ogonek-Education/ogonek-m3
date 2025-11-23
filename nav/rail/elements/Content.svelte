@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../SidebarItem.svelte";
+  import SidebarItem from "../RailItem.svelte";
 </script>
 
 <SidebarItem

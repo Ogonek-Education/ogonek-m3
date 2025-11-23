@@ -2,7 +2,7 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./breadcrumb";
-export * from "./sidebar";
+export * from "./rail";
 
 // re-export TS/JS modules from this folder
 export * from "./types";

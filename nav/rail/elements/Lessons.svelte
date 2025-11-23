@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SidebarItem from "../SidebarItem.svelte";
+  import SidebarItem from "../RailItem.svelte";
   import { writable } from "svelte/store";
   import { page } from "$app/state";
 

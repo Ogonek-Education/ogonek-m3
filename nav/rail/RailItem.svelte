@@ -5,6 +5,7 @@
   import { railElement } from "./theme";
   import { collapseStore } from "$lib/stores";
   import Icon from "../../icon/Icon.svelte";
+  import Badge from "../../badge/Badge.svelte";
 
   let {
     href = "/",
@@ -28,7 +29,6 @@
     icon,
     iconContainer,
     label: labelClass,
-    badge: badgeCls,
   } = $derived(railElement({ active: isActive, expanded: !$collapseStore }));
 </script>
 
@@ -48,15 +48,12 @@
         wght={isActive ? 600 : 400}
         fill={isActive ? 1 : 0}
       />
+      {#if badge}
+        <Badge size={badge === -1 ? "sm" : "lg"} number={badge}></Badge>
+      {/if}
     </div>
     <p class={labelClass()}>
       {name}
     </p>
-
-    {#if badge}
-      <div class={badgeCls()}>
-        {badge > 99 ? "99+" : badge}
-      </div>
-    {/if}
   </div>
 </a>

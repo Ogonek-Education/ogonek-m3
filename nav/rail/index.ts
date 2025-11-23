@@ -8,6 +8,6 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as Sidebar } from "./Sidebar.svelte";
-export { default as SidebarItem } from "./SidebarItem.svelte";
+export { default as Rail } from "./Rail.svelte";
+export { default as RailItem } from "./RailItem.svelte";
 
