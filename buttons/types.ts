@@ -53,6 +53,7 @@ export type ButtonIconProps = ButtonIconVariants &
     tooltipContent?: string;
     iconProps: IconProps;
     formaction?: string;
+    onclick?: () => void;
     loading?: boolean;
   };
 

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { Icon, Layer } from "$lib/components";
+  import { Icon } from "$lib/components";
+  import { focuspicker } from "../theme";
 
   const conditionalScroll = (node: Element, shouldScroll: boolean) => {
     if (shouldScroll) node.scrollIntoView({ block: "nearest" });
@@ -10,52 +11,25 @@
   }: {
     options: { name: string; selected: boolean; activate: () => void }[];
   } = $props();
+
+  const { base } = focuspicker();
 </script>
 
-<div class="m3-container">
+<div class={base()}>
   {#each options as { name, selected, activate }}
+    {@const { item } = focuspicker({ selected })}
     <button
       type="button"
-      class="m3-font-body-large"
+      class={item()}
       onclick={activate}
       use:conditionalScroll={selected}
     >
-      <Layer />
       {#if selected}
-        <Icon name="check" />
+        <Icon class="ml-3 size-6" name="check" />
+      {:else}
+        <div class="ml-3 block size-6"></div>
       {/if}
       {name}
     </button>
   {/each}
 </div>
-
-<style>
-  .m3-container {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0;
-    overflow: auto;
-    margin-bottom: 1.25rem;
-  }
-  button {
-    display: inline-flex;
-    align-items: center;
-    height: 3rem;
-    padding-left: 3.5rem;
-    flex-shrink: 0;
-
-    background-color: transparent;
-    color: rgb(var(--m3-scheme-on-surface));
-    border: none;
-    cursor: pointer;
-    position: relative;
-  }
-  button > :global(svg) {
-    width: 1.5rem;
-    height: 1.5rem;
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    translate: 0 -50%;
-  }
-</style>

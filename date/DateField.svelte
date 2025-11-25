@@ -2,9 +2,10 @@
   import { onMount } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import type { TransitionConfig } from "svelte/transition";
-  import { Layer, Icon } from "$lib/components";
+  import { Textfield } from "$lib/components";
   import { easeEmphasized } from "$lib/components";
   import DatePickerDocked from "./DatePickerDocked.svelte";
+  import { clickOutside } from "$lib/actions";
 
   let {
     label,
@@ -13,7 +14,7 @@
     disabled = false,
     error = false,
     datePickerTitle = "Pick date",
-    ...extra
+    ...restProps
   }: {
     label: string;
     value?: string;
@@ -24,25 +25,9 @@
   } & HTMLInputAttributes = $props();
 
   const id = $props.id();
-  let hasJs = $state(false);
-  onMount(() => {
-    hasJs = true;
-  });
 
   let picker = $state(false);
-  const clickOutside = (container: Node) => {
-    const handleClick = (event: Event) => {
-      if (!container.contains(event.target as Node)) {
-        picker = false;
-      }
-    };
-    document.addEventListener("click", handleClick, true);
-    return {
-      destroy() {
-        document.removeEventListener("click", handleClick, true);
-      },
-    };
-  };
+
   const enterExit = (_: Node): TransitionConfig => {
     return {
       duration: 400,
@@ -56,34 +41,23 @@ opacity: ${Math.min(t * 3, 1)};`,
 </script>
 
 <div
-  class="m3-container"
-  class:has-js={hasJs}
-  class:disabled
-  class:error
-  use:clickOutside
-  style:--anchor-name="--{id}"
+  class="relative w-full"
+  use:clickOutside={() => {
+    picker = false;
+  }}
 >
-  <input
-    type="date"
-    class="focus-none m3-font-body-large"
-    {disabled}
-    {required}
+  <Textfield
     {id}
+    {label}
     bind:value
-    {...extra}
-    defaultValue={extra.defaultValue}
-  />
-  <!-- TODO/deprecated: once https://github.com/sveltejs/svelte/pull/16481 is finished, remove the defaultvalue thing -->
-  <label class="m3-font-body-small" for={id}>{label}</label>
-  <button
-    type="button"
-    {disabled}
-    title={datePickerTitle}
-    onclick={() => (picker = !picker)}
+    trailingIconProps={{ name: "calendar_month" }}
+    trailingOnClick={() => (picker = !picker)}
   >
-    <Layer />
-    <Icon name="calendar_month" />
-  </button>
+    {#snippet supportingText()}
+      ДД-ММ-ГГГГ
+    {/snippet}
+  </Textfield>
+
   {#if picker}
     <div class="picker" transition:enterExit>
       <DatePickerDocked
@@ -113,83 +87,6 @@ opacity: ${Math.min(t * 3, 1)};`,
     margin-block-end: 1rem;
   }
 
-  :root {
-    --m3-datefield-shape: var(--m3-util-rounding-extra-small);
-  }
-  .m3-container {
-    position: relative;
-    height: calc(3.5rem + var(--m3-util-density-term));
-    min-width: 15rem;
-    background-color: rgb(var(--m3-scheme-surface-container-highest));
-    border-radius: var(--m3-datefield-shape) var(--m3-datefield-shape) 0 0;
-    border-bottom: solid 1px
-      rgb(var(--error, var(--m3-scheme-on-surface-variant)));
-    anchor-name: var(--anchor-name);
-  }
-  input {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-
-    padding: 1rem 1rem 0rem 1rem;
-    padding-inline-start: 0.875rem;
-    @supports (-moz-appearance: none) {
-      padding-inline-start: 0.75rem;
-    }
-
-    &:dir(rtl) {
-      text-align: right; /* work around chromium bug 41489719 */
-    }
-
-    background-color: transparent;
-    color: rgb(var(--m3-scheme-on-surface));
-  }
-  label {
-    position: absolute;
-    inset-inline-start: 1rem;
-    top: 0.5rem;
-    color: rgb(var(--error, var(--m3-scheme-on-surface-variant)));
-    pointer-events: none;
-  }
-
-  button {
-    display: none;
-    position: absolute;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    height: 100%;
-    inset-inline-end: 0;
-
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-    color: rgb(var(--m3-scheme-on-surface-variant));
-    border-top-right-radius: var(--m3-datefield-shape);
-
-    cursor: pointer;
-  }
-
-  .m3-container.disabled {
-    background-color: rgb(var(--m3-scheme-on-surface) / 0.04);
-    border-bottom-color: rgb(var(--m3-scheme-on-surface) / 0.38);
-  }
-  input:disabled,
-  input:disabled + label {
-    color: rgb(var(--m3-scheme-on-surface) / 0.38);
-  }
-  button:disabled {
-    color: rgb(var(--m3-scheme-on-surface-variant) / 0.38);
-    cursor: auto;
-  }
-
-  .error {
-    --error: var(--m3-scheme-error);
-  }
-
   .picker {
     @supports not (anchor-name: --a) {
       position: absolute;
@@ -208,24 +105,5 @@ opacity: ${Math.min(t * 3, 1)};`,
         --picker-bottom-right, --picker-top-left, --picker-top-right;
     }
     z-index: 1;
-  }
-
-  @media (min-width: 37.5rem) {
-    .has-js button {
-      display: flex;
-    }
-    .has-js input {
-      @supports selector(::-webkit-calendar-picker-indicator) {
-        &::-webkit-calendar-picker-indicator {
-          display: none;
-        }
-      }
-      @supports not selector(::-webkit-calendar-picker-indicator) {
-        clip-path: inset(0 3.5rem 0 0);
-        &:dir(rtl) {
-          clip-path: inset(0 0 0 3.5rem);
-        }
-      }
-    }
   }
 </style>

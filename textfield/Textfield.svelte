@@ -16,6 +16,7 @@
     characterLimit,
     disabled = false,
     error = false,
+    trailingOnClick,
     ...restProps
   }: TextfieldProps = $props();
 
@@ -42,7 +43,9 @@
     </div>
 
     {#if trailingIconProps}
-      <Icon class={cls.trailingIcon()} {...trailingIconProps} />
+      <button class="z-50" onclick={trailingOnClick}>
+        <Icon class={cls.trailingIcon()} {...trailingIconProps} />
+      </button>
     {/if}
   </div>
 

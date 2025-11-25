@@ -15,6 +15,7 @@
     disabled,
     formaction,
     tooltipContent,
+    onclick,
     loading,
     width = "default",
     class: className,
@@ -33,7 +34,7 @@
     <Icon class={icon()} {...iconProps} />
   </a>
 {:else}
-  <button {disabled} {...restProps} class={btnCls} {formaction}>
+  <button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
     {#if loading}
       <LoadingIndicator />
     {:else}

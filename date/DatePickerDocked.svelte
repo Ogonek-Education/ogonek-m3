@@ -1,8 +1,9 @@
 <script lang="ts">
-  import Actions from "./_picker/Actions.svelte";
+  import ButtonMD from "../buttons/ButtonMD.svelte";
   import CalendarPicker from "./_picker/CalendarPicker.svelte";
   import FocusPicker from "./_picker/FocusPicker.svelte";
   import Header from "./_picker/Header.svelte";
+  import { datetimepicker } from "./theme";
 
   const now = new Date();
 
@@ -36,9 +37,11 @@
 
   const getLongMonth = (month: number) =>
     new Date(0, month).toLocaleDateString(undefined, { month: "long" });
+
+  const { base, buttons } = datetimepicker();
 </script>
 
-<div class="m3-container">
+<div class={base()}>
   <Header
     bind:currentView
     bind:focusedMonth
@@ -53,19 +56,34 @@
       {dateValidator}
       bind:chosenDate
     />
-    <Actions
-      {clearable}
-      chosenDate={Boolean(chosenDate)}
-      clear={() => (chosenDate = "")}
-      cancel={() => {
-        chosenDate = date;
-        close();
-      }}
-      ok={() => {
-        setDate(chosenDate);
-        close();
-      }}
-    />
+    <div class={buttons()}>
+      {#if clearable}
+        <ButtonMD
+          class="mr-auto"
+          variant="text"
+          onclick={() => (chosenDate = "")}
+          type="button">Очистить</ButtonMD
+        >
+      {/if}
+
+      <ButtonMD
+        variant="text"
+        onclick={() => {
+          chosenDate = date;
+          close();
+        }}
+        type="button">Отмена</ButtonMD
+      >
+      <ButtonMD
+        variant="text"
+        disabled={!clearable && !chosenDate}
+        onclick={() => {
+          setDate(chosenDate);
+          close();
+        }}
+        type="button">Готово</ButtonMD
+      >
+    </div>
   {:else if currentView == "month"}
     <FocusPicker
       options={Array.from({ length: 12 }, (_, i) => ({
@@ -90,20 +108,3 @@
     />
   {/if}
 </div>
-
-<style>
-  :root {
-    --m3-date-picker-shape: var(--m3-util-rounding-large);
-  }
-
-  .m3-container {
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    flex-direction: column;
-    background-color: rgb(var(--m3-scheme-surface-container-high));
-    width: 20.5rem;
-    height: 26.75rem;
-    border-radius: var(--m3-date-picker-shape);
-  }
-</style>
