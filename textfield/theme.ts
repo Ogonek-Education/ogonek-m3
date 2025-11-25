@@ -6,7 +6,7 @@ export const textfield = tv({
   slots: {
     base: `
       group w-full h-14 px-0 bg-md-sys-color-surface-container-highest
-      rounded-t-sm state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center border-b
+      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center border-b
       border-md-sys-color-on-surface-variant
       hover:border-md-sys-color-on-surface
       focus-within:border-md-sys-color-primary
