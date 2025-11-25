@@ -17,6 +17,7 @@ export * from "./search";
 export * from "./snackbar";
 export * from "./table";
 export * from "./textfield";
+export * from "./time";
 export * from "./toolbar";
 export * from "./typography";
 export * from "./utils";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ButtonIconProps, ButtonMDProps } from "./types";
+  import type { ButtonIconProps } from "./types";
   import Icon from "../icon/Icon.svelte";
   import { buttonIcon } from "./theme";
   import clsx from "clsx";
@@ -8,7 +8,7 @@
   let {
     children,
     iconProps,
-    color = "text",
+    variant = "text",
     size = "md",
     shape = "round",
     variation = "default",
@@ -22,7 +22,7 @@
   }: ButtonIconProps = $props();
 
   const { base, icon } = $derived(
-    buttonIcon({ color, shape, variation, size, width }),
+    buttonIcon({ variant, shape, variation, size, width }),
   );
 
   const btnCls = $derived(clsx(base(), className));

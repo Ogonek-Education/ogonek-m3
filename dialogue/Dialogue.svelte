@@ -44,16 +44,18 @@
     </p>
     <div class={buttonContainer()}>
       <ButtonMD
+        variant="text"
         onclick={() => {
           if (withState) {
             window.history.back();
           } else {
             toggle();
           }
-        }}
-        color="text">Отмена</ButtonMD
+        }}>Отмена</ButtonMD
       >
-      <ButtonMD formaction={confirmAction} color="text">{confirmText}</ButtonMD>
+      <ButtonMD variant="text" formaction={confirmAction}
+        >{confirmText}</ButtonMD
+      >
     </div>
   </div>
 </div>
