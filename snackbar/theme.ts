@@ -6,10 +6,10 @@ export const snackbar = tv({
   slots: {
     base: "rounded-sm relative min-h-12 max-h-17 flex z-30 items-center bg-md-sys-color-inverse-surface shadow-elevation-3 state-layer hover:before:bg-md-sys-color-inverse-primary/8 pr-2 pl-4 justify-between h-max py-3",
     label:
-      "text-md-sys-color-inverse-primary md-typescale-label-large px-3 cursor-pointer ",
+      "text-md-sys-color-inverse-primary md-sys-typescale-label-large px-3 cursor-pointer ",
     actionWrapper: "flex items-center z-40",
     supportingText:
-      "text-md-sys-color-inverse-on-surface md-typescale-body-medium max-w-[50ch] ",
+      "text-md-sys-color-inverse-on-surface md-sys-typescale-body-medium max-w-[50ch] ",
     icon: "size-6 text-md-sys-color-inverse-on-surface mr-1 ml-3",
   },
   variants: {

@@ -21,22 +21,22 @@ export const textfield = tv({
 
     input: `
       peer w-full pt-4 bg-transparent outline-none
-      md-typescale-body-large text-md-sys-color-on-surface
+      md-sys-typescale-body-large text-md-sys-color-on-surface
       disabled:text-md-sys-color-on-surface/38
     `,
 
     label: `
       absolute left-4 top-1/2 -translate-y-1/2
-      md-typescale-body-large
+      md-sys-typescale-body-large
       text-md-sys-color-on-surface-variant
       transition-all duration-150 pointer-events-none
 
       peer-focus:text-md-sys-color-primary
       peer-invalid:text-md-sys-color-error
 
-      peer-focus:top-1.5 peer-focus:md-typescale-body-small peer-focus:-translate-y-1
+      peer-focus:top-1.5 peer-focus:md-sys-typescale-body-small peer-focus:-translate-y-1
 
-      peer-not-placeholder-shown:top-1.5 peer-not-placeholder-shown:md-typescale-body-small peer-not-placeholder-shown:-translate-y-1
+      peer-not-placeholder-shown:top-1.5 peer-not-placeholder-shown:md-sys-typescale-body-small peer-not-placeholder-shown:-translate-y-1
     `,
 
     leadingIcon: `
@@ -53,7 +53,7 @@ export const textfield = tv({
 
     supportingText: `
       px-4 pt-1 flex justify-between
-      md-typescale-body-small
+      md-sys-typescale-body-small
       text-md-sys-color-on-surface-variant
       peer-invalid:text-md-sys-color-error
     `,

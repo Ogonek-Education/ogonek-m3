@@ -8,6 +8,6 @@ export const search = tv({
     leadingIcon: "text-md-sys-color-on-surface size-6 mr-4",
     trailingIcon: "text-md-sys-color-on-surface-variant size-6 ml-4",
     input:
-      " placeholder:text-md-sys-color-on-surface-variant placeholder:md-typescale-body-large z-50 md-typescale-body-large text-md-sys-color-on-surface outline-none w-full",
+      " placeholder:text-md-sys-color-on-surface-variant placeholder:md-sys-typescale-body-large z-50 md-sys-typescale-body-large text-md-sys-color-on-surface outline-none w-full",
   },
 });

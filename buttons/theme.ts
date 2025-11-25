@@ -11,7 +11,7 @@ export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 
 export const buttonMD = tv({
   slots: {
-    base: "md-component-button-base group max-w-max md-typescale-button-label",
+    base: "md-component-button-base group max-w-max md-sys-typescale-button-label",
     icon: "size-6",
   },
   variants: {
@@ -161,7 +161,7 @@ export const fab = tv({
       regular: {
         base: "h-14",
         icon: "size-6",
-        label: "md-typescale-fab-label",
+        label: "md-sys-typescale-fab-label",
       },
       medium: {
         base: "h-20",
@@ -186,7 +186,7 @@ export const fabMenu = tv({
 
 export const fabMenuItem = tv({
   slots: {
-    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-typescale-fab-label",
+    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label",
     icon: "size-6",
   },
   variants: {
