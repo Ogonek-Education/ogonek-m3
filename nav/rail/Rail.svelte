@@ -4,7 +4,14 @@
   import { fly } from "svelte/transition";
   import { Heading } from "../../typography";
   import Button from "../../buttons/Button.svelte";
-  import { FAB, HStack, Icon, rail, type RailProps } from "$lib/components";
+  import {
+    ButtonIcon,
+    FAB,
+    HStack,
+    Icon,
+    rail,
+    type RailProps,
+  } from "$lib/components";
   import { Menu, Plus, SquareChevronLeft } from "@lucide/svelte";
   let { children }: RailProps = $props();
 
@@ -16,10 +23,10 @@
 </script>
 
 <div class={base()}>
-  <button onclick={() => collapse()}>
-    {#if $collapseStore}
-      <Icon name="menu" />{:else}<Icon name="menu_open" />{/if}
-  </button>
+  <ButtonIcon
+    iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
+    onclick={() => collapse()}
+  />
   <FAB label="Добавить" expanded={!$collapseStore} iconProps={{ name: "add" }}
   ></FAB>
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>

@@ -24,10 +24,8 @@ export interface ButtonGroupProps
   disabled?: boolean;
 }
 
-export type HTMLButtonOrAnchorAttributes = Omit<
-  HTMLButtonAttributes & HTMLAnchorAttributes,
-  "color"
->;
+export type HTMLButtonOrAnchorAttributes = HTMLButtonAttributes &
+  HTMLAnchorAttributes;
 
 export type ButtonProps = ButtonVariants &
   AnchorButtonAttributes & {

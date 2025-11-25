@@ -18,13 +18,20 @@
   const { base, leadingIcon, trailingIcon, input } = $derived(search());
 </script>
 
-<div class={base()}>
+<label for="search" class={base()}>
   {#if leadingIconProps}
     <Icon {...leadingIconProps} class={leadingIcon()} />
   {/if}
-  <input {...restProps} {placeholder} type="text" class={input()} />
+  <input
+    id="search"
+    {...restProps}
+    {placeholder}
+    bind:this={elementRef}
+    type="text"
+    class={input()}
+  />
 
   {#if trailingIconProps}
     <Icon {...trailingIconProps} class={trailingIcon()} />
   {/if}
-</div>
+</label>

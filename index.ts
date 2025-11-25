@@ -5,6 +5,7 @@ export * from "./badge";
 export * from "./buttons";
 export * from "./cards";
 export * from "./checkbox";
+export * from "./datetime";
 export * from "./dialogue";
 export * from "./forms";
 export * from "./icon";

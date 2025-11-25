@@ -15,7 +15,7 @@ export const buttonMD = tv({
     icon: "size-6",
   },
   variants: {
-    color: {
+    variant: {
       elevated: {},
       filled: "md-component-button-filled",
       tonal: "md-component-button-tonal",
@@ -46,7 +46,7 @@ export const buttonIcon = tv({
     icon: "size-6",
   },
   variants: {
-    color: {
+    variant: {
       elevated: {},
       filled: "md-component-button-filled",
       tonal: "md-component-button-tonal",
@@ -84,7 +84,7 @@ export const button = tv({
     icon: "size-24 z-0 -right-10 -bottom-10 text-bg-tertiary absolute",
   },
   variants: {
-    color: {
+    variant: {
       primary: {
         base: "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container",
         state: "bg-md-sys-color-on-primary-container opacity-0",
@@ -190,7 +190,7 @@ export const fabMenuItem = tv({
     icon: "size-6",
   },
   variants: {
-    color: {
+    variant: {
       primary: "md-component-button-filled",
       secondary: "md-component-button-tonal",
       tertiary: "md-component-button-outline",

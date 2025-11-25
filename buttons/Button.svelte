@@ -9,7 +9,7 @@
   let {
     children,
     size = "md",
-    color = "primary",
+    variant = "primary",
     tag = "button",
     scale = "sm",
     position = "end",
@@ -30,7 +30,7 @@
   let showModal = $state(false);
   const { base, state, icon } = $derived(
     button({
-      color,
+      variant,
       size,
       position: _position,
       disabled: isDisabled,
@@ -46,7 +46,7 @@
   const showTooltip = $derived(!!Icon && !withIcon);
 
   function handleClick(e: any) {
-    if (color === "error" && withModal) {
+    if (variant === "error" && withModal) {
       e.preventDefault();
       showModal = true;
       return;
