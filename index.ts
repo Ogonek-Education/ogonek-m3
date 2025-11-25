@@ -13,6 +13,7 @@ export * from "./nav";
 export * from "./notification";
 export * from "./progress";
 export * from "./table";
+export * from "./textfield";
 export * from "./toolbar";
 export * from "./typography";
 export * from "./utils";
