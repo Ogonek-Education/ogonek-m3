@@ -4,6 +4,7 @@
 export * from "./badge";
 export * from "./buttons";
 export * from "./cards";
+export * from "./checkbox";
 export * from "./dialogue";
 export * from "./forms";
 export * from "./icon";
@@ -11,6 +12,7 @@ export * from "./kbd";
 export * from "./layout";
 export * from "./nav";
 export * from "./progress";
+export * from "./search";
 export * from "./snackbar";
 export * from "./table";
 export * from "./textfield";

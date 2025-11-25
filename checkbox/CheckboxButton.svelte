@@ -3,7 +3,6 @@
   import Checkbox from "./Checkbox.svelte";
   import { checkboxButton } from "./theme";
   import type { CheckboxButtonProps } from "./types";
-  import { Button } from "../../buttons";
 
   let {
     children,

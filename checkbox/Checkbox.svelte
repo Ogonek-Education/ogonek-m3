@@ -1,7 +1,6 @@
 <script lang="ts">
   import { checkbox } from "./theme";
   import clsx from "clsx";
-  import { Label } from "../label";
   import type { CheckboxProps } from "./types";
 
   let {
@@ -64,11 +63,7 @@
 
 {#if choices.length > 0}
   {#each choices as choice, i (choice.value ?? i)}
-    <Label
-      show={!!children || !!choice.label}
-      {...labelProps}
-      class={divStyle({ class: clsx(styling.div) })}
-    >
+    <label {...labelProps} class={divStyle({ class: clsx(styling.div) })}>
       <input
         type="checkbox"
         value={choice.value}
@@ -87,14 +82,10 @@
       {:else}
         {choice.label}
       {/if}
-    </Label>
+    </label>
   {/each}
 {:else}
-  <Label
-    show={!!children}
-    {...labelProps}
-    class={divStyle({ class: clsx(styling.div) })}
-  >
+  <label {...labelProps} class={divStyle({ class: clsx(styling.div) })}>
     <input
       type="checkbox"
       {value}
@@ -106,5 +97,5 @@
     {#if children}
       {@render children({ value, checked, disabled })}
     {/if}
-  </Label>
+  </label>
 {/if}
