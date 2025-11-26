@@ -62,7 +62,7 @@
       {displayedText}
     </TextComponent>
   </div>
-  {#if card.tip}
+  {#if card.tip && !isFlipped}
     <Body class="text-md-sys-color-on-surface-variant">
       {card.tip}
     </Body>

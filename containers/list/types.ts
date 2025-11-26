@@ -16,7 +16,7 @@ export type ListitemProps = {
   selected?: boolean;
   overline?: string | null;
   headline?: string;
-  supporting?: string;
+  supporting?: string | null;
   trailing?: Snippet;
   lines?: 1 | 2 | 3;
 } & ActionProps;
