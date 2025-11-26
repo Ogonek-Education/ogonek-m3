@@ -32,7 +32,7 @@ export const pageLayout = tv({
 export const splitPane = tv({
   slots: {
     left: "fixed top-0 bottom-0 left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
-    right: "min-h-screen p-4 bg-md-sys-color-surface rounded-lg",
+    right: "min-h-screen flex flex-col p-4 bg-md-sys-color-surface rounded-lg",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
     base: "",
   },

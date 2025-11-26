@@ -1,37 +1,31 @@
 <script>
+  import { Body, HStack, Label } from "$lib/components";
   import { legalPages } from "$lib/utils";
+  import VStack from "../containers/stack/VStack.svelte";
 </script>
 
-<footer
-  class=" bg-bg-primary border-primary z-40 flex w-full flex-col items-center justify-center rounded-none border-x-0 border-b-0 pb-20 text-sm font-medium md:text-base"
->
-  <dev
-    class="mg:grid-cols-2 grid w-full justify-center gap-4 gap-y-8 md:gap-y-24 lg:grid-cols-4 lg:gap-24"
-  >
-    <div class="gap-narrow padding-wider flex min-w-fit flex-col">
-      <p class="font-extrabold">Документы</p>
-      {#each Object.entries(legalPages) as [slug, title]}
-        <a href="/legal/{slug}">{title}</a>
-      {/each}
-    </div>
+<footer class="bg-md-sys-color-surface-container space-y-6 pt-12 pl-[520px]">
+  <VStack class="font-semibold">
+    <Body><a class="text-link" href="/contact">Контакт</a></Body>
+    <Body><a class="text-link" href="/why">Мотивация</a></Body>
+    <Body><a class="text-link" href="/pricing">Расценки</a></Body>
+  </VStack>
 
-    <div
-      class="padding-wider gap-narrow flex min-w-fit flex-1 flex-col rounded-none"
-    >
-      <p class="font-extrabold">ИП</p>
-      <p>Волков Данила Олегович</p>
-      <p>ОГРНИП 321774600758976</p>
-      <p>117042, г. Москва, ул. Южнобутовская, 60</p>
-
-      <a href="mailto:danila.volkov@ogonek.app">danila.volkov@ogonek.app</a>
+  <div class="grid w-full grid-cols-3 grid-rows-3 items-end">
+    <div class="row-span-3">
+      <p class="md-sys-typescale-display-small font-serif">Ogonëk</p>
+      <p class="md-sys-typescale-label-small">© 2024-2025 Данила Волков</p>
     </div>
-
-    <div class="gap-narrow padding-wider flex flex-col">
-      <p class="font-extrabold">Организация</p>
-      <a href="/contact">Контакт</a>
-      <a href="/why">Наша мотивация</a>
-      <a href="/pricing">Расценки</a>
-    </div>
-    <p class="padding-wider">© 2024-2025 Данила Волков</p>
-  </dev>
+    {#each Object.entries(legalPages) as [slug, title]}
+      <a class="text-link md-sys-typescale-label-small" href="/legal/{slug}"
+        >{title}</a
+      >
+    {/each}
+  </div>
+  <VStack class="md-sys-typescale-label-small pt-4 pb-4">
+    <p>ИП Волков Данила Олегович</p>
+    <p>ОГРНИП 321774600758976</p>
+    <p>117042, г. Москва, ул. Южнобутовская, 60</p>
+    <a href="mailto:danila.volkov@ogonek.app">danila.volkov@ogonek.app</a>
+  </VStack>
 </footer>

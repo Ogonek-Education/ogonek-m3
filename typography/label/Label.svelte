@@ -11,6 +11,6 @@
   }: LabelTProps = $props();
 </script>
 
-<small {...restProps} class={labelt({ class: clsx(className) })}>
+<p {...restProps} class={labelt({ class: clsx(className) })}>
   {@render children()}
-</small>
+</p>

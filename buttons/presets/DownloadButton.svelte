@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { Button } from "$lib/components/library";
+  import { enhance } from "$app/forms";
+  import { Button, ButtonIcon } from "$lib/components/library";
+  import texts from "$lib/texts";
   import type { URLResponse } from "$lib/types";
+  import { enhanceForm } from "$lib/utils";
 
   let downloadQueue = $state<URLResponse[]>([]);
   let currentDownloads = $state(0);
@@ -58,17 +61,8 @@
   }
 </script>
 
-  <Button
-    class="gap-narrow h-full items-end"
-    type="submit"
-    formaction="?/downloadAll"
-    >Загрузить
-
-  {#if urls}
-    <span class="mr-3 self-center">
-      {totalDownloads} / {downloadQueue.length +
-        currentDownloads +
-        totalDownloads}
-    </span>
-  {/if}
-</Button>
+<ButtonIcon
+  iconProps={{ name: "cloud_download" }}
+  type="submit"
+  formaction="?/downloadAll">Загрузить</ButtonIcon
+>

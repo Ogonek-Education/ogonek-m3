@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
   import logger from "$lib/logger";
-  import { formatPercentage } from "$lib/utils";
-  import ProgressBar from "../../progress/ProgressBar.svelte";
-  import { Button, HStack, Body, Label, VStack } from "$lib/components/library";
+  import { formatFileSize, formatPercentage } from "$lib/utils";
+  import Layer from "$lib/components/library/utils/Layer.svelte";
+  import { Button, Icon } from "$lib/components/library";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 
@@ -39,9 +39,22 @@
     abortController?: AbortController;
   }
 
-  let { taskId = null, folderId = null } = $props();
+  let {
+    taskId = null,
+    folderId = null,
+    readonly = false,
+    initialUploads = [],
+    label = "Область загрузки файлов",
+  }: {
+    taskId?: string | null;
+    folderId?: string | null;
+    readonly?: boolean;
+    initialUploads?: FileUploadState[];
+    label?: string;
+  } = $props();
 
-  let fileUploads: FileUploadState[] = $state([]);
+  let fileUploads: FileUploadState[] = $state([...initialUploads]);
+  let fileInputRef = $state<HTMLInputElement>();
 
   const CHUNK_SIZE = 5 * 1024 * 1024;
   const MAX_FILE_SIZE = 99 * 1024 * 1024; // 99MB
@@ -51,6 +64,8 @@
   }
 
   async function handleFileSelect(event: Event) {
+    if (readonly) return;
+
     const input = event.target as HTMLInputElement;
     if (!input.files?.length) return;
 
@@ -88,11 +103,13 @@
     startUploads();
   }
   function startUploads() {
+    if (readonly) return;
     fileUploads
       .filter((upload) => upload.status === "waiting")
       .forEach(uploadFile);
   }
   async function uploadFile(fileState: FileUploadState) {
+    if (readonly) return;
     const { id, file } = fileState;
     let uploadIdLocal = "";
     let fileIdLocal = "";
@@ -201,7 +218,7 @@
     } catch (error: any) {
       logger.error(`Upload failed for ${file.name}:`, error);
       fileState.status = "error";
-      fileState.errorMessage = "Upload failed";
+      fileState.errorMessage = "Ошибка загрузки";
 
       // Try to abort the upload on S3 if it was initialized
       if (uploadIdLocal && s3Key) {
@@ -226,7 +243,7 @@
   function cancelUpload(fileState: FileUploadState) {
     fileState.abortController?.abort();
     fileState.status = "error";
-    fileState.errorMessage = "Upload cancelled by user";
+    fileState.errorMessage = "Загрузка отменена пользователем";
   }
 
   // Remove a file from the list
@@ -304,6 +321,7 @@
   let isDragging = $state(false);
 
   function handleDragOver(e: DragEvent) {
+    if (readonly) return;
     e.preventDefault();
     isDragging = true;
   }
@@ -313,6 +331,7 @@
   }
 
   function handleDrop(e: DragEvent) {
+    if (readonly) return;
     e.preventDefault();
     isDragging = false;
 
@@ -328,61 +347,191 @@
     // Use your existing file handling function
     handleFileSelect(mockEvent);
   }
+
+  function triggerBrowse() {
+    if (readonly) return;
+    fileInputRef?.click();
+  }
+
+  function handleKeydown(e: KeyboardEvent) {
+    if (readonly) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      triggerBrowse();
+    }
+  }
+
+  const statusTone = (status: UploadStatus) => {
+    switch (status) {
+      case "complete":
+        return "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container";
+      case "error":
+        return "bg-md-sys-color-error/12 text-md-sys-color-error";
+      case "uploading":
+        return "bg-md-sys-color-primary/10 text-md-sys-color-primary";
+      default:
+        return "bg-md-sys-color-surface-variant text-md-sys-color-on-surface-variant";
+    }
+  };
+
+  const statusIcon = (status: UploadStatus) => {
+    switch (status) {
+      case "complete":
+        return "check_circle";
+      case "error":
+        return "error";
+      case "uploading":
+        return "cloud_upload";
+      default:
+        return "schedule";
+    }
+  };
+
+  const statusLabel = (fileState: FileUploadState) => {
+    switch (fileState.status) {
+      case "complete":
+        return "Готово";
+      case "error":
+        return "Ошибка";
+      case "uploading":
+        return `Загрузка — ${formatPercentage(fileState.progress.percentComplete)}%`;
+      default:
+        return "В очереди";
+    }
+  };
+
+  const progressWidth = (fileState: FileUploadState) =>
+    fileState.status === "complete"
+      ? 100
+      : formatPercentage(fileState.progress.percentComplete);
 </script>
 
-<HStack class="flex-1 items-center justify-center" size="full">
-  <label
-    for="fileInput"
-    ondragover={handleDragOver}
-    ondragleave={handleDragLeave}
-    ondrop={handleDrop}
-    aria-label="File upload area"
-    class="gap-default relative flex w-full flex-1
-			 cursor-pointer flex-col items-center justify-center
-			 border-dashed p-12 text-center duration-300
-			 {isDragging ? 'border-accent bg-accent/12' : 'border-primary'}"
-  >
-    <input
-      id="fileInput"
-      type="file"
-      name="file"
-      onchange={handleFileSelect}
-      multiple
-      class="hidden"
-    />
+<div class="space-y-1">
+  <p class="md-sys-typescale-title-small text-md-sys-color-on-surface">
+    Загрузка файлов
+  </p>
+  <p class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant">
+    Максимальный размер файла — 100 Мб. Перетащите или выберите несколько
+    файлов.
+  </p>
+</div>
 
-    <Label>Вы можете загрузить сюда любые файлы</Label>
-  </label>
+<label
+  for="fileInput"
+  ondragover={handleDragOver}
+  ondragleave={handleDragLeave}
+  ondrop={handleDrop}
+  aria-label="Область загрузки файлов"
+  aria-disabled={readonly}
+  class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-xl p-5 transition-all focus-within:outline-2 ${
+    isDragging
+      ? " bg-md-sys-color-primary/6 shadow-elevation-1"
+      : " bg-md-sys-color-surface-container-high "
+  }`}
+>
+  <input
+    id="fileInput"
+    type="file"
+    name="file"
+    onchange={handleFileSelect}
+    multiple
+    class="sr-only"
+    disabled={readonly}
+  />
 
-  {#if fileUploads.length > 0}
-    {#each fileUploads as fileState, index (index)}
-      <div
-        class="border-primary gap-default padding-default flex flex-col justify-between"
+  <div class="flex items-center gap-4">
+    <div
+      class={`flex size-12 items-center justify-center rounded-full transition-colors ${
+        isDragging
+          ? "bg-md-sys-color-primary text-md-sys-color-on-primary"
+          : "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary"
+      }`}
+    >
+      <Icon name="file_upload" class="size-6" />
+    </div>
+
+    <div class="space-y-1 text-left">
+      <p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
+        Перетащите файлы сюда
+      </p>
+      <p
+        class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
       >
-        <VStack class="items-start justify-between">
-          <Body>
-            {fileState.file.name.length > 15
-              ? fileState.file.name.slice(0, 15) + "..."
-              : fileState.file.name}
-          </Body>
+        Или нажмите, чтобы выбрать их на устройстве
+      </p>
+    </div>
+  </div>
 
-          <Button
-            class="size-12"
-            type="button"
-            onclick={() => removeFile(fileState)}>Удалить файл</Button
+  <Layer />
+</label>
+
+{#if fileUploads.length > 0}
+  <div class="space-y-3">
+    {#each fileUploads as fileState (fileState.id)}
+      <div class=" bg-md-sys-color-surface-container-high rounded-xl p-3">
+        <div class="flex items-start gap-3">
+          <div
+            class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
           >
-        </VStack>
-        {#if fileState.status === "uploading"}
-          <ProgressBar
-            progress={formatPercentage(fileState.progress.percentComplete)}
-          />
-        {:else if fileState.status === "complete"}
-          <Label color="green">Успех</Label>
-        {:else if fileState.status === "error"}
-          <Label color="red">Облом</Label>
+            <Icon class="size-6" name={statusIcon(fileState.status)} />
+          </div>
+
+          <div class="flex-1 space-y-1 overflow-hidden">
+            <p
+              class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate"
+            >
+              {fileState.file.name}
+            </p>
+            <p
+              class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
+            >
+              {formatFileSize(fileState.file.size)} • {statusLabel(fileState)}
+            </p>
+            {#if fileState.errorMessage}
+              <p class="md-sys-typescale-body-small text-md-sys-color-error">
+                {fileState.errorMessage}
+              </p>
+            {/if}
+          </div>
+
+          <div class="flex items-center gap-1">
+            {#if fileState.status === "uploading"}
+              <Button
+                variant="text"
+                iconProps={{ name: "close" }}
+                type="button"
+                onclick={() => cancelUpload(fileState)}
+              >
+                Отменить
+              </Button>
+            {:else}
+              <Button
+                variant="text"
+                iconProps={{ name: "delete" }}
+                type="button"
+                onclick={() => removeFile(fileState)}
+              >
+                Убрать
+              </Button>
+            {/if}
+          </div>
+        </div>
+
+        {#if fileState.status !== "error"}
+          <div
+            class="bg-md-sys-color-surface-variant w- mx-4 mt-3 h-1.5 overflow-hidden rounded-full"
+          >
+            <div
+              class={`h-full rounded-full ${
+                fileState.status === "complete"
+                  ? "bg-md-sys-color-secondary"
+                  : "bg-md-sys-color-primary"
+              } transition-[width] duration-300`}
+              style={`width: ${progressWidth(fileState)}%;`}
+            ></div>
+          </div>
         {/if}
       </div>
     {/each}
-  {/if}
-  <Label class="self-align-left">Максимальный размер файла – 100 Мб</Label>
-</HStack>
+  </div>
+{/if}
