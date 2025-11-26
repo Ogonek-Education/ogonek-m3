@@ -1,6 +1,6 @@
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import type { PageLayoutVariants } from "./theme";
+import type { PageLayoutVariants, SplitPaneVariants } from "./theme";
 
 export interface PageProps
   extends PageLayoutVariants,
@@ -12,3 +12,8 @@ export interface PageProps
   iconClass?: string;
   Rail?: Snippet;
 }
+
+export type SplitPaneProps = SplitPaneVariants & {
+  left: Snippet;
+  right: Snippet;
+};

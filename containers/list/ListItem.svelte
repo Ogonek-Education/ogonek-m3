@@ -39,7 +39,7 @@
   {/if}
 {/snippet}
 
-<li style:display="contents">
+<li>
   {#if "label" in restProps}
     {@const { label: _, ...extra } = restProps}
     <label class={cls.base()} {...extra}>
@@ -62,59 +62,3 @@
     </div>
   {/if}
 </li>
-
-<style>
-  .m3-container {
-    display: flex;
-    padding: 0.5rem 1.5rem 0.5rem 1rem;
-    align-items: center;
-    gap: 1rem;
-
-    text-align: inherit;
-    border: none;
-    position: relative;
-    background: transparent;
-    color: inherit;
-  }
-  button.m3-container,
-  label.m3-container {
-    cursor: pointer;
-  }
-  .lines-1 {
-    height: calc(3.5rem + var(--m3-util-density-term));
-  }
-  .lines-2 {
-    height: calc(4.5rem + var(--m3-util-density-term));
-  }
-  .lines-3 {
-    height: calc(5.5rem + var(--m3-util-density-term));
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    align-items: flex-start;
-  }
-  .body {
-    flex-grow: 1;
-  }
-  .leading,
-  .trailing {
-    display: contents;
-    color: rgb(var(--m3-scheme-on-surface-variant));
-  }
-  .leading > :global(svg),
-  .trailing > :global(svg) {
-    width: 1.5rem;
-    height: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  p {
-    margin: 0;
-  }
-  .supporting,
-  .overline- {
-    color: rgb(var(--m3-scheme-on-surface-variant));
-  }
-  .headline {
-    color: rgb(var(--m3-scheme-on-surface));
-  }
-</style>

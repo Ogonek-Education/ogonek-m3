@@ -17,9 +17,10 @@
     collapseStore.set(!$collapseStore);
   }
 
-  const { base, items } = $derived(rail({ expanded: !$collapseStore }));
+  const { base, items, ghost } = $derived(rail({ expanded: !$collapseStore }));
 </script>
 
+<div class={ghost()}></div>
 <div class={base()}>
   <ButtonIcon
     iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}

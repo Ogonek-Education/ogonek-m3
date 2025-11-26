@@ -5,6 +5,6 @@ export * from "./dialogue";
 export * from "./divider";
 export * from "./list";
 export * from "./merger";
-export * from "./page";
+export * from "./panes";
 export * from "./stack";
 

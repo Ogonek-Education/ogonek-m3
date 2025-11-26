@@ -18,7 +18,7 @@ export const stack = tv({
       h: "h-full",
     },
     gap: {
-      md: "gap-4",
+      md: "gap-3",
       none: "gap-0",
     },
   },

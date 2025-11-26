@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const listiem = tv({
   slots: {
-    base: "bg-md-sys-color-surface text-sys-color-on-surface-variant state-layer disabled:before:bg-md-sys-color-on-surface/10 hover:before:bg-md-sys-color-on-surface/8 focus:before:bg-md-sys-color-on-surface/10 md-sys-state-focus-indicator px-4 py-2 gap-4 focus:before:rounded-lg items-center justify-between relative flex",
+    base: "bg-md-sys-color-surface text-sys-color-on-surface-variant state-layer disabled:before:bg-md-sys-color-on-surface/10 hover:before:bg-md-sys-color-on-surface/8 focus:before:bg-md-sys-color-on-surface/10 md-sys-state-focus-indicator px-4 py-2 gap-4 items-center justify-between relative flex rounded-lg before:rounded-lg  ",
     leading: "size-6 inline-flex items-start",
     body: "",
     overline: "md-sys-typescale-label-small",

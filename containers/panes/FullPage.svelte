@@ -7,12 +7,10 @@
   const {
     children,
     classes,
-    removeBackButton = false,
     buttonClass,
     innerDivClass,
     iconClass,
     Rail,
-    padding = "lg",
     flexCol = true,
     position,
   }: PageProps = $props();
@@ -55,21 +53,12 @@
     },
   );
 
-  let { base, content, button, icon } = $derived(
-    pageLayout({ position, flexCol, padding }),
-  );
+  let { base, content } = $derived(pageLayout({ position, flexCol }));
 </script>
 
 <div class={base({ class: clsx(base) })}>
   {#if Rail}
-    <div class="hidden md:block">
-      {@render Rail()}
-    </div>
-  {/if}
-  {#if showBack && !removeBackButton}
-    <a {href} class={button({ class: clsx(button, styling.button) })}
-      >move left icon</a
-    >
+    {@render Rail()}
   {/if}
   <div class={content({ class: clsx(content, styling.content) })}>
     {@render children()}

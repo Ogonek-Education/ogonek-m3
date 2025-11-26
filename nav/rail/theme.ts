@@ -5,13 +5,18 @@ export type RailItemVariants = VariantProps<typeof railElement>;
 
 export const rail = tv({
   slots: {
-    base: "py-12 bg-md-sys-color-surface-container h-full z-40 flex-col transition-all  flex gap-6",
+    base: "py-12 fixed bg-md-sys-color-surface-container h-full z-20 flex-col transition-all flex gap-6",
     items: "space-y-3 pt-6",
+    ghost: "w-24",
   },
   variants: {
     expanded: {
-      true: "pl-9  w-60 items-start",
-      false: "w-24 items-center",
+      true: {
+        base: "pl-9 w-60 items-start shadow-elevation-3",
+      },
+      false: {
+        base: "w-24 items-center",
+      },
     },
   },
 });

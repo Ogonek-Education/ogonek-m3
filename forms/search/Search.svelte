@@ -18,7 +18,7 @@
   const { base, leadingIcon, trailingIcon, input } = $derived(search());
 </script>
 
-<label for="search" class={base()}>
+<label for="search" class={base({ class: clsx(className) })}>
   {#if leadingIconProps}
     <Icon {...leadingIconProps} class={leadingIcon()} />
   {/if}

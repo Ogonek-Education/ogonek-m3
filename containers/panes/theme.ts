@@ -3,14 +3,12 @@ import type { Classes } from "../../utils";
 
 export type PageLayoutVariants = VariantProps<typeof pageLayout> &
   Classes<typeof pageLayout>;
+export type SplitPaneVariants = VariantProps<typeof splitPane>;
 
 export const pageLayout = tv({
   slots: {
-    base: "border-collapse min-h-dvh border-border-primary md:border-t-2 md:border-2 md:border-x-0 flex overflow-visible",
-    content: "flex w-full flex-1 overflow-visible justify-between gap-default",
-    button:
-      "bg-clickable border-primary hidden md:flex min-h-dvh w-20 pt-3 md:pt-7 items-start justify-center rounded-none border-t-0 border-l-0",
-    icon: "size-12",
+    base: " min-h-dvh flex overflow-visible",
+    content: "flex w-full flex-1 overflow-visible justify-between h-full",
   },
   variants: {
     position: {
@@ -28,17 +26,14 @@ export const pageLayout = tv({
         content: "flex-row",
       },
     },
-    padding: {
-      none: "p-0",
-      sm: {
-        content: "padding-narrow",
-      },
-      md: {
-        content: "padding-default",
-      },
-      lg: {
-        content: "padding-wider",
-      },
-    },
+  },
+});
+
+export const splitPane = tv({
+  slots: {
+    left: "fixed top-0 bottom-0 left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
+    right: "min-h-screen p-4 bg-md-sys-color-surface rounded-lg",
+    drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
+    base: "",
   },
 });
