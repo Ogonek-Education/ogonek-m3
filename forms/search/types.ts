@@ -9,6 +9,7 @@ export interface SearchProps
   children?: Snippet;
   value?: string;
   elementRef?: HTMLInputElement;
+  trailingClick?: () => void;
   leadingIconProps?: IconProps;
   trailingIconProps?: IconProps;
 }

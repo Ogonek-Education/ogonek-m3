@@ -6,6 +6,7 @@
   import { collapseStore } from "$lib/stores";
   import Icon from "../../utils/icon/Icon.svelte";
   import Badge from "../../badge/Badge.svelte";
+  import Layer from "../../utils/Layer.svelte";
 
   let {
     href = "/",
@@ -51,6 +52,7 @@
       {#if badge}
         <Badge size={badge === -1 ? "sm" : "lg"} number={badge}></Badge>
       {/if}
+      <Layer />
     </div>
     <p class={labelClass()}>
       {name}

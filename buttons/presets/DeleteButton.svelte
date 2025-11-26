@@ -1,8 +1,10 @@
 <script lang="ts">
-  import { Button } from "$lib/components/library";
   import texts from "$lib/texts";
+  import ButtonIcon from "../ButtonIcon.svelte";
 </script>
 
-<Button formaction="?/delete">
-  {texts.crud.delete}
-</Button>
+<ButtonIcon
+  iconProps={{ name: "delete" }}
+  tooltipContent={texts.crud.delete}
+  formaction="?/delete"
+></ButtonIcon>

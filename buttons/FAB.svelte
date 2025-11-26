@@ -5,6 +5,7 @@
   import Icon from "../utils/icon/Icon.svelte";
   import FABMenu from "./FABMenu.svelte";
   import ButtonIcon from "./ButtonIcon.svelte";
+  import Layer from "../utils/Layer.svelte";
 
   let {
     children,
@@ -48,6 +49,7 @@
 {#if restProps.href !== undefined}
   <a {...restProps} class={btnCls}>
     <Icon {...iconProps} class={icon()} />
+    <Layer />
     {#if expanded}
       <p class={labelClass()}>
         {label}
@@ -69,6 +71,7 @@
     {:else}
       <button {...restProps} class={btnCls} onclick={(e) => handleClick(e)}>
         <Icon {...iconProps} class={icon()} />
+        <Layer />
         {#if expanded}
           <p class={labelClass()}>
             {label}

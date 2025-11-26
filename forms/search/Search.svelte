@@ -3,15 +3,20 @@
   import clsx from "clsx";
   import type { SearchProps } from "./types";
   import Icon from "../../utils/icon/Icon.svelte";
+  import { searchTerm } from "$lib/stores";
+  import { fade } from "svelte/transition";
 
   let {
     children,
     placeholder = "Поиск",
     value = $bindable(),
     elementRef = $bindable(),
-    trailingIconProps,
+    trailingIconProps = { name: "close" },
     leadingIconProps = { name: "search" },
     class: className,
+    trailingClick = () => {
+      searchTerm.set("");
+    },
     ...restProps
   }: SearchProps = $props();
 
@@ -27,11 +32,14 @@
     {...restProps}
     {placeholder}
     bind:this={elementRef}
+    bind:value
     type="text"
     class={input()}
   />
 
-  {#if trailingIconProps}
-    <Icon {...trailingIconProps} class={trailingIcon()} />
+  {#if trailingIconProps && value}
+    <button onclick={trailingClick} class="z-10" in:fade>
+      <Icon {...trailingIconProps} class={trailingIcon()} />
+    </button>
   {/if}
 </label>

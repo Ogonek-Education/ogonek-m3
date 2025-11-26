@@ -14,7 +14,7 @@
     ...restProps
   }: ListitemProps = $props();
 
-  const cls = listiem({ lines, selected });
+  const cls = $derived(listiem({ lines, selected }));
 </script>
 
 {#snippet content()}

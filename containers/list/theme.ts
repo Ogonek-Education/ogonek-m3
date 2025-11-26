@@ -18,7 +18,7 @@ export const listiem = tv({
     },
     selected: {
       true: {
-        base: "text-md-sys-color-on-surface",
+        base: "text-md-sys-color-on-surface bg-md-secondary-container",
         headline: "text-md-sys-color-on-secondary-container",
         trailing: "text-md-sys-color-primary",
       },

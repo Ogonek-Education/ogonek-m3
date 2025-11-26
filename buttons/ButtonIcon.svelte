@@ -4,6 +4,7 @@
   import { buttonIcon } from "./theme";
   import clsx from "clsx";
   import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
+  import Layer from "../utils/Layer.svelte";
 
   let {
     children,
@@ -32,6 +33,7 @@
 {#if restProps.href !== undefined}
   <a {...restProps} class={btnCls}>
     <Icon class={icon()} {...iconProps} />
+    <Layer />
   </a>
 {:else}
   <button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
@@ -39,6 +41,7 @@
       <LoadingIndicator />
     {:else}
       <Icon class={icon()} {...iconProps} />
+      <Layer />
     {/if}
   </button>
 {/if}

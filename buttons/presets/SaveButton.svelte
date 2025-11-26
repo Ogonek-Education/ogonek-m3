@@ -1,8 +1,12 @@
 <script lang="ts">
-  import { Button } from "$lib/components/library";
   import texts from "$lib/texts";
+  import ButtonIcon from "../ButtonIcon.svelte";
 </script>
 
-<Button type="submit" data-cy="save">
-  {texts.crud.save}
-</Button>
+<ButtonIcon
+  tooltipContent={texts.crud.save}
+  type="submit"
+  variant="filled"
+  data-cy="save"
+  iconProps={{ name: "save" }}
+></ButtonIcon>

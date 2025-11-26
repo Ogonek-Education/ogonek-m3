@@ -1,6 +1,10 @@
 <script lang="ts">
-  import { Button } from "$lib/components/library";
   import texts from "$lib/texts";
+  import ButtonIcon from "../ButtonIcon.svelte";
 </script>
 
-<Button href=".">{texts.crud.cancel}</Button>
+<ButtonIcon
+  iconProps={{ name: "cancel" }}
+  tooltipContent={texts.crud.cancel}
+  href="."
+></ButtonIcon>

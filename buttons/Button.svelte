@@ -4,6 +4,7 @@
   import { button } from "./theme";
   import clsx from "clsx";
   import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
+  import Layer from "../utils/Layer.svelte";
 
   let {
     children,
@@ -28,6 +29,7 @@
     {#if iconProps}
       <Icon class={icon()} {...iconProps} />
     {/if}
+    <Layer />
 
     {@render children?.()}
   </a>
@@ -43,5 +45,6 @@
       <LoadingIndicator />
     {/if}
     {@render children?.()}
+    <Layer />
   </button>
 {/if}
