@@ -4,7 +4,7 @@
   import type { RailItemProps } from "./types";
   import { railElement } from "./theme";
   import { collapseStore } from "$lib/stores";
-  import Icon from "../../icon/Icon.svelte";
+  import Icon from "../../utils/icon/Icon.svelte";
   import Badge from "../../badge/Badge.svelte";
 
   let {

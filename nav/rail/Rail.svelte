@@ -2,17 +2,15 @@
   import { collapseStore, readOnly } from "$lib/stores";
   import { quintOut } from "svelte/easing";
   import { fly } from "svelte/transition";
-  import { Heading } from "../../typography";
+  import { Headline } from "../../typography";
   import Button from "../../buttons/Button.svelte";
   import {
     ButtonIcon,
     FAB,
     HStack,
-    Icon,
     rail,
     type RailProps,
   } from "$lib/components";
-  import { Menu, Plus, SquareChevronLeft } from "@lucide/svelte";
   let { children }: RailProps = $props();
 
   function collapse() {
@@ -34,7 +32,7 @@
   </div>
   {#if $readOnly}
     <HStack class="padding-default mt-auto">
-      <Heading tag="h2" class="self-center">Режим чтения</Heading>
+      <Headline class="self-center">Режим чтения</Headline>
       <Button href="/pricing">Купить подписку</Button>
     </HStack>
   {/if}

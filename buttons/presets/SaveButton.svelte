@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { Button, Heading } from "$lib/components/library";
+  import { Button } from "$lib/components/library";
   import texts from "$lib/texts";
 </script>
 
-<Button color="prominent" type="submit" data-cy="save">
-  <Heading tag="h3">
-    {texts.crud.save}
-  </Heading>
+<Button type="submit" data-cy="save">
+  {texts.crud.save}
 </Button>

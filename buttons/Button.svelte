@@ -1,100 +1,47 @@
 <script lang="ts">
-  import clsx from "clsx";
+  import type { ButtonMDProps } from "./types";
+  import Icon from "../utils/icon/Icon.svelte";
   import { button } from "./theme";
-  import type { ButtonProps } from "./types";
-  import { tooltip } from "$lib/utils";
-  import ConfirmDelete from "$lib/components/ConfirmDelete.svelte";
-  import LoadingIndicator from "../icon/LoadingIndicator.svelte";
+  import clsx from "clsx";
+  import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
 
   let {
     children,
+    iconProps,
+    variant = "filled",
     size = "md",
-    variant = "primary",
-    tag = "button",
-    scale = "sm",
-    position = "end",
+    shape = "round",
     disabled,
     formaction,
-    loading = false,
-    withModal,
-    Icon,
-    withIcon = false,
-    tooltipContent,
+    loading,
     class: className,
     ...restProps
-  }: ButtonProps = $props();
+  }: ButtonMDProps = $props();
 
-  let isDisabled = $derived(Boolean(disabled) || loading);
-  const _position = $derived(Icon ? "center" : position);
-  const _scale = $derived(Icon ? "lg" : scale);
-  let showModal = $state(false);
-  const { base, state, icon } = $derived(
-    button({
-      variant,
-      size,
-      position: _position,
-      disabled: isDisabled,
-      scale: _scale,
-    }),
-  );
-  let btnCls = $derived(
-    base({
-      class: clsx(className),
-    }),
-  );
+  const { base, icon } = $derived(button({ variant, shape, size }));
 
-  const showTooltip = $derived(!!Icon && !withIcon);
-
-  function handleClick(e: any) {
-    if (variant === "error" && withModal) {
-      e.preventDefault();
-      showModal = true;
-      return;
-    } else if (restProps.onclick) {
-      restProps.onclick(e);
-    }
-  }
+  const btnCls = $derived(clsx(base(), className));
 </script>
 
 {#if restProps.href !== undefined}
-  <a
-    {...restProps}
-    {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
-    class={btnCls}
-  >
-    <span class={state()}> </span>
-    {#if Icon}
-      <Icon />
-    {:else}
-      {@render children?.()}
+  <a {...restProps} class={btnCls}>
+    {#if iconProps}
+      <Icon class={icon()} {...iconProps} />
     {/if}
+
+    {@render children?.()}
   </a>
 {:else}
-  <button
-    {@attach tooltip({ content: tooltipContent, condition: showTooltip })}
-    {...restProps}
-    class={btnCls}
-    {formaction}
-    onclick={(e) => handleClick(e)}
-    disabled={isDisabled}
-  >
-    <span class={state()}> </span>
-
-    {#if Icon}
+  <button {disabled} {...restProps} class={btnCls} {formaction}>
+    {#if iconProps}
       {#if loading}
         <LoadingIndicator />
       {:else}
-        <Icon />
+        <Icon class={icon()} {...iconProps} />
       {/if}
-    {:else}
-      {@render children?.()}
-      {#if loading}
-        <LoadingIndicator />
-      {/if}
+    {:else if loading}
+      <LoadingIndicator />
     {/if}
+    {@render children?.()}
   </button>
-{/if}
-
-{#if showModal}
-  <ConfirmDelete {formaction} bind:showModal />
 {/if}

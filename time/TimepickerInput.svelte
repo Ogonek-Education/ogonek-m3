@@ -1,12 +1,12 @@
 <script lang="ts">
   import { timepicker } from "./theme";
   import ButtonIcon from "../buttons/ButtonIcon.svelte";
-  import ButtonMD from "../buttons/ButtonMD.svelte";
+  import Button from "../buttons/Button.svelte";
   import type { TimepickerProps } from "./types";
 
   const {
     label = "Введите время",
-    value = "09:41",
+    value = $bindable("09:41"),
     name = "startTime",
   }: TimepickerProps = $props();
 
@@ -53,8 +53,8 @@
   <div class={buttonDiv()}>
     <ButtonIcon iconProps={{ name: "schedule" }} />
     <div>
-      <ButtonMD variant="text">Отмена</ButtonMD>
-      <ButtonMD variant="text">Готово</ButtonMD>
+      <Button variant="text">Отмена</Button>
+      <Button variant="text">Готово</Button>
     </div>
   </div>
 </div>

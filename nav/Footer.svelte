@@ -1,5 +1,4 @@
 <script>
-  import { A, P } from "$lib/components/library";
   import { legalPages } from "$lib/utils";
 </script>
 
@@ -10,29 +9,29 @@
     class="mg:grid-cols-2 grid w-full justify-center gap-4 gap-y-8 md:gap-y-24 lg:grid-cols-4 lg:gap-24"
   >
     <div class="gap-narrow padding-wider flex min-w-fit flex-col">
-      <P class="font-extrabold">Документы</P>
+      <p class="font-extrabold">Документы</p>
       {#each Object.entries(legalPages) as [slug, title]}
-        <A href="/legal/{slug}">{title}</A>
+        <a href="/legal/{slug}">{title}</a>
       {/each}
     </div>
 
     <div
       class="padding-wider gap-narrow flex min-w-fit flex-1 flex-col rounded-none"
     >
-      <P class="font-extrabold">ИП</P>
-      <P>Волков Данила Олегович</P>
-      <P>ОГРНИП 321774600758976</P>
-      <P>117042, г. Москва, ул. Южнобутовская, 60</P>
+      <p class="font-extrabold">ИП</p>
+      <p>Волков Данила Олегович</p>
+      <p>ОГРНИП 321774600758976</p>
+      <p>117042, г. Москва, ул. Южнобутовская, 60</p>
 
-      <A href="mailto:danila.volkov@ogonek.app">danila.volkov@ogonek.app</A>
+      <a href="mailto:danila.volkov@ogonek.app">danila.volkov@ogonek.app</a>
     </div>
 
     <div class="gap-narrow padding-wider flex flex-col">
-      <P class="font-extrabold">Организация</P>
-      <A href="/contact">Контакт</A>
-      <A href="/why">Наша мотивация</A>
-      <A href="/pricing">Расценки</A>
+      <p class="font-extrabold">Организация</p>
+      <a href="/contact">Контакт</a>
+      <a href="/why">Наша мотивация</a>
+      <a href="/pricing">Расценки</a>
     </div>
-    <P class="padding-wider ">© 2024-2025 Данила Волков</P>
+    <p class="padding-wider">© 2024-2025 Данила Волков</p>
   </dev>
 </footer>

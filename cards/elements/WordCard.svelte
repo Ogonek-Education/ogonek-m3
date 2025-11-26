@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
   import type { Card } from "$lib/types";
-  import { Body, LabelT } from "../../typography";
+  import { Body, Label } from "../../typography";
 
   let {
     toggleCard,
@@ -53,7 +53,7 @@
           </div>
         {/if}
         <div class="absolute right-3 bottom-2">
-          <LabelT>Клик перевернет</LabelT>
+          <Label>Клик перевернет</Label>
         </div>
       </div>
     </div>

@@ -4,8 +4,7 @@
   import { getBadgeConfig } from "$lib/utils";
   import type { TaskSmall } from "$lib/types";
   import { page } from "$app/state";
-  import { VStack } from "../../layout";
-  import { Heading } from "../../typography";
+  import { Headline } from "../../typography";
 
   let { task }: { task: TaskSmall } = $props();
   const formattedDate: string = formatDateOnly(task.dueDate);
@@ -16,7 +15,7 @@
 </script>
 
 <Card data-cy="task-card" {href}>
-  <Heading class="text-center md:text-left" tag="h3">
+  <Headline class="text-center md:text-left">
     {task.title}
-  </Heading>
+  </Headline>
 </Card>

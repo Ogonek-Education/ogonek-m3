@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Button, Heading } from "$lib/components/library";
+  import { Button } from "$lib/components/library";
   import texts from "$lib/texts";
 </script>
 
-<Button withModal formaction="?/delete" color="red">
-  <Heading tag="h3">{texts.crud.delete}</Heading>
+<Button formaction="?/delete">
+  {texts.crud.delete}
 </Button>

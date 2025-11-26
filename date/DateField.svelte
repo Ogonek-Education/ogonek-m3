@@ -9,7 +9,7 @@
 
   let {
     label = "Дата",
-    value,
+    value = $bindable(),
     required = false,
     disabled = false,
     error = false,

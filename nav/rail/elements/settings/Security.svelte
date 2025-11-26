@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Coffee, Fingerprint } from "@lucide/svelte";
   import RailItem from "../../RailItem.svelte";
 
   import { page } from "$app/state";

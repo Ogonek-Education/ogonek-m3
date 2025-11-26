@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { X } from "@lucide/svelte";
   import type { Card } from "$lib/types";
-  import { Input, Label, Textarea } from "../../forms";
+  import { Textfield, Textarea } from "../../forms";
 
   let {
     index,
@@ -19,26 +18,24 @@
     title="Убрать"
     data-cy="flashcard-remove-button"
   >
-    <X class="size-4" />
+    x
   </button>
 
   <div class="gap-default flex flex-col">
-    <Label name="Лицо">
-      <Input
-        name={`cards[${index}][front]`}
-        placeholder="Apple (n)"
-        bind:value={card.front}
-      />
-    </Label>
+    <Textfield
+      name={`cards[${index}][front]`}
+      id={`cards[${index}][front]`}
+      placeholder="Apple (n)"
+      label="Лицо"
+      bind:value={card.front}
+    />
 
-    <Label name="Оборот">
-      <Textarea
-        rows={3}
-        class="resize-none"
-        name={`cards[${index}][back]`}
-        bind:value={card.back}
-        placeholder="The creator of the Mac"
-      />
-    </Label>
+    <Textarea
+      rows={3}
+      class="resize-none"
+      name={`cards[${index}][back]`}
+      bind:value={card.back}
+      placeholder="The creator of the Mac"
+    />
   </div>
 </div>

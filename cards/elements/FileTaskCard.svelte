@@ -2,34 +2,14 @@
   import { enhanceForm } from "$lib/utils";
   import { enhance } from "$app/forms";
   import type { FileSmall } from "$lib/types";
-  import {
-    Image,
-    X,
-    Activity,
-    Play,
-    Paperclip,
-    TextInitial,
-  } from "@lucide/svelte";
-  import { LabelT } from "../../typography";
+
+  import { Label } from "../../typography";
   import { ButtonIcon } from "../../buttons";
 
   let { file, userId }: { file: FileSmall; userId?: string } = $props();
   let downloading = $state(false);
 </script>
 
-{#snippet icon(mimeType: string)}
-  {#if mimeType.startsWith("image/")}
-    <Image class="text-default size-5" />
-  {:else if mimeType.startsWith("audio/")}
-    <Activity class="text-default size-5" />
-  {:else if mimeType.startsWith("video/")}
-    <Play class="text-default size-5" />
-  {:else if mimeType.startsWith("text/")}
-    <TextInitial class="text-default size-5" />
-  {:else}
-    <Paperclip class="text-default size-5" />
-  {/if}
-{/snippet}
 <div class="gap-default flex w-full items-center">
   <form
     method="POST"
@@ -58,11 +38,9 @@
       disabled={downloading}
       class="group border-primary bg-clickable gap-default padding-default relative flex h-13 w-full items-center justify-between"
     >
-      <LabelT>
+      <Label>
         {file.name.split(".").shift()?.slice(0, 15)}
-      </LabelT>
-
-      {@render icon(file.mimeType || "")}
+      </Label>
     </button>
   </form>
   {#if file.ownerId === userId}

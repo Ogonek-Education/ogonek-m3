@@ -1,4 +1,3 @@
-import type { CloseButtonVariants } from "$lib/components/library/utils/close-button/theme";
 import type {
   HTMLAnchorAttributes,
   HTMLAttributes,
@@ -18,15 +17,6 @@ export type SizeType =
   | typeof md
   | typeof lg
   | typeof xl;
-
-export type CloseButtonProps = CloseButtonVariants &
-  AnchorButtonAttributes & {
-    onclick?: (ev: MouseEvent) => void;
-    name?: string;
-    "aria-label"?: string;
-    class?: string;
-    svgClass?: string;
-  };
 
 export type AnchorButtonAttributes =
   | ({ href: string } & HTMLAnchorAttributes)

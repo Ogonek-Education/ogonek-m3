@@ -1,18 +1,9 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
-  import { Upload, X } from "@lucide/svelte";
   import logger from "$lib/logger";
   import { formatPercentage } from "$lib/utils";
   import ProgressBar from "../../progress/ProgressBar.svelte";
-  import {
-    Button,
-    Divider,
-    Helper,
-    HStack,
-    P,
-    Secondary,
-    VStack,
-  } from "$lib/components/library";
+  import { Button, HStack, Body, Label, VStack } from "$lib/components/library";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 
@@ -360,8 +351,7 @@
       class="hidden"
     />
 
-    <Upload class="self-center" />
-    <Secondary>Вы можете загрузить сюда любые файлы</Secondary>
+    <Label>Вы можете загрузить сюда любые файлы</Label>
   </label>
 
   {#if fileUploads.length > 0}
@@ -370,33 +360,29 @@
         class="border-primary gap-default padding-default flex flex-col justify-between"
       >
         <VStack class="items-start justify-between">
-          <P>
+          <Body>
             {fileState.file.name.length > 15
               ? fileState.file.name.slice(0, 15) + "..."
               : fileState.file.name}
-          </P>
+          </Body>
 
           <Button
-            tooltipContent="Удалить файл"
             class="size-12"
-            Icon={X}
             type="button"
-            onclick={() => removeFile(fileState)}
-          />
+            onclick={() => removeFile(fileState)}>Удалить файл</Button
+          >
         </VStack>
         {#if fileState.status === "uploading"}
           <ProgressBar
             progress={formatPercentage(fileState.progress.percentComplete)}
           />
         {:else if fileState.status === "complete"}
-          <Helper color="green">Успех</Helper>
+          <Label color="green">Успех</Label>
         {:else if fileState.status === "error"}
-          <Helper color="red">Облом</Helper>
+          <Label color="red">Облом</Label>
         {/if}
       </div>
     {/each}
   {/if}
-  <Secondary class="self-align-left"
-    >Максимальный размер файла – 100 Мб</Secondary
-  >
+  <Label class="self-align-left">Максимальный размер файла – 100 Мб</Label>
 </HStack>

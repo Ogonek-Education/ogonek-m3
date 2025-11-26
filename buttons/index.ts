@@ -9,9 +9,7 @@ export * from "./types";
 
 // default exports for components in this folder
 export { default as Button } from "./Button.svelte";
-export { default as ButtonGroup } from "./ButtonGroup.svelte";
 export { default as ButtonIcon } from "./ButtonIcon.svelte";
-export { default as ButtonMD } from "./ButtonMD.svelte";
 export { default as FAB } from "./FAB.svelte";
 export { default as FABMenu } from "./FABMenu.svelte";
 export { default as FABMenuItem } from "./FABMenuItem.svelte";

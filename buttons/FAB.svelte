@@ -2,7 +2,7 @@
   import clsx from "clsx";
   import { fab } from "./theme";
   import type { FABProps } from "./types";
-  import Icon from "../icon/Icon.svelte";
+  import Icon from "../utils/icon/Icon.svelte";
   import FABMenu from "./FABMenu.svelte";
   import ButtonIcon from "./ButtonIcon.svelte";
 

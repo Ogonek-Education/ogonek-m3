@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { CircleUserRound, Menu } from "@lucide/svelte";
   import type { Snippet } from "svelte";
   import { page } from "$app/state";
   import { breadNameStore } from "$lib/stores";
   import Breadcrumb from "./breadcrumb/Breadcrumb.svelte";
   import BreadcrumbItem from "./breadcrumb/BreadcrumbItem.svelte";
   import type { BreadcrumbSegment, NavPage } from "./types";
-  import { Heading } from "../typography";
+  import { Headline } from "../typography";
   import { clickOutside } from "$lib/actions";
 
   let {
@@ -66,21 +65,21 @@
         <button
           class="max-w-max active:scale-95"
           onclick={() => (showModal = !showModal)}
-          data-cy="mobile-nav-toggle"><Menu /></button
+          data-cy="mobile-nav-toggle">menu icon</button
         >
         <a href={`/${role}/dashboard`}>
-          <Heading class="text-center font-serif">Ogonëk</Heading>
+          <Headline class="text-center font-serif">Ogonëk</Headline>
         </a>
         <a
           href={`/${role}/settings/account`}
           class="max-w-max place-self-end active:scale-95"
         >
-          <CircleUserRound />
+          user round icon
         </a>
       </div>
     {:else}
       <a href="/">
-        <Heading class="text-center font-serif">Ogonëk</Heading>
+        <Headline class="text-center font-serif">Ogonëk</Headline>
       </a>
     {/if}
     <Breadcrumb>

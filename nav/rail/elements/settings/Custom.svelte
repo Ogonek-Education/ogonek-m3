@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { CircleUserRound, Palette } from "@lucide/svelte";
   import RailItem from "../../RailItem.svelte";
   import { page } from "$app/state";
 

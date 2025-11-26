@@ -1,7 +1,12 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import type { EventSmall } from "$lib/types/api/calendar";
+  import type { EventSmall } from "$lib/types";
   import { formatEventTime, getVideoCallService } from "$lib/utils";
+  import Divider from "../../containers/divider/Divider.svelte";
+  import VStack from "../../containers/stack/VStack.svelte";
+  import Body from "../../typography/body/Body.svelte";
+  import Headline from "../../typography/headline/Headline.svelte";
+  import Card from "../Card.svelte";
 
   const {
     event,
@@ -13,26 +18,23 @@
     : null;
 </script>
 
-<Card {deactivate} href="{page.params.day}/{event.id}">
+<Card href="{page.params.day}/{event.id}">
   <VStack class="justify-start">
-    <Heading
-      tag="h3"
-      class={event.status === "cancelled" ? "line-through" : ""}
-    >
+    <Headline class={event.status === "cancelled" ? "line-through" : ""}>
       {page.params.role === "t" ? event.title : "Занятие"}
-    </Heading>
+    </Headline>
     {#if event.location}
       <Divider />
       {#if videoCallService}
-        <P>{videoCallService}</P>
+        <Body>{videoCallService}</Body>
       {:else}
-        <P>
+        <Body>
           {event.location}
-        </P>
+        </Body>
       {/if}
     {/if}
   </VStack>
-  <Heading>
+  <Headline>
     {formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
-  </Heading>
+  </Headline>
 </Card>

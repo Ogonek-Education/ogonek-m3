@@ -1,6 +1,5 @@
 import { tv, type VariantProps } from "tailwind-variants";
 import type { Classes } from "../../utils";
-import { input } from "../input";
 
 export type SelectVariants = VariantProps<typeof select> &
   Classes<typeof select>;
@@ -20,9 +19,6 @@ export const select = tv({
       sm: "padding-narrow",
       md: "padding-default",
       lg: "padding-default text-xl md:text-2xl",
-    },
-    color: {
-      default: input["variants"]["color"]["default"]["input"],
     },
   },
 });

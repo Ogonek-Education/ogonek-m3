@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { clearNotification } from "$lib/stores";
   import { fly } from "svelte/transition";
-  import { P, snackbar, type SnackBarProps } from "$lib/components/library";
-  import Icon from "../icon/Icon.svelte";
+  import { snackbar, type SnackBarProps } from "$lib/components/library";
+  import Icon from "../utils/icon/Icon.svelte";
+  import { notificationStore } from "$lib/stores";
 
   let {
     message,
@@ -47,7 +47,7 @@
 
       {#if showClose}
         <button
-          onclick={clearNotification}
+          onclick={() => notificationStore.set("")}
           aria-label="Dismiss snackbar"
           data-cy="notification-dismiss"
         >

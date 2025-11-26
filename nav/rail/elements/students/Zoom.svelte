@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Video } from "@lucide/svelte";
   import RailItem from "../../RailItem.svelte";
 
   const { href } = $props();

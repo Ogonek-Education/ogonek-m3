@@ -1,6 +1,5 @@
 import type { IconProps } from "$lib";
-import type { AnchorButtonAttributes } from "$lib/types";
-import type { Icon as LucideIcon } from "@lucide/svelte";
+import type { AnchorButtonAttributes } from "$lib/components";
 import type { Snippet } from "svelte";
 import type {
   HTMLAnchorAttributes,
@@ -11,7 +10,6 @@ import type {
   ButtonGroupVariants,
   ButtonIconVariants,
   ButtonMDVariants,
-  ButtonVariants,
   FABMenuItemVariants,
   FABMenuVariants,
   FABVariants,
@@ -26,18 +24,6 @@ export interface ButtonGroupProps
 
 export type HTMLButtonOrAnchorAttributes = HTMLButtonAttributes &
   HTMLAnchorAttributes;
-
-export type ButtonProps = ButtonVariants &
-  AnchorButtonAttributes & {
-    tag?: string;
-    disabled?: boolean;
-    loading?: boolean;
-    tooltipContent?: string;
-    Icon?: typeof LucideIcon;
-    withModal?: boolean;
-    formaction?: string;
-    withIcon?: boolean;
-  };
 
 export type ButtonMDProps = ButtonMDVariants &
   AnchorButtonAttributes & {

@@ -5,5 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as Label } from "./Label.svelte";
+export { default as Checkbox } from "./Checkbox.svelte";
 

@@ -2,7 +2,6 @@
   import clsx from "clsx";
   import { breadcrumbItem } from "./theme";
   import type { BreadcrumbItemProps } from "$lib";
-  import { ChevronRight } from "@lucide/svelte";
 
   let {
     children,
@@ -32,7 +31,7 @@
       {@render children()}
     </a>
   {:else}
-    <ChevronRight class={separator({ class: clsx(styling.separator) })} />
+    chevron right
 
     {#if href}
       <a

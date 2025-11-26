@@ -1,9 +1,9 @@
 <script lang="ts">
   import type { ButtonIconProps } from "./types";
-  import Icon from "../icon/Icon.svelte";
+  import Icon from "../utils/icon/Icon.svelte";
   import { buttonIcon } from "./theme";
   import clsx from "clsx";
-  import LoadingIndicator from "../icon/LoadingIndicator.svelte";
+  import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
 
   let {
     children,

@@ -5,9 +5,9 @@ export * from "./_picker";
 
 // re-export TS/JS modules from this folder
 export * from "./theme";
-export * from "./types";
 
 // default exports for components in this folder
 export { default as DateField } from "./DateField.svelte";
 export { default as DatePickerDocked } from "./DatePickerDocked.svelte";
+export { default as DatetimePicker } from "./DatetimePicker.svelte";
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, Heading, P } from "$lib/components/library";
+  import { Button } from "$lib/components/library";
   import type { URLResponse } from "$lib/types";
 
   let downloadQueue = $state<URLResponse[]>([]);
@@ -58,17 +58,17 @@
   }
 </script>
 
-<Button
-  class="gap-narrow h-full items-end"
-  type="submit"
-  formaction="?/downloadAll"
-  ><Heading tag="h3">Загрузить</Heading>
+  <Button
+    class="gap-narrow h-full items-end"
+    type="submit"
+    formaction="?/downloadAll"
+    >Загрузить
 
   {#if urls}
-    <P class="mr-3 self-center">
+    <span class="mr-3 self-center">
       {totalDownloads} / {downloadQueue.length +
         currentDownloads +
         totalDownloads}
-    </P>
+    </span>
   {/if}
 </Button>

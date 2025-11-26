@@ -9,14 +9,13 @@
     value = $bindable(),
     disabled = false,
     size = "md",
-    color = "default",
     elementRef = $bindable(),
     placeholder = "Выберите вариант ...",
     class: className,
     ...restProps
   }: SelectProps<T> = $props();
 
-  const { base } = $derived(selectCls({ disabled, size, color }));
+  const { base } = $derived(selectCls({ disabled, size }));
 </script>
 
 <select

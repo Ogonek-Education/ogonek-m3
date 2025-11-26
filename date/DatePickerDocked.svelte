@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ButtonMD from "../buttons/ButtonMD.svelte";
+  import Button from "../buttons/Button.svelte";
   import CalendarPicker from "./_picker/CalendarPicker.svelte";
   import FocusPicker from "./_picker/FocusPicker.svelte";
   import Header from "./_picker/Header.svelte";
@@ -55,30 +55,30 @@
     />
     <div class={buttons()}>
       {#if clearable}
-        <ButtonMD
+        <Button
           class="mr-auto"
           variant="text"
           onclick={() => (chosenDate = "")}
-          type="button">Очистить</ButtonMD
+          type="button">Очистить</Button
         >
       {/if}
 
-      <ButtonMD
+      <Button
         variant="text"
         onclick={() => {
           chosenDate = date;
           close();
         }}
-        type="button">Отмена</ButtonMD
+        type="button">Отмена</Button
       >
-      <ButtonMD
+      <Button
         variant="text"
         disabled={!clearable && !chosenDate}
         onclick={() => {
           setDate(chosenDate);
           close();
         }}
-        type="button">Готово</ButtonMD
+        type="button">Готово</Button
       >
     </div>
   {:else if currentView == "month"}
