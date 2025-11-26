@@ -9,7 +9,7 @@
 
   let {
     class: className,
-    color = "secondary",
+    variant = "secondary",
     loading,
     children,
     iconProps,
@@ -17,7 +17,7 @@
     ...restProps
   }: FABMenuItemProps = $props();
 
-  const { base, icon } = $derived(fabMenuItem({ color }));
+  const { base, icon } = $derived(fabMenuItem({ variant }));
 
   const btnCls = $derived(base({ class: clsx(className) }));
 </script>

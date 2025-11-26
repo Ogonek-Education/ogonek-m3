@@ -5,11 +5,11 @@
   import { Textfield } from "$lib/components";
   import { easeEmphasized } from "$lib/components";
   import DatePickerDocked from "./DatePickerDocked.svelte";
-  import { clickOutside } from "$lib/actions";
+  import { clickOutside, positionFloating } from "$lib/actions";
 
   let {
-    label,
-    value = $bindable(),
+    label = "Дата",
+    value,
     required = false,
     disabled = false,
     error = false,
@@ -27,6 +27,7 @@
   const id = $props.id();
 
   let picker = $state(false);
+  let anchorEl = $state<HTMLDivElement>();
 
   const enterExit = (_: Node): TransitionConfig => {
     return {
@@ -42,6 +43,7 @@ opacity: ${Math.min(t * 3, 1)};`,
 
 <div
   class="relative w-full"
+  bind:this={anchorEl}
   use:clickOutside={() => {
     picker = false;
   }}
@@ -49,7 +51,8 @@ opacity: ${Math.min(t * 3, 1)};`,
   <Textfield
     {id}
     {label}
-    bind:value
+    {value}
+    class="pointer-events-none"
     trailingIconProps={{ name: "calendar_month" }}
     trailingOnClick={() => (picker = !picker)}
   >
@@ -58,8 +61,18 @@ opacity: ${Math.min(t * 3, 1)};`,
     {/snippet}
   </Textfield>
 
+  <button
+    title="date-overlay"
+    class="absolute inset-0 cursor-pointer"
+    onclick={() => (picker = !picker)}
+  ></button>
+
   {#if picker}
-    <div class="picker" transition:enterExit>
+    <div
+      class="picker"
+      use:positionFloating={{ anchor: anchorEl, offset: 12 }}
+      transition:enterExit
+    >
       <DatePickerDocked
         date={value}
         clearable={!required}
@@ -71,39 +84,8 @@ opacity: ${Math.min(t * 3, 1)};`,
 </div>
 
 <style>
-  @position-try --picker-bottom-right {
-    position-area: bottom center;
-    justify-self: end;
-    margin-block-start: 1rem;
-  }
-  @position-try --picker-top-left {
-    position-area: top center;
-    justify-self: start;
-    margin-block-end: 1rem;
-  }
-  @position-try --picker-top-right {
-    position-area: top center;
-    justify-self: end;
-    margin-block-end: 1rem;
-  }
-
   .picker {
-    @supports not (anchor-name: --a) {
-      position: absolute;
-      top: calc(100% + 1rem);
-      right: 0;
-    }
-    @supports (anchor-name: --a) {
-      position: fixed;
-      position-anchor: var(--anchor-name);
-      /* Default */
-      position-area: bottom center;
-      justify-self: start;
-      margin-block-start: 1rem;
-      /* Alternatives */
-      position-try-fallbacks:
-        --picker-bottom-right, --picker-top-left, --picker-top-right;
-    }
     z-index: 1;
+    position: absolute;
   }
 </style>

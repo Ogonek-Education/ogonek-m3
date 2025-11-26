@@ -1,4 +1,5 @@
 <script lang="ts">
+  import clsx from "clsx";
   import Icon from "../icon/Icon.svelte";
   import { textfield } from "./theme";
   import type { TextfieldProps } from "./types";
@@ -33,7 +34,7 @@
       <input
         {id}
         bind:value
-        class={cls.input()}
+        class={cls.input({ class: clsx(className) })}
         {disabled}
         {placeholder}
         {...restProps}

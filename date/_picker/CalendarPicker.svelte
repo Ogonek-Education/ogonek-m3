@@ -38,6 +38,8 @@
   setInterval(() => (today = new Date()), 1000 * 60);
 
   const { base, weekday } = calendarpicker();
+
+  $inspect(chosenDate);
 </script>
 
 <div class={base()}>

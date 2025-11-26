@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Layer } from "$lib/components";
   import { calendarpicker } from "../theme";
 
   let {
@@ -16,17 +15,9 @@
     onclick: () => void;
   } = $props();
 
-  const { item } = calendarpicker({ selected, today });
+  const { item } = $derived(calendarpicker({ selected, today }));
 </script>
 
-<button
-  type="button"
-  class={item()}
-  {disabled}
-  class:today
-  class:selected
-  {onclick}
->
-  <Layer />
+<button type="button" class={item()} {disabled} {onclick}>
   {label}
 </button>

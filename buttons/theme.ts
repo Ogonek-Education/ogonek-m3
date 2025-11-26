@@ -154,7 +154,7 @@ export const fab = tv({
       },
     },
     expanded: {
-      true: "gap-2 p-4",
+      true: "gap-2 px-4",
       false: "aspect-square",
     },
     size: {
@@ -186,7 +186,7 @@ export const fabMenu = tv({
 
 export const fabMenuItem = tv({
   slots: {
-    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label",
+    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label z-50",
     icon: "size-6",
   },
   variants: {

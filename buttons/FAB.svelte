@@ -61,7 +61,8 @@
         {@render children?.()}
       </FABMenu>
       <ButtonIcon
-        color="filled"
+        variant="filled"
+        class="shadow-elevation-3"
         iconProps={{ name: "close" }}
         onclick={() => (showMenu = !showMenu)}
       />

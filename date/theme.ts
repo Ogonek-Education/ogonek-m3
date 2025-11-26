@@ -34,7 +34,7 @@ export const calendarpicker = tv({
   variants: {
     selected: {
       true: {
-        item: "text-md-sys-color-on-primary bg-md-sys-color-primary hover:before:bg-md-sys-color-on-primary hover:before:opacity-8",
+        item: "text-md-sys-color-on-primary hover:before:bg-md-sys-color-on-primary hover:before:opacity-8 bg-md-sys-color-primary",
       },
       false: { item: "text-md-sys-color-on-surface" },
     },
@@ -45,6 +45,15 @@ export const calendarpicker = tv({
       false: "",
     },
   },
+  compoundVariants: [
+    {
+      selected: true,
+      today: true,
+      class: {
+        item: "text-md-sys-color-on-primary",
+      },
+    },
+  ],
 });
 
 export const focuspicker = tv({
