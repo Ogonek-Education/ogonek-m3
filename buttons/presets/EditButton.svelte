@@ -13,6 +13,7 @@
     data-cy="edit-button"
     type="submit"
     aria-label="Edit"
-    {href}>{texts.crud.edit}</ButtonIcon
-  >
+    tooltipContent={texts.crud.edit}
+    {href}
+  ></ButtonIcon>
 {/if}

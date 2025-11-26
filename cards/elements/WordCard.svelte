@@ -1,83 +1,79 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
-  import type { Card } from "$lib/types";
-  import { Body, Label } from "../../typography";
+  import {
+    Body,
+    Label,
+    Card,
+    ButtonIcon,
+    Headline,
+    Title,
+    VStack,
+    Icon,
+  } from "$lib/components";
+  import type { Card as CardType } from "$lib/types";
+  import type { Component, Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  type WordCardProps = {
+    toggleCard?: (cardId: string) => void;
+    card?: CardType;
+    flippedCards?: Set<string>;
+    forceTurn?: boolean;
+  };
 
   let {
     toggleCard,
-    card,
+    forceTurn = false,
+    card = {
+      back: "Я говорю",
+      front: "hablar",
+      id: "1",
+      tip: "Yo hablo, tú hablas, él/ella habla. Для формального «вы» используйте «usted habla».",
+    },
     flippedCards = $bindable(),
-  }: {
-    toggleCard: (cardId: string) => void;
-    card: Card;
-    flippedCards: Set<string>;
-  } = $props();
+  }: WordCardProps = $props();
 
-  const truncateIfNeeded = (text: string) => {
-    return text.length > 120
-      ? "text-sm"
-      : text.length > 80
-        ? "text-base"
-        : "text-lg";
+  const typeScaleSteps: Array<{
+    limit: number;
+    component: Component<HTMLAttributes<HTMLElement> & { children: Snippet }>;
+  }> = [
+    { limit: 80, component: Title },
+    { limit: 120, component: Body },
+    { limit: Number.POSITIVE_INFINITY, component: Label },
+  ];
+
+  const pickTypeComponent = (text: string) => {
+    const length = text?.trim().length ?? 0;
+    return (
+      typeScaleSteps.find(({ limit }) => length <= limit)?.component || Headline
+    );
   };
 
-  const isFlipped = $derived(flippedCards.has(card.id));
+  const isFlipped = $derived(flippedCards?.has(card.id) || forceTurn);
+  const displayedText = $derived(isFlipped ? card.back : card.front);
+  const TextComponent = $derived(pickTypeComponent(displayedText));
 </script>
 
-<div
-  data-cy="word-card-front"
-  class="perspective-1000 relative h-48 transform-gpu cursor-pointer"
-  onclick={() => toggleCard(card.id)}
-  onkeydown={(e) => e.key === "Enter" && toggleCard(card.id)}
-  role="button"
-  tabindex="0"
-  aria-label={isFlipped ? "Show front of card" : "Show back of card"}
+<Card
+  type={isFlipped ? "outlined" : "filled"}
+  class="h-24"
+  aria-label="Flashcard front example"
 >
-  {#if !isFlipped}
-    <div
-      in:fly={{ x: -20, duration: 300 }}
-      out:fly={{ x: -20, duration: 300 }}
-      class="border-primary bg-bg-secondary padding-default absolute inset-0 flex items-center justify-center backface-hidden"
-    >
-      <div class="flex flex-col items-center justify-center">
-        <Body>
-          {card.front}
-        </Body>
-        {#if card.mediaUrl}
-          <div class="absolute top-2 right-2">
-            <img
-              src={card.mediaUrl}
-              alt="Card media"
-              class="h-10 w-10 object-cover"
-            />
-          </div>
-        {/if}
-        <div class="absolute right-3 bottom-2">
-          <Label>Клик перевернет</Label>
-        </div>
-      </div>
-    </div>
-  {:else}
-    <!-- Card Back -->
-    <div
-      in:fly={{ y: 20, duration: 300 }}
-      out:fly={{ y: 20, duration: 300 }}
-      class="bg-primary border-primary-accent padding-default absolute flex size-full items-center justify-center backface-hidden"
-    >
-      <div class="flex h-full w-full flex-col items-center justify-center">
-        <Body>
-          {card.back}
-        </Body>
-      </div>
-    </div>
+  <div class="flex justify-between">
+    <TextComponent class="text-md-sys-color-on-surface w-3/4">
+      {displayedText}
+    </TextComponent>
+  </div>
+  {#if card.tip}
+    <Body class="text-md-sys-color-on-surface-variant">
+      {card.tip}
+    </Body>
   {/if}
-</div>
 
-<style>
-  .perspective-1000 {
-    perspective: 1000px;
-  }
-  .backface-hidden {
-    backface-visibility: hidden;
-  }
-</style>
+  <button
+    onclick={() => toggleCard?.(card.id)}
+    class=" state-layer absolute right-1 bottom-1 size-12 before:rounded-full {isFlipped
+      ? 'text-md-sys-color-tertiary hover:before:bg-md-sys-color-tertiary/8'
+      : 'text-md-sys-color-primary hover:before:bg-md-sys-color-primary/8'}"
+  >
+    <Icon name="swipe_vertical" />
+  </button></Card
+>

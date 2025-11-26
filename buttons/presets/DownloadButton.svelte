@@ -1,14 +1,10 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
-  import { Button, ButtonIcon } from "$lib/components/library";
-  import texts from "$lib/texts";
+  import { ButtonIcon } from "$lib/components/library";
   import type { URLResponse } from "$lib/types";
-  import { enhanceForm } from "$lib/utils";
 
   let downloadQueue = $state<URLResponse[]>([]);
   let currentDownloads = $state(0);
   let totalDownloads = $state(0);
-  let isDownloading = $state(false);
   let hasTriggered = $state(false);
   const MAX_CONCURRENT = 3;
 
