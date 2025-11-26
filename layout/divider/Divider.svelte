@@ -5,7 +5,7 @@
 
   let { class: className, ...restProps }: HrProps = $props();
 
-  let { base } = $derived(hr());
+  let styling = $derived(hr());
 </script>
 
-<hr {...restProps} class={base({ class: clsx(base, className) })} />
+<hr {...restProps} class={clsx(styling, className)} />

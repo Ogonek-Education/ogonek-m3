@@ -11,6 +11,7 @@ export * from "./forms";
 export * from "./icon";
 export * from "./kbd";
 export * from "./layout";
+export * from "./list";
 export * from "./nav";
 export * from "./progress";
 export * from "./search";
