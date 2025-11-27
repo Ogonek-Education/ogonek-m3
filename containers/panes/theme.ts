@@ -37,3 +37,10 @@ export const splitPane = tv({
     base: "",
   },
 });
+
+export const centralPane = tv({
+  slots: {
+    base: "min-h-screen flex flex-col items-center justify-center bg-md-sys-color-surface-container",
+    content: "bg-md-sys-color-surface rounded-lg p-4",
+  },
+});
