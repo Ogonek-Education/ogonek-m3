@@ -6,7 +6,7 @@
 
   let {
     children,
-    type = "elevated",
+    type = "filled",
     class: className,
     ...restProps
   }: CardProps = $props();
@@ -14,6 +14,6 @@
   const { base, icon } = $derived(card({ type }));
 </script>
 
-<a in:fly={{ y: 20 }} class={base({ class: clsx(className) })} {...restProps}>
+<div in:fly={{ y: 20 }} class={base({ class: clsx(className) })} {...restProps}>
   {@render children?.()}
-</a>
+</div>

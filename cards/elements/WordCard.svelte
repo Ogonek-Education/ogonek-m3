@@ -1,20 +1,11 @@
 <script lang="ts">
-  import {
-    Body,
-    Label,
-    Card,
-    ButtonIcon,
-    Headline,
-    Title,
-    VStack,
-    Icon,
-  } from "$lib/components";
+  import { Body, Label, Card, Headline, Title, Icon } from "$lib/components";
   import type { Card as CardType } from "$lib/types";
   import type { Component, Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   type WordCardProps = {
     toggleCard?: (cardId: string) => void;
-    card?: CardType;
+    card: CardType;
     flippedCards?: Set<string>;
     forceTurn?: boolean;
   };
@@ -47,9 +38,22 @@
     );
   };
 
-  const isFlipped = $derived(flippedCards?.has(card.id) || forceTurn);
-  const displayedText = $derived(isFlipped ? card.back : card.front);
+  let localFlipped = $state(false);
+
+  const isFlipped = $derived(
+    flippedCards?.has(card.id) || forceTurn || localFlipped,
+  );
+  const displayedText = $derived(isFlipped ? card?.back : card?.front);
   const TextComponent = $derived(pickTypeComponent(displayedText));
+
+  const handleToggle = () => {
+    if (toggleCard) {
+      toggleCard(card.id);
+      return;
+    }
+
+    localFlipped = !localFlipped;
+  };
 </script>
 
 <Card
@@ -69,7 +73,7 @@
   {/if}
 
   <button
-    onclick={() => toggleCard?.(card.id)}
+    onclick={handleToggle}
     class=" state-layer absolute right-1 bottom-1 size-12 before:rounded-full {isFlipped
       ? 'text-md-sys-color-tertiary hover:before:bg-md-sys-color-tertiary/8'
       : 'text-md-sys-color-primary hover:before:bg-md-sys-color-primary/8'}"

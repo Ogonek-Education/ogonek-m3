@@ -4,6 +4,7 @@ import type { Classes } from "../../utils";
 export type PageLayoutVariants = VariantProps<typeof pageLayout> &
   Classes<typeof pageLayout>;
 export type SplitPaneVariants = VariantProps<typeof splitPane>;
+export type SinglePaneVariants = VariantProps<typeof singlePane>;
 
 export const pageLayout = tv({
   slots: {
@@ -32,15 +33,24 @@ export const pageLayout = tv({
 export const splitPane = tv({
   slots: {
     left: "fixed top-0 bottom-0 left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
-    right: "min-h-screen flex flex-col p-4 bg-md-sys-color-surface rounded-lg",
+    right: "min-h-[97dvh] flex flex-col bg-md-sys-color-surface rounded-lg p-6",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
-    base: "",
+    base: "ml-3",
   },
 });
 
-export const centralPane = tv({
+export const singlePane = tv({
   slots: {
-    base: "min-h-screen flex flex-col items-center justify-center bg-md-sys-color-surface-container",
-    content: "bg-md-sys-color-surface rounded-lg p-4",
+    base: "flex flex-col items-center justify-center min-h-[97dvh] bg-md-sys-color-surface-container",
+    content: "max-w-5xl",
+    headline: "md-sys-typescale-display-large font-serif mb-4",
+  },
+  variants: {
+    background: {
+      transparent: "",
+      filled: {
+        base: "bg-md-sys-color-surface rounded-lg",
+      },
+    },
   },
 });
