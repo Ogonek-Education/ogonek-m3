@@ -14,6 +14,6 @@
   const { base, icon } = $derived(card({ type }));
 </script>
 
-<div in:fly={{ y: 20 }} class={base({ class: clsx(className) })} {...restProps}>
+<div class={base({ class: clsx(className) })} {...restProps}>
   {@render children?.()}
 </div>

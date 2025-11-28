@@ -35,14 +35,14 @@ export const splitPane = tv({
     left: "fixed top-0 bottom-0 left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
     right: "min-h-[97dvh] flex flex-col bg-md-sys-color-surface rounded-lg p-6",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
-    base: "ml-3",
+    base: "px-3",
   },
 });
 
 export const singlePane = tv({
   slots: {
-    base: "flex flex-col items-center justify-center min-h-[97dvh] bg-md-sys-color-surface-container",
-    content: "max-w-5xl",
+    base: "flex flex-col items-center justify-center min-h-[97dvh] bg-md-sys-color-surface-container p-4",
+    content: "max-w-5xl w-full",
     headline: "md-sys-typescale-display-large font-serif mb-4",
   },
   variants: {

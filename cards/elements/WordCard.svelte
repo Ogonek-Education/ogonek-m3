@@ -4,14 +4,15 @@
   import type { Component, Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   type WordCardProps = {
-    toggleCard?: (cardId: string) => void;
     card: CardType;
-    flippedCards?: Set<string>;
+    flipped?: boolean;
+    onTurn?: (isFlipped: boolean) => void;
     forceTurn?: boolean;
   };
 
   let {
-    toggleCard,
+    flipped = $bindable(false),
+    onTurn,
     forceTurn = false,
     card = {
       back: "Я говорю",
@@ -19,7 +20,6 @@
       id: "1",
       tip: "Yo hablo, tú hablas, él/ella habla. Для формального «вы» используйте «usted habla».",
     },
-    flippedCards = $bindable(),
   }: WordCardProps = $props();
 
   const typeScaleSteps: Array<{
@@ -38,22 +38,16 @@
     );
   };
 
-  let localFlipped = $state(false);
+  const isFlipped = $derived(forceTurn || flipped);
 
-  const isFlipped = $derived(
-    flippedCards?.has(card.id) || forceTurn || localFlipped,
-  );
   const displayedText = $derived(isFlipped ? card?.back : card?.front);
   const TextComponent = $derived(pickTypeComponent(displayedText));
 
-  const handleToggle = () => {
-    if (toggleCard) {
-      toggleCard(card.id);
-      return;
-    }
-
-    localFlipped = !localFlipped;
-  };
+  function handleToggle() {
+    const nextState = forceTurn ? true : !flipped;
+    flipped = nextState;
+    onTurn?.(nextState);
+  }
 </script>
 
 <Card
