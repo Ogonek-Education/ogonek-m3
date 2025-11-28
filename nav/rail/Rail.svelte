@@ -26,6 +26,7 @@
     iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
     onclick={() => collapse()}
   />
+  <!-- TODO: turn into a snippet -->
   <FAB label="Добавить" expanded={!$collapseStore} iconProps={{ name: "add" }}
   ></FAB>
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>

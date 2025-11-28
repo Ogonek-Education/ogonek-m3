@@ -7,7 +7,7 @@
     wght = 400,
     grad = 0,
     opsz = 24,
-    class: className,
+    class: className = "size-6",
   }: IconProps = $props();
 </script>
 
