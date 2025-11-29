@@ -11,7 +11,7 @@ export type TextfieldProps<T extends TextFieldValue = string> =
       value?: T | null;
       label: string;
       id: string;
-      placeholder?: string; // hardcode the shit
+      placeholder?: ""; // hardcode the shit
       elementRef?: HTMLInputElement;
       supportingText?: Snippet;
       leadingIconProps?: IconProps;
