@@ -14,7 +14,7 @@
 </script>
 
 <RailItem
-  data-cy="Rail-tasks"
+  data-cy="rail-tasks"
   href={$href}
   iconProps={{ name: "assignment" }}
   name="Задания"

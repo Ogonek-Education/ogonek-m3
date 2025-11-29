@@ -7,10 +7,12 @@
   import {
     ButtonIcon,
     FAB,
+    FABMenuItem,
     HStack,
     rail,
     type RailProps,
   } from "$lib/components";
+  import { page } from "$app/state";
   let { children }: RailProps = $props();
 
   function collapse() {
@@ -26,9 +28,21 @@
     iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
     onclick={() => collapse()}
   />
-  <!-- TODO: turn into a snippet -->
-  <FAB label="Добавить" expanded={!$collapseStore} iconProps={{ name: "add" }}
-  ></FAB>
+  {#if page.params.role === "t"}
+    <FAB
+      withMenu
+      label="Добавить"
+      expanded={!$collapseStore}
+      iconProps={{ name: "add" }}
+      ><FABMenuItem
+        formaction={`/${page.params.role}/tasks?/new`}
+        iconProps={{ name: "assignment" }}>Задание</FABMenuItem
+      ><FABMenuItem
+        formaction={`/${page.params.role}/lessons?/new`}
+        iconProps={{ name: "book" }}>Занятие</FABMenuItem
+      ></FAB
+    >
+  {/if}
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>
     {@render children?.()}
   </div>
