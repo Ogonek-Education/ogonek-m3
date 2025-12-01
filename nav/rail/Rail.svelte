@@ -12,10 +12,8 @@
     rail,
     type RailProps,
   } from "$lib/components";
-  import { page } from "$app/state";
-  import { enhance } from "$app/forms";
   import { clickOutside } from "$lib/actions";
-  let { children }: RailProps = $props();
+  let { children, expandable = true, fab }: RailProps = $props();
 
   function collapse() {
     collapseStore.set(!$collapseStore);
@@ -32,25 +30,14 @@
     if (!$collapseStore) collapse();
   }}
 >
-  <ButtonIcon
-    iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
-    onclick={() => collapse()}
-  />
-  {#if page.params.role === "t"}
-    <FAB
-      withMenu
-      label="Добавить"
-      expanded={!$collapseStore}
-      iconProps={{ name: "add" }}
-    >
-      <form action="/{page.params.role}/tasks?/new" use:enhance method="POST">
-        <FABMenuItem iconProps={{ name: "assignment" }}>Задание</FABMenuItem>
-      </form>
-      <form action="/{page.params.role}/lessons?/new" use:enhance method="POST">
-        <FABMenuItem iconProps={{ name: "book" }}>Занятие</FABMenuItem>
-      </form>
-    </FAB>
+  {#if expandable}
+    <ButtonIcon
+      iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
+      onclick={() => collapse()}
+    />
   {/if}
+  {@render fab?.()}
+
   <div class={items()}>
     {@render children?.()}
   </div>

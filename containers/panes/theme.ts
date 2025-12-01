@@ -27,7 +27,7 @@ export const singlePane = tv({
   slots: {
     base: "min-h-[calc(100dvh-30px)]  bg-md-sys-color-surface-container p-4 flex flex-col box-border ",
     content: "flex flex-1 flex-col",
-    headline: "md-sys-typescale-display-large font-serif mb-4",
+    headline: "md-sys-typescale-display-small font-serif mb-4",
   },
   variants: {
     background: {
@@ -38,7 +38,7 @@ export const singlePane = tv({
     },
     centered: {
       true: {
-        content: "max-w-5xl",
+        content: "max-w-5xl ",
         base: "items-center",
       },
       false: "",
