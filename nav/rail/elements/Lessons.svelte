@@ -15,7 +15,7 @@
 
 <RailItem
   href={$href}
-  data-cy="Rail-lessons"
+  data-cy="rail-lessons"
   iconProps={{ name: "book" }}
   name="Занятия"
   badge={lessonCount}

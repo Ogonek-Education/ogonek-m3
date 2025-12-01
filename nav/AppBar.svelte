@@ -71,7 +71,7 @@
           <Headline class="text-center font-serif">Ogonëk</Headline>
         </a>
         <a
-          href={`/${role}/settings/account`}
+          href={`/${role}/settings/general`}
           class="max-w-max place-self-end active:scale-95"
         >
           user round icon

@@ -15,7 +15,7 @@
 </script>
 
 <RailItem
-  data-cy="Rail-flashcards"
+  data-cy="rail-flashcards"
   href={$href}
   iconProps={{ name: "note_stack" }}
   name={texts.flashcards.title}

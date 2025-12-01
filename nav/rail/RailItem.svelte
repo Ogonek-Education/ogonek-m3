@@ -39,7 +39,7 @@
   {rel}
   {...rest}
   class={clsx(base(), className)}
-  data-cy={`Rail-${name}`}
+  data-cy={`rail-${name}`}
 >
   <div class={content()}>
     <div class={iconContainer()}>
