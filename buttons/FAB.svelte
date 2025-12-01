@@ -6,6 +6,7 @@
   import FABMenu from "./FABMenu.svelte";
   import ButtonIcon from "./ButtonIcon.svelte";
   import Layer from "../utils/Layer.svelte";
+  import { clickOutside } from "$lib/actions";
 
   let {
     children,
@@ -57,7 +58,7 @@
     {/if}
   </a>
 {:else}
-  <div class="relative">
+  <div class="relative" use:clickOutside={() => (showMenu = false)}>
     {#if withMenu && showMenu}
       <FABMenu>
         {@render children?.()}

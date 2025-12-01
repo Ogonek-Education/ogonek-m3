@@ -13,6 +13,7 @@
     type RailProps,
   } from "$lib/components";
   import { page } from "$app/state";
+  import { enhance } from "$app/forms";
   let { children }: RailProps = $props();
 
   function collapse() {
@@ -34,14 +35,14 @@
       label="Добавить"
       expanded={!$collapseStore}
       iconProps={{ name: "add" }}
-      ><FABMenuItem
-        formaction={`/${page.params.role}/tasks?/new`}
-        iconProps={{ name: "assignment" }}>Задание</FABMenuItem
-      ><FABMenuItem
-        formaction={`/${page.params.role}/lessons?/new`}
-        iconProps={{ name: "book" }}>Занятие</FABMenuItem
-      ></FAB
     >
+      <form action="/{page.params.role}/tasks?/new" use:enhance method="POST">
+        <FABMenuItem iconProps={{ name: "assignment" }}>Задание</FABMenuItem>
+      </form>
+      <form action="/{page.params.role}/lessons?/new" use:enhance method="POST">
+        <FABMenuItem iconProps={{ name: "book" }}>Занятие</FABMenuItem>
+      </form>
+    </FAB>
   {/if}
   <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>
     {@render children?.()}
