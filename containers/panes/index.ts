@@ -6,7 +6,6 @@ export * from "./types";
 
 // default exports for components in this folder
 export { default as EmptySpace } from "./EmptySpace.svelte";
-export { default as FullPage } from "./FullPage.svelte";
 export { default as SinglePane } from "./SinglePane.svelte";
 export { default as SplitPane } from "./SplitPane.svelte";
 

@@ -7,6 +7,7 @@
     children,
     headline,
     background = "transparent",
+    centered = true,
     class: className,
   }: {
     children: Snippet;
@@ -14,7 +15,11 @@
     class?: string;
   } & SinglePaneVariants = $props();
 
-  const { base, content, headline: headlineCls } = singlePane({ background });
+  const {
+    base,
+    content,
+    headline: headlineCls,
+  } = singlePane({ background, centered });
 </script>
 
 <div class={base()}>

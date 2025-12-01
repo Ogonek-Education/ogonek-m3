@@ -16,7 +16,6 @@
   <Textfield
     name={`cards[${index}][front]`}
     id={`cards[${index}][front]`}
-    placeholder="Apple (n)"
     label="Лицо"
     bind:value={card.front}
   />
@@ -24,7 +23,6 @@
   <Textfield
     name={`cards[${index}][back]`}
     id={`cards[${index}][back]`}
-    placeholder="The creator of the Mac"
     label="Лицо"
     bind:value={card.back}
   />
@@ -32,7 +30,6 @@
   <Textfield
     name={`cards[${index}][tip]`}
     id={`cards[${index}][tip]`}
-    placeholder="Newton had this as his revelation"
     label="Подсказка"
     bind:value={card.tip}
   />
