@@ -7,4 +7,5 @@
   iconProps={{ name: "delete" }}
   tooltipContent={texts.crud.delete}
   formaction="?/delete"
+  variant="outlined"
 ></ButtonIcon>

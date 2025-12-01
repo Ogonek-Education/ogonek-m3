@@ -6,7 +6,9 @@
 
   const {
     label = "Введите время",
-    value = $bindable("09:41"),
+    time = "09:41",
+    close,
+    setTime,
     name = "startTime",
   }: TimepickerProps = $props();
 
@@ -21,11 +23,11 @@
     inputWrapper,
   } = timepicker();
 
-  let hours = $state(value.split(":")[0]);
-  let minutes = $state(value.split(":")[1]);
+  let hours = $state(time.split(":")[0]);
+  let minutes = $state(time.split(":")[1]);
 
-  const h = $derived(hours.padStart(2, "0"));
-  const m = $derived(minutes.padStart(2, "0"));
+  const h = $derived(hours?.padStart(2, "0"));
+  const m = $derived(minutes?.padStart(2, "0"));
 
   const output = $derived(`${h}:${m}`);
 </script>
@@ -53,8 +55,19 @@
   <div class={buttonDiv()}>
     <ButtonIcon iconProps={{ name: "schedule" }} />
     <div>
-      <Button variant="text">Отмена</Button>
-      <Button variant="text">Готово</Button>
+      <Button
+        variant="text"
+        onclick={() => {
+          close();
+        }}>Отмена</Button
+      >
+      <Button
+        variant="text"
+        onclick={() => {
+          setTime(output);
+          close();
+        }}>Готово</Button
+      >
     </div>
   </div>
 </div>

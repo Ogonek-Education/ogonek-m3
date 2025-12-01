@@ -2,13 +2,12 @@
   import { onMount } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import type { TransitionConfig } from "svelte/transition";
-  import { Textfield } from "$lib/components";
+  import { Textfield, TimepickerInput } from "$lib/components";
   import { easeEmphasized } from "$lib/components";
-  import DatePickerDocked from "./DatePickerDocked.svelte";
   import { clickOutside, positionFloating } from "$lib/actions";
 
   let {
-    label = "Дата",
+    label = "Время",
     value = $bindable(),
     required = false,
     disabled = false,
@@ -16,7 +15,7 @@
     datePickerTitle = "Pick date",
     ...restProps
   }: {
-    label: string;
+    label?: string;
     value?: string;
     required?: boolean;
     disabled?: boolean;
@@ -53,16 +52,16 @@ opacity: ${Math.min(t * 3, 1)};`,
     {label}
     {value}
     class="pointer-events-none"
-    trailingIconProps={{ name: "calendar_month" }}
+    trailingIconProps={{ name: "timer" }}
     trailingOnClick={() => (picker = !picker)}
   >
     {#snippet supportingText()}
-      ДД-ММ-ГГГГ
+      ЧЧ-ММ
     {/snippet}
   </Textfield>
 
   <button
-    title="date-overlay"
+    title="time-overlay"
     class="absolute inset-0 cursor-pointer"
     type="button"
     onclick={() => (picker = !picker)}
@@ -74,11 +73,10 @@ opacity: ${Math.min(t * 3, 1)};`,
       use:positionFloating={{ anchor: anchorEl, offset: 12 }}
       transition:enterExit
     >
-      <DatePickerDocked
-        date={value}
-        clearable={!required}
+      <TimepickerInput
+        time={value}
         close={() => (picker = false)}
-        setDate={(d) => (value = d)}
+        setTime={(t) => (value = t)}
       />
     </div>
   {/if}

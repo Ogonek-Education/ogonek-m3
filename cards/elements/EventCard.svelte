@@ -18,7 +18,7 @@
     : null;
 </script>
 
-<Card href="{page.params.day}/{event.id}">
+<Card>
   <VStack class="justify-start">
     <Headline class={event.status === "cancelled" ? "line-through" : ""}>
       {page.params.role === "t" ? event.title : "Занятие"}

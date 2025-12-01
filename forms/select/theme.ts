@@ -8,7 +8,16 @@ export type MultiSelectVariants = VariantProps<typeof multiSelect> &
 
 export const select = tv({
   slots: {
-    base: "input-default",
+    base: `
+    group h-14 w-full bg-md-sys-color-surface-container-highest
+      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center border-b
+      border-md-sys-color-on-surface-variant
+      hover:border-md-sys-color-on-surface
+      focus-within:border-md-sys-color-primary
+      focus-within:border-b-2
+      disabled:bg-md-sys-color-on-surface/4
+      disabled:border-md-sys-color-on-surface/12 outline-none md-sys-typescale-body-large text-md-sys-color-on-surface disabled:text-md-sys-color-on-surface/38 px-4
+    `,
   },
   variants: {
     disabled: {

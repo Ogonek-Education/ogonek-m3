@@ -4,6 +4,8 @@ import type { TimepickerVariants } from "./theme";
 export type TimepickerProps = TimepickerVariants &
   HTMLAttributes<HTMLInputElement> & {
     label?: string;
-    value: string;
+    time: string;
     name?: string;
+    close: () => void;
+    setTime: (time: string) => void;
   };
