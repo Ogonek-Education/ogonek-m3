@@ -72,6 +72,6 @@
       ? 'text-md-sys-color-tertiary hover:before:bg-md-sys-color-tertiary/8'
       : 'text-md-sys-color-primary hover:before:bg-md-sys-color-primary/8'}"
   >
-    <Icon name="swipe_vertical" />
+    <Icon class="inset-0" name="swipe_vertical" />
   </button></Card
 >

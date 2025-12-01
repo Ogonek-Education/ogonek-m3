@@ -12,7 +12,7 @@
     $props();
 </script>
 
-<Card>
+<Card type="elevated" class="gap-2">
   <Textfield
     name={`cards[${index}][front]`}
     id={`cards[${index}][front]`}
@@ -23,7 +23,7 @@
   <Textfield
     name={`cards[${index}][back]`}
     id={`cards[${index}][back]`}
-    label="Лицо"
+    label="Оборот"
     bind:value={card.back}
   />
 
@@ -34,7 +34,10 @@
     bind:value={card.tip}
   />
 
-  <Button type="button" variant="tonal" onclick={() => removeCard(index)}
-    >Удалить</Button
+  <Button
+    class="mt-4"
+    type="button"
+    variant="tonal"
+    onclick={() => removeCard(index)}>Удалить</Button
   >
 </Card>
