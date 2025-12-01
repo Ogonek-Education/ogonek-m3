@@ -20,9 +20,9 @@
     (e.target as HTMLElement).releasePointerCapture(e.pointerId);
   }
 
-  const { left, right }: SplitPaneProps = $props();
+  const { left, right, centered }: SplitPaneProps = $props();
 
-  const { base, drag, left: lCls, right: rCls } = splitPane();
+  const { base, drag, left: lCls, right: rCls } = splitPane({ centered });
 </script>
 
 <div class={base()}>

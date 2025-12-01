@@ -9,7 +9,17 @@ export const splitPane = tv({
     right:
       "bg-md-sys-color-surface box-border min-h-[calc(100dvh-30px)] rounded-lg p-4",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
-    base: "pl-3",
+    base: "",
+  },
+  variants: {
+    centered: {
+      true: {
+        base: "max-w-5xl mx-auto",
+      },
+      false: {
+        base: "pl-3",
+      },
+    },
   },
 });
 

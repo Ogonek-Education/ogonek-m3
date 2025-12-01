@@ -14,6 +14,7 @@
   } from "$lib/components";
   import { page } from "$app/state";
   import { enhance } from "$app/forms";
+  import { clickOutside } from "$lib/actions";
   let { children }: RailProps = $props();
 
   function collapse() {
@@ -24,7 +25,13 @@
 </script>
 
 <div class={ghost()}></div>
-<div class={base()}>
+
+<div
+  class={base()}
+  use:clickOutside={() => {
+    if (!$collapseStore) collapse();
+  }}
+>
   <ButtonIcon
     iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
     onclick={() => collapse()}
@@ -44,7 +51,7 @@
       </form>
     </FAB>
   {/if}
-  <div class={items()} in:fly={{ y: 20, duration: 400, easing: quintOut }}>
+  <div class={items()}>
     {@render children?.()}
   </div>
   {#if $readOnly}
