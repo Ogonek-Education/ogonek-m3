@@ -22,7 +22,12 @@
 
   const { left, right, centered }: SplitPaneProps = $props();
 
-  const { base, drag, left: lCls, right: rCls } = splitPane({ centered });
+  const {
+    base,
+    drag,
+    left: lCls,
+    right: rCls,
+  } = $derived(splitPane({ centered }));
 </script>
 
 <div class={base()}>
