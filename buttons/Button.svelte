@@ -37,7 +37,7 @@
   <button {disabled} {...restProps} class={btnCls} {formaction}>
     {#if iconProps}
       {#if loading}
-        <LoadingIndicator />
+        <LoadingIndicator class={icon()} />
       {:else}
         <Icon class={icon()} {...iconProps} />
       {/if}

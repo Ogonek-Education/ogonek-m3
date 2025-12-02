@@ -1,100 +1,124 @@
 <script lang="ts">
-  import { checkbox } from "./theme";
-  import clsx from "clsx";
-  import type { CheckboxProps } from "./types";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import Layer from "../../utils/Layer.svelte";
 
+  // MUST BE WRAPPED IN A <label>
   let {
     children,
-    color = "primary",
-    custom,
-    inline,
-    tinted,
-    rounded,
-    group = $bindable([]),
-    choices = [],
-    checked = $bindable(false),
-    classes,
-    class: className,
-    divClass,
-    disabled,
-    value = $bindable(),
-    ...restProps
-  }: CheckboxProps = $props();
-
-  const styling = $derived(classes ?? { div: divClass });
-
-  const { base, div: divStyle } = $derived(
-    checkbox({
-      color,
-      tinted,
-      custom,
-      rounded,
-      inline,
-      disabled: disabled ?? false,
-    }),
-  );
-
-  $effect(() => {
-    if (value !== undefined && Array.isArray(group)) {
-      checked = group.includes(value);
-    }
-  });
-
-  $effect(() => {
-    if (value === undefined || !Array.isArray(group)) return;
-    // There's a bug in Svelte and bind:group is not working with wrapped checkbox
-    // This workaround is taken from:
-    // https://svelte.dev/repl/de117399559f4e7e9e14e2fc9ab243cc?version=3.12.1
-    const index = group.indexOf(value);
-    if (checked === undefined) checked = index >= 0;
-
-    if (checked) {
-      if (index < 0) {
-        group.push(value);
-      }
-    } else {
-      if (index >= 0) {
-        group.splice(index, 1);
-      }
-    }
-  });
+    ...extra
+  }: {
+    children: Snippet;
+  } & HTMLAttributes<HTMLDivElement> = $props();
 </script>
 
-{#if choices.length > 0}
-  {#each choices as choice, i (choice.value ?? i)}
-    <label class={divStyle({ class: clsx(styling.div) })}>
-      <input
-        type="checkbox"
-        value={choice.value}
-        checked={choice.checked ?? false}
-        {disabled}
-        bind:group
-        {...restProps}
-        class={base({ class: clsx(className) })}
-      />
-      {#if children}
-        {@render children({
-          value: choice.value,
-          checked: choice.checked,
-          disabled,
-        })}
-      {:else}
-        {choice.label}
-      {/if}
-    </label>
-  {/each}
-{:else}
-  <label class={divStyle({ class: clsx(styling.div) })}>
-    <input
-      type="checkbox"
-      {value}
-      bind:checked
-      {disabled}
-      {...restProps}
-      class={base({ class: clsx(className) })}
+<div class="m3-container" {...extra}>
+  {@render children()}
+  <div class="layer-container">
+    <Layer />
+    <div class="checkbox-box"></div>
+  </div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M 4.83 13.41 L 9 17.585 L 19.59 7"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.41"
     />
-    {#if children}
-      {@render children({ value, checked, disabled })}
-    {/if}
-  </label>
-{/if}
+  </svg>
+</div>
+
+<style>
+  .m3-container {
+    display: inline-flex;
+    position: relative;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+  .m3-container :global(input) {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .layer-container {
+    position: absolute;
+    inset: -0.6875rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: calc(infinity * 1px);
+    color: var(--color-md-sys-color-on-surface-variant);
+    cursor: pointer;
+  }
+
+  .checkbox-box {
+    position: absolute;
+    inset: 0.6875rem;
+    border-radius: 0.125rem;
+    border: solid 0.125rem currentColor;
+    transition: var(--md-sys-motion-easing-fast);
+  }
+
+  svg {
+    position: absolute;
+    inset: 0;
+    color: var(--color-md-sys-color-on-primary);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--md-sys-motion-easing-fast);
+    path {
+      stroke-dasharray: 20.874 20.874;
+      stroke-dashoffset: 20.874;
+      transition: stroke-dashoffset 0ms 300ms;
+    }
+  }
+
+  :global(input:focus-visible) + .layer-container {
+    color: var(--color-md-sys-color-on-surface);
+  }
+
+  :global(input:checked) + .layer-container {
+    color: var(--color-md-sys-color-primary);
+  }
+  :global(input:checked) + .layer-container .checkbox-box {
+    background-color: var(--color-md-sys-color-primary);
+  }
+
+  :global(input:checked) ~ svg {
+    opacity: 1;
+    path {
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset var(--md-sys-motion-easing-slow);
+    }
+  }
+
+  :global(input:disabled) + .layer-container {
+    color: var(--color-md-sys-color-on-surface) / 0.38;
+    cursor: not-allowed;
+  }
+
+  :global(input:disabled:checked) + .layer-container {
+    color: transparent;
+  }
+  :global(input:disabled:checked) + .layer-container .checkbox-box {
+    background-color: var(--color-md-sys-color-on-surface) / 0.38;
+  }
+
+  :global(input:disabled) ~ svg {
+    color: var(--color-md-sys-color-surface);
+  }
+
+  .m3-container {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  @media screen and (forced-colors: active) {
+    :global(input:checked) + .layer-container .checkbox-box {
+      background-color: selecteditem;
+      border-color: selecteditem !important;
+    }
+    :global(input:disabled) + .layer-container {
+      opacity: 0.38;
+    }
+  }
+</style>

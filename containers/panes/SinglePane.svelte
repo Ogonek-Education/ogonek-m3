@@ -6,7 +6,7 @@
   const {
     children,
     headline,
-    background = "transparent",
+    background = "filled",
     centered = true,
     class: className,
   }: {
@@ -19,7 +19,7 @@
     base,
     content,
     headline: headlineCls,
-  } = singlePane({ background, centered });
+  } = $derived(singlePane({ background, centered }));
 </script>
 
 <div class={base()}>

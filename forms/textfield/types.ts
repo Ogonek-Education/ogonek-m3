@@ -17,5 +17,5 @@ export type TextfieldProps<T extends TextFieldValue = string> =
       leadingIconProps?: IconProps;
       trailingIconProps?: IconProps;
       characterLimit?: number;
-      trailingOnClick?: () => {};
+      trailingOnClick?: () => void;
     };

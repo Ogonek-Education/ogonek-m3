@@ -9,7 +9,7 @@
     fixed = true,
     label,
     callback,
-    showClose,
+    showClose = true,
     ...restProps
   }: SnackBarProps = $props();
 
