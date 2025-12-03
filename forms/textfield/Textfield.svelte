@@ -53,7 +53,7 @@
   {#if supportingText}
     <div class={cls.supportingText()}>
       <p>{@render supportingText()}</p>
-      {#if characterLimit}
+      {#if characterLimit && typeof value === "string"}
         <p>{value?.length} / {characterLimit}</p>
       {/if}
     </div>
