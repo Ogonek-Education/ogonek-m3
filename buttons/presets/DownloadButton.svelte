@@ -33,7 +33,6 @@
 
   async function processQueue() {
     if (downloadQueue.length === 0 || currentDownloads >= MAX_CONCURRENT) {
-      if (currentDownloads === 0) isDownloading = false;
       return;
     }
 
@@ -49,7 +48,6 @@
   async function startBulkDownload(urls: URLResponse[]) {
     downloadQueue = [...urls];
     totalDownloads = 0;
-    isDownloading = true;
 
     for (let i = 0; i < MAX_CONCURRENT; i++) {
       processQueue();
@@ -60,5 +58,6 @@
 <ButtonIcon
   iconProps={{ name: "cloud_download" }}
   type="submit"
+  variant="outlined"
   formaction="?/downloadAll">Загрузить</ButtonIcon
 >
