@@ -6,7 +6,7 @@
   const linearProgress = tv({
     slots: {
       container: "flex gap-1",
-      percent: "bg-md-sys-color-primary rounded-full shrink",
+      percent: "bg-md-sys-color-primary rounded-full shrink transition-[width]",
       track: "bg-md-sys-color-secondary-container rounded-full grow",
     },
   });

@@ -14,6 +14,35 @@
   const { base, bar } = $derived(tabHolder());
 
   $inspect(tab);
+
+  /*
+  const items: TabProps[] = [
+    {
+      iconProps: { name: "book" },
+      name: "Занятия",
+      value: "lessons",
+      href: "?tab=lessons",
+    },
+    {
+      iconProps: { name: "assignment" },
+      name: "Задания",
+      value: "tasks",
+      href: "?tab=tasks",
+    },
+    {
+      iconProps: { name: "note_stack" },
+      name: "Карточки",
+      value: "flashcards",
+      href: "?tab=flashcards",
+    },
+    {
+      iconProps: { name: "calendar_month" },
+      name: "Календарь",
+      value: "calendar",
+      href: "?tab=calendar",
+    },
+  ];
+  */
 </script>
 
 <div class={base()}>
