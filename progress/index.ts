@@ -4,6 +4,7 @@
 export * from "./_wavy";
 
 // default exports for components in this folder
+export { default as CircularProgress } from "./CircularProgress.svelte";
 export { default as LinearProgress } from "./LinearProgress.svelte";
 export { default as WavyLinearProgress } from "./WavyLinearProgress.svelte";
 
