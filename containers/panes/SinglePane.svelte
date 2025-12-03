@@ -23,8 +23,10 @@
 </script>
 
 <div class={base()}>
-  {#if headline}
-    <div class={headlineCls()}>{headline}</div>
-  {/if}
-  <div class={content({ class: clsx(className) })}>{@render children()}</div>
+  <div class={content({ class: clsx(className) })}>
+    {#if headline}
+      <div class={headlineCls()}>{headline}</div>
+    {/if}
+    {@render children()}
+  </div>
 </div>

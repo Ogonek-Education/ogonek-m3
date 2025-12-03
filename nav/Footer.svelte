@@ -1,10 +1,14 @@
-<script>
-  import { Body, HStack, Label } from "$lib/components";
+<script lang="ts">
+  import { Body } from "$lib/components";
   import { legalPages } from "$lib/utils";
   import VStack from "../containers/stack/VStack.svelte";
+  import { padding } from "$lib/stores";
 </script>
 
-<footer class="bg-md-sys-color-surface-container space-y-6 pt-12 pl-[520px]">
+<footer
+  style={`padding-left: ${$padding}px`}
+  class="bg-md-sys-color-surface-container space-y-6 pt-12"
+>
   <VStack class="font-semibold">
     <Body><a class="text-link" href="/contact">Контакт</a></Body>
     <Body><a class="text-link" href="/why">Мотивация</a></Body>

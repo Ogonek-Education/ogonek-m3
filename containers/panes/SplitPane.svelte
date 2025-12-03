@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { SplitPaneProps } from "./types";
   import { splitPane } from "./theme";
+  import { onDestroy, onMount } from "svelte";
+  import { padding } from "$lib/stores";
 
   let leftWidth = $state(396);
   let dragging = false;
@@ -28,6 +30,14 @@
     left: lCls,
     right: rCls,
   } = $derived(splitPane({ centered }));
+
+  onMount(() => {
+    padding.set(560);
+  });
+
+  onDestroy(() => {
+    padding.set(120);
+  });
 </script>
 
 <div class={base()}>
