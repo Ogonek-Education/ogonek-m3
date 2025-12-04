@@ -8,11 +8,13 @@
     collapseStore.set(!$collapseStore);
   }
 
-  const { base, items, ghost } = $derived(rail({ expanded: !$collapseStore }));
+  const { base, items, ghost, scrim } = $derived(
+    rail({ expanded: !$collapseStore }),
+  );
 </script>
 
 <div class={ghost()}></div>
-
+<div class={scrim()}></div>
 <div
   class={base()}
   use:clickOutside={() => {
