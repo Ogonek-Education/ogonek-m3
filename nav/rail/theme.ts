@@ -8,13 +8,13 @@ export const rail = tv({
     base: "py-12 hidden fixed bg-md-sys-color-surface-container h-full z-20 flex-col transition-all md:flex gap-6",
     items: "space-y-3 pt-6 overflow-auto scrollbar-none",
     ghost: "w-24",
-    scrim: "fixed xl:hidden inset-0 z-20",
+    scrim: "fixed xl:hidden inset-0 -z-10",
   },
   variants: {
     expanded: {
       true: {
         base: "pl-9 w-60 items-start bg-md-sys-color-surface-container-highest xl:bg-md-sys-color-surface-container rounded-r-lg",
-        scrim: "bg-black/40 transition-colors",
+        scrim: "z-20 bg-black/40 transition-colors",
       },
       false: {
         base: "w-24 items-center",
