@@ -2,6 +2,7 @@
 
 // folder re-exports (export everything from these folders)
 export * from "./breadcrumb";
+export * from "./navbar";
 export * from "./rail";
 export * from "./tabs";
 
