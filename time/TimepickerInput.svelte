@@ -57,12 +57,14 @@
     <div>
       <Button
         variant="text"
+        type="button"
         onclick={() => {
           close();
         }}>Отмена</Button
       >
       <Button
         variant="text"
+        type="button"
         onclick={() => {
           setTime(output);
           close();

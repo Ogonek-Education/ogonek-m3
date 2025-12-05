@@ -14,7 +14,7 @@ export const splitPane = tv({
   variants: {
     centered: {
       true: {
-        base: "max-w-5xl mx-auto",
+        base: "max-w-5xl mx-auto ",
       },
       false: {
         base: "pl-3",
@@ -26,7 +26,7 @@ export const splitPane = tv({
 export const singlePane = tv({
   slots: {
     base: "min-h-[calc(100dvh-30px)] bg-md-sys-color-surface-container p-4 flex flex-col box-border ",
-    content: "flex flex-1 flex-col",
+    content: "flex flex-1 flex-col py-2 w-full",
     headline: "md-sys-typescale-title-medium font-serif mb-4",
   },
   variants: {
@@ -38,8 +38,8 @@ export const singlePane = tv({
     },
     centered: {
       true: {
-        content: "max-w-5xl justify-center",
-        base: "items-center ",
+        content: "max-w-5xl ",
+        base: "items-center justify-center",
         headline: "self-center",
       },
       false: "",

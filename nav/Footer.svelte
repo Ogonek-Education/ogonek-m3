@@ -6,8 +6,8 @@
 </script>
 
 <footer
-  style={`padding-left: ${$padding}px`}
-  class="bg-md-sys-color-surface-container space-y-6 pt-12"
+  style={`--footer-padding: ${$padding}px`}
+  class="footer bg-md-sys-color-surface-container flex flex-col items-center space-y-6 pt-6 md:items-start md:pt-12"
 >
   <VStack class="font-semibold">
     <Body><a class="text-link" href="/contact">Контакт</a></Body>
@@ -15,8 +15,12 @@
     <Body><a class="text-link" href="/pricing">Расценки</a></Body>
   </VStack>
 
-  <div class="grid w-full grid-cols-3 grid-rows-3 items-end">
-    <div class="row-span-3">
+  <div
+    class="flex w-full grid-rows-3 flex-col items-center gap-1 md:grid md:grid-cols-3 md:items-end"
+  >
+    <div
+      class="row-span-3 flex flex-col items-center gap-3 pb-10 md:items-start"
+    >
       <p class="md-sys-typescale-display-small font-serif">Ogonëk</p>
       <p class="md-sys-typescale-label-small">© 2024-2025 Данила Волков</p>
     </div>
@@ -26,10 +30,20 @@
       >
     {/each}
   </div>
-  <VStack class="md-sys-typescale-label-small pt-4 pb-4">
+  <div
+    class="md-sys-typescale-label-small flex flex-col items-center gap-1 pt-4 pb-4 md:flex-row md:items-start md:gap-6"
+  >
     <p>ИП Волков Данила Олегович</p>
     <p>ОГРНИП 321774600758976</p>
     <p>117042, г. Москва, ул. Южнобутовская, 60</p>
     <a href="mailto:danila.volkov@ogonek.app">danila.volkov@ogonek.app</a>
-  </VStack>
+  </div>
 </footer>
+
+<style>
+  @media (min-width: 768px) {
+    .footer {
+      padding-left: var(--footer-padding, 40rem);
+    }
+  }
+</style>

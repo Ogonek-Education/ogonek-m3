@@ -23,6 +23,7 @@
 >
   {#if expandable}
     <ButtonIcon
+      type="button"
       iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
       onclick={() => collapse()}
     />
