@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { BreadcrumbProps } from "$lib";
+  import type { BreadcrumbProps } from "./types";
   import { breadcrumb } from "./theme";
   import clsx from "clsx";
 

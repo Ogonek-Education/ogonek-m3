@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { ButtonIconProps } from "$lib";
   import texts from "$lib/texts";
   import ButtonIcon from "../ButtonIcon.svelte";
   import FAB from "../FAB.svelte";

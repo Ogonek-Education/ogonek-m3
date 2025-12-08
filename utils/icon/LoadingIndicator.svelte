@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { LoadingIndicatorProps } from "$lib";
+  import type { LoadingIndicatorProps } from "./types";
   import { loadingIndicator } from "./theme";
 
   // for more weird loaders check out https://www.npmjs.com/package/kreations

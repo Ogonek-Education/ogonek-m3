@@ -21,5 +21,6 @@
 <RailItem
   href={$href}
   name="Календарь"
+  class="hidden md:block"
   iconProps={{ name: "calendar_month" }}
 />

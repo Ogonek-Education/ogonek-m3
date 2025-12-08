@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const navbar = tv({
   slots: {
-    base: "shadow-elevation-2 bg-md-sys-color-surface-container z-20 flex h-16 fixed bottom-0 w-full left-0 justify-around py-1.5",
+    base: "shadow-elevation-2 bg-md-sys-color-surface-container z-20 flex h-16 fixed bottom-0 w-full left-0 justify-around py-1.5 md:hidden",
     items: "",
   },
 });

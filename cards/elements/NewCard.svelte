@@ -1,13 +1,14 @@
 <script lang="ts">
-  import ButtonIcon from "../../buttons/ButtonIcon.svelte";
+  import Icon from "../../utils/icon/Icon.svelte";
 
   const { addCard } = $props();
 </script>
 
 <button
   data-cy="new-card"
-  class="group outline-md-sys-color-outline-variant rounded-lg p-4 outline"
+  type="button"
+  class="group outline-md-sys-color-outline-variant flex items-center justify-center rounded-lg p-4 outline"
   onclick={addCard}
 >
-  <ButtonIcon type="button" iconProps={{ name: "add" }} />
+  <Icon name="add" />
 </button>
