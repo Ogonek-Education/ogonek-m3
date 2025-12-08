@@ -14,7 +14,7 @@ export const snackbar = tv({
   },
   variants: {
     fixed: {
-      true: "fixed bottom-6 left-1/2 -translate-x-1/2",
+      true: "fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2",
       false: "",
     },
   },

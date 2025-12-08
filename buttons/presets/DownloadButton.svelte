@@ -58,6 +58,6 @@
 <ButtonIcon
   iconProps={{ name: "cloud_download" }}
   type="submit"
-  variant="outlined"
+  variant="text"
   formaction="?/downloadAll">Загрузить</ButtonIcon
 >

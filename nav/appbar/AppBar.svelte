@@ -1,6 +1,4 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import { page } from "$app/state";
   import { appbar } from "./theme";
   import type { AppBarProps } from "./types";
   import clsx from "clsx";
@@ -34,10 +32,11 @@
 
 <nav {...rest} class={base({ class: clsx(className) })}>
   {#if leadingIcon}
-    <ButtonIcon class={leading()} iconProps={leadingIcon}></ButtonIcon>
+    <ButtonIcon onclick={leadingClick} class={leading()} iconProps={leadingIcon}
+    ></ButtonIcon>
   {/if}
   <div class="flex grow flex-col items-start gap-0.5">
-    <h1 class={titleCLs()}>
+    <h1 class={titleCLs({ class: "truncate" })}>
       {title}
     </h1>
     {#if subtitle}
@@ -46,6 +45,10 @@
   </div>
 
   {#if trailingIcon}
-    <ButtonIcon class={trailing()} iconProps={trailingIcon}></ButtonIcon>
+    <ButtonIcon
+      onclick={trailingClick}
+      class={trailing()}
+      iconProps={trailingIcon}
+    ></ButtonIcon>
   {/if}
 </nav>

@@ -19,7 +19,6 @@
 </script>
 
 <RailItem
-  class="hidden md:flex"
   href={$href}
   name="Календарь"
   iconProps={{ name: "calendar_month" }}
