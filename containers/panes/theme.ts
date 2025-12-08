@@ -5,7 +5,7 @@ export type SinglePaneVariants = VariantProps<typeof singlePane>;
 
 export const splitPane = tv({
   slots: {
-    left: "fixed top-0 bottom-0 left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
+    left: "md:fixed top-0 bottom-0 md:left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
     right:
       "bg-md-sys-color-surface box-border min-h-[calc(100dvh-30px)] rounded-lg p-6",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
@@ -14,10 +14,10 @@ export const splitPane = tv({
   variants: {
     centered: {
       true: {
-        base: "max-w-5xl mx-auto ",
+        base: "max-w-5xl mx-auto",
       },
       false: {
-        base: "pl-3",
+        base: "md:pl-3",
       },
     },
   },

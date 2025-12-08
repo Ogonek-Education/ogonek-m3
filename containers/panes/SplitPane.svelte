@@ -3,6 +3,7 @@
   import { splitPane } from "./theme";
   import { onDestroy, onMount } from "svelte";
   import { padding } from "$lib/stores";
+  import clsx from "clsx";
 
   let leftWidth = $state(396);
   let dragging = false;
@@ -22,7 +23,7 @@
     (e.target as HTMLElement).releasePointerCapture(e.pointerId);
   }
 
-  const { left, right, centered }: SplitPaneProps = $props();
+  const { left, right, centered, class: className }: SplitPaneProps = $props();
 
   const {
     base,
@@ -40,7 +41,7 @@
   });
 </script>
 
-<div class={base()}>
+<div class={base({ class: clsx(className) })}>
   <!-- LEFT PANE -->
   <div class={lCls()} style={`width:${leftWidth}px`}>
     {@render left()}
