@@ -9,7 +9,7 @@
 
 <div class={base()}>
   <div class={items()}>
-    {@render children()}
+    {@render children?.()}
   </div>
   {@render fab?.()}
 </div>

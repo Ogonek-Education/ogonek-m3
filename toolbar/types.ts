@@ -4,7 +4,7 @@ import type { ToolbarItemVariants, ToolbarVariants } from "./theme";
 
 export type ToolbarProps = ToolbarVariants &
   DivAttrs & {
-    children: Snippet;
+    children?: Snippet;
     fab?: Snippet;
   };
 
