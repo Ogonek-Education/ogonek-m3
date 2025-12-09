@@ -21,7 +21,7 @@
 
   const { base, icon } = $derived(button({ variant, shape, size }));
 
-  const btnCls = $derived(clsx(base(), className));
+  const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
 {#if restProps.href !== undefined}
