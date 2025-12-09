@@ -1,4 +1,4 @@
-import type { AppbarVariants, IconProps } from "$lib";
+import type { AppbarVariants } from "$lib";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
@@ -7,8 +7,7 @@ export type AppBarProps = AppbarVariants &
     children: Snippet;
     title: string;
     subtitle?: string;
-    leadingIcon?: IconProps;
-    trailingIcon?: IconProps;
-    leadingClick?: () => void;
-    trailingClick?: () => void;
+    leading?: Snippet;
+    trailing?: Snippet;
+    showBack?: boolean;
   };

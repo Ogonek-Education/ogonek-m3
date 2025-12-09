@@ -4,12 +4,14 @@ export type AppbarVariants = VariantProps<typeof appbar>;
 
 export const appbar = tv({
   slots: {
-    base: "fixed top-0 w-full md:hidden flex px-1 z-40 items-center justify-between",
-    title: "text-md-sys-color-on-surface md-sys-typescale-title-large",
+    base: "fixed top-0 left-0 w-full md:hidden flex z-40 items-center justify-between",
+    textContainer: "flex grow flex-col items-start gap-0.5",
+    title:
+      "text-md-sys-color-on-surface md-sys-typescale-title-large truncate font-serif",
     subtitle:
       "text-md-sys-color-on-surface-variant md-sys-typescale-label-medium",
-    leading: "text-md-sys-color-on-surface",
-    trailing: "text-md-sys-color-on-surface-variant",
+    leading: "text-md-sys-color-on-surface ml-0.5",
+    trailing: "text-md-sys-color-on-surface-variant mr-4",
   },
   variants: {
     scrolled: {
@@ -18,6 +20,18 @@ export const appbar = tv({
     },
     searchContainer: {
       true: "",
+      false: "",
+    },
+    noTrailing: {
+      true: {
+        textContainer: "pr-2",
+      },
+      false: "",
+    },
+    noLeading: {
+      true: {
+        textContainer: "pl-4",
+      },
       false: "",
     },
   },

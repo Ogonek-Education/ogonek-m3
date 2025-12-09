@@ -25,8 +25,8 @@ export const splitPane = tv({
 
 export const singlePane = tv({
   slots: {
-    base: "min-h-[calc(100dvh-30px)] bg-md-sys-color-surface-container p-4 flex flex-col box-border ",
-    content: "flex flex-1 flex-col py-2 w-full",
+    base: "min-h-[calc(100dvh-30px)] bg-md-sys-color-surface-container  p-4 flex flex-col box-border ",
+    content: "flex flex-1 flex-col md:py-2 w-full",
     headline: "md-sys-typescale-title-medium font-serif mb-4",
   },
   variants: {
