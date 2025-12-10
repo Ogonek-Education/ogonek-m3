@@ -3,7 +3,7 @@
   import logger from "$lib/logger";
   import { formatFileSize, formatPercentage } from "$lib/utils";
   import Layer from "$lib/components/library/utils/Layer.svelte";
-  import { Button, Icon } from "$lib/components/library";
+  import { Button, Icon, Label, Title } from "$lib/components/library";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 
@@ -44,11 +44,13 @@
     folderId = null,
     readonly = false,
     initialUploads = [],
+    title = "Загрузка файлов",
     label = "Область загрузки файлов",
   }: {
     taskId?: string | null;
     folderId?: string | null;
     readonly?: boolean;
+    title?: string;
     initialUploads?: FileUploadState[];
     label?: string;
   } = $props();
@@ -406,15 +408,10 @@
       : formatPercentage(fileState.progress.percentComplete);
 </script>
 
-<div class="space-y-1">
-  <p class="md-sys-typescale-title-small text-md-sys-color-on-surface">
-    Загрузка файлов
-  </p>
-  <p class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant">
-    Максимальный размер файла — 100 Мб. Перетащите или выберите несколько
-    файлов.
-  </p>
-</div>
+<Title>{title}</Title>
+<Label>
+  Максимальный размер файла — 100 Мб. Перетащите или выберите несколько файлов.
+</Label>
 
 <label
   for="fileInput"
@@ -423,7 +420,7 @@
   ondrop={handleDrop}
   aria-label="Область загрузки файлов"
   aria-disabled={readonly}
-  class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-xl p-5 transition-all focus-within:outline-2 ${
+  class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-xl p-5 focus-within:outline-2 ${
     isDragging
       ? " bg-md-sys-color-primary/6 shadow-elevation-1"
       : " bg-md-sys-color-surface-container-high "
@@ -519,7 +516,7 @@
 
         {#if fileState.status !== "error"}
           <div
-            class="bg-md-sys-color-surface-variant w- mx-4 mt-3 h-1.5 overflow-hidden rounded-full"
+            class="bg-md-sys-color-surface-variant mx-4 mt-3 h-1.5 w-full overflow-hidden rounded-full"
           >
             <div
               class={`h-full rounded-full ${

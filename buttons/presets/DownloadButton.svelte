@@ -6,6 +6,8 @@
   let currentDownloads = $state(0);
   let totalDownloads = $state(0);
   let hasTriggered = $state(false);
+  let downloading = $state(false);
+
   const MAX_CONCURRENT = 3;
 
   const {
@@ -33,6 +35,7 @@
 
   async function processQueue() {
     if (downloadQueue.length === 0 || currentDownloads >= MAX_CONCURRENT) {
+      downloading = false;
       return;
     }
 
@@ -56,8 +59,9 @@
 </script>
 
 <ButtonIcon
-  iconProps={{ name: "cloud_download" }}
+  iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
   type="submit"
   variant="tonal"
+  onclick={() => (downloading = true)}
   formaction="?/downloadAll">Загрузить</ButtonIcon
 >
