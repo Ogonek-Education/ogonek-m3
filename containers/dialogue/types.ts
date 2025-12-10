@@ -1,3 +1,4 @@
+import type { Snippet } from "svelte";
 import type { DialogueVariants } from "./theme";
 
 export type DialogueProps = DialogueVariants & {
@@ -6,5 +7,6 @@ export type DialogueProps = DialogueVariants & {
   supportingText: string;
   headline?: string;
   confirmText: string;
+  children?: Snippet;
   confirmAction?: string;
 };

@@ -4,6 +4,7 @@
   import type { DialogueProps } from "./types";
   import { dialogue } from "./theme";
   import Button from "../../buttons/Button.svelte";
+  import { isLoading } from "$lib/stores";
 
   let {
     withState = true,
@@ -11,6 +12,7 @@
     supportingText,
     confirmText,
     confirmAction,
+    children,
     toggle = () => {},
   }: DialogueProps = $props();
 
@@ -42,8 +44,10 @@
     <p class={supportingTextContainer()}>
       {supportingText}
     </p>
+    {@render children?.()}
     <div class={buttonContainer()}>
       <Button
+        type="button"
         variant="text"
         onclick={() => {
           if (withState) {
@@ -53,7 +57,9 @@
           }
         }}>Отмена</Button
       >
-      <Button variant="text" formaction={confirmAction}>{confirmText}</Button>
+      <Button type="submit" variant="filled" formaction={confirmAction}
+        >{confirmText}</Button
+      >
     </div>
   </div>
 </div>

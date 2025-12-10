@@ -7,7 +7,7 @@ export const splitPane = tv({
   slots: {
     left: "md:fixed top-0 bottom-0 md:left-24 overflow-y-auto bg-md-sys-color-surface-container overflow-x-visible py-4",
     right:
-      "bg-md-sys-color-surface box-border min-h-[calc(100dvh-30px)] rounded-lg p-6",
+      "flex flex-col bg-md-sys-color-surface box-border min-h-[calc(100dvh-30px)] rounded-lg p-6",
     drag: "fixed top-0 bottom-0 cursor-col-resize transition-colors bg-md-sys-color-primary",
     base: "",
   },
