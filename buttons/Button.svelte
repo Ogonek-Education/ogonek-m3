@@ -13,13 +13,14 @@
     size = "md",
     shape = "round",
     disabled,
+    selected,
     formaction,
     loading,
     class: className,
     ...restProps
   }: ButtonMDProps = $props();
 
-  const { base, icon } = $derived(button({ variant, shape, size }));
+  const { base, icon } = $derived(button({ variant, shape, size, selected }));
 
   const btnCls = $derived(base({ class: clsx(className) }));
 </script>

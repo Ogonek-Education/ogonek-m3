@@ -16,11 +16,12 @@ export const button = tv({
   },
   variants: {
     variant: {
-      elevated: {},
+      elevated: "",
       filled: "md-component-button-filled",
       tonal: "md-component-button-tonal",
       outlined: "md-component-button-outline",
       text: "md-component-button-text",
+      bare: "",
     },
     size: {
       xs: "",
@@ -31,11 +32,12 @@ export const button = tv({
     },
     shape: {
       round: "rounded-full before:rounded-full",
-      square: "rounded-xl",
+      square: "rounded-md",
     },
-    variation: {
-      toggle: "",
-      default: "",
+    selected: {
+      true: "bg-md-sys-color-primary text-md-sys-color-on-primary rounded-md",
+      false:
+        "bg-md-sys-color-surface-container text-md-sys-color-on-surface-container rounded-full",
     },
   },
 });

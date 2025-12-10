@@ -16,8 +16,7 @@ import type {
 } from "./theme";
 
 export interface ButtonGroupProps
-  extends ButtonGroupVariants,
-    HTMLAttributes<HTMLDivElement> {
+  extends ButtonGroupVariants, HTMLAttributes<HTMLDivElement> {
   children: Snippet;
   disabled?: boolean;
 }
@@ -28,6 +27,7 @@ export type HTMLButtonOrAnchorAttributes = HTMLButtonAttributes &
 export type ButtonMDProps = ButtonMDVariants &
   AnchorButtonAttributes & {
     disabled?: boolean;
+    selected?: boolean;
     iconProps?: IconProps;
     formaction?: string;
     loading?: boolean;
