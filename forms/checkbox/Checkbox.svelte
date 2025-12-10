@@ -30,10 +30,16 @@
 
 <style>
   .m3-container {
+    --checkbox-size: 1.125rem;
+    --checkbox-touch: 2.5rem;
     display: inline-flex;
     position: relative;
-    width: 1.125rem;
-    height: 1.125rem;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
   }
   .m3-container :global(input) {
     position: absolute;
@@ -43,17 +49,18 @@
 
   .layer-container {
     position: absolute;
-    inset: -0.6875rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: calc(infinity * 1px);
+    inset: calc((var(--checkbox-size) - var(--checkbox-touch)) / 2);
+    width: var(--checkbox-touch);
+    height: var(--checkbox-touch);
+    border-radius: 9999px;
     color: var(--color-md-sys-color-on-surface-variant);
     cursor: pointer;
   }
 
   .checkbox-box {
     position: absolute;
-    inset: 0.6875rem;
+    inset: calc((var(--checkbox-touch) - var(--checkbox-size)) / 2);
+    box-sizing: border-box;
     border-radius: 0.125rem;
     border: solid 0.125rem currentColor;
     transition: var(--md-sys-motion-easing-fast);
@@ -62,6 +69,8 @@
   svg {
     position: absolute;
     inset: 0;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     color: var(--color-md-sys-color-on-primary);
     opacity: 0;
     pointer-events: none;
