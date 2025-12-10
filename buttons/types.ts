@@ -1,5 +1,4 @@
-import type { IconProps } from "$lib";
-import type { AnchorButtonAttributes } from "$lib/components";
+import type { AnchorButtonAttributes, IconProps } from "$lib/components";
 import type { Snippet } from "svelte";
 import type {
   HTMLAnchorAttributes,

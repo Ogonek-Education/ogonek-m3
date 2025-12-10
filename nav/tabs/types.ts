@@ -1,4 +1,4 @@
-import type { IconProps } from "$lib";
+import type { IconProps } from "$lib/components";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import type { TabVariants } from "./theme";
 

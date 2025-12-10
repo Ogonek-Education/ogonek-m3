@@ -1,4 +1,4 @@
-import type { IconProps } from "$lib";
+import type { IconProps } from "$lib/components";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { VariantProps } from "tailwind-variants";

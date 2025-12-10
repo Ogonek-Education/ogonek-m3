@@ -1,4 +1,4 @@
-import type { ButtonAttrs, DivAttrs, NotButton } from "$lib";
+import type { ButtonAttrs, DivAttrs, NotButton } from "$lib/components";
 import type { Snippet } from "svelte";
 import type {
   HTMLAnchorAttributes,

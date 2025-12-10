@@ -37,6 +37,11 @@
   let showMenu = $state(false);
 
   function handleClick(e: any) {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+
     if (withMenu) {
       e.preventDefault();
       showMenu = true;
@@ -48,7 +53,12 @@
 </script>
 
 {#if restProps.href !== undefined}
-  <a {...restProps} class={btnCls}>
+  <a
+    {...restProps}
+    class={btnCls}
+    aria-disabled={disabled}
+    onclick={(event) => disabled && event.preventDefault()}
+  >
     <Icon {...iconProps} class={icon()} />
     <Layer />
     {#if expanded}
@@ -70,7 +80,12 @@
         onclick={() => (showMenu = !showMenu)}
       />
     {:else}
-      <button {...restProps} class={btnCls} onclick={(e) => handleClick(e)}>
+      <button
+        {...restProps}
+        class={btnCls}
+        onclick={(e) => handleClick(e)}
+        {disabled}
+      >
         <Icon {...iconProps} class={icon()} />
         <Layer />
         {#if expanded}

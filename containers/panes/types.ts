@@ -1,4 +1,4 @@
-import type { DivAttrs } from "$lib";
+import type { DivAttrs } from "$lib/components";
 import type { Snippet } from "svelte";
 import type { SplitPaneVariants } from "./theme";
 

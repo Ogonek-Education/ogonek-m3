@@ -1,4 +1,4 @@
-import type { AppbarVariants } from "$lib";
+import type { AppbarVariants } from "$lib/components";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
