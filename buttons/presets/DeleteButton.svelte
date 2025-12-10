@@ -4,7 +4,7 @@
   import ButtonIcon from "../ButtonIcon.svelte";
 
   const {
-    variant = "outlined",
+    variant = "tonal",
   }: {
     variant?: "filled" | "elevated" | "tonal" | "outlined" | "text";
   } = $props();

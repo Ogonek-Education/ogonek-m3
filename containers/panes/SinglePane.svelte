@@ -9,10 +9,12 @@
     background = "filled",
     centered = true,
     class: className,
+    contentClass,
   }: {
     children: Snippet;
     headline?: string;
     class?: string;
+    contentClass?: string;
   } & SinglePaneVariants = $props();
 
   const {
@@ -22,8 +24,8 @@
   } = $derived(singlePane({ background, centered }));
 </script>
 
-<div class={base()}>
-  <div class={content({ class: clsx(className) })}>
+<div class={base({ class: clsx(className) })}>
+  <div class={content({ class: clsx(contentClass) })}>
     {#if headline}
       <div class={headlineCls()}>{headline}</div>
     {/if}
