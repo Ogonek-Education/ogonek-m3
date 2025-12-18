@@ -26,8 +26,16 @@
   let hours = $state(time.split(":")[0]);
   let minutes = $state(time.split(":")[1]);
 
-  const h = $derived(hours?.padStart(2, "0"));
-  const m = $derived(minutes?.padStart(2, "0"));
+  const h = $derived(
+    String(
+      Math.min(23, Math.max(0, Number.parseInt(String(hours ?? "0"), 10) || 0)),
+    ).padStart(2, "0"),
+  );
+  const m = $derived(
+    String(
+      Math.min(59, Math.max(0, Number.parseInt(String(minutes ?? "0"), 10) || 0)),
+    ).padStart(2, "0"),
+  );
 
   const output = $derived(`${h}:${m}`);
 </script>
@@ -38,7 +46,13 @@
   <div class={headline()}>{label}</div>
   <div class={clockDiv()}>
     <div class={inputWrapper()}>
-      <input class={timeInput()} bind:value={hours} id="hour" />
+      <input
+        class={timeInput()}
+        bind:value={hours}
+        id="hour"
+        type="text"
+        inputmode="numeric"
+      />
       <p class={timeInputSupportingText()}>Часы</p>
     </div>
     <span class={fieldSeparator()}> : </span>
@@ -47,7 +61,8 @@
         class={timeInput()}
         bind:value={minutes}
         id="minute"
-        type="number"
+        type="text"
+        inputmode="numeric"
       />
       <p class={timeInputSupportingText()}>Минуты</p>
     </div>
