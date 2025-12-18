@@ -4,9 +4,4 @@
   const { href } = $props();
 </script>
 
-<RailItem
-  {href}
-  iconProps={{ name: "video_call" }}
-  name="Zoom"
-  external={true}
-/>
+<RailItem {href} iconProps={{ name: "videocam" }} name="Zoom" external={true} />

@@ -36,6 +36,7 @@
     class={base()}
     in:fly={{ x: -8, duration: 160 }}
     out:fly={{ x: 8, duration: 140 }}
+    data-cy="notification-snackbar"
     {...restProps}
   >
     <p class={supportingText()}>{message}</p>

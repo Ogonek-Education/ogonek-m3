@@ -4,7 +4,6 @@
   import type { DialogueProps } from "./types";
   import { dialogue } from "./theme";
   import Button from "../../buttons/Button.svelte";
-  import { isLoading } from "$lib/stores";
 
   let {
     withState = true,
@@ -62,8 +61,7 @@
         type="submit"
         variant="filled"
         formaction={confirmAction}
-        data-cy="dialogue-confirm"
-        >{confirmText}</Button
+        data-cy="dialogue-confirm">{confirmText}</Button
       >
     </div>
   </div>
