@@ -21,7 +21,7 @@
     <div
       class="row-span-3 flex flex-col items-center gap-3 pb-10 md:items-start"
     >
-      <p class="md-sys-typescale-display-small font-serif">Ogonëk</p>
+      <a href="/" class="md-sys-typescale-display-small font-serif">Ogonëk</a>
       <p class="md-sys-typescale-label-small">© 2024-2025 Данила Волков</p>
     </div>
     {#each Object.entries(legalPages) as [slug, title]}
