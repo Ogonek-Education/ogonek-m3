@@ -1,15 +1,19 @@
 <script lang="ts">
   import type { LoadingIndicatorProps } from "./types";
   import { loadingIndicator } from "./theme";
+  import clsx from "clsx";
 
   // for more weird loaders check out https://www.npmjs.com/package/kreations
   let {
     size = 48,
     container = false,
     center = true,
+    class: className,
   }: LoadingIndicatorProps = $props();
 
-  const styling = loadingIndicator({ center, container });
+  const styling = $derived(
+    loadingIndicator({ center, container, class: clsx(className) }),
+  );
 </script>
 
 <svg width={size} height={size} class={styling} viewBox="0 0 48 48">
