@@ -15,6 +15,7 @@
 <ButtonIcon
   iconProps={{ name: "delete" }}
   tooltipContent={texts.crud.delete}
+  data-cy="delete-button"
   type="button"
   onclick={() => (modal = true)}
   {variant}

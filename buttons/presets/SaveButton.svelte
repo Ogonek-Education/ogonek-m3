@@ -17,9 +17,9 @@
     tooltipContent={texts.crud.save}
     type="submit"
     {variant}
-    data-cy="save"
+    data-cy="save-button"
     iconProps={{ name: "save" }}
   ></ButtonIcon>
 {:else}
-  <FAB type="submit" data-cy="sae" iconProps={{ name: "save" }}></FAB>
+  <FAB type="submit" data-cy="save-button" iconProps={{ name: "save" }}></FAB>
 {/if}

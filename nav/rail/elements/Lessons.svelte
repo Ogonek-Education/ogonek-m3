@@ -40,5 +40,5 @@
   iconProps={{ name: "book" }}
   name="Занятия"
   badge={lessonCount}
-  on:click={handleClick}
+  onclick={handleClick}
 />

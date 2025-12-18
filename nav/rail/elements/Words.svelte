@@ -41,5 +41,5 @@
   iconProps={{ name: "note_stack" }}
   name={texts.flashcards.title}
   badge={deckCount}
-  on:click={handleClick}
+  onclick={handleClick}
 />

@@ -6,7 +6,7 @@
   import { collapseStore } from "$lib/stores";
   import Icon from "../../utils/icon/Icon.svelte";
   import Badge from "../../badge/Badge.svelte";
-  import Layer from "../../utils/Layer.svelte";
+  import { Layer } from "../../utils";
 
   let {
     href = "/",
@@ -33,14 +33,7 @@
   } = $derived(railElement({ active: isActive, expanded: !$collapseStore }));
 </script>
 
-<a
-  {href}
-  {target}
-  {rel}
-  {...rest}
-  class={clsx(base(), className)}
-  data-cy={`rail-${name}`}
->
+<a {href} {target} {rel} {...rest} class={clsx(base(), className)}>
   <div class={content()}>
     <div class={iconContainer()}>
       <Icon

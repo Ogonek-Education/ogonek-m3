@@ -10,6 +10,7 @@
 
 <ButtonIcon
   iconProps={{ name: "cancel" }}
+  data-cy="cancel-button"
   tooltipContent={texts.crud.cancel}
   {variant}
   href="."

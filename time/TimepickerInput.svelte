@@ -1,8 +1,8 @@
 <script lang="ts">
   import { timepicker } from "./theme";
-  import ButtonIcon from "../buttons/ButtonIcon.svelte";
   import Button from "../buttons/Button.svelte";
   import type { TimepickerProps } from "./types";
+  import { ButtonIcon } from "../buttons";
 
   const {
     label = "Введите время",
@@ -33,7 +33,10 @@
   );
   const m = $derived(
     String(
-      Math.min(59, Math.max(0, Number.parseInt(String(minutes ?? "0"), 10) || 0)),
+      Math.min(
+        59,
+        Math.max(0, Number.parseInt(String(minutes ?? "0"), 10) || 0),
+      ),
     ).padStart(2, "0"),
   );
 
