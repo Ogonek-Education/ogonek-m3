@@ -49,6 +49,7 @@
       <Button
         type="button"
         variant="text"
+        data-cy="dialogue-cancel"
         onclick={() => {
           if (withState) {
             window.history.back();
@@ -57,7 +58,11 @@
           }
         }}>Отмена</Button
       >
-      <Button type="submit" variant="filled" formaction={confirmAction}
+      <Button
+        type="submit"
+        variant="filled"
+        formaction={confirmAction}
+        data-cy="dialogue-confirm"
         >{confirmText}</Button
       >
     </div>

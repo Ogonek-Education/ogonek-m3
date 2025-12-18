@@ -55,6 +55,7 @@
         id="hour"
         type="text"
         inputmode="numeric"
+        data-cy="calendar-time-hours"
       />
       <p class={timeInputSupportingText()}>Часы</p>
     </div>
@@ -66,6 +67,7 @@
         id="minute"
         type="text"
         inputmode="numeric"
+        data-cy="calendar-time-minutes"
       />
       <p class={timeInputSupportingText()}>Минуты</p>
     </div>
@@ -86,7 +88,9 @@
         onclick={() => {
           setTime(output);
           close();
-        }}>Готово</Button
+        }}
+        data-cy="calendar-time-confirm"
+        >Готово</Button
       >
     </div>
   </div>

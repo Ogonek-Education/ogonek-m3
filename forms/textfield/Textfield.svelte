@@ -35,6 +35,7 @@
         {id}
         bind:value
         class={cls.input({ class: clsx(className) })}
+        aria-invalid={error}
         {disabled}
         {placeholder}
         {...restProps}

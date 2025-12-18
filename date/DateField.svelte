@@ -66,6 +66,7 @@ opacity: ${Math.min(t * 3, 1)};`,
     class="absolute inset-0 cursor-pointer"
     type="button"
     onclick={() => (picker = !picker)}
+    data-cy="calendar-date-toggle"
   ></button>
 
   {#if picker}

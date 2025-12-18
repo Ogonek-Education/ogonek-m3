@@ -69,7 +69,9 @@
           chosenDate = date;
           close();
         }}
-        type="button">Отмена</Button
+        type="button"
+        data-cy="calendar-date-cancel"
+        >Отмена</Button
       >
       <Button
         variant="text"
@@ -78,7 +80,9 @@
           setDate(chosenDate);
           close();
         }}
-        type="button">Готово</Button
+        type="button"
+        data-cy="calendar-date-confirm"
+        >Готово</Button
       >
     </div>
   {:else if currentView == "month"}

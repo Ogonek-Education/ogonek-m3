@@ -74,13 +74,37 @@
 </script>
 
 <!-- Hidden inputs for form submission -->
-<input type="hidden" name="dtstartTime" value={dtstartTime} />
-<input type="hidden" name="dtendTime" value={dtendTime || ""} />
-<input type="hidden" name="dtstartTz" value={dtstartTz} />
-<input type="hidden" name="dtendTz" value={dtendTz} />
+<input
+  type="hidden"
+  name="dtstartTime"
+  value={dtstartTime}
+  data-cy="calendar-dtstart-time"
+/>
+<input
+  type="hidden"
+  name="dtendTime"
+  value={dtendTime || ""}
+  data-cy="calendar-dtend-time"
+/>
+<input
+  type="hidden"
+  name="dtstartTz"
+  value={dtstartTz}
+  data-cy="calendar-dtstart-tz"
+/>
+<input
+  type="hidden"
+  name="dtendTz"
+  value={dtendTz}
+  data-cy="calendar-dtend-tz"
+/>
 
-<DateField label="Дата встречи" bind:value={dateString} />
-<TimeField label="Начало встречи" bind:value={startTimeString} />
+<DateField label="Дата встречи" bind:value={dateString} data-cy="calendar-date" />
+<TimeField
+  label="Начало встречи"
+  bind:value={startTimeString}
+  data-cy="calendar-time"
+/>
 
 <Title>Длительность</Title>
 <VStack>

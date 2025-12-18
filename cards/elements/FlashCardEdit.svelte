@@ -17,6 +17,7 @@
     name={`cards[${index}][front]`}
     id={`cards[${index}][front]`}
     label="Лицо"
+    data-cy={`flashcard-front-${index}`}
     bind:value={card.front}
   />
 
@@ -24,6 +25,7 @@
     name={`cards[${index}][back]`}
     id={`cards[${index}][back]`}
     label="Оборот"
+    data-cy={`flashcard-back-${index}`}
     bind:value={card.back}
   />
 
@@ -31,6 +33,7 @@
     name={`cards[${index}][tip]`}
     id={`cards[${index}][tip]`}
     label="Подсказка"
+    data-cy={`flashcard-tip-${index}`}
     bind:value={card.tip}
   />
 
@@ -38,6 +41,7 @@
     class="mt-4"
     type="button"
     variant="tonal"
+    data-cy={`flashcard-delete-${index}`}
     onclick={() => removeCard(index)}>Удалить</Button
   >
 </Card>
