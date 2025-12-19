@@ -4,7 +4,8 @@ import type { ClassValue } from "tailwind-variants";
 import type { ToggleVariants } from "./theme";
 
 export interface ToggleProps
-  extends Omit<ToggleVariants, "off_state_label">,
+  extends
+    Omit<ToggleVariants, "off_state_label">,
     Omit<HTMLInputAttributes, "size" | "color"> {
   offLabel?: Snippet;
   value?: string | number;

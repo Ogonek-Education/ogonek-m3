@@ -70,8 +70,7 @@
           close();
         }}
         type="button"
-        data-cy="calendar-date-cancel"
-        >Отмена</Button
+        data-cy="calendar-date-cancel">Отмена</Button
       >
       <Button
         variant="text"
@@ -81,8 +80,7 @@
           close();
         }}
         type="button"
-        data-cy="calendar-date-confirm"
-        >Готово</Button
+        data-cy="calendar-date-confirm">Готово</Button
       >
     </div>
   {:else if currentView == "month"}

@@ -3,7 +3,6 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { BodyVariants } from "./theme";
 
 export interface BodyProps
-  extends BodyVariants,
-    HTMLAttributes<HTMLParagraphElement> {
+  extends BodyVariants, HTMLAttributes<HTMLParagraphElement> {
   children: Snippet;
 }

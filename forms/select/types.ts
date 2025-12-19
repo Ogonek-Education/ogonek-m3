@@ -15,7 +15,8 @@ export type SelectOptionType<T> = {
 };
 
 export interface SelectProps<T>
-  extends SelectVariants,
+  extends
+    SelectVariants,
     Omit<HTMLSelectAttributes, "size" | "disabled" | "color"> {
   children?: Snippet;
   items?: SelectOptionType<T>[];
@@ -25,7 +26,8 @@ export interface SelectProps<T>
 }
 
 export interface MultiSelectProps<T>
-  extends MultiSelectVariants,
+  extends
+    MultiSelectVariants,
     Omit<
       HTMLAttributes<HTMLDivElement>,
       "size" | "children" | "onchange" | "onblur"

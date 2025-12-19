@@ -89,8 +89,7 @@
           setTime(output);
           close();
         }}
-        data-cy="calendar-time-confirm"
-        >Готово</Button
+        data-cy="calendar-time-confirm">Готово</Button
       >
     </div>
   </div>

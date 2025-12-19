@@ -18,6 +18,12 @@
   const { item } = $derived(calendarpicker({ selected, today }));
 </script>
 
-<button type="button" class={item()} {disabled} {onclick} data-cy="calendar-picker-day">
+<button
+  type="button"
+  class={item()}
+  {disabled}
+  {onclick}
+  data-cy="calendar-picker-day"
+>
   {label}
 </button>

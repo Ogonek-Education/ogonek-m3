@@ -49,20 +49,18 @@
       {href}
     />
   {/if}
+{:else if $readOnly}
+  <Tooltip
+    subhead="Недоступно в режиме чтения"
+    supportingText="Оформите платный аккаунт, чтобы редактировать."
+  >
+    {#snippet trigger()}
+      <FAB disabled={$readOnly} iconProps={{ name: "edit" }} />
+    {/snippet}
+    {#snippet children()}
+      <Button href="/pricing" variant="filled">Купить подписку</Button>
+    {/snippet}
+  </Tooltip>
 {:else}
-  {#if $readOnly}
-    <Tooltip
-      subhead="Недоступно в режиме чтения"
-      supportingText="Оформите платный аккаунт, чтобы редактировать."
-    >
-      {#snippet trigger()}
-        <FAB disabled={$readOnly} iconProps={{ name: "edit" }} />
-      {/snippet}
-      {#snippet children()}
-        <Button href="/pricing" variant="filled">Купить подписку</Button>
-      {/snippet}
-    </Tooltip>
-  {:else}
-    <FAB {href} iconProps={{ name: "edit" }} />
-  {/if}
+  <FAB {href} iconProps={{ name: "edit" }} />
 {/if}

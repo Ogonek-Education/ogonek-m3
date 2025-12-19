@@ -4,8 +4,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import type { RailItemVariants, RailVariants } from "./theme";
 
 export interface RailItemProps
-  extends RailItemVariants,
-    HTMLAttributes<HTMLAnchorElement> {
+  extends RailItemVariants, HTMLAttributes<HTMLAnchorElement> {
   iconProps: IconProps;
   badge?: number;
   external?: boolean;

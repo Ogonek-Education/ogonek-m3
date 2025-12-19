@@ -99,7 +99,11 @@
   data-cy="calendar-dtend-tz"
 />
 
-<DateField label="Дата встречи" bind:value={dateString} data-cy="calendar-date" />
+<DateField
+  label="Дата встречи"
+  bind:value={dateString}
+  data-cy="calendar-date"
+/>
 <TimeField
   label="Начало встречи"
   bind:value={startTimeString}
