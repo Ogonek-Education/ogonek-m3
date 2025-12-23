@@ -436,7 +436,7 @@
     disabled={readonly}
   />
 
-  <div class="flex items-center gap-4">
+  <div class="flex flex-col items-center gap-3 text-center">
     <div
       class={`flex size-12 items-center justify-center rounded-full transition-colors ${
         isDragging
@@ -447,7 +447,7 @@
       <Icon name="file_upload" class="size-6" />
     </div>
 
-    <div class="space-y-1 text-left">
+    <div class="space-y-1">
       <p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
         Перетащите файлы сюда
       </p>

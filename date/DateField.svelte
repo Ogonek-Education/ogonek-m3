@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import type { Snippet } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import type { TransitionConfig } from "svelte/transition";
   import { Textfield } from "$lib/components";
@@ -14,6 +15,7 @@
     disabled = false,
     error = false,
     datePickerTitle = "Pick date",
+    supportingText,
     ...restProps
   }: {
     label: string;
@@ -22,6 +24,7 @@
     disabled?: boolean;
     error?: boolean;
     datePickerTitle?: string;
+    supportingText?: Snippet;
   } & HTMLInputAttributes = $props();
 
   const id = $props.id();
@@ -48,18 +51,36 @@ opacity: ${Math.min(t * 3, 1)};`,
     picker = false;
   }}
 >
-  <Textfield
-    {id}
-    {label}
-    {value}
-    class="pointer-events-none"
-    trailingIconProps={{ name: "calendar_month" }}
-    trailingOnClick={() => (picker = !picker)}
-  >
-    {#snippet supportingText()}
-      ДД-ММ-ГГГГ
-    {/snippet}
-  </Textfield>
+  {#if supportingText}
+    <Textfield
+      {id}
+      {label}
+      {value}
+      {error}
+      {disabled}
+      {supportingText}
+      class="pointer-events-none"
+      trailingIconProps={{ name: "calendar_month" }}
+      trailingOnClick={() => (picker = !picker)}
+      {...restProps}
+    />
+  {:else}
+    <Textfield
+      {id}
+      {label}
+      {value}
+      {error}
+      {disabled}
+      class="pointer-events-none"
+      trailingIconProps={{ name: "calendar_month" }}
+      trailingOnClick={() => (picker = !picker)}
+      {...restProps}
+    >
+      {#snippet supportingText()}
+        ДД-ММ-ГГГГ
+      {/snippet}
+    </Textfield>
+  {/if}
 
   <button
     title="date-overlay"
