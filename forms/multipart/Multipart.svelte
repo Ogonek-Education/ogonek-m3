@@ -4,6 +4,7 @@
   import { formatFileSize, formatPercentage } from "$lib/utils";
   import Layer from "$lib/components/library/utils/Layer.svelte";
   import { Button, Icon, Label, Title } from "$lib/components/library";
+  import HStack from "../../containers/stack/HStack.svelte";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 
@@ -408,127 +409,127 @@
       : formatPercentage(fileState.progress.percentComplete);
 </script>
 
-<Title>{title}</Title>
-<Label>
-  Максимальный размер файла — 100 Мб. Перетащите или выберите несколько файлов.
-</Label>
+<HStack>
+  <Title>{title}</Title>
+  <Label>Максимальный размер файла — 100 Мб.</Label>
 
-<label
-  for="fileInput"
-  ondragover={handleDragOver}
-  ondragleave={handleDragLeave}
-  ondrop={handleDrop}
-  aria-label="Область загрузки файлов"
-  aria-disabled={readonly}
-  class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-xl p-5 focus-within:outline-2 ${
-    isDragging
-      ? " bg-md-sys-color-primary/6 shadow-elevation-1"
-      : " bg-md-sys-color-surface-container-high "
-  }`}
->
-  <input
-    id="fileInput"
-    type="file"
-    name="file"
-    onchange={handleFileSelect}
-    multiple
-    class="sr-only"
-    disabled={readonly}
-  />
+  <label
+    for="fileInput"
+    ondragover={handleDragOver}
+    ondragleave={handleDragLeave}
+    ondrop={handleDrop}
+    aria-label="Область загрузки файлов"
+    aria-disabled={readonly}
+    class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-xl p-5 focus-within:outline-2 ${
+      isDragging
+        ? " bg-md-sys-color-primary/6 shadow-elevation-1"
+        : " bg-md-sys-color-surface-container-high "
+    }`}
+  >
+    <input
+      id="fileInput"
+      type="file"
+      name="file"
+      onchange={handleFileSelect}
+      multiple
+      class="sr-only"
+      disabled={readonly}
+    />
 
-  <div class="flex flex-col items-center gap-3 text-center">
-    <div
-      class={`flex size-12 items-center justify-center rounded-full transition-colors ${
-        isDragging
-          ? "bg-md-sys-color-primary text-md-sys-color-on-primary"
-          : "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary"
-      }`}
-    >
-      <Icon name="file_upload" class="size-6" />
-    </div>
-
-    <div class="space-y-1">
-      <p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
-        Перетащите файлы сюда
-      </p>
-      <p
-        class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
+    <div class="flex flex-col items-center gap-3 text-center">
+      <div
+        class={`flex size-12 items-center justify-center rounded-full transition-colors ${
+          isDragging
+            ? "bg-md-sys-color-primary text-md-sys-color-on-primary"
+            : "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary"
+        }`}
       >
-        Или нажмите, чтобы выбрать их на устройстве
-      </p>
-    </div>
-  </div>
-
-  <Layer />
-</label>
-
-{#if fileUploads.length > 0}
-  <div class="space-y-3">
-    {#each fileUploads as fileState (fileState.id)}
-      <div class=" bg-md-sys-color-surface-container-high rounded-xl p-3">
-        <div class="flex items-start gap-3">
-          <div
-            class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
-          >
-            <Icon class="size-6" name={statusIcon(fileState.status)} />
-          </div>
-
-          <div class="flex-1 space-y-1 overflow-hidden">
-            <p
-              class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate"
-            >
-              {fileState.file.name}
-            </p>
-            <p
-              class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
-            >
-              {formatFileSize(fileState.file.size)} • {statusLabel(fileState)}
-            </p>
-            {#if fileState.errorMessage}
-              <p class="md-sys-typescale-body-small text-md-sys-color-error">
-                {fileState.errorMessage}
-              </p>
-            {/if}
-          </div>
-
-          <div class="flex items-center gap-1">
-            {#if fileState.status === "uploading"}
-              <Button
-                variant="text"
-                iconProps={{ name: "close" }}
-                type="button"
-                onclick={() => cancelUpload(fileState)}
-              >
-                Отменить
-              </Button>
-            {:else}
-              <Button
-                variant="text"
-                iconProps={{ name: "delete" }}
-                type="button"
-                onclick={() => removeFile(fileState)}
-              >
-                Убрать
-              </Button>
-            {/if}
-          </div>
-        </div>
-
-        {#if fileState.status !== "error"}
-          <div
-            class="bg-md-sys-color-surface-variant mx-4 mt-3 h-1.5 w-full overflow-hidden rounded-full"
-          >
-            <div
-              class={`h-full rounded-full ${
-                fileState.status === "complete"
-                  ? "bg-md-sys-color-secondary"
-                  : "bg-md-sys-color-primary"
-              } transition-[width] duration-300`}
-              style={`width: ${progressWidth(fileState)}%;`}
-            ></div>
-          </div>
-        {/if}
+        <Icon name="file_upload" class="size-6" />
       </div>
-    {/each}
-  </div>
-{/if}
+
+      <div class="space-y-1">
+        <p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
+          Перетащите файлы сюда
+        </p>
+        <p
+          class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
+        >
+          Или нажмите, чтобы выбрать их на устройстве
+        </p>
+      </div>
+    </div>
+
+    <Layer />
+  </label>
+
+  {#if fileUploads.length > 0}
+    <div class="space-y-3">
+      {#each fileUploads as fileState (fileState.id)}
+        <div class=" bg-md-sys-color-surface-container-high rounded-xl p-3">
+          <div class="flex items-start gap-3">
+            <div
+              class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
+            >
+              <Icon class="size-6" name={statusIcon(fileState.status)} />
+            </div>
+
+            <div class="flex-1 space-y-1 overflow-hidden">
+              <p
+                class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate"
+              >
+                {fileState.file.name}
+              </p>
+              <p
+                class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
+              >
+                {formatFileSize(fileState.file.size)} • {statusLabel(fileState)}
+              </p>
+              {#if fileState.errorMessage}
+                <p class="md-sys-typescale-body-small text-md-sys-color-error">
+                  {fileState.errorMessage}
+                </p>
+              {/if}
+            </div>
+
+            <div class="flex items-center gap-1">
+              {#if fileState.status === "uploading"}
+                <Button
+                  variant="text"
+                  iconProps={{ name: "close" }}
+                  type="button"
+                  onclick={() => cancelUpload(fileState)}
+                >
+                  Отменить
+                </Button>
+              {:else}
+                <Button
+                  variant="text"
+                  iconProps={{ name: "delete" }}
+                  type="button"
+                  onclick={() => removeFile(fileState)}
+                >
+                  Убрать
+                </Button>
+              {/if}
+            </div>
+          </div>
+
+          {#if fileState.status !== "error"}
+            <div
+              class="bg-md-sys-color-surface-variant mx-4 mt-3 h-1.5 w-full overflow-hidden rounded-full"
+            >
+              <div
+                class={`h-full rounded-full ${
+                  fileState.status === "complete"
+                    ? "bg-md-sys-color-secondary"
+                    : "bg-md-sys-color-primary"
+                } transition-[width] duration-300`}
+                style={`width: ${progressWidth(fileState)}%;`}
+              ></div>
+            </div>
+          {/if}
+        </div>
+      {/each}
+    </div>
+  {/if}
+</HStack>

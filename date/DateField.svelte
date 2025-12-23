@@ -28,6 +28,7 @@
   } & HTMLInputAttributes = $props();
 
   const id = $props.id();
+  const inputProps = restProps as Record<string, unknown>;
 
   let picker = $state(false);
   let anchorEl = $state<HTMLDivElement>();
@@ -62,7 +63,7 @@ opacity: ${Math.min(t * 3, 1)};`,
       class="pointer-events-none"
       trailingIconProps={{ name: "calendar_month" }}
       trailingOnClick={() => (picker = !picker)}
-      {...restProps}
+      {...inputProps}
     />
   {:else}
     <Textfield
@@ -74,7 +75,7 @@ opacity: ${Math.min(t * 3, 1)};`,
       class="pointer-events-none"
       trailingIconProps={{ name: "calendar_month" }}
       trailingOnClick={() => (picker = !picker)}
-      {...restProps}
+      {...inputProps}
     >
       {#snippet supportingText()}
         ДД-ММ-ГГГГ

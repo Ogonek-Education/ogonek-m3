@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ButtonIcon } from "$lib/components/library";
   import type { URLResponse } from "$lib/types";
+  import Button from "../Button.svelte";
 
   let downloadQueue = $state<URLResponse[]>([]);
   let currentDownloads = $state(0);
@@ -58,10 +59,10 @@
   }
 </script>
 
-<ButtonIcon
+<Button
   iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
   type="submit"
-  variant="tonal"
+  variant="outlined"
   onclick={() => (downloading = true)}
-  formaction="?/downloadAll">Загрузить</ButtonIcon
+  formaction="?/downloadAll">Загрузить</Button
 >

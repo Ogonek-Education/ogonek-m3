@@ -30,7 +30,7 @@ opacity: ${Math.min(t * 3, 1)};`,
   class={base({
     class: clsx(className, "fab-menu"),
   })}
-  transition:enterExit
+  in:enterExit
 >
   {@render children()}
 </ul>
