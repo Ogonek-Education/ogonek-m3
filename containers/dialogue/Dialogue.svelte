@@ -111,6 +111,7 @@
 
   .dialogue-inner {
     --dialogue-shape: 1rem;
+    transform-origin: top;
     animation:
       dialogueIn 500ms var(--md-sys-motion-timing-function-emphasized-decel),
       dialogueOpacityIn 100ms var(--md-sys-motion-timing-function-emphasized-decel) backwards;
@@ -166,23 +167,23 @@
 
   @keyframes dialogueIn {
     from {
-      transform: translateY(-3rem) scaleY(0.9);
-      clip-path: inset(0 0 100% 0 round var(--dialogue-shape));
+      transform: scaleY(0.7);
+      clip-path: inset(-100% 0 100% 0 round var(--dialogue-shape));
     }
     to {
-      transform: translateY(0) scaleY(1);
-      clip-path: inset(0 0 0 0 round var(--dialogue-shape));
+      transform: scaleY(1);
+      clip-path: inset(-100% 0 0 0 round var(--dialogue-shape));
     }
   }
 
   @keyframes dialogueOut {
     from {
-      transform: translateY(0) scaleY(1);
-      clip-path: inset(0 0 0 0 round var(--dialogue-shape));
+      transform: scaleY(1);
+      clip-path: inset(-100% 0 0 0 round var(--dialogue-shape));
     }
     to {
-      transform: translateY(-3rem) scaleY(0.9);
-      clip-path: inset(0 0 100% 0 round var(--dialogue-shape));
+      transform: scaleY(0.7);
+      clip-path: inset(-100% 0 100% 0 round var(--dialogue-shape));
     }
   }
 

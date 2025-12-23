@@ -14,13 +14,12 @@
 
   const { base } = $derived(fabMenu({ position }));
 
-  const enterFabMenu = (_: Node): TransitionConfig => {
+  const enterExit = (_: Node): TransitionConfig => {
     return {
       duration: 400,
       easing: easeEmphasized,
       css: (t, u) => `clip-path: inset(-100% 0 ${u * 100}% 0 round 1rem);
-transform-origin: top;
-transform: translateY(${u * -8}px) scaleY(${(t * 0.3 + 0.7) * 100}%);
+transform: scaleY(${(t * 0.3 + 0.7) * 100}%);
 opacity: ${Math.min(t * 3, 1)};`,
     };
   };
@@ -31,7 +30,7 @@ opacity: ${Math.min(t * 3, 1)};`,
   class={base({
     class: clsx(className, "fab-menu"),
   })}
-  in:enterFabMenu
+  transition:enterExit
 >
   {@render children()}
 </ul>

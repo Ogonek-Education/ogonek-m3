@@ -17,7 +17,7 @@
     if (!fixed) return;
     if (!message) return;
     const t = setTimeout(() => {
-      message = undefined;
+      notificationStore.set("");
     }, 3000);
     return () => clearTimeout(t);
   });
