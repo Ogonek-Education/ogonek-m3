@@ -3,9 +3,9 @@
   import { hr } from "./theme";
   import type { HrProps } from "./types";
 
-  let { class: className, ...restProps }: HrProps = $props();
+  let { class: className, variant = "full", ...restProps }: HrProps = $props();
 
-  let styling = $derived(hr());
+  let styling = $derived(hr({ variant }));
 </script>
 
-<hr {...restProps} class={clsx(styling, className)} />
+<div {...restProps} class={clsx(styling, className)}></div>
