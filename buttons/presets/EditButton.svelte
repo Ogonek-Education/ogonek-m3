@@ -7,7 +7,7 @@
   import Tooltip from "../../forms/tooltip/Tooltip.svelte";
 
   const {
-    variant = "tonal",
+    variant = "filled",
     href,
     fab = false,
   }: {
@@ -24,30 +24,28 @@
       supportingText="Оформите платный аккаунт, чтобы редактировать."
     >
       {#snippet trigger()}
-        <ButtonIcon
+        <Button
           {variant}
           iconProps={{ name: "edit" }}
           data-cy="edit-button"
           type="submit"
           aria-label="Edit"
-          tooltipContent={texts.crud.edit}
-          disabled={$readOnly}
-        />
+          disabled={$readOnly}>{texts.crud.edit}</Button
+        >
       {/snippet}
       {#snippet children()}
         <Button href="/pricing" variant="filled">Купить подписку</Button>
       {/snippet}
     </Tooltip>
   {:else}
-    <ButtonIcon
+    <Button
       {variant}
       iconProps={{ name: "edit" }}
       data-cy="edit-button"
       type="submit"
       aria-label="Edit"
-      tooltipContent={texts.crud.edit}
-      {href}
-    />
+      {href}>{texts.crud.edit}</Button
+    >
   {/if}
 {:else if $readOnly}
   <Tooltip
