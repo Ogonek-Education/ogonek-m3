@@ -68,7 +68,7 @@
     {/if}
   </a>
 {:else}
-  <div class="relative" use:clickOutside={() => (showMenu = false)}>
+  <div class="relative z-50" use:clickOutside={() => (showMenu = false)}>
     {#if withMenu && showMenu}
       <FABMenu>
         {@render children?.()}

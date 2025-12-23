@@ -94,7 +94,7 @@ export const buttonGroup = tv({
 
 export const fab = tv({
   slots: {
-    base: "md-component-button-base relative",
+    base: "md-component-button-base relative z-50",
     icon: "",
     label: "text-medium ",
   },
@@ -130,7 +130,7 @@ export const fab = tv({
 
 export const fabMenu = tv({
   slots: {
-    base: "gap-2 pb-2 flex flex-col absolute",
+    base: "gap-2 pb-2 flex flex-col absolute z-50",
   },
   variants: {
     position: { top: "top-16" },
@@ -139,7 +139,7 @@ export const fabMenu = tv({
 
 export const fabMenuItem = tv({
   slots: {
-    base: "md-component-button-base group max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label z-50 shadow-elevation-2 hover:shadow-elevation-3",
+    base: "md-component-button-base group relative max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label z-50 shadow-elevation-2 hover:shadow-elevation-3",
     icon: "size-6",
   },
   variants: {
