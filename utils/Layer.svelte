@@ -226,7 +226,7 @@
 
     background-color: currentColor;
     opacity: 0;
-    transition: opacity var(--m3-util-easing-fast);
+    transition: opacity var(--md-sys-motion-easing-fast);
 
     &:not(
       :global(input:disabled + label) > .tint,
@@ -240,7 +240,7 @@
       }
       &:is(:global(input:focus-visible + label) > .tint),
       &:is(:global(:focus-visible) > .tint),
-      &:is(.ripple-container.broken + .tint):is(:global(:active) > .tint) {
+      &:is(:global(:active) > .ripple-container.broken + .tint) {
         opacity: 0.12;
       }
     }

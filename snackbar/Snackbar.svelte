@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { fly } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { snackbar, type SnackBarProps } from "$lib/components/library";
   import Icon from "../utils/icon/Icon.svelte";
   import { notificationStore } from "$lib/stores";
@@ -34,8 +34,7 @@
 {#if message}
   <div
     class={base()}
-    in:fly={{ x: -8, duration: 160 }}
-    out:fly={{ x: 8, duration: 140 }}
+    transition:fade={{ duration: 200 }}
     data-cy="notification-snackbar"
     {...restProps}
   >
