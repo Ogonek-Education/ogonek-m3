@@ -1,25 +1,24 @@
 <script lang="ts">
   import texts from "$lib/texts";
   import Dialogue from "../../containers/dialogue/Dialogue.svelte";
-  import ButtonIcon from "../ButtonIcon.svelte";
+  import Button from "../Button.svelte";
 
   const {
-    variant = "tonal",
+    variant = "error",
   }: {
-    variant?: "filled" | "elevated" | "tonal" | "outlined" | "text";
+    variant?: "filled" | "elevated" | "tonal" | "outlined" | "text" | "error";
   } = $props();
 
   let modal = $state(false);
 </script>
 
-<ButtonIcon
+<Button
   iconProps={{ name: "delete" }}
-  tooltipContent={texts.crud.delete}
   data-cy="delete-button"
   type="button"
   onclick={() => (modal = true)}
-  {variant}
-></ButtonIcon>
+  {variant}>{texts.crud.delete}</Button
+>
 
 {#if modal}
   <Dialogue

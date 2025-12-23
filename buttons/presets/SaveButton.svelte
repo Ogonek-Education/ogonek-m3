@@ -1,6 +1,6 @@
 <script lang="ts">
   import texts from "$lib/texts";
-  import ButtonIcon from "../ButtonIcon.svelte";
+  import Button from "../Button.svelte";
   import FAB from "../FAB.svelte";
 
   const {
@@ -13,13 +13,12 @@
 </script>
 
 {#if !fab}
-  <ButtonIcon
-    tooltipContent={texts.crud.save}
+  <Button
     type="submit"
     {variant}
     data-cy="save-button"
-    iconProps={{ name: "save" }}
-  ></ButtonIcon>
+    iconProps={{ name: "save" }}>{texts.crud.save}</Button
+  >
 {:else}
   <FAB type="submit" data-cy="save-button" iconProps={{ name: "save" }}></FAB>
 {/if}

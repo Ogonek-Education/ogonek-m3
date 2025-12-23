@@ -1,17 +1,16 @@
 <script lang="ts">
   import texts from "$lib/texts";
-  import ButtonIcon from "../ButtonIcon.svelte";
+  import Button from "../Button.svelte";
   const {
-    variant = "tonal",
+    variant = "text",
   }: {
     variant?: "filled" | "elevated" | "tonal" | "outlined" | "text";
   } = $props();
 </script>
 
-<ButtonIcon
+<Button
   iconProps={{ name: "cancel" }}
   data-cy="cancel-button"
-  tooltipContent={texts.crud.cancel}
   {variant}
-  href="."
-></ButtonIcon>
+  href=".">{texts.crud.cancel}</Button
+>

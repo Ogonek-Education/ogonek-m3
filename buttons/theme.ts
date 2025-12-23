@@ -21,6 +21,7 @@ export const button = tv({
       tonal: "md-component-button-tonal",
       outlined: "md-component-button-outline",
       text: "md-component-button-text",
+      error: "md-component-button-error",
       bare: "",
     },
     size: {
