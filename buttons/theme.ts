@@ -55,6 +55,7 @@ export const buttonIcon = tv({
       tonal: "md-component-button-tonal",
       outlined: "md-component-button-outline",
       text: "md-component-button-text",
+      error: "md-component-button-error",
     },
     size: {
       xs: "",
@@ -131,7 +132,7 @@ export const fab = tv({
 
 export const fabMenu = tv({
   slots: {
-    base: "gap-2 pb-2 flex flex-col absolute z-50",
+    base: "gap-2 pb-2 flex flex-col absolute z-50 overflow-visible p-1",
   },
   variants: {
     position: { top: "top-16" },

@@ -10,10 +10,14 @@
     variant = "filled",
     href,
     fab = false,
+    mobile = false,
+    class: className,
   }: {
     href: string;
     variant?: "filled" | "elevated" | "tonal" | "outlined" | "text";
     fab?: boolean;
+    mobile?: boolean;
+    class?: string;
   } = $props();
 </script>
 
@@ -24,24 +28,48 @@
       supportingText="Оформите платный аккаунт, чтобы редактировать."
     >
       {#snippet trigger()}
-        <Button
-          {variant}
-          iconProps={{ name: "edit" }}
-          data-cy="edit-button"
-          type="submit"
-          aria-label="Edit"
-          disabled={$readOnly}>{texts.crud.edit}</Button
-        >
+        {#if mobile}
+          <ButtonIcon
+            {variant}
+            iconProps={{ name: "edit" }}
+            data-cy="edit-button"
+            type="submit"
+            class={className}
+            aria-label={texts.crud.edit}
+            disabled={$readOnly}
+          />
+        {:else}
+          <Button
+            {variant}
+            iconProps={{ name: "edit" }}
+            data-cy="edit-button"
+            type="submit"
+            class={className}
+            aria-label="Edit"
+            disabled={$readOnly}>{texts.crud.edit}</Button
+          >
+        {/if}
       {/snippet}
       {#snippet children()}
         <Button href="/pricing" variant="filled">Купить подписку</Button>
       {/snippet}
     </Tooltip>
+  {:else if mobile}
+    <ButtonIcon
+      {variant}
+      iconProps={{ name: "edit" }}
+      data-cy="edit-button"
+      class={className}
+      type="submit"
+      aria-label={texts.crud.edit}
+      {href}
+    />
   {:else}
     <Button
       {variant}
       iconProps={{ name: "edit" }}
       data-cy="edit-button"
+      class={className}
       type="submit"
       aria-label="Edit"
       {href}>{texts.crud.edit}</Button

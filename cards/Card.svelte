@@ -7,11 +7,12 @@
   let {
     children,
     type = "filled",
+    hoverable = false,
     class: className,
     ...restProps
   }: CardProps = $props();
 
-  const { base, icon } = $derived(card({ type }));
+  const { base, icon } = $derived(card({ type, hoverable }));
 </script>
 
 <div class={base({ class: clsx(className) })} {...restProps}>

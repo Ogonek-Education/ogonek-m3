@@ -2,11 +2,11 @@
   import { Body } from "$lib/components";
   import { legalPages } from "$lib/utils";
   import VStack from "../containers/stack/VStack.svelte";
-  import { padding } from "$lib/stores";
+  import { navOffset, padding } from "$lib/stores";
 </script>
 
 <footer
-  style={`--footer-padding: ${$padding}px`}
+  style={`--footer-padding: ${$padding}px; --footer-nav-offset: ${$navOffset}px`}
   class="footer bg-md-sys-color-surface-container flex flex-col items-center space-y-6 pt-6 pb-28 md:items-start md:pt-12 md:pb-0"
 >
   <VStack class="font-semibold">
@@ -44,6 +44,16 @@
   @media (min-width: 768px) {
     .footer {
       padding-left: var(--footer-padding, 40rem);
+      transition: padding-left 500ms
+        var(--md-sys-motion-timing-function-emphasized-decel);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .footer {
+      padding-left: calc(
+        var(--footer-padding, 40rem) + var(--footer-nav-offset, 0px)
+      );
     }
   }
 </style>

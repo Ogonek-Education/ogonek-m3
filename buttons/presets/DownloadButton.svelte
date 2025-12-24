@@ -13,8 +13,10 @@
 
   const {
     urls,
+    mobile = false,
   }: {
     urls?: URLResponse[];
+    mobile?: boolean;
   } = $props();
 
   $effect(() => {
@@ -59,10 +61,21 @@
   }
 </script>
 
-<Button
-  iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
-  type="submit"
-  variant="outlined"
-  onclick={() => (downloading = true)}
-  formaction="?/downloadAll">Загрузить</Button
->
+{#if mobile}
+  <ButtonIcon
+    iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
+    type="submit"
+    aria-label="Загрузить"
+    variant="outlined"
+    onclick={() => (downloading = true)}
+    formaction="?/downloadAll"
+  />
+{:else}
+  <Button
+    iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
+    type="submit"
+    variant="outlined"
+    onclick={() => (downloading = true)}
+    formaction="?/downloadAll">Загрузить</Button
+  >
+{/if}
