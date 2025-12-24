@@ -66,7 +66,7 @@
     iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
     type="submit"
     aria-label="Загрузить"
-    variant="outlined"
+    variant="text"
     onclick={() => (downloading = true)}
     formaction="?/downloadAll"
   />
@@ -74,7 +74,7 @@
   <Button
     iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
     type="submit"
-    variant="outlined"
+    variant="text"
     onclick={() => (downloading = true)}
     formaction="?/downloadAll">Загрузить</Button
   >

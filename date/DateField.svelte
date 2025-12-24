@@ -98,7 +98,8 @@
 
 <style>
   .picker {
-    z-index: 1;
+    z-index: 40;
     position: absolute;
+    padding: 1px;
   }
 </style>
