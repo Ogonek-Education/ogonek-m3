@@ -6,7 +6,7 @@
   import Button from "../../buttons/Button.svelte";
 
   let {
-    withState = true,
+    withState = false,
     headline,
     supportingText,
     confirmText,
@@ -100,13 +100,13 @@
 <style>
   .dialogue-base {
     opacity: 0;
-    animation: dialogueScrimIn 500ms var(--md-sys-motion-timing-function-emphasized-decel)
-      forwards;
+    animation: dialogueScrimIn 500ms
+      var(--md-sys-motion-timing-function-emphasized-decel) forwards;
   }
 
   .dialogue-base.leaving {
-    animation: dialogueScrimOut 350ms var(--md-sys-motion-timing-function-emphasized-decel)
-      forwards;
+    animation: dialogueScrimOut 350ms
+      var(--md-sys-motion-timing-function-emphasized-decel) forwards;
   }
 
   .dialogue-inner {
@@ -114,37 +114,41 @@
     transform-origin: top;
     animation:
       dialogueIn 500ms var(--md-sys-motion-timing-function-emphasized-decel),
-      dialogueOpacityIn 100ms var(--md-sys-motion-timing-function-emphasized-decel) backwards;
+      dialogueOpacityIn 100ms
+        var(--md-sys-motion-timing-function-emphasized-decel) backwards;
   }
 
   .dialogue-inner.leaving {
-    animation: dialogueOut 500ms var(--md-sys-motion-timing-function-emphasized-decel)
-      forwards;
+    animation: dialogueOut 500ms
+      var(--md-sys-motion-timing-function-emphasized-decel) forwards;
   }
 
   .dialogue-inner > :global(h1),
   .dialogue-inner > :global(p) {
-    animation: dialogueOpacityIn 150ms var(--md-sys-motion-timing-function-emphasized-decel)
-      backwards;
+    animation: dialogueOpacityIn 150ms
+      var(--md-sys-motion-timing-function-emphasized-decel) backwards;
   }
 
   .dialogue-inner.leaving > :global(h1),
   .dialogue-inner.leaving > :global(p) {
-    animation: dialogueOpacityOut 150ms var(--md-sys-motion-timing-function-emphasized-decel)
-      forwards;
+    animation: dialogueOpacityOut 150ms
+      var(--md-sys-motion-timing-function-emphasized-decel) forwards;
   }
 
   .dialogue-buttons {
     animation:
-      dialogueButtonsIn 500ms var(--md-sys-motion-timing-function-emphasized-decel),
-      dialogueOpacityIn 100ms var(--md-sys-motion-timing-function-emphasized-decel) backwards;
+      dialogueButtonsIn 500ms
+        var(--md-sys-motion-timing-function-emphasized-decel),
+      dialogueOpacityIn 100ms
+        var(--md-sys-motion-timing-function-emphasized-decel) backwards;
   }
 
   .dialogue-inner.leaving .dialogue-buttons {
     animation:
-      dialogueButtonsOut 500ms var(--md-sys-motion-timing-function-emphasized-decel),
-      dialogueOpacityOut 100ms var(--md-sys-motion-timing-function-emphasized-decel)
-        forwards;
+      dialogueButtonsOut 500ms
+        var(--md-sys-motion-timing-function-emphasized-decel),
+      dialogueOpacityOut 100ms
+        var(--md-sys-motion-timing-function-emphasized-decel) forwards;
   }
 
   @keyframes dialogueScrimIn {
