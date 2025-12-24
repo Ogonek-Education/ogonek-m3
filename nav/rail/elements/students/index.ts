@@ -3,4 +3,3 @@
 // default exports for components in this folder
 export { default as Teacher } from "./Teacher.svelte";
 export { default as Zoom } from "./Zoom.svelte";
-

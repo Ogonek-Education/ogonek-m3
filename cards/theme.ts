@@ -7,10 +7,8 @@ export const card = tv({
   },
   variants: {
     type: {
-      elevated:
-        "shadow-elevation-1 bg-md-sys-color-surface-container-low",
-      filled:
-        "bg-md-sys-color-surface-container-highest",
+      elevated: "shadow-elevation-1 bg-md-sys-color-surface-container-low",
+      filled: "bg-md-sys-color-surface-container-highest",
       outlined:
         "bg-md-sys-color-surface outline-1 outline-md-sys-color-outline-variant",
     },

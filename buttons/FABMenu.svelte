@@ -70,10 +70,10 @@
     const x = targetLeft - rect.left;
     const y = clampedTop - rect.top;
     const originY = placeAbove ? "bottom" : "top";
-    const originX = anchorRect.left + anchorRect.width / 2 <
-      targetLeft + rect.width / 2
-      ? "left"
-      : "right";
+    const originX =
+      anchorRect.left + anchorRect.width / 2 < targetLeft + rect.width / 2
+        ? "left"
+        : "right";
 
     coords = { x, y, originX, originY, maxHeight };
   }}
