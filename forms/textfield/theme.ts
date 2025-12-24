@@ -29,7 +29,7 @@ export const textfield = tv({
       absolute left-4 top-1/2 -translate-y-1/2
       md-sys-typescale-body-large
       text-md-sys-color-on-surface-variant
-      transition-all duration-150 pointer-events-none
+      transition-all pointer-events-none
 
       peer-focus:text-md-sys-color-primary
       peer-invalid:text-md-sys-color-error

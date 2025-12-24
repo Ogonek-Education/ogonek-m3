@@ -7,7 +7,6 @@ export * from "./icon";
 export * from "./actions";
 export * from "./classes";
 export * from "./dismissable";
-export * from "./easing";
 export * from "./types";
 
 // default exports for components in this folder

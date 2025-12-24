@@ -3,7 +3,7 @@
   import { fabMenu } from "./theme";
   import type { FABMenuProps } from "./types";
   import type { TransitionConfig } from "svelte/transition";
-  import { easeEmphasized } from "../utils";
+  import { enterExit } from "$lib/animation";
 
   let {
     children,
@@ -13,16 +13,6 @@
   }: FABMenuProps = $props();
 
   const { base } = $derived(fabMenu({ position }));
-
-  const enterExit = (_: Node): TransitionConfig => {
-    return {
-      duration: 400,
-      easing: easeEmphasized,
-      css: (t, u) => `clip-path: inset(-100% 0 ${u * 100}% 0 round 1rem);
-transform: scaleY(${(t * 0.3 + 0.7) * 100}%);
-opacity: ${Math.min(t * 3, 1)};`,
-    };
-  };
 </script>
 
 <ul

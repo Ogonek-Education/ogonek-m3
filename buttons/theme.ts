@@ -16,7 +16,7 @@ export const button = tv({
   },
   variants: {
     variant: {
-      elevated: "",
+      elevated: "md-component-button-elevated",
       filled: "md-component-button-filled",
       tonal: "md-component-button-tonal",
       outlined: "md-component-button-outline",
@@ -50,7 +50,7 @@ export const buttonIcon = tv({
   },
   variants: {
     variant: {
-      elevated: {},
+      elevated: "md-component-button-elevated",
       filled: "md-component-button-filled",
       tonal: "md-component-button-tonal",
       outlined: "md-component-button-outline",

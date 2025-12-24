@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import type { Snippet } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import type { TransitionConfig } from "svelte/transition";
   import { Textfield } from "$lib/components";
-  import { easeEmphasized } from "$lib/components";
+  import { easeEmphasized } from "$lib/animation";
   import DatePickerDocked from "./DatePickerDocked.svelte";
   import { clickOutside, positionFloating } from "$lib/actions";
+  import { enterExit } from "$lib/animation";
 
   let {
     label = "Дата",
@@ -32,17 +32,6 @@
 
   let picker = $state(false);
   let anchorEl = $state<HTMLDivElement>();
-
-  const enterExit = (_: Node): TransitionConfig => {
-    return {
-      duration: 400,
-      easing: easeEmphasized,
-      css: (t, u) => `clip-path: inset(-100% 0 ${u * 100}% 0 round 1rem);
-transform-origin: top;
-transform: scaleY(${(t * 0.3 + 0.7) * 100}%);
-opacity: ${Math.min(t * 3, 1)};`,
-    };
-  };
 </script>
 
 <div

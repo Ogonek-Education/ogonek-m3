@@ -523,7 +523,7 @@
                   fileState.status === "complete"
                     ? "bg-md-sys-color-secondary"
                     : "bg-md-sys-color-primary"
-                } transition-[width] duration-300`}
+                } transition-[width] `}
                 style={`width: ${progressWidth(fileState)}%;`}
               ></div>
             </div>

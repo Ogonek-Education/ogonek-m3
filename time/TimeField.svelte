@@ -3,8 +3,9 @@
   import type { HTMLInputAttributes } from "svelte/elements";
   import type { TransitionConfig } from "svelte/transition";
   import { Textfield, TimepickerInput } from "$lib/components";
-  import { easeEmphasized } from "$lib/components";
+  import { easeEmphasized } from "$lib/animation";
   import { clickOutside, positionFloating } from "$lib/actions";
+  import { enterExit } from "$lib/animation";
 
   let {
     label = "Время",
@@ -27,17 +28,6 @@
 
   let picker = $state(false);
   let anchorEl = $state<HTMLDivElement>();
-
-  const enterExit = (_: Node): TransitionConfig => {
-    return {
-      duration: 400,
-      easing: easeEmphasized,
-      css: (t, u) => `clip-path: inset(-100% 0 ${u * 100}% 0 round 1rem);
-transform-origin: top;
-transform: scaleY(${(t * 0.3 + 0.7) * 100}%);
-opacity: ${Math.min(t * 3, 1)};`,
-    };
-  };
 </script>
 
 <div

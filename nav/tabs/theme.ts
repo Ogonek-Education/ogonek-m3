@@ -4,7 +4,7 @@ export type TabVariants = VariantProps<typeof tab>;
 export const tabHolder = tv({
   slots: {
     base: "bg-md-sys-color-surface flex relative",
-    bar: "bg-md-sys-color-primary absolute bottom-0 h-[3px] transition-all duration-200",
+    bar: "bg-md-sys-color-primary absolute bottom-0 h-[3px] transition-all",
   },
 });
 export const tab = tv({
