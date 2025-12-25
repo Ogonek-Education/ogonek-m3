@@ -4,10 +4,10 @@ export const listiem = tv({
   slots: {
     base: "bg-md-sys-color-surface text-sys-color-on-surface-variant state-layer disabled:before:bg-md-sys-color-on-surface/10 hover:before:bg-md-sys-color-on-surface/8 focus:before:bg-md-sys-color-on-surface/10 md-sys-state-focus-indicator px-4 py-2 gap-4 items-center relative flex rounded-lg before:rounded-lg transition-shadow",
     leading: "inline-flex items-start",
-    body: "",
-    overline: "md-sys-typescale-label-small",
-    headline: "text-md-sys-color-on-surface md-sys-typescale-body-large",
-    supporting: "md-sys-typescale-label-small",
+    body: "min-w-0",
+    overline: "md-sys-typescale-label-small line-clamp-1",
+    headline: "text-md-sys-color-on-surface md-sys-typescale-body-large line-clamp-1",
+    supporting: "md-sys-typescale-label-small line-clamp-2",
     trailing: "size-6 inline-flex items-start",
   },
   variants: {
