@@ -6,7 +6,8 @@ export const listiem = tv({
     leading: "inline-flex items-start",
     body: "min-w-0",
     overline: "md-sys-typescale-label-small line-clamp-1",
-    headline: "text-md-sys-color-on-surface md-sys-typescale-body-large line-clamp-1",
+    headline:
+      "text-md-sys-color-on-surface md-sys-typescale-body-large line-clamp-1",
     supporting: "md-sys-typescale-label-small line-clamp-2",
     trailing: "size-6 inline-flex items-start",
   },
@@ -18,7 +19,7 @@ export const listiem = tv({
     },
     selected: {
       true: {
-        base: "text-md-sys-color-on-surface bg-md-secondary-container",
+        base: "text-md-sys-color-on-secondary-container bg-md-sys-color-secondary-container",
         headline: "text-md-sys-color-on-secondary-container",
         trailing: "text-md-sys-color-primary",
       },
