@@ -32,7 +32,7 @@ export const singlePane = tv({
     background: {
       transparent: "",
       filled: {
-        base: "bg-md-sys-color-surface rounded-lg",
+        base: "bg-md-sys-color-surface md:rounded-lg",
       },
     },
     centered: {
