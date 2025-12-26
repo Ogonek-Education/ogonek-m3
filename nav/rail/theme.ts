@@ -36,7 +36,7 @@ export const railElement = tv({
     active: {
       true: {
         content: "text-md-sys-color-on-secondary-container",
-        label: "font-semibold ",
+        label: "font-bold ",
         iconContainer:
           "group-hover:text-md-sys-color-secondary  bg-md-sys-color-secondary-container",
       },
