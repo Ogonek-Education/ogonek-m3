@@ -7,14 +7,21 @@
   let {
     children,
     type = "filled",
-    hoverable = false,
     class: className,
+    href,
+    hoverable = !!href,
     ...restProps
   }: CardProps = $props();
 
-  const { base, icon } = $derived(card({ type, hoverable }));
+  const { base } = $derived(card({ type, hoverable }));
 </script>
 
-<div class={base({ class: clsx(className) })} {...restProps}>
-  {@render children?.()}
-</div>
+{#if href}
+  <a {href} class={base({ class: clsx(className) })} {...restProps}>
+    {@render children?.()}
+  </a>
+{:else}
+  <div class={base({ class: clsx(className) })} {...restProps}>
+    {@render children?.()}
+  </div>
+{/if}

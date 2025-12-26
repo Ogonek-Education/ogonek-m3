@@ -10,6 +10,7 @@
     supporting = "",
     trailing,
     selected,
+    class: className,
     lines = overline && supporting ? 3 : overline || supporting ? 2 : 1,
     ...restProps
   }: ListitemProps = $props();

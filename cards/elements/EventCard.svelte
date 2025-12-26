@@ -1,40 +1,32 @@
 <script lang="ts">
   import { page } from "$app/state";
+  import { ListItem } from "$lib/components";
   import type { EventSmall } from "$lib/types";
   import { formatEventTime, getVideoCallService } from "$lib/utils";
-  import Divider from "../../containers/divider/Divider.svelte";
-  import VStack from "../../containers/stack/VStack.svelte";
-  import Body from "../../typography/body/Body.svelte";
-  import Headline from "../../typography/headline/Headline.svelte";
-  import Card from "../Card.svelte";
 
-  const {
-    event,
-    deactivate = false,
-  }: { event: EventSmall; deactivate?: boolean } = $props();
+  const { event }: { event: EventSmall } = $props();
 
-  const videoCallService = event.location
-    ? getVideoCallService(event.location)
-    : null;
+  const videoCallService = $derived(
+    event.location ? getVideoCallService(event.location) : null,
+  );
+
+  const eventDate = $derived(new Date(event.dtstartTime));
+  const eventHref = $derived(
+    `/${page.params.role}/calendar/${eventDate.getFullYear()}/${
+      eventDate.getMonth() + 1
+    }/${eventDate.getDate()}/${event.id}`,
+  );
 </script>
 
-<Card>
-  <VStack class="justify-start">
-    <Headline class={event.status === "cancelled" ? "line-through" : ""}>
-      {page.params.role === "t" ? event.title : "Занятие"}
-    </Headline>
-    {#if event.location}
-      <Divider />
-      {#if videoCallService}
-        <Body>{videoCallService}</Body>
-      {:else}
-        <Body>
-          {event.location}
-        </Body>
-      {/if}
-    {/if}
-  </VStack>
-  <Headline>
-    {formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
-  </Headline>
-</Card>
+<ListItem
+  data-cy="calendar-event-item"
+  headline={page.params.role === "s" ? "Занятие" : event.title}
+  selected={false}
+  supporting={event.location
+    ? videoCallService
+      ? videoCallService
+      : event.location
+    : "Без локации"}
+  overline={formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
+  href={eventHref}
+/>
