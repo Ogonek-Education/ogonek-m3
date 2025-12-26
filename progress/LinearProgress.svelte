@@ -1,7 +1,12 @@
 <script lang="ts">
+  import clsx from "clsx";
   import { tv } from "tailwind-variants";
 
-  let { percent, height = 4 }: { percent: number; height?: number } = $props();
+  let {
+    percent,
+    height = 4,
+    class: className,
+  }: { percent: number; height?: number; class?: string } = $props();
 
   const linearProgress = tv({
     slots: {
@@ -18,7 +23,11 @@
   } = $derived(linearProgress());
 </script>
 
-<div class={container()} role="progressbar" style:height="{height / 16}rem">
+<div
+  class={container({ class: clsx(className) })}
+  role="progressbar"
+  style:height="{height / 16}rem"
+>
   <div
     class={percentClass()}
     style:width="{percent}%"

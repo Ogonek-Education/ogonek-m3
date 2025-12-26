@@ -1,6 +1,7 @@
 <script lang="ts">
   import clsx from "clsx";
-  import { singlePane, type SinglePaneVariants } from "./theme";
+  import { singlePane } from "./theme";
+  import type { SinglePaneProps } from "./types";
   import type { Snippet } from "svelte";
 
   const {
@@ -12,12 +13,13 @@
     full = true,
     class: className,
     contentClass,
+    ...rest
   }: {
     children: Snippet;
     headline?: string;
     class?: string;
     contentClass?: string;
-  } & SinglePaneVariants = $props();
+  } & SinglePaneProps = $props();
 
   const {
     base,
@@ -26,7 +28,7 @@
   } = $derived(singlePane({ background, centered, padding, full }));
 </script>
 
-<div class={base({ class: clsx(className) })}>
+<div class={base({ class: clsx(className) })} {...rest}>
   <div class={content({ class: clsx(contentClass) })}>
     {#if headline}
       <div class={headlineCls()}>{headline}</div>
