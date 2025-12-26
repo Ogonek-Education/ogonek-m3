@@ -9,7 +9,7 @@ export type ActionProps =
   | DivAttrs
   | ButtonAttrs
   | ({ label: true } & NotButton<HTMLLabelAttributes>)
-  | ({ href: string } & NotButton<HTMLAnchorAttributes>);
+  | ({ href: string | null } & NotButton<HTMLAnchorAttributes>);
 
 export type ListitemProps = {
   leading?: Snippet;
