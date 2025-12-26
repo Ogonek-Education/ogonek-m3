@@ -5,9 +5,9 @@ export type AppbarVariants = VariantProps<typeof appbar>;
 export const appbar = tv({
   slots: {
     base: "fixed top-0 left-0 w-full md:hidden flex z-40 items-center justify-between",
-    textContainer: "flex grow flex-col items-start gap-0.5",
+    textContainer: "flex flex-col items-start gap-0.5 grow",
     title:
-      "text-md-sys-color-on-surface md-sys-typescale-title-large text-wrap font-serif capitalize",
+      "text-md-sys-color-on-surface md-sys-typescale-title-large line-clamp-1  font-serif capitalize ",
     subtitle:
       "text-md-sys-color-on-surface-variant md-sys-typescale-label-medium",
     leading: "text-md-sys-color-on-surface ml-0.5",
@@ -30,7 +30,7 @@ export const appbar = tv({
     },
     noLeading: {
       true: {
-        textContainer: "pl-4",
+        textContainer: "pl-6",
       },
       false: "",
     },
