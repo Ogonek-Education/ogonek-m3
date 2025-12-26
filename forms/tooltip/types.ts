@@ -8,6 +8,7 @@ export type TooltipProps = TooltipVariants &
     children?: Snippet;
     supportingText?: string;
     trigger?: Snippet;
+    triggerClass?: string;
     placement?: "top" | "bottom";
     offset?: number;
     openDelay?: number;

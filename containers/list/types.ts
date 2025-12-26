@@ -19,4 +19,5 @@ export type ListitemProps = {
   supporting?: string | null;
   trailing?: Snippet;
   lines?: 1 | 2 | 3;
+  asChild?: boolean;
 } & ActionProps;

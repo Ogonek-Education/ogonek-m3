@@ -4,7 +4,8 @@
   import type { EventSmall } from "$lib/types";
   import { formatEventTime, getVideoCallService } from "$lib/utils";
 
-  const { event }: { event: EventSmall } = $props();
+  const { event, asChild = false }: { event: EventSmall; asChild?: boolean } =
+    $props();
 
   const videoCallService = $derived(
     event.location ? getVideoCallService(event.location) : null,
@@ -20,6 +21,7 @@
 
 <ListItem
   data-cy="calendar-event-item"
+  asChild
   headline={page.params.role === "s" ? "Занятие" : event.title}
   selected={false}
   supporting={event.location

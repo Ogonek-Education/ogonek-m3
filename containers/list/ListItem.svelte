@@ -11,6 +11,7 @@
     trailing,
     selected,
     class: className,
+    asChild = false,
     lines = overline && supporting ? 3 : overline || supporting ? 2 : 1,
     ...restProps
   }: ListitemProps = $props();
@@ -40,7 +41,7 @@
   {/if}
 {/snippet}
 
-<li>
+{#snippet action()}
   {#if "label" in restProps}
     {@const { label: _, ...extra } = restProps}
     <label class={cls.base()} {...extra}>
@@ -62,4 +63,12 @@
       {@render content()}
     </div>
   {/if}
-</li>
+{/snippet}
+
+{#if asChild}
+  {@render action()}
+{:else}
+  <li>
+    {@render action()}
+  </li>
+{/if}

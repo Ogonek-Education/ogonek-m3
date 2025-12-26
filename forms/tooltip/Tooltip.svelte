@@ -12,6 +12,7 @@
     supportingText,
     children,
     trigger,
+    triggerClass,
     placement = "top",
     offset = 10,
     openDelay = 120,
@@ -130,7 +131,7 @@
 </script>
 
 <span
-  class="inline-flex items-center"
+  class={clsx("inline-flex items-center", triggerClass)}
   bind:this={anchor}
   onmouseenter={open}
   onmouseleave={close}
