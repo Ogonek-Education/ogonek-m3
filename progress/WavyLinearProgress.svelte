@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, untrack } from "svelte";
+  import { tweened } from "svelte/motion";
+  import { cubicOut } from "svelte/easing";
   import { linear, trackOpacity } from "./_wavy";
 
   let {
@@ -17,10 +19,20 @@
   } = $props();
 
   let time = $state(0);
+  const animatedPercent = tweened(percent, {
+    duration: 150,
+    easing: cubicOut,
+  });
+
+  $effect(() => {
+    animatedPercent.set(percent);
+  });
 
   let left = $derived(thickness * 0.5);
   let right = $derived(width - thickness * 0.5);
-  let percentX = $derived((percent / 100) * (right - left) + left);
+  let percentX = $derived(
+    ($animatedPercent / 100) * (right - left) + left,
+  );
 
   const getSMILData = (time: number) => {
     let paths: string[] = [];
