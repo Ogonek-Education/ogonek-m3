@@ -6,7 +6,7 @@
   const linearProgress = tv({
     slots: {
       container: "flex gap-1",
-      percent: "bg-md-sys-color-primary rounded-full shrink transition-[width]",
+      percent: "bg-md-sys-color-primary rounded-full shrink",
       track: "bg-md-sys-color-secondary-container rounded-full grow",
     },
   });
@@ -19,6 +19,10 @@
 </script>
 
 <div class={container()} role="progressbar" style:height="{height / 16}rem">
-  <div class={percentClass()} style:width="{percent}%"></div>
+  <div
+    class={percentClass()}
+    style:width="{percent}%"
+    style="transition: var(--md-sys-motion-easing-fast);"
+  ></div>
   <div class={track()}></div>
 </div>

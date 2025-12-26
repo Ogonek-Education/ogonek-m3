@@ -9,7 +9,10 @@ export interface RailItemProps
   badge?: number;
   external?: boolean;
   href: string;
+  selected?: boolean;
   name: string;
+
+  disabled?: boolean;
 }
 
 export type RailProps = RailVariants &

@@ -14,14 +14,23 @@
     external = false,
     badge = 0,
     class: className,
+    selected,
+    disabled,
     iconProps,
     ...rest
   }: RailItemProps = $props();
 
-  const target = $derived(external ? "_blank" : undefined);
-  const rel = $derived(external ? "noopener noreferrer" : undefined);
+  const isDisabled = $derived(!!disabled);
+  const target = $derived(!isDisabled && external ? "_blank" : undefined);
+  const rel = $derived(
+    !isDisabled && external ? "noopener noreferrer" : undefined,
+  );
+  const hrefValue = $derived(isDisabled ? undefined : href);
+  const ariaDisabled = $derived(isDisabled ? true : undefined);
+  const tabIndex = $derived(isDisabled ? -1 : undefined);
   const isActive = $derived(
-    page.url.pathname === href ||
+    selected ||
+      page.url.pathname === href ||
       (href !== "/" && page.url.pathname.startsWith(href)),
   );
   const {
@@ -31,9 +40,24 @@
     iconContainer,
     label: labelClass,
   } = $derived(railElement({ active: isActive, expanded: !$collapseStore }));
+
+  function handleClick(event: MouseEvent) {
+    if (!isDisabled) return;
+    event.preventDefault();
+    event.stopPropagation();
+  }
 </script>
 
-<a {href} {target} {rel} {...rest} class={clsx(base(), className)}>
+<a
+  href={hrefValue}
+  {target}
+  {rel}
+  aria-disabled={ariaDisabled}
+  tabindex={tabIndex}
+  onclick={handleClick}
+  {...rest}
+  class={clsx(base(), className)}
+>
   <div class={content()}>
     <div class={iconContainer()}>
       <Icon

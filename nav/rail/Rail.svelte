@@ -2,7 +2,13 @@
   import { collapseStore } from "$lib/stores";
   import { ButtonIcon, rail, type RailProps } from "$lib/components";
   import { clickOutside } from "$lib/actions";
-  let { children, expandable = true, fab }: RailProps = $props();
+  import clsx from "clsx";
+  let {
+    children,
+    expandable = true,
+    fab,
+    class: className,
+  }: RailProps = $props();
 
   function collapse() {
     collapseStore.set(!$collapseStore);
@@ -16,7 +22,7 @@
 <div class={ghost()}></div>
 <div class={`${scrim()} rail-scrim`} data-expanded={!$collapseStore}></div>
 <div
-  class={`${base()} rail-base`}
+  class={`${base({ class: clsx(className) })} rail-base`}
   data-expanded={!$collapseStore}
   use:clickOutside={() => {
     if (!$collapseStore) collapse();

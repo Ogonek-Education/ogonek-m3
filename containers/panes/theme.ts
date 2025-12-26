@@ -45,7 +45,10 @@ export const singlePane = tv({
     },
     padding: {
       none: "",
-      md: "p-4 md:p-6 md:py-2",
+      md: {
+        base: "p-4 md:p-6",
+        content: "md:py-2",
+      },
     },
     full: {
       true: "min-h-[calc(100dvh-30px)] ",

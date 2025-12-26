@@ -75,7 +75,8 @@
     let left = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
     left = clamp(left, margin, window.innerWidth - tooltipRect.width - margin);
 
-    coords = { top: clamp(top, margin, window.innerHeight - margin), left };
+    top = clamp(top, margin, window.innerHeight - margin);
+    coords = { top: top - anchorRect.top, left: left - anchorRect.left };
   };
 
   const clearTimers = () => {
@@ -131,7 +132,7 @@
 </script>
 
 <span
-  class={clsx("inline-flex items-center", triggerClass)}
+  class={clsx("relative inline-flex items-center", triggerClass)}
   bind:this={anchor}
   onmouseenter={open}
   onmouseleave={close}
@@ -140,38 +141,37 @@
   onfocusout={close}
 >
   {@render trigger?.()}
-</span>
-
-{#if isOpen}
-  <div
-    {id}
-    class={baseCls}
-    bind:this={tooltipEl}
-    role="tooltip"
-    aria-hidden={!isOpen}
-    style={`position: fixed; left: ${coords.left}px; top: ${coords.top}px; z-index: 60`}
-    onmouseenter={() => {
-      if (closeTimer) {
-        clearTimeout(closeTimer);
-        closeTimer = null;
-      }
-    }}
-    onmouseleave={close}
-    {...restProps}
-  >
-    <Layer />
-    <div class={textContainer()}>
-      {#if subhead}
-        <Title class={subheadCls()}>
-          {subhead}
-        </Title>
-      {/if}
-      {#if supportingText}
-        <Body class={supportingTextCls()}>
-          {supportingText}
-        </Body>
-      {/if}
+  {#if isOpen}
+    <div
+      {id}
+      class={baseCls}
+      bind:this={tooltipEl}
+      role="tooltip"
+      aria-hidden={!isOpen}
+      style={`position: absolute; left: ${coords.left}px; top: ${coords.top}px; z-index: 60`}
+      onmouseenter={() => {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      }}
+      onmouseleave={close}
+      {...restProps}
+    >
+      <Layer />
+      <div class={textContainer()}>
+        {#if subhead}
+          <Title class={subheadCls()}>
+            {subhead}
+          </Title>
+        {/if}
+        {#if supportingText}
+          <Body class={supportingTextCls()}>
+            {supportingText}
+          </Body>
+        {/if}
+      </div>
+      {@render children?.()}
     </div>
-    {@render children?.()}
-  </div>
-{/if}
+  {/if}
+</span>
