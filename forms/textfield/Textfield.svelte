@@ -45,7 +45,7 @@
     </div>
 
     {#if trailingIconProps}
-      <button type="button" class="z-40" onclick={trailingOnClick}>
+      <button type="button" onclick={trailingOnClick}>
         <Icon class={cls.trailingIcon()} {...trailingIconProps} />
       </button>
     {/if}

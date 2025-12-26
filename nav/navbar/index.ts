@@ -7,3 +7,4 @@ export * from "./types";
 // default exports for components in this folder
 export { default as Navbar } from "./Navbar.svelte";
 export { default as NavbarItem } from "./NavbarItem.svelte";
+
