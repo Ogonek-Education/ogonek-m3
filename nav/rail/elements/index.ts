@@ -13,4 +13,3 @@ export { default as Promo } from "./Promo.svelte";
 export { default as Settings } from "./Settings.svelte";
 export { default as Tasks } from "./Tasks.svelte";
 export { default as Words } from "./Words.svelte";
-
