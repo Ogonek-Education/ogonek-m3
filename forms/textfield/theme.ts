@@ -6,13 +6,14 @@ export const textfield = tv({
   slots: {
     base: `
       group w-full h-14 px-0 bg-md-sys-color-surface-container-highest
-      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center border-b
-      border-md-sys-color-on-surface-variant
-      hover:border-md-sys-color-on-surface
-      focus-within:border-md-sys-color-primary
-      focus-within:border-b-2
+      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center
+      after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-md-sys-color-on-surface-variant
+      after:transition-[height,background-color] after:duration-150 after:ease-out
+      hover:after:bg-md-sys-color-on-surface
+      focus-within:after:bg-md-sys-color-primary
+      focus-within:after:h-[2px]
       disabled:bg-md-sys-color-on-surface/4
-      disabled:border-md-sys-color-on-surface/12
+      disabled:after:bg-md-sys-color-on-surface/12
     `,
 
     inputWrapper: `
@@ -62,7 +63,7 @@ export const textfield = tv({
   variants: {
     error: {
       true: {
-        base: "border-md-sys-color-error focus-within:border-md-sys-color-error",
+        base: "after:bg-md-sys-color-error focus-within:after:bg-md-sys-color-error",
         label: "text-md-sys-color-error",
         supportingText: "text-md-sys-color-error",
         leadingIcon: "text-md-sys-color-error",
