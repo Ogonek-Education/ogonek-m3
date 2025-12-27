@@ -20,17 +20,20 @@
   });
 </script>
 
-<div class={base({ class: clsx(className) })}>
+<div
+  class={base({ class: clsx(className) })}
+  style={`--splitpane-left-width: ${leftWidth}px;`}
+>
   <!-- LEFT PANE -->
   <div
     class={lCls()}
-    style={`width:${leftWidth}px; left: var(--splitpane-offset, 0px); transition: left 500ms var(--md-sys-motion-timing-function-emphasized-decel);`}
+    style={`width: var(--splitpane-left-width); left: var(--splitpane-offset, 0px); transition: left 500ms var(--md-sys-motion-timing-function-emphasized-decel);`}
   >
     {@render left()}
   </div>
 
   <!-- RIGHT PANE -->
-  <div class={rCls()} style={`margin-left:${leftWidth}px`}>
+  <div class={rCls()}>
     {@render right()}
   </div>
 </div>

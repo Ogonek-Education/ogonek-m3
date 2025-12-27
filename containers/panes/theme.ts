@@ -6,9 +6,10 @@ export type SupportingPaneVariants = VariantProps<typeof supportingPane>;
 
 export const splitPane = tv({
   slots: {
-    left: "md:fixed top-0 bottom-0 overflow-auto bg-md-sys-color-surface-container py-4 scrollbar-none",
-    right: "flex flex-col box-border md:min-h-[calc(100dvh-30px)]",
-    base: "pl-4",
+    left: "md:fixed top-0 bottom-0 overflow-auto bg-md-sys-color-surface-container py-4 scrollbar-none hidden md:block",
+    right:
+      "flex flex-col box-border ml-0 md:ml-[var(--splitpane-left-width)] md:min-h-[calc(100dvh-30px)]",
+    base: "md:pl-4",
   },
   variants: {
     centered: {
@@ -46,7 +47,7 @@ export const singlePane = tv({
     padding: {
       none: "",
       md: {
-        base: "p-4 md:p-6",
+        base: "p-4 md:p-6 pb-24",
         content: "md:py-2",
       },
     },
