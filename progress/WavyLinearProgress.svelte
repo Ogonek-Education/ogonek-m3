@@ -30,9 +30,7 @@
 
   let left = $derived(thickness * 0.5);
   let right = $derived(width - thickness * 0.5);
-  let percentX = $derived(
-    ($animatedPercent / 100) * (right - left) + left,
-  );
+  let percentX = $derived(($animatedPercent / 100) * (right - left) + left);
 
   const getSMILData = (time: number) => {
     let paths: string[] = [];
