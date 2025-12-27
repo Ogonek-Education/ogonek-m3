@@ -6,6 +6,7 @@
   import Layer from "../../utils/Layer.svelte";
   import { tooltip } from "./theme";
   import type { TooltipProps } from "./types";
+  import { enterExit } from "$lib/animation";
 
   const {
     subhead,
@@ -144,6 +145,7 @@
   {#if isOpen}
     <div
       {id}
+      in:enterExit
       class={baseCls}
       bind:this={tooltipEl}
       role="tooltip"

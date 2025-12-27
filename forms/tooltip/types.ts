@@ -4,9 +4,9 @@ import type { TooltipVariants } from "./theme";
 
 export type TooltipProps = TooltipVariants &
   DivAttrs & {
-    subhead?: string;
+    subhead?: string | null;
     children?: Snippet;
-    supportingText?: string;
+    supportingText?: string | null;
     trigger?: Snippet;
     triggerClass?: string;
     placement?: "top" | "bottom";
