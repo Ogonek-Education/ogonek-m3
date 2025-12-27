@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "svelte/elements";
 
 export type AppBarProps = AppbarVariants &
   HTMLAttributes<HTMLElementTagNameMap["nav"]> & {
-    children: Snippet;
+    children?: Snippet;
     title: string;
     subtitle?: string;
     leading?: Snippet;
