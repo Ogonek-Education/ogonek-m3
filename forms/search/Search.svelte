@@ -35,6 +35,7 @@
     bind:value
     type="text"
     class={input()}
+    oncancel={() => (value = undefined)}
   />
 
   {#if trailingIconProps && value}
