@@ -106,7 +106,9 @@
         class={clsx(
           stopBase(),
           stopFill(),
-          vertical ? "-translate-x-1/2 translate-y-1/2" : "-translate-x-1/2 -translate-y-1/2",
+          vertical
+            ? "-translate-x-1/2 translate-y-1/2"
+            : "-translate-x-1/2 -translate-y-1/2",
         )}
         style:--x={stop - 0.5}
       ></div>
@@ -125,7 +127,9 @@
         class={clsx(
           stopBase(),
           stopRest(),
-          vertical ? "-translate-x-1/2 translate-y-1/2" : "-translate-x-1/2 -translate-y-1/2",
+          vertical
+            ? "-translate-x-1/2 translate-y-1/2"
+            : "-translate-x-1/2 -translate-y-1/2",
         )}
         style:--x={stop - 0.5}
       ></div>
@@ -176,3 +180,13 @@
     </div>
   {/if}
 </div>
+
+<style>
+  @layer tokens {
+    :root {
+      --m3-slider-track-out-shape: 0.5rem;
+      --m3-slider-track-in-shape: 0.125rem;
+      --m3-slider-handle-shape: calc(infinity * 1px);
+    }
+  }
+</style>

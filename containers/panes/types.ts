@@ -10,6 +10,11 @@ export type SplitPaneProps = SplitPaneVariants &
   DivAttrs & {
     left: Snippet;
     right: Snippet;
+    leftWidth?: number;
+    minLeft?: number;
+    maxLeft?: number;
+    storageKey?: string;
+    persist?: boolean;
   };
 
 export type SupportingPaneProps = SupportingPaneVariants &

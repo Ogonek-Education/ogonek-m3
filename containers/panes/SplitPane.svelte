@@ -5,30 +5,46 @@
   import { padding } from "$lib/stores";
   import clsx from "clsx";
 
-  let leftWidth = $state(396);
   let dragging = $state(false);
 
-  const storageKey = "splitpane:leftWidth";
-  const minLeft = 280;
-  const maxLeft = 720;
+  let {
+    left,
+    right,
+    centered,
+    leftWidth = $bindable(396),
+    minLeft = 280,
+    maxLeft = 720,
+    storageKey = "splitpane:leftWidth",
+    persist = true,
+    class: className,
+  }: SplitPaneProps = $props();
 
-  const { left, right, centered, class: className }: SplitPaneProps = $props();
-
-  const { base, left: lCls, right: rCls, handle: hCls } = $derived(
-    splitPane({ centered }),
-  );
+  const {
+    base,
+    left: lCls,
+    right: rCls,
+    handle: hCls,
+    handleGrip,
+    handlePip,
+  } = $derived(splitPane({ centered }));
 
   const clampWidth = (next: number) =>
     Math.min(maxLeft, Math.max(minLeft, next));
 
+  let dragStartX = 0;
+  let dragStartWidth = 0;
+
   const startDrag = (event: PointerEvent) => {
     dragging = true;
+    dragStartX = event.clientX;
+    dragStartWidth = leftWidth;
     (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
   };
 
   const moveDrag = (event: PointerEvent) => {
     if (!dragging) return;
-    leftWidth = clampWidth(event.clientX);
+    const delta = event.clientX - dragStartX;
+    leftWidth = clampWidth(dragStartWidth + delta);
   };
 
   const endDrag = () => {
@@ -38,7 +54,7 @@
   onMount(() => {
     padding.set(560);
 
-    if (typeof localStorage !== "undefined") {
+    if (persist && typeof localStorage !== "undefined") {
       const stored = Number(localStorage.getItem(storageKey));
       if (!Number.isNaN(stored)) {
         leftWidth = clampWidth(stored);
@@ -51,7 +67,7 @@
   });
 
   $effect(() => {
-    if (typeof localStorage === "undefined") return;
+    if (!persist || typeof localStorage === "undefined") return;
     localStorage.setItem(storageKey, String(leftWidth));
   });
 </script>
@@ -77,11 +93,17 @@
     aria-valuemin={minLeft}
     aria-valuemax={maxLeft}
     style={`left: calc(var(--splitpane-left-width) + var(--splitpane-offset, 0px));`}
-    on:pointerdown={startDrag}
-    on:pointermove={moveDrag}
-    on:pointerup={endDrag}
-    on:pointercancel={endDrag}
-  />
+    onpointerdown={startDrag}
+    onpointermove={moveDrag}
+    onpointerup={endDrag}
+    onpointercancel={endDrag}
+  >
+    <div
+      class={handleGrip({
+        class: clsx(dragging && "w-0.5"),
+      })}
+    ></div>
+  </div>
 
   <!-- RIGHT PANE -->
   <div class={rCls()}>
