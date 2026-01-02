@@ -1,63 +1,147 @@
 <script lang="ts">
+  import { zipSync } from "fflate";
   import { ButtonIcon } from "$lib/components/library";
-  import type { URLResponse } from "$lib/types";
+  import logger from "$lib/logger";
+  import { notificationStore } from "$lib/stores";
+  import type { FileSmall, URLResponse } from "$lib/types";
+  import type { components } from "$lib/types/gen/openapi";
   import Button from "../Button.svelte";
 
-  let downloadQueue = $state<URLResponse[]>([]);
-  let currentDownloads = $state(0);
-  let totalDownloads = $state(0);
-  let hasTriggered = $state(false);
-  let downloading = $state(false);
+  type PresignedFileUrl = components["schemas"]["PresignedFileUrl"];
+  type DownloadUrl = URLResponse | PresignedFileUrl;
+  type DownloadItem = { url: string; name: string };
 
-  const MAX_CONCURRENT = 3;
+  let downloading = $state(false);
+  let lastTriggerToken = $state<string | null>(null);
 
   const {
     urls,
+    files = [],
+    taskTitle,
+    taskId,
     mobile = false,
   }: {
-    urls?: URLResponse[];
+    urls?: DownloadUrl[];
+    files?: FileSmall[];
+    taskTitle?: string;
+    taskId?: string;
     mobile?: boolean;
   } = $props();
 
+  const downloadItems = $derived(buildDownloadItems(urls, files));
+
   $effect(() => {
-    if (urls && urls.length > 0 && !hasTriggered) {
-      hasTriggered = true;
-      startBulkDownload(urls);
-    }
+    if (!downloading) return;
+    if (!downloadItems.length) return;
+    const token = downloadItems.map((item) => item.url).join("|");
+    if (token === lastTriggerToken) return;
+    lastTriggerToken = token;
+    void startZipDownload(downloadItems);
   });
 
-  async function downloadFile(url: string) {
-    const iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = url;
-    document.body.appendChild(iframe);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    document.body.removeChild(iframe);
+  function sanitizeFilename(name: string) {
+    return name.replace(/[\\/:*?"<>|]+/g, "-").trim() || "file";
   }
 
-  async function processQueue() {
-    if (downloadQueue.length === 0 || currentDownloads >= MAX_CONCURRENT) {
+  function baseTaskName() {
+    const title = taskTitle?.trim();
+    if (title) return title;
+    return taskId ? `task-${taskId}` : "task";
+  }
+
+  function buildDownloadItems(
+    urlsList: DownloadUrl[] | undefined,
+    filesList: FileSmall[],
+  ) {
+    if (!urlsList?.length) return [];
+    const nameById = new Map(filesList.map((file) => [file.id, file.name]));
+    let pdfAssigned = false;
+
+    return urlsList.map((item, index) => {
+      const hasFileId = "fileId" in item && Boolean(item.fileId);
+      const nameFromFiles = hasFileId ? nameById.get(item.fileId) : undefined;
+      let name = nameFromFiles;
+
+      if (!name) {
+        if (!pdfAssigned) {
+          pdfAssigned = true;
+          name = `${baseTaskName()}.pdf`;
+        } else {
+          name = `file-${index + 1}`;
+        }
+      }
+
+      return { url: item.url, name: sanitizeFilename(name) };
+    });
+  }
+
+  function uniqueName(
+    name: string,
+    existing: Map<string, number>,
+  ): string {
+    const count = existing.get(name);
+    if (!count) {
+      existing.set(name, 1);
+      return name;
+    }
+    const extensionIndex = name.lastIndexOf(".");
+    const base =
+      extensionIndex > 0 ? name.slice(0, extensionIndex) : name;
+    const extension = extensionIndex > 0 ? name.slice(extensionIndex) : "";
+    const nextCount = count + 1;
+    existing.set(name, nextCount);
+    return `${base}-${nextCount}${extension}`;
+  }
+
+  function triggerDownload(blob: Blob, filename: string) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  async function startZipDownload(items: DownloadItem[]) {
+    downloading = true;
+
+    try {
+      const fetchedFiles = await Promise.all(
+        items.map(async (item) => {
+          const response = await fetch(item.url);
+          if (!response.ok) {
+            throw new Error(`Download failed: ${response.status}`);
+          }
+          const buffer = await response.arrayBuffer();
+          return { name: item.name, data: new Uint8Array(buffer) };
+        }),
+      );
+
+      const usedNames = new Map<string, number>();
+      const entries: Record<string, Uint8Array> = {};
+      for (const file of fetchedFiles) {
+        const name = uniqueName(file.name, usedNames);
+        entries[name] = file.data;
+      }
+
+      const zipData = zipSync(entries);
+      const zipName = sanitizeFilename(`${baseTaskName()}.zip`);
+      const blob = new Blob([zipData], { type: "application/zip" });
+      triggerDownload(blob, zipName);
+    } catch (error) {
+      logger.error({ error }, "Failed to build download zip");
+      notificationStore.set("Не получилось скачать архив");
+    } finally {
       downloading = false;
-      return;
     }
-
-    const url = downloadQueue.shift()!;
-    currentDownloads++;
-    await downloadFile(url.url);
-    currentDownloads--;
-    totalDownloads++;
-
-    processQueue();
   }
 
-  async function startBulkDownload(urls: URLResponse[]) {
-    downloadQueue = [...urls];
-    totalDownloads = 0;
-
-    for (let i = 0; i < MAX_CONCURRENT; i++) {
-      processQueue();
-    }
+  function handleDownloadClick() {
+    lastTriggerToken = null;
+    downloading = true;
   }
 </script>
 
@@ -67,7 +151,7 @@
     type="submit"
     aria-label="Загрузить"
     variant="text"
-    onclick={() => (downloading = true)}
+    onclick={handleDownloadClick}
     formaction="?/downloadAll"
   />
 {:else}
@@ -75,7 +159,7 @@
     iconProps={{ name: downloading ? "hourglass_empty" : "download" }}
     type="submit"
     variant="text"
-    onclick={() => (downloading = true)}
+    onclick={handleDownloadClick}
     formaction="?/downloadAll">Загрузить</Button
   >
 {/if}
