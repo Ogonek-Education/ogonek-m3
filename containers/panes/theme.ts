@@ -10,9 +10,9 @@ export const splitPane = tv({
     right:
       "flex flex-col box-border ml-0 md:ml-[var(--splitpane-left-width)] md:min-h-[calc(100dvh-30px)]",
     handle:
-      "group hidden md:block fixed top-0 bottom-0 z-40 w-3 -ml-1 cursor-col-resize touch-none bg-transparent transition-colors duration-150 hover:bg-md-sys-color-outline/20 translate-x-1.5",
+      "handle group hidden md:block fixed top-0 bottom-0 z-40 w-3 -ml-1 cursor-col-resize touch-none bg-transparent transition-colors duration-150 hover:bg-md-sys-color-outline/20 translate-x-1.5",
     handleGrip:
-      "absolute left-1/2 top-1/2 flex h-16 w-1.5 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-full bg-md-sys-color-primary transition-[width,background-color] duration-200 ease-[var(--md-sys-motion-easing)] group-hover:w-0.5",
+      "absolute left-1/2 top-1/2 flex h-12 w-1 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-full bg-md-sys-color-secondary transition-[width,background-color] duration-200 ease-[var(--md-sys-motion-easing)] group-hover:w-0.5",
     handlePip: "h-0.5 w-0.5 rounded-full bg-md-sys-color-on-primary/80",
     base: "md:pl-4",
   },
@@ -68,7 +68,7 @@ export const supportingPane = tv({
     base: "flex w-full flex-col gap-4 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
     main: "bg-md-sys-color-surface box-border rounded-lg md:p-6 p-0 grow order-2 md:order-1",
     supporting:
-      "bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg md:rounded-l-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2",
+      "bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2",
   },
   variants: {
     position: {

@@ -24,6 +24,7 @@
     iconProps={{ name: "share" }}
     {href}
     {onclick}
+    type="button"
     variant="text"
     data-cy={dataCy}
     aria-label={ariaLabel ?? label}
@@ -32,6 +33,7 @@
   <Button
     variant="text"
     iconProps={{ name: "share" }}
+    type="button"
     {href}
     {onclick}
     data-cy={dataCy}>{label}</Button

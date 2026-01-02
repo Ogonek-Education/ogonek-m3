@@ -4,7 +4,7 @@ export type AppbarVariants = VariantProps<typeof appbar>;
 
 export const appbar = tv({
   slots: {
-    base: "fixed top-0 left-0 w-full md:hidden flex z-40 items-center justify-between",
+    base: "py-1 fixed top-0 left-0 w-full md:hidden flex z-40 items-center justify-between",
     textContainer: "flex flex-col items-start gap-0.5 grow",
     title:
       "text-md-sys-color-on-surface md-sys-typescale-title-large line-clamp-1  font-serif capitalize ",

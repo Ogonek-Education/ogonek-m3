@@ -9,4 +9,18 @@ export const tooltip = tv({
     supportingText: "",
     textContainer: "text-md-sys-on-surface-variant space-y-2",
   },
+  variants: {
+    variant: {
+      rich: {},
+      snack: {
+        base: "bg-md-sys-color-inverse-surface text-md-sys-color-inverse-on-surface md-sys-typescale-body-small px-3 py-2 shadow-elevation-3 before:rounded-md",
+        supportingText:
+          "text-md-sys-color-inverse-on-surface md-sys-typescale-body-small",
+        textContainer: "",
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "rich",
+  },
 });

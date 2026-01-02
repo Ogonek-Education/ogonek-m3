@@ -5,6 +5,7 @@
   import clsx from "clsx";
   import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
   import Layer from "../utils/Layer.svelte";
+  import { Tooltip } from "$lib/components";
 
   let {
     children,
@@ -30,18 +31,22 @@
   const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-{#if restProps.href !== undefined}
-  <a {...restProps} class={btnCls}>
-    <Icon class={icon()} {...iconProps} />
-    <Layer />
-  </a>
-{:else}
-  <button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
-    {#if loading}
-      <LoadingIndicator />
+<Tooltip variant="snack" text={tooltipContent}>
+  {#snippet trigger()}
+    {#if restProps.href !== undefined}
+      <a {...restProps} class={btnCls}>
+        <Icon class={icon()} {...iconProps} />
+        <Layer />
+      </a>
     {:else}
-      <Icon class={icon()} {...iconProps} />
-      <Layer />
+      <button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
+        {#if loading}
+          <LoadingIndicator />
+        {:else}
+          <Icon class={icon()} {...iconProps} />
+          <Layer />
+        {/if}
+      </button>
     {/if}
-  </button>
-{/if}
+  {/snippet}
+</Tooltip>

@@ -11,23 +11,33 @@
   const {
     subhead,
     supportingText,
+    text,
     children,
     trigger,
     triggerClass,
     placement = "top",
     offset = 10,
-    openDelay = 120,
-    closeDelay = 100,
+    openDelay = 0,
+    closeDelay,
     class: className,
+    variant = "rich",
     ...restProps
   }: TooltipProps = $props();
+
+  const resolvedCloseDelay = $derived(
+    closeDelay ?? (variant === "snack" ? 200 : 100),
+  );
+  const hasSnackContent = $derived(Boolean(text ?? supportingText));
+  const hasRichContent = $derived(
+    Boolean(subhead ?? supportingText ?? children),
+  );
 
   const {
     subhead: subheadCls,
     base,
     textContainer,
     supportingText: supportingTextCls,
-  } = $derived(tooltip());
+  } = $derived(tooltip({ variant }));
 
   const id = crypto.randomUUID();
   const baseCls = $derived(
@@ -63,7 +73,6 @@
         ? anchorRect.bottom + offset
         : anchorRect.top - tooltipRect.height - offset;
 
-    // Flip if there isn't room in the preferred direction
     if (placement === "top" && top < margin) {
       top = anchorRect.bottom + offset;
     } else if (
@@ -104,7 +113,7 @@
     clearTimers();
     closeTimer = window.setTimeout(() => {
       isOpen = false;
-    }, closeDelay);
+    }, resolvedCloseDelay);
   };
 
   onMount(() => {
@@ -142,10 +151,9 @@
   onfocusout={close}
 >
   {@render trigger?.()}
-  {#if isOpen}
+  {#if isOpen && (variant === "snack" ? hasSnackContent : hasRichContent)}
     <div
       {id}
-      in:enterExit
       class={baseCls}
       bind:this={tooltipEl}
       role="tooltip"
@@ -160,20 +168,32 @@
       onmouseleave={close}
       {...restProps}
     >
-      <Layer />
+      {#if variant === "rich"}
+        <Layer />
+      {/if}
       <div class={textContainer()}>
-        {#if subhead}
-          <Title class={subheadCls()}>
-            {subhead}
-          </Title>
-        {/if}
-        {#if supportingText}
-          <Body class={supportingTextCls()}>
-            {supportingText}
-          </Body>
+        {#if variant === "snack"}
+          {#if text ?? supportingText}
+            <Body class={supportingTextCls()}>
+              {text ?? supportingText}
+            </Body>
+          {/if}
+        {:else}
+          {#if subhead}
+            <Title class={subheadCls()}>
+              {subhead}
+            </Title>
+          {/if}
+          {#if supportingText}
+            <Body class={supportingTextCls()}>
+              {supportingText}
+            </Body>
+          {/if}
         {/if}
       </div>
-      {@render children?.()}
+      {#if variant === "rich"}
+        {@render children?.()}
+      {/if}
     </div>
   {/if}
 </span>

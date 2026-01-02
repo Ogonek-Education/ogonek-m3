@@ -7,10 +7,12 @@ export type TooltipProps = TooltipVariants &
     subhead?: string | null;
     children?: Snippet;
     supportingText?: string | null;
+    text?: string | null;
     trigger?: Snippet;
     triggerClass?: string;
     placement?: "top" | "bottom";
     offset?: number;
     openDelay?: number;
     closeDelay?: number;
+    variant?: "rich" | "snack";
   };
