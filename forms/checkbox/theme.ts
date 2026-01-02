@@ -3,13 +3,14 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const checkbox = tv({
   slots: {
     root: "inline-flex min-h-10 select-none items-start gap-3 text-md-sys-color-on-surface",
+    container: "relative inline-flex size-[18px] shrink-0",
     control:
-      "layer-container relative flex size-10 shrink-0 items-center justify-center rounded-full text-md-sys-color-on-surface state-layer before:rounded-full hover:before:bg-current/8 active:before:bg-current/10 peer-focus-visible:outline peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-md-sys-color-secondary transition-[outline-color,outline-width,outline-offset] duration-150 ease-out",
-    box: "pointer-events-none relative flex size-[18px] items-center justify-center rounded-[4px] border-2 border-md-sys-color-outline bg-md-sys-color-surface transition-[background-color,border-color,box-shadow] duration-150 ease-out",
+      "layer-container absolute -inset-[11px] rounded-full text-md-sys-color-on-surface-variant state-layer before:rounded-full hover:before:bg-current/8 active:before:bg-current/10 peer-focus-visible:outline peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-md-sys-color-secondary transition-[outline-color,outline-width,outline-offset] duration-150 ease-out",
+    box: "absolute inset-[11px] rounded-[4px] border-2 border-current bg-md-sys-color-surface transition-[background-color,border-color,box-shadow] duration-150 ease-out",
     checkIcon:
-      "size-4 text-md-sys-color-on-primary opacity-0 scale-75 transition-all duration-150 ease-out",
+      "pointer-events-none absolute inset-0 m-auto size-5 text-md-sys-color-on-primary opacity-0 scale-75 transition-all duration-150 ease-out",
     indeterminateIcon:
-      "block h-0.5 w-3 rounded-full bg-md-sys-color-on-primary opacity-0 scale-75 transition-all duration-150 ease-out",
+      "pointer-events-none absolute inset-0 m-auto block h-0.5 w-3 rounded-full bg-md-sys-color-on-primary opacity-0 scale-75 transition-all duration-150 ease-out",
     label: "md-sys-typescale-body-large leading-5 text-md-sys-color-on-surface",
     supporting:
       "md-sys-typescale-body-medium text-md-sys-color-on-surface-variant",
@@ -19,12 +20,12 @@ export const checkbox = tv({
       unchecked: {},
       checked: {
         control: "text-md-sys-color-primary",
-        box: "border-md-sys-color-primary bg-md-sys-color-primary",
+        box: "bg-md-sys-color-primary",
         checkIcon: "opacity-100 scale-100",
       },
       indeterminate: {
         control: "text-md-sys-color-primary",
-        box: "border-md-sys-color-primary bg-md-sys-color-primary",
+        box: "bg-md-sys-color-primary",
         indeterminateIcon: "opacity-100 scale-100",
       },
     },

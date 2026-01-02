@@ -29,31 +29,34 @@
 </script>
 
 <div class={cls.root({ class: clsx(className) })}>
-  <input
-    type="checkbox"
-    bind:checked
-    bind:this={inputEl}
-    {disabled}
-    {...restProps}
-    class="peer sr-only"
-  />
-  <div class={cls.control()}>
-    <Layer />
-    <div class={cls.box()}>
-      <span class={cls.indeterminateIcon()}></span>
-      <svg
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        class={cls.checkIcon()}
-      >
-        <path
-          d="M 4.83 13.41 L 9 17.585 L 19.59 7"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.41"
-        />
-      </svg>
+  <div class={cls.container()}>
+    <input
+      type="checkbox"
+      bind:checked
+      bind:this={inputEl}
+      {disabled}
+      {...restProps}
+      class="peer sr-only"
+    />
+    <div class={cls.control()}>
+      <Layer />
+      <div class={cls.box()}></div>
     </div>
+    <span class={cls.indeterminateIcon()}></span>
+    <svg
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      class={cls.checkIcon()}
+    >
+      <path
+        d="M 4.83 13.41 L 9 17.585 L 19.59 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
   </div>
   {#if label || supportingText}
     <div class="flex flex-col gap-1">
