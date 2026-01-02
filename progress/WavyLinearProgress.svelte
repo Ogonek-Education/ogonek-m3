@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, untrack } from "svelte";
+  import { onMount } from "svelte";
   import { tweened } from "svelte/motion";
   import { cubicOut } from "svelte/easing";
   import { linear, trackOpacity } from "./_wavy";
@@ -32,21 +32,15 @@
   let right = $derived(width - thickness * 0.5);
   let percentX = $derived(($animatedPercent / 100) * (right - left) + left);
 
-  const getSMILData = (time: number) => {
-    let paths: string[] = [];
-    for (let x = 0; x <= 1000; x += 1000 / 30) {
-      paths.push(
-        linear(
-          height / 2 - thickness / 2,
-          height / 2,
-          left,
-          percentX,
-          time + x,
-        ),
-      );
-    }
-    return paths.join(";");
-  };
+  let wavePath = $derived(
+    linear(
+      height / 2 - thickness / 2,
+      height / 2,
+      left,
+      percentX,
+      time,
+    ),
+  );
 
   onMount(() => {
     const start = performance.now();
@@ -66,14 +60,8 @@
     stroke="var(--color-md-sys-color-primary)"
     stroke-width={thickness}
     stroke-linecap="round"
-  >
-    <animate
-      attributeName="d"
-      dur="1s"
-      repeatCount="indefinite"
-      values={getSMILData(untrack(() => time))}
-    />
-  </path>
+    d={wavePath}
+  />
   <line
     fill="none"
     stroke="var(--color-md-sys-color-secondary-container)"

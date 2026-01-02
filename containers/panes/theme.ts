@@ -9,6 +9,11 @@ export const splitPane = tv({
     left: "md:fixed top-0 bottom-0 overflow-auto bg-md-sys-color-surface-container py-4 scrollbar-none hidden md:block",
     right:
       "flex flex-col box-border ml-0 md:ml-[var(--splitpane-left-width)] md:min-h-[calc(100dvh-30px)]",
+    handle:
+      "hidden md:block fixed top-0 bottom-0 z-40 w-3 -ml-1 cursor-col-resize touch-none bg-transparent transition-colors duration-150 hover:bg-md-sys-color-outline/20",
+    handleGrip:
+      "pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1",
+    handleGripLine: "h-2 w-1 rounded-full bg-md-sys-color-outline/60",
     base: "md:pl-4",
   },
   variants: {
@@ -63,17 +68,19 @@ export const supportingPane = tv({
     base: "flex w-full flex-col gap-4 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
     main: "bg-md-sys-color-surface box-border rounded-lg md:p-6 p-0 grow order-2 md:order-1",
     supporting:
-      "peer relative z-30 bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg md:rounded-l-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2 md:shadow-md md:transition-transform md:transition-shadow md:duration-300 md:translate-x-4 xl:translate-x-6 md:hover:translate-x-0 md:hover:-translate-y-1 md:hover:shadow-2xl 2xl:translate-x-0 2xl:hover:translate-x-0 2xl:shadow-none",
+      "supporting-pane peer relative z-30 bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg md:rounded-l-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2 md:shadow-md md:hover:shadow-2xl 2xl:shadow-none",
     scrim:
-      "pointer-events-none fixed inset-0 z-20 hidden bg-black/20 opacity-0 transition-opacity md:block md:peer-hover:opacity-100 md:peer-focus-within:opacity-100 2xl:hidden",
+      "pointer-events-none fixed inset-0 z-20 hidden bg-black/20 opacity-0 transition-opacity duration-300 [transition-timing-function:var(--md-sys-motion-timing-function-emphasized-decel)] md:block md:peer-hover:opacity-100 md:peer-focus-within:opacity-100 2xl:hidden",
   },
   variants: {
     position: {
       right: {
         base: "md:flex-row",
+        supporting: "",
       },
       left: {
         base: "md:flex-row-reverse",
+        supporting: "",
       },
     },
     centered: {
