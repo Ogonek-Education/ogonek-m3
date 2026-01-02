@@ -1,133 +1,68 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
-  import type { HTMLAttributes } from "svelte/elements";
+  import clsx from "clsx";
+  import { checkbox } from "./theme";
+  import type { CheckboxProps } from "./types";
   import Layer from "../../utils/Layer.svelte";
 
   // MUST BE WRAPPED IN A <label>
   let {
-    children,
-    ...extra
-  }: {
-    children: Snippet;
-  } & HTMLAttributes<HTMLDivElement> = $props();
+    label,
+    supportingText,
+    indeterminate = false,
+    checked = $bindable(false),
+    disabled = false,
+    error = false,
+    align = "start",
+    class: className,
+    ...restProps
+  }: CheckboxProps = $props();
+
+  const state = $derived(
+    indeterminate ? "indeterminate" : checked ? "checked" : "unchecked",
+  );
+  const cls = $derived(checkbox({ state, error, align, disabled }));
+  let inputEl: HTMLInputElement | null = $state(null);
+
+  $effect(() => {
+    if (inputEl) inputEl.indeterminate = indeterminate;
+  });
 </script>
 
-<div class="m3-container" {...extra}>
-  {@render children()}
-  <div class="layer-container">
+<div class={cls.root({ class: clsx(className) })}>
+  <input
+    type="checkbox"
+    bind:checked
+    bind:this={inputEl}
+    {disabled}
+    {...restProps}
+    class="peer sr-only"
+  />
+  <div class={cls.control()}>
     <Layer />
-    <div class="checkbox-box"></div>
+    <div class={cls.box()}>
+      <span class={cls.indeterminateIcon()}></span>
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        class={cls.checkIcon()}
+      >
+        <path
+          d="M 4.83 13.41 L 9 17.585 L 19.59 7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.41"
+        />
+      </svg>
+    </div>
   </div>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M 4.83 13.41 L 9 17.585 L 19.59 7"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.41"
-    />
-  </svg>
+  {#if label || supportingText}
+    <div class="flex flex-col gap-1">
+      {#if label}
+        <span class={cls.label()}>{label}</span>
+      {/if}
+      {#if supportingText}
+        <span class={cls.supporting()}>{supportingText}</span>
+      {/if}
+    </div>
+  {/if}
 </div>
-
-<style>
-  .m3-container {
-    --checkbox-size: 1.125rem;
-    --checkbox-touch: 2.5rem;
-    display: inline-flex;
-    position: relative;
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    flex-shrink: 0;
-  }
-  .m3-container :global(input) {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .layer-container {
-    position: absolute;
-    inset: calc((var(--checkbox-size) - var(--checkbox-touch)) / 2);
-    width: var(--checkbox-touch);
-    height: var(--checkbox-touch);
-    border-radius: 9999px;
-    color: var(--color-md-sys-color-on-surface-variant);
-    cursor: pointer;
-  }
-
-  .checkbox-box {
-    position: absolute;
-    inset: calc((var(--checkbox-touch) - var(--checkbox-size)) / 2);
-    box-sizing: border-box;
-    border-radius: 0.125rem;
-    border: solid 0.125rem currentColor;
-    transition: var(--md-sys-motion-easing-fast);
-  }
-
-  svg {
-    position: absolute;
-    inset: 0;
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
-    color: var(--color-md-sys-color-on-primary);
-    opacity: 0;
-    pointer-events: none;
-    transition: var(--md-sys-motion-easing-fast);
-    path {
-      stroke-dasharray: 20.874 20.874;
-      stroke-dashoffset: 20.874;
-      transition: stroke-dashoffset 0ms 300ms;
-    }
-  }
-
-  :global(input:focus-visible) + .layer-container {
-    color: var(--color-md-sys-color-on-surface);
-  }
-
-  :global(input:checked) + .layer-container {
-    color: var(--color-md-sys-color-primary);
-  }
-  :global(input:checked) + .layer-container .checkbox-box {
-    background-color: var(--color-md-sys-color-primary);
-  }
-
-  :global(input:checked) ~ svg {
-    opacity: 1;
-    path {
-      stroke-dashoffset: 0;
-      transition: stroke-dashoffset var(--md-sys-motion-easing-slow);
-    }
-  }
-
-  :global(input:disabled) + .layer-container {
-    color: var(--color-md-sys-color-on-surface) / 0.38;
-    cursor: not-allowed;
-  }
-
-  :global(input:disabled:checked) + .layer-container {
-    color: transparent;
-  }
-  :global(input:disabled:checked) + .layer-container .checkbox-box {
-    background-color: var(--color-md-sys-color-on-surface) / 0.38;
-  }
-
-  :global(input:disabled) ~ svg {
-    color: var(--color-md-sys-color-surface);
-  }
-
-  .m3-container {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-  @media screen and (forced-colors: active) {
-    :global(input:checked) + .layer-container .checkbox-box {
-      background-color: selecteditem;
-      border-color: selecteditem !important;
-    }
-    :global(input:disabled) + .layer-container {
-      opacity: 0.38;
-    }
-  }
-</style>

@@ -5,28 +5,17 @@
   import { padding } from "$lib/stores";
   import clsx from "clsx";
 
-  let container: HTMLDivElement | null = $state(null);
   let leftWidth = $state(396);
   let dragging = $state(false);
-  let containerWidth = $state(0);
 
   const storageKey = "splitpane:leftWidth";
   const minLeft = 280;
-  const minRight = 320;
+  const maxLeft = 720;
 
   const { left, right, centered, class: className }: SplitPaneProps = $props();
 
-  const {
-    base,
-    left: lCls,
-    right: rCls,
-    handle: hCls,
-    handleGrip: hGripCls,
-    handleGripLine: hGripLineCls,
-  } = $derived(splitPane({ centered }));
-
-  const maxLeft = $derived(() =>
-    Math.max(minLeft, containerWidth - minRight),
+  const { base, left: lCls, right: rCls, handle: hCls } = $derived(
+    splitPane({ centered }),
   );
 
   const clampWidth = (next: number) =>
@@ -39,9 +28,7 @@
 
   const moveDrag = (event: PointerEvent) => {
     if (!dragging) return;
-    if (!container) return;
-    const rect = container.getBoundingClientRect();
-    leftWidth = clampWidth(event.clientX - rect.left);
+    leftWidth = clampWidth(event.clientX);
   };
 
   const endDrag = () => {
@@ -51,31 +38,12 @@
   onMount(() => {
     padding.set(560);
 
-    let cleanup: (() => void) | undefined;
-
-    if (container) {
-      const setWidth = () => {
-        containerWidth = container?.getBoundingClientRect().width ?? 0;
-      };
-      setWidth();
-      if (typeof ResizeObserver !== "undefined") {
-        const observer = new ResizeObserver(setWidth);
-        observer.observe(container);
-        cleanup = () => observer.disconnect();
-      } else {
-        window.addEventListener("resize", setWidth);
-        cleanup = () => window.removeEventListener("resize", setWidth);
-      }
-    }
-
     if (typeof localStorage !== "undefined") {
       const stored = Number(localStorage.getItem(storageKey));
       if (!Number.isNaN(stored)) {
         leftWidth = clampWidth(stored);
       }
     }
-
-    return cleanup;
   });
 
   onDestroy(() => {
@@ -86,16 +54,9 @@
     if (typeof localStorage === "undefined") return;
     localStorage.setItem(storageKey, String(leftWidth));
   });
-
-  $effect(() => {
-    if (leftWidth > maxLeft) {
-      leftWidth = maxLeft;
-    }
-  });
 </script>
 
 <div
-  bind:this={container}
   class={base({ class: clsx(className) })}
   style={`--splitpane-left-width: ${leftWidth}px;`}
 >
@@ -120,13 +81,7 @@
     on:pointermove={moveDrag}
     on:pointerup={endDrag}
     on:pointercancel={endDrag}
-  >
-    <span class={hGripCls()}>
-      <span class={hGripLineCls()}></span>
-      <span class={hGripLineCls()}></span>
-      <span class={hGripLineCls()}></span>
-    </span>
-  </div>
+  />
 
   <!-- RIGHT PANE -->
   <div class={rCls()}>

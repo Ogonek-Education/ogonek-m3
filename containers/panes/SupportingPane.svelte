@@ -50,26 +50,33 @@
     }
 
     :global(.supporting-pane[data-position="right"]) {
-      transform: translate3d(1rem, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
 
     :global(.supporting-pane[data-position="left"]) {
-      transform: translate3d(-1rem, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
 
-    :global(.supporting-pane:hover),
-    :global(.supporting-pane:focus-within) {
-      transform: translate3d(0, -0.25rem, 0);
+    :global(.supporting-pane[data-position="right"]:hover),
+    :global(.supporting-pane[data-position="right"]:focus-within) {
+      transform: translate3d(-1rem, -0.25rem, 0);
+    }
+
+    :global(.supporting-pane[data-position="left"]:hover),
+    :global(.supporting-pane[data-position="left"]:focus-within) {
+      transform: translate3d(1rem, -0.25rem, 0);
     }
   }
 
   @media (min-width: 1280px) {
-    :global(.supporting-pane[data-position="right"]) {
-      transform: translate3d(1.5rem, 0, 0);
+    :global(.supporting-pane[data-position="right"]:hover),
+    :global(.supporting-pane[data-position="right"]:focus-within) {
+      transform: translate3d(-1.5rem, -0.25rem, 0);
     }
 
-    :global(.supporting-pane[data-position="left"]) {
-      transform: translate3d(-1.5rem, 0, 0);
+    :global(.supporting-pane[data-position="left"]:hover),
+    :global(.supporting-pane[data-position="left"]:focus-within) {
+      transform: translate3d(1.5rem, -0.25rem, 0);
     }
   }
 
@@ -78,6 +85,7 @@
     :global(.supporting-pane:hover),
     :global(.supporting-pane:focus-within) {
       transform: translate3d(0, 0, 0);
+      transition: none;
     }
   }
 </style>

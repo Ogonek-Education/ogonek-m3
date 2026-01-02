@@ -11,9 +11,6 @@ export const splitPane = tv({
       "flex flex-col box-border ml-0 md:ml-[var(--splitpane-left-width)] md:min-h-[calc(100dvh-30px)]",
     handle:
       "hidden md:block fixed top-0 bottom-0 z-40 w-3 -ml-1 cursor-col-resize touch-none bg-transparent transition-colors duration-150 hover:bg-md-sys-color-outline/20",
-    handleGrip:
-      "pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1",
-    handleGripLine: "h-2 w-1 rounded-full bg-md-sys-color-outline/60",
     base: "md:pl-4",
   },
   variants: {

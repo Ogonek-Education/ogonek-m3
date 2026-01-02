@@ -5,6 +5,5 @@ export * from "./theme";
 export * from "./types";
 
 // default exports for components in this folder
-export { default as Tab } from "./Tab.svelte";
-export { default as TabHolder } from "./TabHolder.svelte";
+export { default as Slider } from "./Slider.svelte";
 

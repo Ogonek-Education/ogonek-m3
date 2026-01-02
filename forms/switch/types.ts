@@ -1,16 +1,11 @@
-import type { Snippet } from "svelte";
 import type { HTMLInputAttributes } from "svelte/elements";
-import type { ClassValue } from "tailwind-variants";
-import type { ToggleVariants } from "./theme";
+import type { IconProps } from "$lib/components";
+import type { SwitchVariants } from "./theme";
 
-export interface ToggleProps
-  extends
-    Omit<ToggleVariants, "off_state_label">,
-    Omit<HTMLInputAttributes, "size" | "color"> {
-  offLabel?: Snippet;
-  value?: string | number;
-  checked?: boolean;
-  disabled?: boolean;
-  spanClass?: ClassValue;
-  inputClass?: ClassValue;
-}
+export type SwitchProps = SwitchVariants &
+  Omit<HTMLInputAttributes, "size"> & {
+    checked?: boolean;
+    disabled?: boolean;
+    checkedIconProps?: IconProps;
+    uncheckedIconProps?: IconProps;
+  };
