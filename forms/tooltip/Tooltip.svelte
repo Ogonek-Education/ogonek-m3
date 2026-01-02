@@ -6,7 +6,6 @@
   import Layer from "../../utils/Layer.svelte";
   import { tooltip } from "./theme";
   import type { TooltipProps } from "./types";
-  import { enterExit } from "$lib/animation";
 
   const {
     subhead,
@@ -17,7 +16,7 @@
     triggerClass,
     placement = "top",
     offset = 10,
-    openDelay = 0,
+    openDelay = 50,
     closeDelay,
     class: className,
     variant = "rich",
@@ -25,7 +24,7 @@
   }: TooltipProps = $props();
 
   const resolvedCloseDelay = $derived(
-    closeDelay ?? (variant === "snack" ? 200 : 100),
+    closeDelay ?? (variant === "snack" ? 10 : 10),
   );
   const hasSnackContent = $derived(Boolean(text ?? supportingText));
   const hasRichContent = $derived(

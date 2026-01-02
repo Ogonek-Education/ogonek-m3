@@ -68,7 +68,7 @@
         <Icon
           class={icon({
             class: clsx(
-              "unchecked-icon flex opacity-100 scale-[0.667] peer-checked:hidden",
+              "unchecked-icon flex scale-[0.667] opacity-100 peer-checked:hidden",
               uncheckedIconProps.class,
             ),
           })}

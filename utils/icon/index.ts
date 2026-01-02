@@ -7,4 +7,3 @@ export * from "./types";
 // default exports for components in this folder
 export { default as Icon } from "./Icon.svelte";
 export { default as LoadingIndicator } from "./LoadingIndicator.svelte";
-

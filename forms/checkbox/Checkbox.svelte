@@ -21,11 +21,6 @@
     indeterminate ? "indeterminate" : checked ? "checked" : "unchecked",
   );
   const cls = $derived(checkbox({ state, error, align, disabled }));
-  let inputEl: HTMLInputElement | null = $state(null);
-
-  $effect(() => {
-    if (inputEl) inputEl.indeterminate = indeterminate;
-  });
 </script>
 
 <div class={cls.root({ class: clsx(className) })}>
@@ -33,7 +28,6 @@
     <input
       type="checkbox"
       bind:checked
-      bind:this={inputEl}
       {disabled}
       {...restProps}
       class="peer sr-only"

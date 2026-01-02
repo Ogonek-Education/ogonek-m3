@@ -33,13 +33,7 @@
   let percentX = $derived(($animatedPercent / 100) * (right - left) + left);
 
   let wavePath = $derived(
-    linear(
-      height / 2 - thickness / 2,
-      height / 2,
-      left,
-      percentX,
-      time,
-    ),
+    linear(height / 2 - thickness / 2, height / 2, left, percentX, time),
   );
 
   onMount(() => {

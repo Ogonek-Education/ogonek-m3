@@ -10,4 +10,3 @@ export * from "./theme";
 export { default as DateField } from "./DateField.svelte";
 export { default as DatePickerDocked } from "./DatePickerDocked.svelte";
 export { default as DatetimePicker } from "./DatetimePicker.svelte";
-

@@ -9,8 +9,7 @@ export const toggle = tv({
       "handle absolute left-2 top-1/2 flex h-4 w-4 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--m3c-outline)] text-[var(--m3c-on-on-primary)] transition-[background-color,color,transform,left,scale] duration-200 ease-[var(--m3-easing-fast-spatial)] peer-checked:left-[1.75rem] peer-checked:scale-[1.5] peer-checked:bg-[var(--m3c-on-primary)] peer-disabled:bg-[--translucent(var(--m3c-on-surface),0.38)] peer-checked:peer-disabled:bg-[var(--m3c-surface)] group-hover:bg-[var(--m3c-on-surface-variant)] group-hover:peer-checked:bg-[var(--m3c-primary-container)] group-hover:peer-checked:text-[var(--m3c-on-primary-container)] peer-disabled:group-hover:bg-[--translucent(var(--m3c-on-surface),0.38)] group-active:scale-[1.75] [@media(forced-colors:active)]:bg-[canvastext] [@media(forced-colors:active)]:peer-checked:bg-[canvas]",
     hover:
       "hover absolute left-4 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-[background-color] duration-200 ease-[var(--m3-easing-fast)] peer-checked:left-9 peer-disabled:hidden group-hover:bg-[--translucent(var(--m3c-on-surface),0.08)] group-hover:peer-checked:bg-[--translucent(var(--m3c-primary),0.08)]",
-    icon:
-      "switch-icon flex h-4 w-4 items-center justify-center opacity-0 transition-[opacity,transform,scale] duration-200 ease-[var(--m3-easing-fast-spatial)]",
+    icon: "switch-icon flex h-4 w-4 items-center justify-center opacity-0 transition-[opacity,transform,scale] duration-200 ease-[var(--m3-easing-fast-spatial)]",
   },
   variants: {
     icons: {

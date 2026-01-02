@@ -53,7 +53,9 @@
     e.preventDefault();
     value = newValue;
   };
-  $effect(() => (valueDisplayed.target = value));
+  $effect(() => {
+    valueDisplayed.target = value;
+  });
 
   const range = $derived(max - min);
   const handlePosition = $derived((valueDisplayed.current - min) / range);

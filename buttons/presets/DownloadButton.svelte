@@ -75,18 +75,14 @@
     });
   }
 
-  function uniqueName(
-    name: string,
-    existing: Map<string, number>,
-  ): string {
+  function uniqueName(name: string, existing: Map<string, number>): string {
     const count = existing.get(name);
     if (!count) {
       existing.set(name, 1);
       return name;
     }
     const extensionIndex = name.lastIndexOf(".");
-    const base =
-      extensionIndex > 0 ? name.slice(0, extensionIndex) : name;
+    const base = extensionIndex > 0 ? name.slice(0, extensionIndex) : name;
     const extension = extensionIndex > 0 ? name.slice(extensionIndex) : "";
     const nextCount = count + 1;
     existing.set(name, nextCount);
@@ -128,8 +124,10 @@
       }
 
       const zipData = zipSync(entries);
+      const zipBuffer = new ArrayBuffer(zipData.byteLength);
+      new Uint8Array(zipBuffer).set(zipData);
       const zipName = sanitizeFilename(`${baseTaskName()}.zip`);
-      const blob = new Blob([zipData], { type: "application/zip" });
+      const blob = new Blob([zipBuffer], { type: "application/zip" });
       triggerDownload(blob, zipName);
     } catch (error) {
       logger.error({ error }, "Failed to build download zip");
