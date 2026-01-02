@@ -13,13 +13,23 @@
     ...restProps
   }: SnackBarProps = $props();
 
+  let dismissed = false;
+
   $effect(() => {
-    if (!fixed) return;
     if (!message) return;
     const t = setTimeout(() => {
+      dismissed = true;
       notificationStore.set("");
-    }, 3000);
+    }, 5000);
     return () => clearTimeout(t);
+  });
+
+  $effect(() => {
+    if (!message) {
+      dismissed = false;
+      return;
+    }
+    dismissed = false;
   });
 
   const {
@@ -31,7 +41,7 @@
   } = $derived(snackbar({ fixed }));
 </script>
 
-{#if message}
+{#if message && !dismissed}
   <div
     class={base()}
     transition:fade={{ duration: 200 }}
@@ -47,7 +57,10 @@
 
       {#if showClose}
         <button
-          onclick={() => notificationStore.set("")}
+          onclick={() => {
+            dismissed = true;
+            notificationStore.set("");
+          }}
           aria-label="Dismiss snackbar"
           data-cy="notification-dismiss"
         >

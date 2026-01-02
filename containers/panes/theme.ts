@@ -63,7 +63,9 @@ export const supportingPane = tv({
     base: "flex w-full flex-col gap-4 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
     main: "bg-md-sys-color-surface box-border rounded-lg md:p-6 p-0 grow order-2 md:order-1",
     supporting:
-      "bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg md:rounded-l-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2",
+      "peer relative z-30 bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg md:rounded-l-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] md:overflow-auto order-1 md:order-2 md:shadow-md md:transition-transform md:transition-shadow md:duration-300 md:translate-x-4 xl:translate-x-6 md:hover:translate-x-0 md:hover:-translate-y-1 md:hover:shadow-2xl 2xl:translate-x-0 2xl:hover:translate-x-0 2xl:shadow-none",
+    scrim:
+      "pointer-events-none fixed inset-0 z-20 hidden bg-black/20 opacity-0 transition-opacity md:block md:peer-hover:opacity-100 md:peer-focus-within:opacity-100 2xl:hidden",
   },
   variants: {
     position: {

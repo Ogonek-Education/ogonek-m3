@@ -21,6 +21,7 @@
     base,
     main: mainCls,
     supporting: supportingCls,
+    scrim: scrimCls,
   } = $derived(supportingPane({ position, centered }));
 </script>
 
@@ -37,4 +38,5 @@
   >
     {@render supporting()}
   </aside>
+  <div class={scrimCls()} aria-hidden="true"></div>
 </div>
