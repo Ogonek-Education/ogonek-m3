@@ -26,7 +26,6 @@
     limit: number;
     component: Component<HTMLAttributes<HTMLElement> & { children: Snippet }>;
   }> = [
-    { limit: 80, component: Title },
     { limit: 120, component: Body },
     { limit: Number.POSITIVE_INFINITY, component: Label },
   ];
