@@ -13,7 +13,7 @@
     ...restProps
   }: SnackBarProps = $props();
 
-  let dismissed = false;
+  let dismissed = $state(false);
 
   $effect(() => {
     if (!message) return;

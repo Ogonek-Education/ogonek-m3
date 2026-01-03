@@ -8,3 +8,4 @@ export * from "./types";
 export { default as SinglePane } from "./SinglePane.svelte";
 export { default as SplitPane } from "./SplitPane.svelte";
 export { default as SupportingPane } from "./SupportingPane.svelte";
+
