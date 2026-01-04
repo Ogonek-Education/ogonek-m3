@@ -8,7 +8,7 @@ export const dialogue = tv({
     inner:
       "bg-md-sys-color-surface-container-high shadow-elevation-3 flex relative z-50 max-w-4xl flex-col rounded-2xl p-6 gap-4 min-w-70 max-w-[560px]",
     headlineContainer:
-      "md-sys-typescale-headline-small text-md-sys-color-on-surface",
+      "md-sys-typescale-headline-small text-md-sys-color-on-surface font-serif",
     supportingTextContainer:
       "md-sys-typescale-body-medium text-md-sys-color-on-surface-variant",
     buttonContainer:
