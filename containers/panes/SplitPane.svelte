@@ -31,8 +31,11 @@
   const clampWidth = (next: number) =>
     Math.min(maxLeft, Math.max(minLeft, next));
 
+  const footerPaddingOffset = 80;
+
   let dragStartX = 0;
   let dragStartWidth = 0;
+  let mounted = false;
 
   const startDrag = (event: PointerEvent) => {
     dragging = true;
@@ -52,7 +55,7 @@
   };
 
   onMount(() => {
-    padding.set(560);
+    mounted = true;
 
     if (persist && typeof localStorage !== "undefined") {
       const stored = Number(localStorage.getItem(storageKey));
@@ -60,10 +63,17 @@
         leftWidth = clampWidth(stored);
       }
     }
+
+    padding.set(leftWidth + footerPaddingOffset);
   });
 
   onDestroy(() => {
     padding.set(120);
+  });
+
+  $effect(() => {
+    if (!mounted) return;
+    padding.set(leftWidth + footerPaddingOffset);
   });
 
   $effect(() => {
