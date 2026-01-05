@@ -7,4 +7,3 @@ export * from "./_wavy";
 export { default as CircularProgress } from "./CircularProgress.svelte";
 export { default as LinearProgress } from "./LinearProgress.svelte";
 export { default as WavyLinearProgress } from "./WavyLinearProgress.svelte";
-
