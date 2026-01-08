@@ -1,6 +1,5 @@
 <script lang="ts">
   import clsx from "clsx";
-  import { onMount, tick } from "svelte";
   import Body from "../../typography/body/Body.svelte";
   import Title from "../../typography/title/Title.svelte";
   import Layer from "../../utils/Layer.svelte";
@@ -8,7 +7,7 @@
   import type { TooltipProps } from "./types";
   import { floating } from "$lib/components";
 
-  const {
+  let {
     subhead,
     supportingText,
     children,
@@ -21,6 +20,10 @@
     closeDelay,
     class: className,
     variant = "rich",
+    interaction = "hover",
+    strategy,
+    style = "container",
+    isOpen = false,
     ...restProps
   }: TooltipProps = $props();
 
@@ -28,14 +31,13 @@
     subhead: subheadCls,
     base,
     textContainer,
+    trigger: triggerCls,
     supportingText: supportingTextCls,
-  } = $derived(tooltip({ variant }));
+  } = $derived(tooltip({ variant, style }));
 
   const id = crypto.randomUUID();
-  const baseCls = $derived(
-    base({ class: clsx("pointer-events-auto", className) }),
-  );
-  let isOpen = $state(false);
+  const baseCls = $derived(base({ class: clsx(className) }));
+  const isHoverInteraction = $derived(interaction === "hover");
   let anchor: HTMLSpanElement | null = $state(null);
   let tooltipEl: HTMLDivElement | null = $state(null);
   let openTimer: number | null = null;
@@ -52,25 +54,25 @@
     }
   };
 
-  const open = () => {
-    if (tutorial) return;
+  function open() {
+    if (!isHoverInteraction || tutorial) return;
     clearTimers();
     openTimer = window.setTimeout(async () => {
       isOpen = true;
     }, openDelay);
-  };
+  }
 
-  const close = () => {
-    if (tutorial) return;
+  function close() {
+    if (!isHoverInteraction || tutorial) return;
     clearTimers();
     closeTimer = window.setTimeout(() => {
       isOpen = false;
     }, closeDelay);
-  };
+  }
 </script>
 
 <span
-  class={clsx("relative inline-flex items-center", triggerClass)}
+  class={triggerCls({ class: clsx(triggerClass) })}
   bind:this={anchor}
   onmouseenter={open}
   onmouseleave={close}
@@ -79,7 +81,7 @@
   onfocusout={close}
 >
   {@render trigger?.()}
-  {#if (isOpen || tutorial) && supportingText}
+  {#if isOpen && supportingText}
     <div
       {id}
       class={baseCls}
@@ -89,7 +91,7 @@
       use:floating={{
         reference: anchor,
         placement,
-        strategy: "absolute",
+        strategy,
       }}
       onmouseenter={() => {
         if (closeTimer) {

@@ -1,4 +1,4 @@
-import type { DivAttrs } from "$lib/components";
+import type { DivAttrs, FloatingParams } from "$lib/components";
 import type { Placement } from "@floating-ui/dom";
 import type { Snippet } from "svelte";
 import type { TooltipVariants } from "./theme";
@@ -16,5 +16,8 @@ export type TooltipProps = TooltipVariants &
     offset?: number;
     openDelay?: number;
     closeDelay?: number;
+    strategy?: FloatingParams["strategy"];
+    isOpen?: boolean;
+    interaction?: "hover" | "manual";
     variant?: "rich" | "snack";
   };
