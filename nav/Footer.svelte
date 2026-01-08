@@ -7,7 +7,7 @@
 
 <footer
   style={`--footer-padding: ${$padding}px; --footer-nav-offset: ${$navOffset}px`}
-  class="footer bg-md-sys-color-surface-container flex flex-col items-center space-y-6 pt-6 pb-28 md:items-start md:pt-12 md:pb-0"
+  class="footer bg-md-sys-color-surface-container flex flex-col items-center space-y-6 pt-6 pb-28 lg:items-start lg:pt-12 lg:pb-0"
 >
   <VStack class="font-semibold">
     <Body><a class="text-link" href="/contact">Контакт</a></Body>
@@ -16,10 +16,10 @@
   </VStack>
 
   <div
-    class="flex w-full grid-rows-3 flex-col items-center gap-1 md:grid md:grid-cols-3 md:items-end"
+    class="flex w-full grid-rows-3 flex-col items-center gap-1 lg:grid lg:grid-cols-3 lg:items-end"
   >
     <div
-      class="row-span-3 flex flex-col items-center gap-3 pb-10 md:items-start"
+      class="row-span-3 flex flex-col items-center gap-3 pb-10 lg:items-start"
     >
       <a href="/" class="md-sys-typescale-display-small font-serif">Ogonëk</a>
       <p class="md-sys-typescale-label-small">© 2024-2026 Данила Волков</p>
@@ -31,7 +31,7 @@
     {/each}
   </div>
   <div
-    class="md-sys-typescale-label-small flex flex-col items-center gap-1 pt-4 pb-4 md:flex-row md:items-start md:gap-6"
+    class="md-sys-typescale-label-small flex flex-col items-center gap-1 pt-4 pb-4 lg:flex-row lg:items-start lg:gap-6"
   >
     <p>ИП Волков Данила Олегович</p>
     <p>ОГРНИП 321774600758976</p>

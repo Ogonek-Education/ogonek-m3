@@ -49,7 +49,7 @@ export const textfield = tv({
     trailingIcon: `
     mr-3 text-md-sys-color-on-surface-variant size-6
       group-focus-within:text-md-sys-color-primary
-      peer-invalid:text-md-sys-color-error
+      peer-invalid:text-md-sys-color-error z-20
     `,
 
     supportingText: `
