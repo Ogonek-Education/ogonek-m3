@@ -5,7 +5,7 @@ export const badge = tv({
   variants: {
     size: {
       sm: "size-1.5 top-0 right-3",
-      lg: "h-4 min-w-4 p-1 top-0 right-3",
+      lg: "h-3 min-w-3 p-1 -top-1 right-1",
     },
   },
 });
