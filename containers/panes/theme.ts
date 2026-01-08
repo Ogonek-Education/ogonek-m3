@@ -65,10 +65,10 @@ export const singlePane = tv({
 
 export const supportingPane = tv({
   slots: {
-    base: "flex w-full flex-col gap-4 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
+    base: "flex w-full flex-col gap-6 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
     main: "bg-md-sys-color-surface box-border rounded-lg md:p-6 p-0 grow order-2 md:order-1",
     supporting:
-      "bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container box-border rounded-lg p-4 md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] order-1 md:order-2 min-w-min md:overflow-y-scroll md:overflow-x-visible",
+      "text-md-sys-color-on-surface-container box-border md:w-80 md:sticky md:top-4 md:h-[calc(100dvh-2rem)] order-1 md:order-2 min-w-min",
   },
   variants: {
     position: {

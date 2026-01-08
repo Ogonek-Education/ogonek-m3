@@ -16,7 +16,7 @@
 </script>
 
 <div
-  class="bg-md-sys-color-surface-container-high shadow-elevation-1 hover:shadow-elevation-2 flex items-center gap-3 rounded-xl p-3 transition-shadow"
+  class="bg-md-sys-color-surface-container-high shadow-elevation-1 hover:shadow-elevation-2 flex items-center gap-3 rounded-lg p-3 transition-shadow"
 >
   <form
     method="POST"
