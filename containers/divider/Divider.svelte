@@ -24,7 +24,7 @@
 {#if children && orientation === "horizontal"}
   <div
     {...restProps}
-    class={clsx("flex w-full items-center gap-3", insetClass, className)}
+    class={clsx("flex h-full w-full items-center gap-3", insetClass, className)}
   >
     <div class={lineClass}></div>
     <span

@@ -22,7 +22,7 @@
       class="row-span-3 flex flex-col items-center gap-3 pb-10 md:items-start"
     >
       <a href="/" class="md-sys-typescale-display-small font-serif">Ogonëk</a>
-      <p class="md-sys-typescale-label-small">© 2024-2025 Данила Волков</p>
+      <p class="md-sys-typescale-label-small">© 2024-2026 Данила Волков</p>
     </div>
     {#each Object.entries(legalPages) as [slug, title]}
       <a class="text-link md-sys-typescale-label-small" href="/legal/{slug}"
