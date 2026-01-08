@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { enhanceForm, formatFileSize } from "$lib/utils";
+  import { enhanceForm } from "$lib/utils";
   import type { FileSmall } from "$lib/types";
 
   import { ButtonIcon } from "../../buttons";
@@ -64,15 +64,6 @@
           class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate"
         >
           {file.name}
-        </p>
-        <p
-          class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
-        >
-          {formatFileSize(file.size)}
-          {#if file.mimeType}
-            {" "}
-            • {file.mimeType}
-          {/if}
         </p>
       </div>
       <div class="text-md-sys-color-primary flex items-center gap-1">
