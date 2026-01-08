@@ -31,7 +31,7 @@
   const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-<Tooltip variant="snack" text={tooltipContent}>
+<Tooltip variant="snack" supportingText={tooltipContent}>
   {#snippet trigger()}
     {#if restProps.href !== undefined}
       <a {...restProps} class={btnCls}>

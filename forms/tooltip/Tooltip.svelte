@@ -6,30 +6,23 @@
   import Layer from "../../utils/Layer.svelte";
   import { tooltip } from "./theme";
   import type { TooltipProps } from "./types";
+  import { floating } from "$lib/components";
 
   const {
     subhead,
     supportingText,
-    text,
     children,
     trigger,
     triggerClass,
     placement = "top",
     offset = 10,
     openDelay = 50,
+    tutorial,
     closeDelay,
     class: className,
     variant = "rich",
     ...restProps
   }: TooltipProps = $props();
-
-  const resolvedCloseDelay = $derived(
-    closeDelay ?? (variant === "snack" ? 10 : 10),
-  );
-  const hasSnackContent = $derived(Boolean(text ?? supportingText));
-  const hasRichContent = $derived(
-    Boolean(subhead ?? supportingText ?? children),
-  );
 
   const {
     subhead: subheadCls,
@@ -43,50 +36,10 @@
     base({ class: clsx("pointer-events-auto", className) }),
   );
   let isOpen = $state(false);
-  let anchor: HTMLSpanElement;
+  let anchor: HTMLSpanElement | null = $state(null);
   let tooltipEl: HTMLDivElement | null = $state(null);
-  let coords = $state({ top: 0, left: 0 });
   let openTimer: number | null = null;
   let closeTimer: number | null = null;
-
-  const setDescribedBy = () => {
-    if (!anchor) return;
-    const target = anchor.querySelector<HTMLElement>(
-      "button, [role='button'], a, input, textarea, select, [tabindex]",
-    );
-    target?.setAttribute("aria-describedby", id);
-  };
-
-  const clamp = (value: number, min: number, max: number) =>
-    Math.min(Math.max(value, min), max);
-
-  const updatePosition = async () => {
-    await tick();
-    if (!anchor || !tooltipEl) return;
-
-    const anchorRect = anchor.getBoundingClientRect();
-    const tooltipRect = tooltipEl.getBoundingClientRect();
-    const margin = 8;
-    let top =
-      placement === "bottom"
-        ? anchorRect.bottom + offset
-        : anchorRect.top - tooltipRect.height - offset;
-
-    if (placement === "top" && top < margin) {
-      top = anchorRect.bottom + offset;
-    } else if (
-      placement === "bottom" &&
-      top + tooltipRect.height > window.innerHeight - margin
-    ) {
-      top = anchorRect.top - tooltipRect.height - offset;
-    }
-
-    let left = anchorRect.left + anchorRect.width / 2 - tooltipRect.width / 2;
-    left = clamp(left, margin, window.innerWidth - tooltipRect.width - margin);
-
-    top = clamp(top, margin, window.innerHeight - margin);
-    coords = { top: top - anchorRect.top, left: left - anchorRect.left };
-  };
 
   const clearTimers = () => {
     if (openTimer) {
@@ -100,44 +53,20 @@
   };
 
   const open = () => {
+    if (tutorial) return;
     clearTimers();
     openTimer = window.setTimeout(async () => {
       isOpen = true;
-      await updatePosition();
-      setDescribedBy();
     }, openDelay);
   };
 
   const close = () => {
+    if (tutorial) return;
     clearTimers();
     closeTimer = window.setTimeout(() => {
       isOpen = false;
-    }, resolvedCloseDelay);
+    }, closeDelay);
   };
-
-  onMount(() => {
-    setDescribedBy();
-    const ro = new ResizeObserver(() => {
-      if (isOpen) updatePosition();
-    });
-    if (anchor) ro.observe(anchor);
-
-    const handleReposition = () => {
-      if (isOpen) updatePosition();
-    };
-
-    window.addEventListener("resize", handleReposition);
-    window.addEventListener("scroll", handleReposition, true);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", handleReposition);
-      window.removeEventListener("scroll", handleReposition, true);
-    };
-  });
-
-  $effect(() => {
-    if (isOpen) updatePosition();
-  });
 </script>
 
 <span
@@ -150,14 +79,18 @@
   onfocusout={close}
 >
   {@render trigger?.()}
-  {#if isOpen && (variant === "snack" ? hasSnackContent : hasRichContent)}
+  {#if (isOpen || tutorial) && supportingText}
     <div
       {id}
       class={baseCls}
       bind:this={tooltipEl}
       role="tooltip"
       aria-hidden={!isOpen}
-      style={`position: absolute; left: ${coords.left}px; top: ${coords.top}px; z-index: 60`}
+      use:floating={{
+        reference: anchor,
+        placement,
+        strategy: "absolute",
+      }}
       onmouseenter={() => {
         if (closeTimer) {
           clearTimeout(closeTimer);
@@ -171,23 +104,15 @@
         <Layer />
       {/if}
       <div class={textContainer()}>
-        {#if variant === "snack"}
-          {#if text ?? supportingText}
-            <Body class={supportingTextCls()}>
-              {text ?? supportingText}
-            </Body>
-          {/if}
-        {:else}
-          {#if subhead}
-            <Title class={subheadCls()}>
-              {subhead}
-            </Title>
-          {/if}
-          {#if supportingText}
-            <Body class={supportingTextCls()}>
-              {supportingText}
-            </Body>
-          {/if}
+        {#if subhead}
+          <Title class={subheadCls()}>
+            {subhead}
+          </Title>
+        {/if}
+        {#if supportingText}
+          <Body class={supportingTextCls()}>
+            {supportingText}
+          </Body>
         {/if}
       </div>
       {#if variant === "rich"}
