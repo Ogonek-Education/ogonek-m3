@@ -2,6 +2,7 @@
   import { collapseStore, tutorial } from "$lib/stores";
   import { ButtonIcon, rail, type RailProps } from "$lib/components";
   import { clickOutside } from "$lib/actions";
+  import { resolveTutorialKey } from "$lib/utils/tutorial";
   import clsx from "clsx";
   import { page } from "$app/state";
   import type { Role } from "$lib/types";
@@ -24,6 +25,11 @@
 
   const segments = $derived(page.url.pathname.split("/").filter(Boolean));
   const [_role, section, _maybeId] = $derived(segments);
+  const tutorialKey = $derived.by(
+    () =>
+      resolveTutorialKey({ pathname: page.url.pathname, params: page.params }) ??
+      section,
+  );
 </script>
 
 <div class={ghost()}></div>
@@ -54,7 +60,11 @@
       triggerClass="mt-46"
       tooltipContent="Обучение"
       iconProps={{ name: "question_mark" }}
-      onclick={() => tutorial.start(section, page.params.role as Role)}
+      onclick={() => {
+        if (tutorialKey) {
+          tutorial.start(tutorialKey, page.params.role as Role);
+        }
+      }}
     ></ButtonIcon>
   {/if}
 </div>
