@@ -36,6 +36,7 @@ export type ButtonIconProps = ButtonIconVariants &
   AnchorButtonAttributes & {
     disabled?: boolean;
     tooltipContent?: string;
+    triggerClass?: string;
     iconProps: IconProps;
     formaction?: string;
     onclick?: () => void;

@@ -1,62 +1,49 @@
 <script lang="ts">
   import { Button, Tooltip, VStack } from "$lib/components";
-  import type { TutorialStep } from "$lib/utils";
+  import { tutorial } from "$lib/stores";
   import { type Snippet } from "svelte";
 
   let {
     children,
+    triggerClass = "w-full",
     id,
-    tutorialStepIndex = $bindable(),
-    steps,
-    stop,
+    showArrow = true,
+    showScrim = true,
   }: {
     children: Snippet;
+    triggerClass?: string;
     id: number;
-    tutorialStepIndex: number;
-    steps: readonly TutorialStep[];
-    stop?: () => void;
+    showArrow?: boolean;
+    showScrim?: boolean;
   } = $props();
 
-  const isLastStep = $derived(
-    steps ? tutorialStepIndex >= steps.length - 1 : false,
-  );
+  const { activeStep, stepIndex, isLastStep, prev, next, stop, steps } =
+    tutorial;
 
-  function nextStep() {
-    if (isLastStep) {
-      stop?.();
-      return;
-    }
-    tutorialStepIndex += 1;
-  }
-
-  function prevStep() {
-    if (tutorialStepIndex > 0) {
-      tutorialStepIndex -= 1;
-    }
-  }
-
-  const step = $derived(steps?.[id]);
-  const isActive = $derived(id === tutorialStepIndex);
+  const step = $derived($steps?.[id]);
+  const isActive = $derived(id === $activeStep?.id);
 </script>
 
 <Tooltip
   trigger={children}
   supportingText={step?.body}
-  triggerClass="w-full"
+  {triggerClass}
   placement="bottom"
   interaction="manual"
   strategy="fixed"
-  isOpen={isActive}
+  isOpen={isActive && $tutorial.isActive}
   style="primary"
   tutorial
+  {showArrow}
+  {showScrim}
 >
   <VStack class="self-end">
-    {#if tutorialStepIndex > 0}
-      <Button variant="text" onclick={prevStep}>Назад</Button>
+    {#if $stepIndex > 0}
+      <Button variant="text" onclick={prev}>Назад</Button>
     {/if}
     <Button variant="bare" onclick={stop}>Пропустить</Button>
-    <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={nextStep}
-      >{isLastStep ? "Готово" : "Далее"}</Button
+    <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={next}
+      >{$isLastStep ? "Готово" : "Далее"}</Button
     >
   </VStack>
 </Tooltip>

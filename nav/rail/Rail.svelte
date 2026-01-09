@@ -1,11 +1,15 @@
 <script lang="ts">
-  import { collapseStore } from "$lib/stores";
+  import { collapseStore, tutorial } from "$lib/stores";
   import { ButtonIcon, rail, type RailProps } from "$lib/components";
   import { clickOutside } from "$lib/actions";
   import clsx from "clsx";
+  import { page } from "$app/state";
+  import type { Role } from "$lib/types";
+
   let {
     children,
     expandable = true,
+    showHelp = false,
     fab,
     class: className,
   }: RailProps = $props();
@@ -17,6 +21,9 @@
   const { base, items, ghost, scrim } = $derived(
     rail({ expanded: !$collapseStore }),
   );
+
+  const segments = $derived(page.url.pathname.split("/").filter(Boolean));
+  const [_role, section, _maybeId] = $derived(segments);
 </script>
 
 <div class={ghost()}></div>
@@ -42,6 +49,14 @@
   <div class={`${items()} rail-items`}>
     {@render children?.()}
   </div>
+  {#if showHelp}
+    <ButtonIcon
+      triggerClass="mt-46"
+      tooltipContent="Обучение"
+      iconProps={{ name: "question_mark" }}
+      onclick={() => tutorial.start(section, page.params.role as Role)}
+    ></ButtonIcon>
+  {/if}
 </div>
 
 <style>

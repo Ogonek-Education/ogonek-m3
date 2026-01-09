@@ -3,6 +3,7 @@
   import Body from "../../typography/body/Body.svelte";
   import Title from "../../typography/title/Title.svelte";
   import Layer from "../../utils/Layer.svelte";
+  import { autoUpdate } from "@floating-ui/dom";
   import { tooltip } from "./theme";
   import type { TooltipProps } from "./types";
   import { floating } from "$lib/components";
@@ -24,10 +25,14 @@
     strategy,
     style = "container",
     isOpen = false,
+    showArrow = false,
+    showScrim = false,
     ...restProps
   }: TooltipProps = $props();
 
   const {
+    arrow: arrowCls,
+    scrim: scrimCls,
     subhead: subheadCls,
     base,
     textContainer,
@@ -41,6 +46,8 @@
   let anchor: HTMLSpanElement | null = $state(null);
   let tooltipEl: HTMLDivElement | null = $state(null);
   let arrowEl: HTMLDivElement | null = $state(null);
+  let scrimEl: HTMLDivElement | null = $state(null);
+  let scrimCleanup: VoidFunction | null = null;
   let openTimer: number | null = null;
   let closeTimer: number | null = null;
 
@@ -70,6 +77,37 @@
       isOpen = false;
     }, closeDelay);
   }
+
+  const updateScrim = () => {
+    if (!anchor || !scrimEl) return;
+    const rect = anchor.getBoundingClientRect();
+    Object.assign(scrimEl.style, {
+      left: `${rect.left}px`,
+      top: `${rect.top}px`,
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+      borderRadius: "16px",
+    });
+  };
+
+  const stopScrim = () => {
+    scrimCleanup?.();
+    scrimCleanup = null;
+  };
+
+  $effect(() => {
+    stopScrim();
+    if (!showScrim || !isOpen || !anchor || !scrimEl) return;
+    scrimCleanup = autoUpdate(anchor, scrimEl, updateScrim, {
+      ancestorScroll: true,
+      ancestorResize: true,
+      elementResize: true,
+      layoutShift: true,
+      animationFrame: false,
+    });
+    updateScrim();
+    return () => stopScrim();
+  });
 </script>
 
 <span
@@ -83,6 +121,14 @@
 >
   {@render trigger?.()}
   {#if isOpen && supportingText}
+    {#if showScrim}
+      <div
+        class={scrimCls()}
+        bind:this={scrimEl}
+        aria-hidden="true"
+        style="box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);"
+      ></div>
+    {/if}
     <div
       {id}
       class={baseCls}
@@ -93,6 +139,8 @@
         reference: anchor,
         placement,
         strategy,
+        offsetPx: offset,
+        arrowEl: showArrow ? arrowEl : null,
       }}
       onmouseenter={() => {
         if (closeTimer) {
@@ -103,6 +151,9 @@
       onmouseleave={close}
       {...restProps}
     >
+      {#if showArrow}
+        <div class={arrowCls()} bind:this={arrowEl} aria-hidden="true"></div>
+      {/if}
       {#if variant === "rich"}
         <Layer />
       {/if}

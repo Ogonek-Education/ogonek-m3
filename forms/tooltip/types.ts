@@ -20,4 +20,6 @@ export type TooltipProps = TooltipVariants &
     isOpen?: boolean;
     interaction?: "hover" | "manual";
     variant?: "rich" | "snack";
+    showArrow?: boolean;
+    showScrim?: boolean;
   };

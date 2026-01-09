@@ -18,6 +18,7 @@ export interface RailItemProps
 export type RailProps = RailVariants &
   HTMLAttributes<HTMLDivElement> & {
     children: Snippet;
+    showHelp?: boolean;
     expandable?: boolean;
     fab?: Snippet;
   };
