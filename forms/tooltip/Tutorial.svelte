@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button, HStack, Tooltip, VStack } from "$lib/components";
+  import { Button, Tooltip, VStack } from "$lib/components";
   import type { TutorialStep } from "$lib/utils";
   import { type Snippet } from "svelte";
 
@@ -16,8 +16,6 @@
     steps: readonly TutorialStep[];
     stop?: () => void;
   } = $props();
-
-  $inspect(steps, "STEPS IN TUTORIAL");
 
   const isLastStep = $derived(
     steps ? tutorialStepIndex >= steps.length - 1 : false,
@@ -49,15 +47,15 @@
   interaction="manual"
   strategy="fixed"
   isOpen={isActive}
-  style="tertiary"
+  style="primary"
   tutorial
 >
   <VStack class="self-end">
     {#if tutorialStepIndex > 0}
-      <Button variant="outlined" onclick={prevStep}>Назад</Button>
+      <Button variant="text" onclick={prevStep}>Назад</Button>
     {/if}
     <Button variant="bare" onclick={stop}>Пропустить</Button>
-    <Button variant="filled" onclick={nextStep}
+    <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={nextStep}
       >{isLastStep ? "Готово" : "Далее"}</Button
     >
   </VStack>

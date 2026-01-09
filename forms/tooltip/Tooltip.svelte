@@ -40,6 +40,7 @@
   const isHoverInteraction = $derived(interaction === "hover");
   let anchor: HTMLSpanElement | null = $state(null);
   let tooltipEl: HTMLDivElement | null = $state(null);
+  let arrowEl: HTMLDivElement | null = $state(null);
   let openTimer: number | null = null;
   let closeTimer: number | null = null;
 

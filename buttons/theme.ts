@@ -37,8 +37,7 @@ export const button = tv({
     },
     selected: {
       true: "bg-md-sys-color-primary text-md-sys-color-on-primary rounded-md",
-      false:
-        "bg-md-sys-color-surface-container text-md-sys-color-on-surface-container rounded-full",
+      false: "rounded-full",
     },
   },
 });

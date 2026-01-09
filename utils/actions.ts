@@ -24,12 +24,10 @@ export type FloatingParams = {
 export function floating(node: HTMLElement, params: FloatingParams) {
   let cleanup: VoidFunction | null = null;
 
-  let p: FloatingParams = {
-    strategy: "absolute",
-    offsetPx: 8,
-    enabled: true,
-    ...params,
-  };
+  let p: FloatingParams = { ...params };
+  p.strategy ??= "absolute";
+  p.offsetPx ??= 8;
+  p.enabled ??= true;
 
   async function update() {
     if (!p.enabled) return;
@@ -119,6 +117,9 @@ export function floating(node: HTMLElement, params: FloatingParams) {
   return {
     update(next: FloatingParams) {
       p = { ...p, ...next };
+      p.strategy ??= "absolute";
+      p.offsetPx ??= 8;
+      p.enabled ??= true;
       startAutoUpdate();
       void update();
     },

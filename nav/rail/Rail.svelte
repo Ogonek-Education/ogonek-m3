@@ -31,8 +31,9 @@
   {#if expandable}
     <ButtonIcon
       type="button"
+      tooltipContent={$collapseStore ? "Открыть" : "Закрыть"}
       iconProps={{ name: `${$collapseStore ? "menu" : "menu_open"}` }}
-      class={$collapseStore ? "cursor-e-resize" : "cursor-w-resize"}
+      class={clsx($collapseStore ? "cursor-e-resize" : "cursor-w-resize", "")}
       onclick={() => collapse()}
     />
   {/if}
