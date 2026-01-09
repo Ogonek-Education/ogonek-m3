@@ -20,7 +20,7 @@
   const { activeStep, stepIndex, isLastStep, prev, next, stop, steps } =
     tutorial;
 
-  const step = $derived($steps?.[id]);
+  const step = $derived($steps?.find((item) => item.id === id));
   const isActive = $derived(id === $activeStep?.id);
 </script>
 
