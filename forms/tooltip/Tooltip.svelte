@@ -86,7 +86,6 @@
       top: `${rect.top}px`,
       width: `${rect.width}px`,
       height: `${rect.height}px`,
-      borderRadius: "16px",
     });
   };
 

@@ -12,7 +12,7 @@
   }: {
     children: Snippet;
     triggerClass?: string;
-    id: number;
+    id: number | number[];
     showArrow?: boolean;
     showScrim?: boolean;
   } = $props();
@@ -20,8 +20,17 @@
   const { activeStep, stepIndex, isLastStep, prev, next, stop, steps } =
     tutorial;
 
-  const step = $derived($steps?.find((item) => item.id === id));
-  const isActive = $derived(id === $activeStep?.id);
+  const ids = $derived(Array.isArray(id) ? id : [id]);
+  const step = $derived(
+    $activeStep && ids.includes($activeStep.id)
+      ? $activeStep
+      : $steps?.find((item) => item.id === ids[0]),
+  );
+  const isActive = $derived(
+    Boolean($activeStep && ids.includes($activeStep.id)),
+  );
+
+  $inspect($steps);
 </script>
 
 <Tooltip
@@ -41,7 +50,6 @@
     {#if $stepIndex > 0}
       <Button variant="text" onclick={prev}>Назад</Button>
     {/if}
-    <Button variant="bare" onclick={stop}>Пропустить</Button>
     <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={next}
       >{$isLastStep ? "Готово" : "Далее"}</Button
     >
