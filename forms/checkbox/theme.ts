@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const checkbox = tv({
   slots: {
-    root: "inline-flex min-h-10 select-none items-start gap-3 text-md-sys-color-on-surface",
+    root: "inline-flex min-h-10 select-none items-start gap-3 text-md-sys-color-on-surface min-h-4.5",
     container: "relative inline-flex size-[18px] shrink-0",
     control:
       "layer-container absolute -inset-[11px] rounded-full text-md-sys-color-on-surface-variant state-layer before:rounded-full hover:before:bg-current/8 active:before:bg-current/10 peer-focus-visible:outline peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-md-sys-color-secondary transition-[outline-color,outline-width,outline-offset] duration-150 ease-out",

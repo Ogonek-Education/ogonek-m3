@@ -3,12 +3,12 @@
   import { ButtonIcon } from "$lib/components/library";
   import logger from "$lib/logger";
   import { notificationStore } from "$lib/stores";
-  import type { FileSmall, URLResponse } from "$lib/types";
+  import type { FileSmall } from "$lib/types";
   import type { components } from "$lib/types/gen/openapi";
   import Button from "../Button.svelte";
 
   type PresignedFileUrl = components["schemas"]["PresignedFileUrl"];
-  type DownloadUrl = URLResponse | PresignedFileUrl;
+  type DownloadUrl = { url: string } | PresignedFileUrl;
   type DownloadItem = { url: string; name: string };
 
   let downloading = $state(false);
