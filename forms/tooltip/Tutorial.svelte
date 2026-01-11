@@ -1,33 +1,33 @@
 <script lang="ts">
   import { Button, Tooltip, VStack } from "$lib/components";
   import { tutorial } from "$lib/stores";
+  import type { Placement } from "@floating-ui/dom";
   import { type Snippet } from "svelte";
 
   let {
     children,
     triggerClass = "w-full",
-    id,
+    slug,
     showArrow = true,
     showScrim = true,
   }: {
     children: Snippet;
     triggerClass?: string;
-    id: number | number[];
+    slug: string | string[];
     showArrow?: boolean;
     showScrim?: boolean;
   } = $props();
 
-  const { activeStep, stepIndex, isLastStep, prev, next, stop, steps } =
-    tutorial;
+  const { activeStep, stepIndex, isLastStep, prev, next, steps } = tutorial;
 
-  const ids = $derived(Array.isArray(id) ? id : [id]);
+  const slugs = $derived(Array.isArray(slug) ? slug : [slug]);
   const step = $derived(
-    $activeStep && ids.includes($activeStep.id)
+    $activeStep && slugs.includes($activeStep.slug)
       ? $activeStep
-      : $steps?.find((item) => item.id === ids[0]),
+      : $steps?.find((item) => item.slug === slugs[0]),
   );
   const isActive = $derived(
-    Boolean($activeStep && ids.includes($activeStep.id)),
+    Boolean($activeStep && slugs.includes($activeStep.slug)),
   );
 
   $inspect($steps);
@@ -37,7 +37,7 @@
   trigger={children}
   supportingText={step?.body}
   {triggerClass}
-  placement="bottom"
+  placement={(step?.position ?? "bottom") as Placement}
   interaction="manual"
   strategy="fixed"
   isOpen={isActive && $tutorial.isActive}

@@ -27,8 +27,10 @@
   const [_role, section, _maybeId] = $derived(segments);
   const tutorialKey = $derived.by(
     () =>
-      resolveTutorialKey({ pathname: page.url.pathname, params: page.params }) ??
-      section,
+      resolveTutorialKey({
+        pathname: page.url.pathname,
+        params: page.params,
+      }) ?? section,
   );
 </script>
 
@@ -57,7 +59,7 @@
   </div>
   {#if showHelp}
     <ButtonIcon
-      triggerClass="mt-46"
+      triggerClass=""
       tooltipContent="Обучение"
       iconProps={{ name: "question_mark" }}
       onclick={() => {
