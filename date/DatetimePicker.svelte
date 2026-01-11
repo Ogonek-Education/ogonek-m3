@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Title, VStack, TimeField, Layer } from "$lib/components";
+  import Tutorial from "../forms/tooltip/Tutorial.svelte";
   import DateField from "./DateField.svelte";
 
   let {
@@ -98,17 +99,20 @@
   value={dtendTz}
   data-cy="calendar-dtend-tz"
 />
-
-<DateField
-  label="Дата встречи"
-  bind:value={dateString}
-  data-cy="calendar-date"
-/>
-<TimeField
-  label="Начало встречи"
-  bind:value={startTimeString}
-  data-cy="calendar-time"
-/>
+<Tutorial slug="calendar-new-date">
+  <DateField
+    label="Дата встречи"
+    bind:value={dateString}
+    data-cy="calendar-date"
+  />
+</Tutorial>
+<Tutorial slug="calendar-new-time">
+  <TimeField
+    label="Начало встречи"
+    bind:value={startTimeString}
+    data-cy="calendar-time"
+  />
+</Tutorial>
 
 <Title>Длительность</Title>
 <VStack>

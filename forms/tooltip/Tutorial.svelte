@@ -6,7 +6,7 @@
 
   let {
     children,
-    triggerClass = "",
+    triggerClass = "size-full",
     slug,
     showArrow = true,
     showScrim = true,
@@ -47,10 +47,13 @@
   >
     <VStack class="self-end">
       {#if $stepIndex > 0}
-        <Button variant="text" onclick={prev}>Назад</Button>
+        <Button variant="text" type="button" onclick={prev}>Назад</Button>
       {/if}
-      <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={next}
-        >{$isLastStep ? "Готово" : "Далее"}</Button
+      <Button
+        class="bg-md-sys-color-tertiary"
+        variant="filled"
+        type="button"
+        onclick={next}>{$isLastStep ? "Готово" : "Далее"}</Button
       >
     </VStack>
   </Tooltip>

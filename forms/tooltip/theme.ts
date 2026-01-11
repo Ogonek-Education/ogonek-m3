@@ -11,7 +11,7 @@ export const tooltip = tv({
     subhead: "",
     supportingText: "",
     textContainer: "space-y-2",
-    trigger: "relative inline-flex",
+    trigger: "relative",
   },
   variants: {
     variant: {

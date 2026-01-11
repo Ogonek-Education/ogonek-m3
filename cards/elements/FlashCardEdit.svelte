@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Card as CardType } from "$lib/types";
   import Button from "../../buttons/Button.svelte";
-  import { Textfield } from "../../forms";
+  import { Textfield, Tutorial } from "../../forms";
   import Card from "../Card.svelte";
 
   let {
@@ -13,35 +13,41 @@
 </script>
 
 <Card type="elevated" class="gap-2">
-  <Textfield
-    name={`cards[${index}][front]`}
-    id={`cards[${index}][front]`}
-    label="Лицо"
-    data-cy={`flashcard-front-${index}`}
-    bind:value={card.front}
-  />
+  <Tutorial slug="flashcard-edit-front">
+    <Textfield
+      name={`cards[${index}][front]`}
+      id={`cards[${index}][front]`}
+      label="Лицо"
+      data-cy={`flashcard-front-${index}`}
+      bind:value={card.front}
+    />
+  </Tutorial>
 
-  <Textfield
-    name={`cards[${index}][back]`}
-    id={`cards[${index}][back]`}
-    label="Оборот"
-    data-cy={`flashcard-back-${index}`}
-    bind:value={card.back}
-  />
-
-  <Textfield
-    name={`cards[${index}][tip]`}
-    id={`cards[${index}][tip]`}
-    label="Подсказка"
-    data-cy={`flashcard-tip-${index}`}
-    bind:value={card.tip}
-  />
-
-  <Button
-    class="mt-4"
-    type="button"
-    variant="tonal"
-    data-cy={`flashcard-delete-${index}`}
-    onclick={() => removeCard(index)}>Удалить</Button
-  >
+  <Tutorial slug="flashcard-edit-back">
+    <Textfield
+      name={`cards[${index}][back]`}
+      id={`cards[${index}][back]`}
+      label="Оборот"
+      data-cy={`flashcard-back-${index}`}
+      bind:value={card.back}
+    />
+  </Tutorial>
+  <Tutorial slug="flashcard-edit-hint">
+    <Textfield
+      name={`cards[${index}][tip]`}
+      id={`cards[${index}][tip]`}
+      label="Подсказка"
+      data-cy={`flashcard-tip-${index}`}
+      bind:value={card.tip}
+    />
+  </Tutorial>
+  <Tutorial slug="flashcard-edit-delete">
+    <Button
+      class="mt-4"
+      type="button"
+      variant="tonal"
+      data-cy={`flashcard-delete-${index}`}
+      onclick={() => removeCard(index)}>Удалить</Button
+    >
+  </Tutorial>
 </Card>

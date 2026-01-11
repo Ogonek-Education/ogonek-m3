@@ -59,7 +59,6 @@
   </div>
   {#if showHelp}
     <ButtonIcon
-      triggerClass=""
       tooltipContent="Обучение"
       iconProps={{ name: "question_mark" }}
       onclick={() => {
