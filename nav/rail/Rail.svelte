@@ -59,8 +59,9 @@
   </div>
   {#if showHelp}
     <ButtonIcon
+      triggerClass="absolute bottom-20"
       tooltipContent="Обучение"
-      iconProps={{ name: "question_mark" }}
+      iconProps={{ name: "tips_and_updates" }}
       onclick={() => {
         if (tutorialKey) {
           tutorial.start(tutorialKey, page.params.role as Role);
