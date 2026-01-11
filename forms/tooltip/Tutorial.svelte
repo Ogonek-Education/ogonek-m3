@@ -13,7 +13,7 @@
   }: {
     children: Snippet;
     triggerClass?: string;
-    slug: string | string[];
+    slug?: string | string[];
     showArrow?: boolean;
     showScrim?: boolean;
   } = $props();
@@ -29,29 +29,31 @@
   const isActive = $derived(
     Boolean($activeStep && slugs.includes($activeStep.slug)),
   );
-
-  $inspect($steps);
 </script>
 
-<Tooltip
-  trigger={children}
-  supportingText={step?.body}
-  {triggerClass}
-  placement={(step?.position ?? "bottom") as Placement}
-  interaction="manual"
-  strategy="fixed"
-  isOpen={isActive && $tutorial.isActive}
-  style="primary"
-  tutorial
-  {showArrow}
-  {showScrim}
->
-  <VStack class="self-end">
-    {#if $stepIndex > 0}
-      <Button variant="text" onclick={prev}>Назад</Button>
-    {/if}
-    <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={next}
-      >{$isLastStep ? "Готово" : "Далее"}</Button
-    >
-  </VStack>
-</Tooltip>
+{#if slug}
+  <Tooltip
+    trigger={children}
+    supportingText={step?.body}
+    {triggerClass}
+    placement={(step?.position ?? "bottom") as Placement}
+    interaction="manual"
+    strategy="fixed"
+    isOpen={isActive && $tutorial.isActive}
+    style="primary"
+    tutorial
+    {showArrow}
+    {showScrim}
+  >
+    <VStack class="self-end">
+      {#if $stepIndex > 0}
+        <Button variant="text" onclick={prev}>Назад</Button>
+      {/if}
+      <Button class="bg-md-sys-color-tertiary" variant="filled" onclick={next}
+        >{$isLastStep ? "Готово" : "Далее"}</Button
+      >
+    </VStack>
+  </Tooltip>
+{:else}
+  {@render children()}
+{/if}

@@ -1,6 +1,5 @@
 import {
   arrow as arrowMw,
-  autoPlacement,
   autoUpdate,
   computePosition,
   offset,
@@ -35,7 +34,6 @@ export function floating(node: HTMLElement, params: FloatingParams) {
 
     const middleware: Middleware[] = [
       offset(p.offsetPx ?? 8),
-      autoPlacement(),
       shift({ padding: 8 }),
       ...(p.middleware ?? []),
     ];
