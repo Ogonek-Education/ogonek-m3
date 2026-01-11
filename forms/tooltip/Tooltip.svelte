@@ -50,6 +50,7 @@
   let scrimCleanup: VoidFunction | null = null;
   let openTimer: number | null = null;
   let closeTimer: number | null = null;
+  const scrimPadding = 12;
 
   const clearTimers = () => {
     if (openTimer) {
@@ -81,11 +82,15 @@
   const updateScrim = () => {
     if (!anchor || !scrimEl) return;
     const rect = anchor.getBoundingClientRect();
+    const paddedLeft = rect.left - scrimPadding;
+    const paddedTop = rect.top - scrimPadding;
+    const paddedWidth = rect.width + scrimPadding * 2;
+    const paddedHeight = rect.height + scrimPadding * 2;
     Object.assign(scrimEl.style, {
-      left: `${rect.left}px`,
-      top: `${rect.top}px`,
-      width: `${rect.width}px`,
-      height: `${rect.height}px`,
+      left: `${paddedLeft}px`,
+      top: `${paddedTop}px`,
+      width: `${paddedWidth}px`,
+      height: `${paddedHeight}px`,
     });
   };
 
@@ -125,7 +130,7 @@
         class={scrimCls()}
         bind:this={scrimEl}
         aria-hidden="true"
-        style="box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);"
+        style="box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.22); filter: blur(1px);"
       ></div>
     {/if}
     <div
