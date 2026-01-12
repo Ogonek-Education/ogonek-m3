@@ -6,7 +6,7 @@
 
   let {
     children,
-    triggerClass = "size-full",
+    triggerClass = "w-full",
     slug,
     showArrow = true,
     showScrim = true,
