@@ -1,16 +1,17 @@
 <script lang="ts">
-  import { collapseStore, tutorial } from "$lib/stores";
-  import { ButtonIcon, rail, type RailProps } from "$lib/components";
+  import { collapseStore } from "$lib/stores";
+  import {
+    ButtonIcon,
+    HelpButton,
+    rail,
+    type RailProps,
+  } from "$lib/components";
   import { clickOutside } from "$lib/actions";
-  import { resolveTutorialKey } from "$lib/utils/tutorial";
   import clsx from "clsx";
-  import { page } from "$app/state";
-  import type { Role } from "$lib/types";
 
   let {
     children,
     expandable = true,
-    showHelp = false,
     fab,
     class: className,
   }: RailProps = $props();
@@ -21,16 +22,6 @@
 
   const { base, items, ghost, scrim } = $derived(
     rail({ expanded: !$collapseStore }),
-  );
-
-  const segments = $derived(page.url.pathname.split("/").filter(Boolean));
-  const [_role, section, _maybeId] = $derived(segments);
-  const tutorialKey = $derived.by(
-    () =>
-      resolveTutorialKey({
-        pathname: page.url.pathname,
-        params: page.params,
-      }) ?? section,
   );
 </script>
 
@@ -57,18 +48,7 @@
   <div class={`${items()} rail-items`}>
     {@render children?.()}
   </div>
-  {#if showHelp}
-    <ButtonIcon
-      triggerClass="absolute bottom-20"
-      tooltipContent="Обучение"
-      iconProps={{ name: "tips_and_updates" }}
-      onclick={() => {
-        if (tutorialKey) {
-          tutorial.start(tutorialKey, page.params.role as Role);
-        }
-      }}
-    ></ButtonIcon>
-  {/if}
+  <HelpButton />
 </div>
 
 <style>

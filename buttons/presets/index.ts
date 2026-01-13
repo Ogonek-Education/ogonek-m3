@@ -5,6 +5,7 @@ export { default as CancelButton } from "./CancelButton.svelte";
 export { default as DeleteButton } from "./DeleteButton.svelte";
 export { default as DownloadButton } from "./DownloadButton.svelte";
 export { default as EditButton } from "./EditButton.svelte";
+export { default as HelpButton } from "./HelpButton.svelte";
 export { default as LoadMoreButton } from "./LoadMoreButton.svelte";
 export { default as NewButton } from "./NewButton.svelte";
 export { default as SaveButton } from "./SaveButton.svelte";
