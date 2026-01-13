@@ -15,5 +15,5 @@
   class={className}
   style="font-variation-settings: 'FILL' {fill}, 'wght' {wght}, 'GRAD' {grad}, 'opsz' {opsz};"
 >
-  <span class="material-symbols-outlined">{name}</span>
+  <span class="material-symbols-rounded">{name}</span>
 </div>
