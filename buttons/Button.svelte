@@ -38,14 +38,15 @@
   <button {disabled} {...restProps} class={btnCls} {formaction}>
     {#if iconProps}
       {#if loading}
-        <LoadingIndicator class={icon()} />
+        <LoadingIndicator container={variant === "filled"} class={icon()} />
       {:else}
         <Icon class={icon()} {...iconProps} />
       {/if}
     {:else if loading}
-      <LoadingIndicator />
+      <LoadingIndicator container={variant === "filled"} />
+    {:else}
+      {@render children?.()}
     {/if}
-    {@render children?.()}
     <Layer />
   </button>
 {/if}

@@ -5,8 +5,8 @@ export type RailItemVariants = VariantProps<typeof railElement>;
 
 export const rail = tv({
   slots: {
-    base: "hidden fixed bg-md-sys-color-surface-container h-full my-12 z-20 flex-col transition-all md:flex gap-6",
-    items: " flex flex-col gap-3 pt-6 scrollbar-none",
+    base: "py-12 hidden fixed bg-md-sys-color-surface-container h-full z-20 flex-col transition-all md:flex gap-6",
+    items: "flex flex-col gap-3 pt-6 scrollbar-none",
     ghost: "w-24",
     scrim: "fixed xl:hidden inset-0 -z-10",
   },

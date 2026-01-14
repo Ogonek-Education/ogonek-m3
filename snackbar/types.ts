@@ -1,3 +1,4 @@
+import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { SnackBarVariants } from "./theme";
 
@@ -5,13 +6,15 @@ export interface Toast {
   message?: string;
   showClose?: boolean;
   label?: string;
+  static?: boolean;
 }
 
 export type SnackBarProps = SnackBarVariants &
   HTMLAttributes<HTMLDivElement> & {
-    message?: string;
+    message?: string | Snippet;
     fixed?: boolean;
-    callback?: () => {};
+    callback?: () => void;
     label?: string;
     showClose?: boolean;
+    static?: boolean;
   };

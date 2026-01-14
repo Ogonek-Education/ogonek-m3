@@ -7,6 +7,7 @@
   let {
     message,
     fixed = true,
+    static: isStatic = false,
     label,
     callback,
     showClose = true,
@@ -17,6 +18,7 @@
 
   $effect(() => {
     if (!message) return;
+    if (isStatic) return;
     const t = setTimeout(() => {
       dismissed = true;
       notificationStore.set("");
@@ -48,7 +50,13 @@
     data-cy="notification-snackbar"
     {...restProps}
   >
-    <p class={supportingText()}>{message}</p>
+    {#if typeof message === "string"}
+      <p class={supportingText()}>{message}</p>
+    {:else}
+      <p class={supportingText()}>
+        {@render message()}
+      </p>
+    {/if}
 
     <div class={actionWrapper()}>
       {#if label}
