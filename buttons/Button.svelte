@@ -41,6 +41,7 @@
         <LoadingIndicator container={variant === "filled"} class={icon()} />
       {:else}
         <Icon class={icon()} {...iconProps} />
+        {@render children?.()}
       {/if}
     {:else if loading}
       <LoadingIndicator container={variant === "filled"} />
