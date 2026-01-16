@@ -12,6 +12,7 @@ export const hr = tv({
     variant: {
       inset: "mr-2 ml-4",
       full: "",
+      wavy: "",
     },
   },
 });

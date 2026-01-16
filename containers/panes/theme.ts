@@ -36,12 +36,17 @@ export const singlePane = tv({
   },
   variants: {
     centered: {
-      true: {
-        content: "max-w-5xl ",
+      narrow: {
+        content: "max-w-2xl",
         base: "items-center justify-center",
         headline: "self-center",
       },
-      false: "",
+      medium: {
+        content: "max-w-5xl",
+        base: "items-center justify-center",
+        headline: "self-center",
+      },
+      none: "",
     },
     padding: {
       none: "",
