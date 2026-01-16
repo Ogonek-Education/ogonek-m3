@@ -68,7 +68,7 @@
   });
 
   onDestroy(() => {
-    padding.set(120);
+    padding.set(0);
   });
 
   $effect(() => {

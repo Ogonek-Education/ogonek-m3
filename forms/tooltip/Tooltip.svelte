@@ -40,7 +40,6 @@
     supportingText: supportingTextCls,
   } = $derived(tooltip({ variant, style }));
 
-  const id = crypto.randomUUID();
   const baseCls = $derived(base({ class: clsx(className) }));
   const isHoverInteraction = $derived(interaction === "hover");
   let anchor: HTMLSpanElement | null = $state(null);
@@ -134,7 +133,6 @@
       ></div>
     {/if}
     <div
-      {id}
       class={baseCls}
       bind:this={tooltipEl}
       role="tooltip"

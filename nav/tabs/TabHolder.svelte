@@ -13,8 +13,6 @@
   const count = $derived(items.length);
   const { base, bar } = $derived(tabHolder());
 
-  $inspect(tab);
-
   /*
   const items: TabProps[] = [
     {

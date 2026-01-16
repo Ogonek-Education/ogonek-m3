@@ -6,7 +6,7 @@
 </script>
 
 <footer
-  style={`--footer-padding: ${$padding}px; --footer-nav-offset: ${$navOffset}px`}
+  style={`--footer-padding: ${$padding > 0 ? $padding : 0}px; --footer-nav-offset: ${$navOffset > 0 ? $navOffset : 0}px`}
   class="footer overflow-hidden px-4"
 >
   <div

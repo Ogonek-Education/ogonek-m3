@@ -12,6 +12,7 @@
     Title,
   } from "$lib/components/library";
   import HStack from "../../containers/stack/HStack.svelte";
+  import { nanoid } from "nanoid";
 
   type UploadStatus = "waiting" | "uploading" | "complete" | "error";
 
@@ -95,7 +96,7 @@
     }
 
     const newFiles = validFiles.map((file) => ({
-      id: crypto.randomUUID(),
+      id: nanoid(),
       file,
       progress: {
         uploaded: 0,

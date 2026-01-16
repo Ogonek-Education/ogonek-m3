@@ -95,7 +95,7 @@ export const buttonGroup = tv({
 
 export const fab = tv({
   slots: {
-    base: "md-component-button-base relative z-50",
+    base: "md-component-button-base relative z-50 before:rounded-lg",
     icon: "",
     label: "text-medium ",
   },
