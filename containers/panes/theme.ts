@@ -67,7 +67,7 @@ export const supportingPane = tv({
     base: "flex w-full flex-col gap-6 md:flex-row min-h-[calc(100dvh-30px)] py-3 md:p-0",
     main: "bg-md-sys-color-surface box-border rounded-lg md:p-6 p-0 grow order-2 md:order-1",
     supporting:
-      "text-md-sys-color-on-surface-container box-border md:w-80 md:sticky md:top-4 order-1 md:order-2 min-w-min md:h-[calc(100dvh-2rem)] overflow-y-scroll overflow-x-visible",
+      "text-md-sys-color-on-surface-container box-border md:sticky md:top-4 order-1 md:order-2 min-w-min md:w-80 md:h-[calc(100dvh-2rem)] overflow-y-scroll overflow-x-visible",
   },
   variants: {
     position: {

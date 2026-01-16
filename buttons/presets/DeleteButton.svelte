@@ -5,10 +5,12 @@
   import ButtonIcon from "../ButtonIcon.svelte";
 
   const {
-    variant = "error",
+    variant = "filled",
+    color = "error",
     mobile = false,
   }: {
-    variant?: "filled" | "elevated" | "tonal" | "outlined" | "text" | "error";
+    variant?: "filled" | "elevated" | "tonal" | "outlined" | "text";
+    color?: "primary" | "secondary" | "tertiary" | "error";
     mobile?: boolean;
   } = $props();
 
@@ -23,6 +25,7 @@
     aria-label={texts.crud.delete}
     onclick={() => (modal = true)}
     {variant}
+    {color}
   />
 {:else}
   <Button
@@ -30,7 +33,8 @@
     data-cy="delete-button"
     type="button"
     onclick={() => (modal = true)}
-    {variant}>{texts.crud.delete}</Button
+    {variant}
+    {color}>{texts.crud.delete}</Button
   >
 {/if}
 

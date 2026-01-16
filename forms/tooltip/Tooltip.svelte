@@ -18,7 +18,7 @@
     offset = 10,
     openDelay = 50,
     tutorial,
-    closeDelay,
+    closeDelay = 200,
     class: className,
     variant = "rich",
     interaction = "hover",
@@ -42,6 +42,9 @@
 
   const baseCls = $derived(base({ class: clsx(className) }));
   const isHoverInteraction = $derived(interaction === "hover");
+  const hasTooltipContent = $derived(
+    Boolean(supportingText || subhead || (variant === "rich" && children)),
+  );
   let anchor: HTMLSpanElement | null = $state(null);
   let tooltipEl: HTMLDivElement | null = $state(null);
   let arrowEl: HTMLDivElement | null = $state(null);
@@ -70,8 +73,15 @@
     }, openDelay);
   }
 
-  function close() {
+  function close(event?: MouseEvent | FocusEvent) {
     if (!isHoverInteraction || tutorial) return;
+    const nextTarget = event?.relatedTarget as Node | null;
+    if (
+      nextTarget &&
+      (anchor?.contains(nextTarget) || tooltipEl?.contains(nextTarget))
+    ) {
+      return;
+    }
     clearTimers();
     closeTimer = window.setTimeout(() => {
       isOpen = false;
@@ -117,13 +127,13 @@
   class={triggerCls({ class: clsx(triggerClass) })}
   bind:this={anchor}
   onmouseenter={open}
-  onmouseleave={close}
+  onmouseleave={(event) => close(event)}
   onfocusin={open}
   role="tooltip"
-  onfocusout={close}
+  onfocusout={(event) => close(event)}
 >
   {@render trigger?.()}
-  {#if isOpen && supportingText}
+  {#if isOpen && hasTooltipContent}
     {#if showScrim}
       <div
         class={scrimCls()}
@@ -150,7 +160,7 @@
           closeTimer = null;
         }
       }}
-      onmouseleave={close}
+      onmouseleave={(event) => close(event)}
       {...restProps}
     >
       {#if showArrow}

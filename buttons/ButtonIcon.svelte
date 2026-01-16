@@ -11,10 +11,11 @@
     children,
     iconProps,
     variant = "text",
+    color = "default",
     size = "md",
     shape = "round",
     variation = "default",
-    triggerClass,
+    triggerClass = "",
     disabled,
     formaction,
     tooltipContent,
@@ -26,7 +27,14 @@
   }: ButtonIconProps = $props();
 
   const { base, icon } = $derived(
-    buttonIcon({ variant, shape, variation, size, width }),
+    buttonIcon({
+      variant,
+      color,
+      shape,
+      variation,
+      size,
+      width,
+    }),
   );
 
   const btnCls = $derived(base({ class: clsx(className) }));

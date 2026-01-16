@@ -12,22 +12,34 @@ export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 export const button = tv({
   slots: {
     base: "md-component-button-base group min-w-max md-sys-typescale-button-label",
-    icon: "size-6",
+    icon: "",
   },
   variants: {
     variant: {
-      elevated: "md-component-button-elevated",
-      filled: "md-component-button-filled",
-      tonal: "md-component-button-tonal",
-      outlined: "md-component-button-outline",
-      text: "md-component-button-text",
-      error: "md-component-button-error",
+      elevated: "",
+      filled: "",
+      tonal: "",
+      outlined: "",
+      text: "",
       bare: "",
+    },
+    color: {
+      default: "",
+      primary: "",
+      secondary: "",
+      tertiary: "",
+      error: "",
     },
     size: {
       xs: "",
-      sm: "",
-      md: "h-14 px-6 gap-2",
+      sm: {
+        base: "h-10 gap-2 px-4",
+        icon: "size-5",
+      },
+      md: {
+        base: "h-14 px-6 gap-2",
+        icon: "size-6",
+      },
       lg: "",
       xl: "",
     },
@@ -40,33 +52,172 @@ export const button = tv({
       false: "rounded-full",
     },
   },
+  compoundVariants: [
+    {
+      variant: "filled",
+      color: "default",
+      class: { base: "md-component-button-filled-primary" },
+    },
+    {
+      variant: "filled",
+      color: "primary",
+      class: { base: "md-component-button-filled-primary" },
+    },
+    {
+      variant: "filled",
+      color: "secondary",
+      class: { base: "md-component-button-filled-secondary" },
+    },
+    {
+      variant: "filled",
+      color: "tertiary",
+      class: { base: "md-component-button-filled-tertiary" },
+    },
+    {
+      variant: "filled",
+      color: "error",
+      class: { base: "md-component-button-filled-error" },
+    },
+    {
+      variant: "tonal",
+      color: "default",
+      class: { base: "md-component-button-tonal-primary" },
+    },
+    {
+      variant: "tonal",
+      color: "primary",
+      class: { base: "md-component-button-tonal-primary" },
+    },
+    {
+      variant: "tonal",
+      color: "secondary",
+      class: { base: "md-component-button-tonal-secondary" },
+    },
+    {
+      variant: "tonal",
+      color: "tertiary",
+      class: { base: "md-component-button-tonal-tertiary" },
+    },
+    {
+      variant: "tonal",
+      color: "error",
+      class: { base: "md-component-button-tonal-error" },
+    },
+    {
+      variant: "outlined",
+      color: "default",
+      class: { base: "md-component-button-outline-default" },
+    },
+    {
+      variant: "outlined",
+      color: "primary",
+      class: { base: "md-component-button-outline-primary" },
+    },
+    {
+      variant: "outlined",
+      color: "secondary",
+      class: { base: "md-component-button-outline-secondary" },
+    },
+    {
+      variant: "outlined",
+      color: "tertiary",
+      class: { base: "md-component-button-outline-tertiary" },
+    },
+    {
+      variant: "outlined",
+      color: "error",
+      class: { base: "md-component-button-outline-error" },
+    },
+    {
+      variant: "text",
+      color: "default",
+      class: { base: "md-component-button-text-default" },
+    },
+    {
+      variant: "text",
+      color: "primary",
+      class: { base: "md-component-button-text-primary" },
+    },
+    {
+      variant: "text",
+      color: "secondary",
+      class: { base: "md-component-button-text-secondary" },
+    },
+    {
+      variant: "text",
+      color: "tertiary",
+      class: { base: "md-component-button-text-tertiary" },
+    },
+    {
+      variant: "text",
+      color: "error",
+      class: { base: "md-component-button-text-error" },
+    },
+    {
+      variant: "elevated",
+      color: "default",
+      class: { base: "md-component-button-elevated-default" },
+    },
+    {
+      variant: "elevated",
+      color: "primary",
+      class: { base: "md-component-button-elevated-primary" },
+    },
+    {
+      variant: "elevated",
+      color: "secondary",
+      class: { base: "md-component-button-elevated-secondary" },
+    },
+    {
+      variant: "elevated",
+      color: "tertiary",
+      class: { base: "md-component-button-elevated-tertiary" },
+    },
+    {
+      variant: "elevated",
+      color: "error",
+      class: { base: "md-component-button-elevated-error" },
+    },
+  ],
 });
 
 export const buttonIcon = tv({
   slots: {
     base: "md-component-button-base group max-w-max",
-    icon: "size-6",
+    icon: "",
   },
   variants: {
     variant: {
-      elevated: "md-component-button-elevated",
-      filled: "md-component-button-filled",
-      tonal: "md-component-button-tonal",
-      outlined: "md-component-button-outline",
-      text: "md-component-button-text",
-      error: "md-component-button-error",
+      elevated: "",
+      filled: "",
+      tonal: "",
+      outlined: "",
+      text: "",
+    },
+    color: {
+      default: "",
+      primary: "",
+      secondary: "",
+      tertiary: "",
+      error: "",
     },
     size: {
       xs: "",
-      sm: "",
-      md: "h-14",
+      sm: {
+        base: "h-10 gap-2 px-4",
+        icon: "size-5",
+      },
+      md: {
+        base: "h-14 px-6 gap-2",
+        icon: "size-6",
+      },
       lg: "",
       xl: "",
     },
     width: {
       narrow: "",
       wide: "",
-      default: "aspect-square",
+      default: "aspect-square before:aspect-square",
     },
     shape: {
       round: "rounded-full before:rounded-full",
@@ -77,6 +228,133 @@ export const buttonIcon = tv({
       default: "",
     },
   },
+  compoundVariants: [
+    {
+      variant: "filled",
+      color: "default",
+      class: { base: "md-component-button-filled-primary" },
+    },
+    {
+      variant: "filled",
+      color: "primary",
+      class: { base: "md-component-button-filled-primary" },
+    },
+    {
+      variant: "filled",
+      color: "secondary",
+      class: { base: "md-component-button-filled-secondary" },
+    },
+    {
+      variant: "filled",
+      color: "tertiary",
+      class: { base: "md-component-button-filled-tertiary" },
+    },
+    {
+      variant: "filled",
+      color: "error",
+      class: { base: "md-component-button-filled-error" },
+    },
+    {
+      variant: "tonal",
+      color: "default",
+      class: { base: "md-component-button-tonal-primary" },
+    },
+    {
+      variant: "tonal",
+      color: "primary",
+      class: { base: "md-component-button-tonal-primary" },
+    },
+    {
+      variant: "tonal",
+      color: "secondary",
+      class: { base: "md-component-button-tonal-secondary" },
+    },
+    {
+      variant: "tonal",
+      color: "tertiary",
+      class: { base: "md-component-button-tonal-tertiary" },
+    },
+    {
+      variant: "tonal",
+      color: "error",
+      class: { base: "md-component-button-tonal-error" },
+    },
+    {
+      variant: "outlined",
+      color: "default",
+      class: { base: "md-component-button-outline-default" },
+    },
+    {
+      variant: "outlined",
+      color: "primary",
+      class: { base: "md-component-button-outline-primary" },
+    },
+    {
+      variant: "outlined",
+      color: "secondary",
+      class: { base: "md-component-button-outline-secondary" },
+    },
+    {
+      variant: "outlined",
+      color: "tertiary",
+      class: { base: "md-component-button-outline-tertiary" },
+    },
+    {
+      variant: "outlined",
+      color: "error",
+      class: { base: "md-component-button-outline-error" },
+    },
+    {
+      variant: "text",
+      color: "default",
+      class: { base: "md-component-button-text-default" },
+    },
+    {
+      variant: "text",
+      color: "primary",
+      class: { base: "md-component-button-text-primary" },
+    },
+    {
+      variant: "text",
+      color: "secondary",
+      class: { base: "md-component-button-text-secondary" },
+    },
+    {
+      variant: "text",
+      color: "tertiary",
+      class: { base: "md-component-button-text-tertiary" },
+    },
+    {
+      variant: "text",
+      color: "error",
+      class: { base: "md-component-button-text-error" },
+    },
+    {
+      variant: "elevated",
+      color: "default",
+      class: { base: "md-component-button-elevated-default" },
+    },
+    {
+      variant: "elevated",
+      color: "primary",
+      class: { base: "md-component-button-elevated-primary" },
+    },
+    {
+      variant: "elevated",
+      color: "secondary",
+      class: { base: "md-component-button-elevated-secondary" },
+    },
+    {
+      variant: "elevated",
+      color: "tertiary",
+      class: { base: "md-component-button-elevated-tertiary" },
+    },
+    {
+      variant: "elevated",
+      color: "error",
+      class: { base: "md-component-button-elevated-error" },
+    },
+  ],
 });
 
 export const buttonGroup = tv({
@@ -102,9 +380,19 @@ export const fab = tv({
   variants: {
     config: {
       primary: {
-        base: "bg-md-sys-color-primary shadow-elevation-1 hover:shadow-elevation-2 hover:before:bg-md-sys-color-on-primary/8 rounded-lg focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10 ",
+        base: "md-component-button-filled-primary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10",
         icon: "text-md-sys-color-on-primary",
         label: "text-md-sys-color-on-primary",
+      },
+      secondary: {
+        base: "md-component-button-filled-secondary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-secondary/10 active:before:bg-md-sys-color-on-secondary/10",
+        icon: "text-md-sys-color-on-secondary",
+        label: "text-md-sys-color-on-secondary",
+      },
+      tertiary: {
+        base: "md-component-button-filled-tertiary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-tertiary/10 active:before:bg-md-sys-color-on-tertiary/10",
+        icon: "text-md-sys-color-on-tertiary",
+        label: "text-md-sys-color-on-tertiary",
       },
     },
     expanded: {
@@ -145,9 +433,9 @@ export const fabMenuItem = tv({
   },
   variants: {
     variant: {
-      primary: "md-component-button-filled",
-      secondary: "md-component-button-tonal",
-      tertiary: "md-component-button-outline",
+      primary: "md-component-button-filled-primary",
+      secondary: "md-component-button-tonal-secondary",
+      tertiary: "md-component-button-outline-tertiary",
     },
   },
 });

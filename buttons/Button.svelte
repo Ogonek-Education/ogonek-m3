@@ -10,6 +10,7 @@
     children,
     iconProps,
     variant = "filled",
+    color = "default",
     size = "md",
     shape = "round",
     disabled,
@@ -20,7 +21,9 @@
     ...restProps
   }: ButtonMDProps = $props();
 
-  const { base, icon } = $derived(button({ variant, shape, size, selected }));
+  const { base, icon } = $derived(
+    button({ variant, color, shape, size, selected }),
+  );
 
   const btnCls = $derived(base({ class: clsx(className) }));
 </script>
