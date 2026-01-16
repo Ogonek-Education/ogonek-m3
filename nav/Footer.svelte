@@ -7,7 +7,7 @@
 
 <footer
   style={`--footer-padding: ${$padding}px; --footer-nav-offset: ${$navOffset}px`}
-  class="footer bg-md-sys-color-surface-container flex flex-col items-center space-y-6 pt-6 pb-28 lg:items-start lg:pt-12 lg:pb-0"
+  class="footer bg-md-sys-color-surface flex flex-col items-center space-y-6 pt-6 pb-28 lg:items-start lg:pt-12 lg:pb-0"
 >
   <VStack class="font-semibold">
     <Body><a class="text-link" href="/contact">Контакт</a></Body>

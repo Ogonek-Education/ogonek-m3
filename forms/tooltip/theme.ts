@@ -4,7 +4,7 @@ export type TooltipVariants = VariantProps<typeof tooltip>;
 
 export const tooltip = tv({
   slots: {
-    base: "min-w-48 py-3 px-4 flex flex-col gap-3 shadow-elevation-2 rounded-md relative state-layer hover:before:bg-md-sys-color-primary/8 before:rounded-md z-40 pointer-events-auto",
+    base: "min-w-60 py-3 px-4 flex flex-col gap-3 shadow-elevation-2 rounded-md relative state-layer hover:before:bg-md-sys-color-primary/8 before:rounded-md z-40 pointer-events-auto",
     arrow: "absolute h-2.5 w-2.5 rotate-45 bg-inherit -z-10",
     scrim:
       "fixed z-30 pointer-events-none rounded-xl bg-transparent transition-[opacity,box-shadow,filter] duration-200 ease-out",

@@ -8,7 +8,6 @@
     children,
     headline,
     padding = "md",
-    background = "filled",
     centered = true,
     full = true,
     class: className,
@@ -25,7 +24,7 @@
     base,
     content,
     headline: headlineCls,
-  } = $derived(singlePane({ background, centered, padding, full }));
+  } = $derived(singlePane({ centered, padding, full }));
 </script>
 
 <div class={base({ class: clsx(className) })} {...rest}>
