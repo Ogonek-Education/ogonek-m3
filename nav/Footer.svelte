@@ -5,13 +5,20 @@
   import { navOffset, padding } from "$lib/stores";
   import { page } from "$app/state";
 
-  const isAppRoute = $derived.by(() => {
-    const [segment] = page.url.pathname.split("/").filter(Boolean);
-    return segment === "t" || segment === "s" || segment === "admin";
-  });
+  const segments = $derived(page.url.pathname.split("/").filter(Boolean));
+  const [role, section, _maybeId] = $derived(segments);
 
+  const isAppRoute = $derived(
+    (role === "t" || role === "s" || role === "admin") &&
+      section !== "dashboard",
+  );
+  const isDashboard = $derived(section === "dashboard");
   const footerPadding = $derived(
-    $padding > 0 ? $padding : isAppRoute ? 80 + Math.max($navOffset, 0) : 0,
+    $padding > 0
+      ? $padding
+      : isAppRoute || isDashboard
+        ? 80 + Math.max($navOffset, 0)
+        : 0,
   );
 
   const footerNavOffset = $derived(
@@ -23,6 +30,7 @@
   style={`--footer-padding: ${footerPadding}px; --footer-nav-offset: ${footerNavOffset}px`}
   class="footer overflow-hidden"
   class:lg:px-4={isAppRoute}
+  class:lg:pr-4={isDashboard}
 >
   <div
     class="bg-md-sys-color-surface flex flex-col items-center space-y-6 pt-6 pb-28 lg:items-start lg:pt-12 lg:pb-0 lg:pl-12"
