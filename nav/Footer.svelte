@@ -3,14 +3,30 @@
   import { legalPages } from "$lib/utils";
   import VStack from "../containers/stack/VStack.svelte";
   import { navOffset, padding } from "$lib/stores";
+  import { page } from "$app/state";
+
+  const isAppRoute = $derived.by(() => {
+    const [segment] = page.url.pathname.split("/").filter(Boolean);
+    return segment === "t" || segment === "s" || segment === "admin";
+  });
+
+  const footerPadding = $derived(
+    $padding > 0 ? $padding : isAppRoute ? 80 + Math.max($navOffset, 0) : 0,
+  );
+
+  const footerNavOffset = $derived(
+    $padding > 0 && isAppRoute ? Math.max($navOffset, 0) : 0,
+  );
 </script>
 
 <footer
-  style={`--footer-padding: ${$padding > 0 ? $padding : 0}px; --footer-nav-offset: ${$navOffset > 0 ? $navOffset : 0}px`}
-  class="footer overflow-hidden px-4"
+  style={`--footer-padding: ${footerPadding}px; --footer-nav-offset: ${footerNavOffset}px`}
+  class="footer overflow-hidden"
+  class:px-4={isAppRoute}
 >
   <div
-    class="bg-md-sys-color-surface ml-4 flex flex-col items-center space-y-6 pt-6 pb-28 pl-12 lg:items-start lg:pt-12 lg:pb-0"
+    class="bg-md-sys-color-surface flex flex-col items-center space-y-6 pt-6 pb-28 pl-12 lg:items-start lg:pt-12 lg:pb-0"
+    class:ml-4={isAppRoute}
   >
     <Divider variant="wavy" />
     <VStack gap="lg" class="font-semibold">
@@ -48,7 +64,7 @@
 <style>
   @media (min-width: 768px) {
     .footer {
-      padding-left: var(--footer-padding, 40rem);
+      padding-left: var(--footer-padding, 0px);
       transition: padding-left 500ms
         var(--md-sys-motion-timing-function-emphasized-decel);
     }
@@ -57,7 +73,7 @@
   @media (min-width: 1280px) {
     .footer {
       padding-left: calc(
-        var(--footer-padding, 40rem) + var(--footer-nav-offset, 0px)
+        var(--footer-padding, 0px) + var(--footer-nav-offset, 0px)
       );
     }
   }
