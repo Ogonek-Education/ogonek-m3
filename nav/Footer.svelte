@@ -22,11 +22,11 @@
 <footer
   style={`--footer-padding: ${footerPadding}px; --footer-nav-offset: ${footerNavOffset}px`}
   class="footer overflow-hidden"
-  class:px-4={isAppRoute}
+  class:lg:px-4={isAppRoute}
 >
   <div
-    class="bg-md-sys-color-surface flex flex-col items-center space-y-6 pt-6 pb-28 pl-12 lg:items-start lg:pt-12 lg:pb-0"
-    class:ml-4={isAppRoute}
+    class="bg-md-sys-color-surface flex flex-col items-center space-y-6 pt-6 pb-28 lg:items-start lg:pt-12 lg:pb-0 lg:pl-12"
+    class:lg:ml-4={isAppRoute}
   >
     <Divider variant="wavy" />
     <VStack gap="lg" class="font-semibold">
