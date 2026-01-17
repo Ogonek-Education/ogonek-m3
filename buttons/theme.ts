@@ -204,11 +204,11 @@ export const buttonIcon = tv({
     size: {
       xs: "",
       sm: {
-        base: "h-10 gap-2 px-4",
+        base: "size-10 gap-2",
         icon: "size-5",
       },
       md: {
-        base: "h-14 px-6 gap-2",
+        base: "size-14 gap-2",
         icon: "size-6",
       },
       lg: "",
@@ -217,7 +217,7 @@ export const buttonIcon = tv({
     width: {
       narrow: "",
       wide: "",
-      default: "aspect-square before:aspect-square",
+      default: "aspect-square",
     },
     shape: {
       round: "rounded-full before:rounded-full",

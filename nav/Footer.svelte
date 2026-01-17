@@ -10,14 +10,14 @@
   class="footer overflow-hidden px-4"
 >
   <div
-    class="bg-md-sys-color-surface ml-4 flex flex-col items-center space-y-6 rounded-t-lg pt-6 pb-28 pl-12 lg:items-start lg:pt-12 lg:pb-0"
+    class="bg-md-sys-color-surface ml-4 flex flex-col items-center space-y-6 pt-6 pb-28 pl-12 lg:items-start lg:pt-12 lg:pb-0"
   >
+    <Divider variant="wavy" />
     <VStack gap="lg" class="font-semibold">
       <Body><a class="text-link" href="/contact">Контакт</a></Body>
       <Body><a class="text-link" href="/why">Мотивация</a></Body>
       <Body><a class="text-link" href="/pricing">Расценки</a></Body>
     </VStack>
-    <Divider variant="wavy" />
 
     <div
       class="flex w-full grid-rows-3 flex-col items-center gap-1 lg:grid lg:grid-cols-3 lg:items-end"
