@@ -51,7 +51,7 @@
 
 <Card
   type={isFlipped ? "outlined" : "filled"}
-  class="h-24"
+  class="h-24 w-full"
   aria-label="Flashcard front example"
 >
   <div class="flex justify-between">
