@@ -3,7 +3,7 @@
   import type { SupportingPaneProps } from "./types";
   import { supportingPane } from "./theme";
   import { ButtonIcon } from "$lib/components";
-  import { easeEmphasizedDecel, enterExit } from "$lib/animation";
+  import { easeEmphasizedDecel } from "$lib/animation";
   import { fly } from "svelte/transition";
 
   const {

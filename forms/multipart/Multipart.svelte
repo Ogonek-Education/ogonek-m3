@@ -1,10 +1,9 @@
 <script lang="ts">
   import { onDestroy } from "svelte";
   import logger from "$lib/logger";
-  import { formatFileSize, formatPercentage } from "$lib/utils";
+  import { formatPercentage } from "$lib/utils";
   import Layer from "$lib/components/library/utils/Layer.svelte";
   import {
-    Button,
     ButtonIcon,
     CircularProgress,
     Icon,

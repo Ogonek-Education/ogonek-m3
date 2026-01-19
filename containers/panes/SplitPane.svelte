@@ -102,7 +102,7 @@
     aria-valuenow={leftWidth}
     aria-valuemin={minLeft}
     aria-valuemax={maxLeft}
-    style={`left: calc(var(--splitpane-left-width) + var(--splitpane-offset, 0px));`}
+    style="left: calc(var(--splitpane-left-width) + var(--splitpane-offset, 0px));"
     onpointerdown={startDrag}
     onpointermove={moveDrag}
     onpointerup={endDrag}

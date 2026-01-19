@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Body, Label, Card, Headline, Title, Icon } from "$lib/components";
+  import { Body, Label, Card, Headline, Icon } from "$lib/components";
   import type { Card as CardType } from "$lib/types";
   import type { Component, Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";

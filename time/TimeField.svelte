@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
-  import type { TransitionConfig } from "svelte/transition";
   import { Textfield, TimepickerInput } from "$lib/components";
-  import { easeEmphasized } from "$lib/animation";
   import { clickOutside, positionFloating } from "$lib/actions";
   import { enterExit } from "$lib/animation";
 

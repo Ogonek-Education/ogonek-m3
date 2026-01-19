@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Icon, Layer } from "$lib/components";
+  import { Icon } from "$lib/components";
   import { headerpicker } from "../theme";
 
   let {
