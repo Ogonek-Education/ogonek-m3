@@ -31,5 +31,5 @@
       : event.location
     : "Без локации"}
   overline={formatEventTime(event.dtstartTime, event.dtendTime ?? "")}
-  href={deactivate ? null : eventHref}
+  href={deactivate ? undefined : eventHref}
 />

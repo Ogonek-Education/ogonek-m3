@@ -53,13 +53,18 @@
       <Layer />
       {@render content()}
     </button>
-  {:else if "href" in restProps}
-    <a class={cls.base()} {...restProps}>
+  {:else if "href" in restProps && restProps.href != null && restProps.href !== ""}
+    {@const { href, ...extra } = restProps as typeof restProps & {
+      href?: string | null;
+    }}
+    <a class={cls.base()} {href} {...extra}>
       <Layer />
       {@render content()}
     </a>
   {:else}
-    <div class={cls.base()} {...restProps}>
+    {@const { href: _, ...extra } = restProps as Record<string, unknown>}
+    <div class={cls.base()} {...extra}>
+      <Layer />
       {@render content()}
     </div>
   {/if}
