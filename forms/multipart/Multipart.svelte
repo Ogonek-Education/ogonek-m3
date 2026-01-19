@@ -198,7 +198,6 @@
           // Pas besoin de double update ici, c'est déjà fait dans le callback
           fileState.progress.uploaded = i + 1;
         } catch (error) {
-          console.error(error);
           throw new Error("Failed to upload");
         }
       }
