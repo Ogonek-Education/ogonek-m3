@@ -2,7 +2,7 @@
   import Button from "../buttons/Button.svelte";
   import CalendarPicker from "./_picker/CalendarPicker.svelte";
   import FocusPicker from "./_picker/FocusPicker.svelte";
-  import Header from "./_picker/Header.svelte";
+  import Header from "./_picker/CalendarHeader.svelte";
   import { datetimepicker } from "./theme";
 
   const now = new Date();

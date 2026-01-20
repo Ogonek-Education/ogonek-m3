@@ -230,14 +230,14 @@
       fileState.errorMessage = "Ошибка загрузки";
 
       // Try to abort the upload on S3 if it was initialized
-      if (uploadIdLocal && s3Key) {
+      if (uploadIdLocal && s3Key && fileIdLocal) {
         try {
           await fetch("/api/multipart/abort", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               uploadId: uploadIdLocal,
-              fileId: id,
+              fileId: fileIdLocal,
               s3Key,
             }),
           });

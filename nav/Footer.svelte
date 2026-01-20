@@ -24,6 +24,7 @@
   const footerNavOffset = $derived(
     $padding > 0 && isAppRoute ? Math.max($navOffset, 0) : 0,
   );
+  let y = $state(0);
 </script>
 
 <footer
@@ -68,6 +69,7 @@
     </div>
   </div>
 </footer>
+<svelte:window bind:scrollY={y} />
 
 <style>
   @media (min-width: 768px) {
