@@ -4,6 +4,7 @@
   let y = $state(0);
 </script>
 
+<svelte:window bind:scrollY={y} />
 <header class="bg-md-sys-color-background md:pt-24">
   <nav class="top-4 left-0 z-40 hidden w-full md:fixed md:block">
     <div
