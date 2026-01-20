@@ -14,7 +14,7 @@
     >
       <a href="/" class="flex items-end gap-2">
         <img
-          src="https://cdn.ogonek.app/assets/192.png"
+          src="https://cdn.ogonek.app/assets/48.webp"
           class="aspect-square size-6 shrink-0 rounded-full object-cover"
           alt="logo"
         />
