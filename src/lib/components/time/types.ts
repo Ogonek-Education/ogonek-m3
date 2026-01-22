@@ -1,11 +1,11 @@
-import type { HTMLAttributes } from "svelte/elements";
-import type { TimepickerVariants } from "./theme.js";
+import type { HTMLAttributes } from 'svelte/elements';
+import type { TimepickerVariants } from './theme.js';
 
 export type TimepickerProps = TimepickerVariants &
-  HTMLAttributes<HTMLInputElement> & {
-    label?: string;
-    time: string;
-    name?: string;
-    close: () => void;
-    setTime: (time: string) => void;
-  };
+	HTMLAttributes<HTMLInputElement> & {
+		label?: string;
+		time: string;
+		name?: string;
+		close: () => void;
+		setTime: (time: string) => void;
+	};

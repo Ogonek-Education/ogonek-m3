@@ -1,62 +1,62 @@
 <script lang="ts">
-  import clsx from "clsx";
-  import Icon from "../../utils/icon/Icon.svelte";
-  import { textfield } from "./theme.js";
-  import type { TextfieldProps } from "./types.js";
+	import clsx from 'clsx';
+	import { Icon } from '$lib/utils/index.js';
+	import { textfield } from './theme.js';
+	import type { TextfieldProps } from './types.js';
 
-  let {
-    value = $bindable(),
-    elementRef = $bindable(),
-    supportingText,
-    leadingIconProps,
-    trailingIconProps,
-    placeholder = "",
-    label,
-    id,
-    class: className,
-    characterLimit,
-    disabled = false,
-    error = false,
-    trailingOnClick,
-    ...restProps
-  }: TextfieldProps = $props();
+	let {
+		value = $bindable(),
+		elementRef = $bindable(),
+		supportingText,
+		leadingIconProps,
+		trailingIconProps,
+		placeholder = '',
+		label,
+		id,
+		class: className,
+		characterLimit,
+		disabled = false,
+		error = false,
+		trailingOnClick,
+		...restProps
+	}: TextfieldProps = $props();
 
-  const cls = $derived(textfield({ disabled, error }));
+	const cls = $derived(textfield({ disabled, error }));
 </script>
 
 <div class="relative w-full">
-  <div class={cls.base()}>
-    {#if leadingIconProps}
-      <Icon class={cls.leadingIcon()} {...leadingIconProps} />
-    {/if}
+	<div class={cls.base()}>
+		{#if leadingIconProps}
+			<Icon class={cls.leadingIcon()} {...leadingIconProps} />
+		{/if}
 
-    <div class={cls.inputWrapper()}>
-      <input
-        {id}
-        bind:value
-        class={cls.input({ class: clsx(className) })}
-        aria-invalid={error}
-        {disabled}
-        {placeholder}
-        {...restProps}
-      />
+		<div class={cls.inputWrapper()}>
+			<input
+				{id}
+				bind:value
+				class={cls.input({ class: clsx(className) })}
+				aria-invalid={error}
+				{disabled}
+				{placeholder}
+				{...restProps}
+			/>
 
-      <label class={cls.label()} for={id}>{label}</label>
-    </div>
+			<label class={cls.label()} for={id}>{label}</label>
+		</div>
 
-    {#if trailingIconProps}
-      <button type="button" onclick={trailingOnClick}>
-        <Icon class={cls.trailingIcon()} {...trailingIconProps} />
-      </button>
-    {/if}
-  </div>
+		{#if trailingIconProps}
+			<button type="button" onclick={trailingOnClick}>
+				<Icon class={cls.trailingIcon()} {...trailingIconProps} />
+			</button>
+		{/if}
+	</div>
 
-  {#if supportingText}
-    <div class={cls.supportingText()}>
-      <p>{@render supportingText()}</p>
-      {#if characterLimit && typeof value === "string"}
-        <p>{value?.length} / {characterLimit}</p>
-      {/if}
-    </div>
-  {/if}
+	{#if supportingText}
+		<div class={cls.supportingText()}>
+			<p>{@render supportingText()}</p>
+			{#if characterLimit && typeof value === 'string'}
+				<p>{value?.length} / {characterLimit}</p>
+			{/if}
+		</div>
+	{/if}
 </div>

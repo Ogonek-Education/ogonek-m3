@@ -1,8 +1,8 @@
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import type { StackVariants } from "./theme.js";
+import type { Snippet } from 'svelte';
+import type { HTMLAttributes } from 'svelte/elements';
+import type { StackVariants } from './theme.js';
 
 export type StackProps = StackVariants &
-  HTMLAttributes<HTMLDivElement> & {
-    children: Snippet;
-  };
+	HTMLAttributes<HTMLDivElement> & {
+		children: Snippet;
+	};

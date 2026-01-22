@@ -1,13 +1,13 @@
 <script lang="ts">
-  import clsx from "clsx";
-  import { display } from "./theme.js";
-  import type { DisplayProps } from "./types.js";
+	import clsx from 'clsx';
+	import { display } from './theme.js';
+	import type { DisplayProps } from './types.js';
 
-  let { children, class: className, ...restProps }: DisplayProps = $props();
+	let { children, class: className, ...restProps }: DisplayProps = $props();
 
-  let displayCls = $derived(display({ class: clsx(className) }));
+	let displayCls = $derived(display({ class: clsx(className) }));
 </script>
 
 <h1 {...restProps} class={displayCls}>
-  {@render children()}
+	{@render children()}
 </h1>

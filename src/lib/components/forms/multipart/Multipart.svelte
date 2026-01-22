@@ -1,522 +1,483 @@
 <script lang="ts">
-  import { onDestroy } from "svelte";
-  import logger from "$lib/logger";
-  import { formatPercentage } from "$lib/utils";
-  import Layer from "$lib/components/library/utils/Layer.svelte";
-  import {
-    ButtonIcon,
-    CircularProgress,
-    Icon,
-    Label,
-    Title,
-  } from "$lib/components/library";
-  import HStack from "../../containers/stack/HStack.svelte";
-  import { nanoid } from "nanoid";
+	import { onDestroy } from 'svelte';
+	import { Icon, formatPercentage, Layer } from '$lib/utils/index.js';
+	import { ButtonIcon, CircularProgress, Label, Title, HStack } from '$lib/components/index.js';
+	import { nanoid } from 'nanoid';
 
-  type UploadStatus = "waiting" | "uploading" | "complete" | "error";
+	type UploadStatus = 'waiting' | 'uploading' | 'complete' | 'error';
 
-  interface PartUploadUrl {
-    partNumber: number;
-    url: string;
-  }
+	interface PartUploadUrl {
+		partNumber: number;
+		url: string;
+	}
 
-  interface InitResponse {
-    uploadId: string;
-    fileId: string;
-    s3Key: string;
-    parts: PartUploadUrl[];
-  }
+	interface InitResponse {
+		uploadId: string;
+		fileId: string;
+		s3Key: string;
+		parts: PartUploadUrl[];
+	}
 
-  interface CompletedPart {
-    partNumber: number;
-    etag: string;
-  }
+	interface CompletedPart {
+		partNumber: number;
+		etag: string;
+	}
 
-  interface FileUploadState {
-    id: string;
-    file: File;
-    progress: {
-      uploaded: number;
-      total: number;
-      bytes: number;
-      totalBytes: number;
-      percentComplete: number;
-    };
-    status: UploadStatus;
-    errorMessage?: string;
-    abortController?: AbortController;
-  }
+	interface FileUploadState {
+		id: string;
+		file: File;
+		progress: {
+			uploaded: number;
+			total: number;
+			bytes: number;
+			totalBytes: number;
+			percentComplete: number;
+		};
+		status: UploadStatus;
+		errorMessage?: string;
+		abortController?: AbortController;
+	}
 
-  let {
-    taskId = null,
-    folderId = null,
-    readonly = false,
-    initialUploads = [],
-    title = "Загрузка файлов",
-    label = "Область загрузки файлов",
-  }: {
-    taskId?: string | null;
-    folderId?: string | null;
-    readonly?: boolean;
-    title?: string;
-    initialUploads?: FileUploadState[];
-    label?: string;
-  } = $props();
+	let {
+		taskId = null,
+		folderId = null,
+		readonly = false,
+		initialUploads = [],
+		title = 'Загрузка файлов',
+		label = 'Область загрузки файлов'
+	}: {
+		taskId?: string | null;
+		folderId?: string | null;
+		readonly?: boolean;
+		title?: string;
+		initialUploads?: FileUploadState[];
+		label?: string;
+	} = $props();
 
-  let fileUploads: FileUploadState[] = $state([...initialUploads]);
-  let fileInputRef = $state<HTMLInputElement>();
+	let fileUploads: FileUploadState[] = $state([...initialUploads]);
+	let fileInputRef = $state<HTMLInputElement>();
 
-  const CHUNK_SIZE = 5 * 1024 * 1024;
-  const MAX_FILE_SIZE = 99 * 1024 * 1024; // 99MB
+	const CHUNK_SIZE = 5 * 1024 * 1024;
+	const MAX_FILE_SIZE = 99 * 1024 * 1024; // 99MB
 
-  function calculateChunks(file: File): number {
-    return Math.ceil(file.size / CHUNK_SIZE);
-  }
+	function calculateChunks(file: File): number {
+		return Math.ceil(file.size / CHUNK_SIZE);
+	}
 
-  async function handleFileSelect(event: Event) {
-    if (readonly) return;
+	async function handleFileSelect(event: Event) {
+		if (readonly) return;
 
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
+		const input = event.target as HTMLInputElement;
+		if (!input.files?.length) return;
 
-    const validFiles: File[] = [];
-    const rejectedFiles: string[] = [];
+		const validFiles: File[] = [];
+		const rejectedFiles: string[] = [];
 
-    Array.from(input.files).forEach((file) => {
-      if (file.size > MAX_FILE_SIZE) {
-        rejectedFiles.push(file.name);
-      } else {
-        validFiles.push(file);
-      }
-    });
+		Array.from(input.files).forEach((file) => {
+			if (file.size > MAX_FILE_SIZE) {
+				rejectedFiles.push(file.name);
+			} else {
+				validFiles.push(file);
+			}
+		});
 
-    if (rejectedFiles.length > 0) {
-      logger.warn(`Files rejected (>99MB): ${rejectedFiles.join(", ")}`);
-    }
+		if (rejectedFiles.length > 0) {
+		}
 
-    const newFiles = validFiles.map((file) => ({
-      id: nanoid(),
-      file,
-      progress: {
-        uploaded: 0,
-        total: calculateChunks(file),
-        bytes: 0,
-        totalBytes: file.size,
-        percentComplete: 0,
-      },
-      status: "waiting" as UploadStatus,
-    }));
+		const newFiles = validFiles.map((file) => ({
+			id: nanoid(),
+			file,
+			progress: {
+				uploaded: 0,
+				total: calculateChunks(file),
+				bytes: 0,
+				totalBytes: file.size,
+				percentComplete: 0
+			},
+			status: 'waiting' as UploadStatus
+		}));
 
-    fileUploads = [...fileUploads, ...newFiles];
+		fileUploads = [...fileUploads, ...newFiles];
 
-    input.value = "";
-    startUploads();
-  }
-  function startUploads() {
-    if (readonly) return;
-    fileUploads
-      .filter((upload) => upload.status === "waiting")
-      .forEach(uploadFile);
-  }
-  async function uploadFile(fileState: FileUploadState) {
-    if (readonly) return;
-    const { id, file } = fileState;
-    let uploadIdLocal = "";
-    let fileIdLocal = "";
-    let s3Key = "";
+		input.value = '';
+		startUploads();
+	}
+	function startUploads() {
+		if (readonly) return;
+		fileUploads.filter((upload) => upload.status === 'waiting').forEach(uploadFile);
+	}
+	async function uploadFile(fileState: FileUploadState) {
+		if (readonly) return;
+		const { id, file } = fileState;
+		let uploadIdLocal = '';
+		let fileIdLocal = '';
+		let s3Key = '';
 
-    try {
-      fileState.status = "uploading";
-      fileState.abortController = new AbortController();
+		try {
+			fileState.status = 'uploading';
+			fileState.abortController = new AbortController();
 
-      const initResponse = await fetch("/api/multipart/init", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fileName: file.name,
-          contentType: file.type || "application/octet-stream",
-          fileSize: file.size,
-          totalParts: calculateChunks(file),
-          parentId: folderId,
-          taskId: taskId,
-        }),
-      });
+			const initResponse = await fetch('/api/multipart/init', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					fileName: file.name,
+					contentType: file.type || 'application/octet-stream',
+					fileSize: file.size,
+					totalParts: calculateChunks(file),
+					parentId: folderId,
+					taskId: taskId
+				})
+			});
 
-      if (!initResponse.ok) {
-        throw new Error(
-          `Failed to initialize upload: ${await initResponse.text()}`,
-        );
-      }
+			if (!initResponse.ok) {
+				throw new Error(`Failed to initialize upload: ${await initResponse.text()}`);
+			}
 
-      const {
-        uploadId,
-        fileId,
-        s3Key: fileKey,
-        parts,
-      } = (await initResponse.json()) as InitResponse;
-      uploadIdLocal = uploadId;
-      fileIdLocal = fileId;
-      s3Key = fileKey;
+			const {
+				uploadId,
+				fileId,
+				s3Key: fileKey,
+				parts
+			} = (await initResponse.json()) as InitResponse;
+			uploadIdLocal = uploadId;
+			fileIdLocal = fileId;
+			s3Key = fileKey;
 
-      const signal = fileState.abortController.signal;
-      const completedParts: CompletedPart[] = [];
+			const signal = fileState.abortController.signal;
+			const completedParts: CompletedPart[] = [];
 
-      for (let i = 0; i < parts.length; i++) {
-        if (signal.aborted) {
-          throw new Error("Upload aborted by user");
-        }
+			for (let i = 0; i < parts.length; i++) {
+				if (signal.aborted) {
+					throw new Error('Upload aborted by user');
+				}
 
-        const { partNumber, url } = parts[i];
-        const start = (partNumber - 1) * CHUNK_SIZE;
-        const end = Math.min(file.size, start + CHUNK_SIZE);
-        const chunk = file.slice(start, end);
+				const { partNumber, url } = parts[i];
+				const start = (partNumber - 1) * CHUNK_SIZE;
+				const end = Math.min(file.size, start + CHUNK_SIZE);
+				const chunk = file.slice(start, end);
 
-        try {
-          const uploadResult = await uploadWithProgress(
-            url,
-            chunk,
-            signal,
-            (loaded) => {
-              // LE FIX: calcul propre du progress
-              const previousBytes = (partNumber - 1) * CHUNK_SIZE;
-              fileState.progress.bytes = previousBytes + loaded;
-              fileState.progress.percentComplete =
-                (fileState.progress.bytes / file.size) * 100;
-            },
-          );
+				try {
+					const uploadResult = await uploadWithProgress(url, chunk, signal, (loaded) => {
+						// LE FIX: calcul propre du progress
+						const previousBytes = (partNumber - 1) * CHUNK_SIZE;
+						fileState.progress.bytes = previousBytes + loaded;
+						fileState.progress.percentComplete = (fileState.progress.bytes / file.size) * 100;
+					});
 
-          if (!uploadResult.ok) {
-            throw new Error(
-              `Failed to upload part ${partNumber}: ${uploadResult.statusText}`,
-            );
-          }
+					if (!uploadResult.ok) {
+						throw new Error(`Failed to upload part ${partNumber}: ${uploadResult.statusText}`);
+					}
 
-          const etag =
-            uploadResult.headers.get("ETag")?.replace(/['"]/g, "") || "";
-          completedParts.push({ partNumber, etag });
+					const etag = uploadResult.headers.get('ETag')?.replace(/['"]/g, '') || '';
+					completedParts.push({ partNumber, etag });
 
-          // Pas besoin de double update ici, c'est déjà fait dans le callback
-          fileState.progress.uploaded = i + 1;
-        } catch (error) {
-          throw new Error("Failed to upload");
-        }
-      }
+					// Pas besoin de double update ici, c'est déjà fait dans le callback
+					fileState.progress.uploaded = i + 1;
+				} catch (error) {
+					throw new Error('Failed to upload');
+				}
+			}
 
-      // 3. Complete the multipart upload
-      const completeResponse = await fetch(
-        `/api/multipart/complete?taskId=${taskId}`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            uploadId,
-            fileId: fileIdLocal,
-            s3Key,
-            parts: completedParts,
-          }),
-        },
-      );
+			// 3. Complete the multipart upload
+			const completeResponse = await fetch(`/api/multipart/complete?taskId=${taskId}`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					uploadId,
+					fileId: fileIdLocal,
+					s3Key,
+					parts: completedParts
+				})
+			});
 
-      if (!completeResponse.ok) {
-        throw new Error(
-          `Failed to complete upload: ${await completeResponse.text()}`,
-        );
-      }
+			if (!completeResponse.ok) {
+				throw new Error(`Failed to complete upload: ${await completeResponse.text()}`);
+			}
 
-      fileState.status = "complete";
-    } catch (error: any) {
-      logger.error(`Upload failed for ${file.name}:`, error);
-      fileState.status = "error";
-      fileState.errorMessage = "Ошибка загрузки";
+			fileState.status = 'complete';
+		} catch (error: any) {
+			fileState.status = 'error';
+			fileState.errorMessage = 'Ошибка загрузки';
 
-      // Try to abort the upload on S3 if it was initialized
-      if (uploadIdLocal && s3Key && fileIdLocal) {
-        try {
-          await fetch("/api/multipart/abort", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              uploadId: uploadIdLocal,
-              fileId: fileIdLocal,
-              s3Key,
-            }),
-          });
-        } catch (abortError: any) {
-          logger.error("Failed to abort upload:", abortError);
-        }
-      }
-    }
-  }
+			// Try to abort the upload on S3 if it was initialized
+			if (uploadIdLocal && s3Key && fileIdLocal) {
+				try {
+					await fetch('/api/multipart/abort', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							uploadId: uploadIdLocal,
+							fileId: fileIdLocal,
+							s3Key
+						})
+					});
+				} catch (abortError: any) {}
+			}
+		}
+	}
 
-  // Cancel an upload
-  function cancelUpload(fileState: FileUploadState) {
-    fileState.abortController?.abort();
-    fileState.status = "error";
-    fileState.errorMessage = "Загрузка отменена пользователем";
-  }
+	// Cancel an upload
+	function cancelUpload(fileState: FileUploadState) {
+		fileState.abortController?.abort();
+		fileState.status = 'error';
+		fileState.errorMessage = 'Загрузка отменена пользователем';
+	}
 
-  // Remove a file from the list
-  function removeFile(fileState: FileUploadState) {
-    // Cancel upload if in progress
-    if (fileState.status === "uploading") {
-      cancelUpload(fileState);
-    }
+	// Remove a file from the list
+	function removeFile(fileState: FileUploadState) {
+		// Cancel upload if in progress
+		if (fileState.status === 'uploading') {
+			cancelUpload(fileState);
+		}
 
-    // Remove from list
-    fileUploads = fileUploads.filter((upload) => upload.id !== fileState.id);
-  }
+		// Remove from list
+		fileUploads = fileUploads.filter((upload) => upload.id !== fileState.id);
+	}
 
-  // Clean up abort controllers on component destroy
-  onDestroy(() => {
-    fileUploads.forEach((upload) => {
-      upload.abortController?.abort();
-    });
-  });
+	// Clean up abort controllers on component destroy
+	onDestroy(() => {
+		fileUploads.forEach((upload) => {
+			upload.abortController?.abort();
+		});
+	});
 
-  // Upload with progress tracking
-  async function uploadWithProgress(
-    url: string,
-    data: Blob,
-    signal: AbortSignal,
-    onProgress: (loaded: number) => void,
-  ): Promise<Response> {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+	// Upload with progress tracking
+	async function uploadWithProgress(
+		url: string,
+		data: Blob,
+		signal: AbortSignal,
+		onProgress: (loaded: number) => void
+	): Promise<Response> {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest();
 
-      xhr.upload.addEventListener("progress", (event) => {
-        if (event.lengthComputable) {
-          onProgress(event.loaded);
-        }
-      });
+			xhr.upload.addEventListener('progress', (event) => {
+				if (event.lengthComputable) {
+					onProgress(event.loaded);
+				}
+			});
 
-      xhr.addEventListener("loadend", () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            // Convert XHR response to fetch Response for consistency
-            const response = new Response(xhr.response, {
-              status: xhr.status,
-              statusText: xhr.statusText,
-              headers: new Headers({
-                ETag: xhr.getResponseHeader("ETag") || "",
-              }),
-            });
-            resolve(response);
-          } else {
-            reject(new Error(`HTTP error ${xhr.status}: ${xhr.statusText}`));
-          }
-        }
-      });
+			xhr.addEventListener('loadend', () => {
+				if (xhr.readyState === 4) {
+					if (xhr.status >= 200 && xhr.status < 300) {
+						// Convert XHR response to fetch Response for consistency
+						const response = new Response(xhr.response, {
+							status: xhr.status,
+							statusText: xhr.statusText,
+							headers: new Headers({
+								ETag: xhr.getResponseHeader('ETag') || ''
+							})
+						});
+						resolve(response);
+					} else {
+						reject(new Error(`HTTP error ${xhr.status}: ${xhr.statusText}`));
+					}
+				}
+			});
 
-      xhr.addEventListener("error", () => {
-        reject(new Error("Network error occurred"));
-      });
+			xhr.addEventListener('error', () => {
+				reject(new Error('Network error occurred'));
+			});
 
-      xhr.addEventListener("abort", () => {
-        reject(new Error("Upload aborted"));
-      });
+			xhr.addEventListener('abort', () => {
+				reject(new Error('Upload aborted'));
+			});
 
-      // Initialize the request
-      xhr.open("PUT", url);
-      xhr.send(data);
+			// Initialize the request
+			xhr.open('PUT', url);
+			xhr.send(data);
 
-      // Handle abort signal
-      if (signal) {
-        signal.addEventListener("abort", () => {
-          xhr.abort();
-        });
-      }
-    });
-  }
-  let isDragging = $state(false);
+			// Handle abort signal
+			if (signal) {
+				signal.addEventListener('abort', () => {
+					xhr.abort();
+				});
+			}
+		});
+	}
+	let isDragging = $state(false);
 
-  function handleDragOver(e: DragEvent) {
-    if (readonly) return;
-    e.preventDefault();
-    isDragging = true;
-  }
+	function handleDragOver(e: DragEvent) {
+		if (readonly) return;
+		e.preventDefault();
+		isDragging = true;
+	}
 
-  function handleDragLeave() {
-    isDragging = false;
-  }
+	function handleDragLeave() {
+		isDragging = false;
+	}
 
-  function handleDrop(e: DragEvent) {
-    if (readonly) return;
-    e.preventDefault();
-    isDragging = false;
+	function handleDrop(e: DragEvent) {
+		if (readonly) return;
+		e.preventDefault();
+		isDragging = false;
 
-    if (!e.dataTransfer?.files.length) return;
+		if (!e.dataTransfer?.files.length) return;
 
-    // Create a synthetic event that mimics an input change event
-    const mockEvent = {
-      target: {
-        files: e.dataTransfer.files,
-      },
-    } as unknown as Event;
+		// Create a synthetic event that mimics an input change event
+		const mockEvent = {
+			target: {
+				files: e.dataTransfer.files
+			}
+		} as unknown as Event;
 
-    // Use your existing file handling function
-    handleFileSelect(mockEvent);
-  }
+		// Use your existing file handling function
+		handleFileSelect(mockEvent);
+	}
 
-  function triggerBrowse() {
-    if (readonly) return;
-    fileInputRef?.click();
-  }
+	function triggerBrowse() {
+		if (readonly) return;
+		fileInputRef?.click();
+	}
 
-  function handleKeydown(e: KeyboardEvent) {
-    if (readonly) return;
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      triggerBrowse();
-    }
-  }
+	function handleKeydown(e: KeyboardEvent) {
+		if (readonly) return;
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault();
+			triggerBrowse();
+		}
+	}
 
-  const statusTone = (status: UploadStatus) => {
-    switch (status) {
-      case "complete":
-        return "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container";
-      case "error":
-        return "bg-md-sys-color-error/12 text-md-sys-color-error";
-      case "uploading":
-        return "bg-md-sys-color-primary/10 text-md-sys-color-primary";
-      default:
-        return "bg-md-sys-color-surface-variant text-md-sys-color-on-surface-variant";
-    }
-  };
+	const statusTone = (status: UploadStatus) => {
+		switch (status) {
+			case 'complete':
+				return 'bg-md-sys-color-primary-container text-md-sys-color-on-primary-container';
+			case 'error':
+				return 'bg-md-sys-color-error/12 text-md-sys-color-error';
+			case 'uploading':
+				return 'bg-md-sys-color-primary/10 text-md-sys-color-primary';
+			default:
+				return 'bg-md-sys-color-surface-variant text-md-sys-color-on-surface-variant';
+		}
+	};
 
-  const statusIcon = (status: UploadStatus) => {
-    switch (status) {
-      case "complete":
-        return "check_circle";
-      case "error":
-        return "error";
-      case "uploading":
-        return "cloud_upload";
-      default:
-        return "schedule";
-    }
-  };
+	const statusIcon = (status: UploadStatus) => {
+		switch (status) {
+			case 'complete':
+				return 'check_circle';
+			case 'error':
+				return 'error';
+			case 'uploading':
+				return 'cloud_upload';
+			default:
+				return 'schedule';
+		}
+	};
 
-  const statusLabel = (fileState: FileUploadState) => {
-    switch (fileState.status) {
-      case "complete":
-        return "Готово";
-      case "error":
-        return "Ошибка";
-      case "uploading":
-        return `Загрузка — ${formatPercentage(fileState.progress.percentComplete)}%`;
-      default:
-        return "В очереди";
-    }
-  };
+	const statusLabel = (fileState: FileUploadState) => {
+		switch (fileState.status) {
+			case 'complete':
+				return 'Готово';
+			case 'error':
+				return 'Ошибка';
+			case 'uploading':
+				return `Загрузка — ${formatPercentage(fileState.progress.percentComplete)}%`;
+			default:
+				return 'В очереди';
+		}
+	};
 
-  const progressWidth = (fileState: FileUploadState) =>
-    fileState.status === "complete"
-      ? 100
-      : formatPercentage(fileState.progress.percentComplete);
+	const progressWidth = (fileState: FileUploadState) =>
+		fileState.status === 'complete' ? 100 : formatPercentage(fileState.progress.percentComplete);
 </script>
 
 <HStack>
-  <Title>{title}</Title>
-  <Label>Максимальный размер файла — 100 Мб.</Label>
+	<Title>{title}</Title>
+	<Label>Максимальный размер файла — 100 Мб.</Label>
 
-  <label
-    for="fileInput"
-    ondragover={handleDragOver}
-    ondragleave={handleDragLeave}
-    ondrop={handleDrop}
-    aria-label="Область загрузки файлов"
-    aria-disabled={readonly}
-    class={`state-layer group relative block ${readonly ? "cursor-default opacity-80" : "cursor-pointer"} focus-within:outline-md-sys-color-primary rounded-lg p-4 focus-within:outline-2 ${
-      isDragging
-        ? " bg-md-sys-color-primary/6 shadow-elevation-1"
-        : " bg-md-sys-color-surface-container-high "
-    }`}
-  >
-    <input
-      id="fileInput"
-      type="file"
-      name="file"
-      onchange={handleFileSelect}
-      multiple
-      class="sr-only"
-      disabled={readonly}
-    />
+	<label
+		for="fileInput"
+		ondragover={handleDragOver}
+		ondragleave={handleDragLeave}
+		ondrop={handleDrop}
+		aria-label="Область загрузки файлов"
+		aria-disabled={readonly}
+		class={`state-layer group relative block ${readonly ? 'cursor-default opacity-80' : 'cursor-pointer'} focus-within:outline-md-sys-color-primary rounded-lg p-4 focus-within:outline-2 ${
+			isDragging
+				? ' bg-md-sys-color-primary/6 shadow-elevation-1'
+				: ' bg-md-sys-color-surface-container-high '
+		}`}
+	>
+		<input
+			id="fileInput"
+			type="file"
+			name="file"
+			onchange={handleFileSelect}
+			multiple
+			class="sr-only"
+			disabled={readonly}
+		/>
 
-    <div class="flex flex-col items-center gap-3 text-center">
-      <div
-        class={`flex size-12 items-center justify-center rounded-full transition-colors ${
-          isDragging
-            ? "bg-md-sys-color-primary text-md-sys-color-on-primary"
-            : "bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary"
-        }`}
-      >
-        <Icon name="file_upload" class="size-6" />
-      </div>
+		<div class="flex flex-col items-center gap-3 text-center">
+			<div
+				class={`flex size-12 items-center justify-center rounded-full transition-colors ${
+					isDragging
+						? 'bg-md-sys-color-primary text-md-sys-color-on-primary'
+						: 'bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary'
+				}`}
+			>
+				<Icon name="file_upload" class="size-6" />
+			</div>
 
-      <div class="space-y-1">
-        <p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
-          Перетащите файлы сюда
-        </p>
-        <p
-          class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant"
-        >
-          Или нажмите, чтобы выбрать их на устройстве
-        </p>
-      </div>
-    </div>
+			<div class="space-y-1">
+				<p class="md-sys-typescale-title-medium text-md-sys-color-on-surface">
+					Перетащите файлы сюда
+				</p>
+				<p class="md-sys-typescale-body-small text-md-sys-color-on-surface-variant">
+					Или нажмите, чтобы выбрать их на устройстве
+				</p>
+			</div>
+		</div>
 
-    <Layer />
-  </label>
+		<Layer />
+	</label>
 
-  {#if fileUploads.length > 0}
-    <div class="space-y-3">
-      {#each fileUploads as fileState (fileState.id)}
-        <div
-          class=" bg-md-sys-color-surface-container-high flex items-center gap-3 rounded-lg p-3"
-        >
-          {#if fileState.status === "uploading"}
-            <CircularProgress percent={progressWidth(fileState)} />
-          {:else}
-            <div
-              class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
-            >
-              <Icon class="size-6" name={statusIcon(fileState.status)} />
-            </div>
-          {/if}
+	{#if fileUploads.length > 0}
+		<div class="space-y-3">
+			{#each fileUploads as fileState (fileState.id)}
+				<div class=" bg-md-sys-color-surface-container-high flex items-center gap-3 rounded-lg p-3">
+					{#if fileState.status === 'uploading'}
+						<CircularProgress percent={progressWidth(fileState)} />
+					{:else}
+						<div
+							class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
+						>
+							<Icon class="size-6" name={statusIcon(fileState.status)} />
+						</div>
+					{/if}
 
-          <div class="flex-1 space-y-1 overflow-hidden">
-            <p
-              class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate"
-            >
-              {fileState.file.name}
-            </p>
+					<div class="flex-1 space-y-1 overflow-hidden">
+						<p class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate">
+							{fileState.file.name}
+						</p>
 
-            {#if fileState.errorMessage}
-              <p class="md-sys-typescale-body-small text-md-sys-color-error">
-                {fileState.errorMessage}
-              </p>
-            {/if}
-          </div>
+						{#if fileState.errorMessage}
+							<p class="md-sys-typescale-body-small text-md-sys-color-error">
+								{fileState.errorMessage}
+							</p>
+						{/if}
+					</div>
 
-          <div class="flex items-center gap-1">
-            {#if fileState.status === "uploading"}
-              <ButtonIcon
-                variant="text"
-                iconProps={{ name: "close" }}
-                type="button"
-                onclick={() => cancelUpload(fileState)}
-              ></ButtonIcon>
-            {:else}
-              <ButtonIcon
-                variant="text"
-                iconProps={{ name: "delete" }}
-                type="button"
-                onclick={() => removeFile(fileState)}
-              ></ButtonIcon>
-            {/if}
-          </div>
-        </div>
-      {/each}
-    </div>
-  {/if}
+					<div class="flex items-center gap-1">
+						{#if fileState.status === 'uploading'}
+							<ButtonIcon
+								variant="text"
+								iconProps={{ name: 'close' }}
+								type="button"
+								onclick={() => cancelUpload(fileState)}
+							></ButtonIcon>
+						{:else}
+							<ButtonIcon
+								variant="text"
+								iconProps={{ name: 'delete' }}
+								type="button"
+								onclick={() => removeFile(fileState)}
+							></ButtonIcon>
+						{/if}
+					</div>
+				</div>
+			{/each}
+		</div>
+	{/if}
 </HStack>

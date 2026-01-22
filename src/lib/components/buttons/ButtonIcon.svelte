@@ -1,61 +1,61 @@
 <script lang="ts">
-  import type { ButtonIconProps } from "./types.js";
-  import Icon from "../utils/icon/Icon.svelte";
-  import { buttonIcon } from "./theme.js";
-  import clsx from "clsx";
-  import LoadingIndicator from "../utils/icon/LoadingIndicator.svelte";
-  import Layer from "../utils/Layer.svelte";
-  import { Tooltip } from "$lib/components";
+	import type { ButtonIconProps } from './types.js';
+	import { Icon } from '$lib/utils/index.js';
+	import { buttonIcon } from './theme.js';
+	import clsx from 'clsx';
+	import { LoadingIndicator } from '$lib/utils/index.js';
+	import { Layer } from '$lib/utils/index.js';
+	import { Tooltip } from '$lib/components/index.js';
 
-  let {
-    children,
-    iconProps,
-    variant = "text",
-    color = "default",
-    size = "md",
-    shape = "round",
-    variation = "default",
-    triggerClass = "",
-    disabled,
-    formaction,
-    tooltipContent,
-    onclick,
-    loading,
-    width = "default",
-    class: className,
-    ...restProps
-  }: ButtonIconProps = $props();
+	let {
+		children,
+		iconProps,
+		variant = 'text',
+		color = 'default',
+		size = 'md',
+		shape = 'round',
+		variation = 'default',
+		triggerClass = '',
+		disabled,
+		formaction,
+		tooltipContent,
+		onclick,
+		loading,
+		width = 'default',
+		class: className,
+		...restProps
+	}: ButtonIconProps = $props();
 
-  const { base, icon } = $derived(
-    buttonIcon({
-      variant,
-      color,
-      shape,
-      variation,
-      size,
-      width,
-    }),
-  );
+	const { base, icon } = $derived(
+		buttonIcon({
+			variant,
+			color,
+			shape,
+			variation,
+			size,
+			width
+		})
+	);
 
-  const btnCls = $derived(base({ class: clsx(className) }));
+	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
 <Tooltip {triggerClass} variant="snack" supportingText={tooltipContent}>
-  {#snippet trigger()}
-    {#if restProps.href !== undefined}
-      <a {...restProps} class={btnCls}>
-        <Icon class={icon()} {...iconProps} />
-        <Layer />
-      </a>
-    {:else}
-      <button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
-        {#if loading}
-          <LoadingIndicator />
-        {:else}
-          <Icon class={icon()} {...iconProps} />
-          <Layer />
-        {/if}
-      </button>
-    {/if}
-  {/snippet}
+	{#snippet trigger()}
+		{#if restProps.href !== undefined}
+			<a {...restProps} class={btnCls}>
+				<Icon class={icon()} {...iconProps} />
+				<Layer />
+			</a>
+		{:else}
+			<button {disabled} {onclick} {...restProps} class={btnCls} {formaction}>
+				{#if loading}
+					<LoadingIndicator />
+				{:else}
+					<Icon class={icon()} {...iconProps} />
+					<Layer />
+				{/if}
+			</button>
+		{/if}
+	{/snippet}
 </Tooltip>

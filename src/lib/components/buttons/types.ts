@@ -1,68 +1,62 @@
-import type { AnchorButtonAttributes, IconProps } from "$lib/components";
-import type { Snippet } from "svelte";
+import type { AnchorButtonAttributes, IconProps } from '$lib/utils/index.js';
+import type { Snippet } from 'svelte';
+import type { HTMLAnchorAttributes, HTMLAttributes, HTMLButtonAttributes } from 'svelte/elements';
 import type {
-  HTMLAnchorAttributes,
-  HTMLAttributes,
-  HTMLButtonAttributes,
-} from "svelte/elements";
-import type {
-  ButtonGroupVariants,
-  ButtonIconVariants,
-  ButtonMDVariants,
-  FABMenuItemVariants,
-  FABMenuVariants,
-  FABVariants,
-} from "./theme";
+	ButtonGroupVariants,
+	ButtonIconVariants,
+	ButtonMDVariants,
+	FABMenuItemVariants,
+	FABMenuVariants,
+	FABVariants
+} from './theme.js';
 
-export interface ButtonGroupProps
-  extends ButtonGroupVariants, HTMLAttributes<HTMLDivElement> {
-  children: Snippet;
-  disabled?: boolean;
+export interface ButtonGroupProps extends ButtonGroupVariants, HTMLAttributes<HTMLDivElement> {
+	children: Snippet;
+	disabled?: boolean;
 }
 
-export type HTMLButtonOrAnchorAttributes = HTMLButtonAttributes &
-  HTMLAnchorAttributes;
+export type HTMLButtonOrAnchorAttributes = HTMLButtonAttributes & HTMLAnchorAttributes;
 
 export type ButtonMDProps = ButtonMDVariants &
-  AnchorButtonAttributes & {
-    disabled?: boolean;
-    selected?: boolean;
-    iconProps?: IconProps;
-    formaction?: string;
-    loading?: boolean;
-  };
+	AnchorButtonAttributes & {
+		disabled?: boolean;
+		selected?: boolean;
+		iconProps?: IconProps;
+		formaction?: string;
+		loading?: boolean;
+	};
 
 export type ButtonIconProps = ButtonIconVariants &
-  AnchorButtonAttributes & {
-    disabled?: boolean;
-    tooltipContent?: string;
-    triggerClass?: string;
-    iconProps: IconProps;
-    formaction?: string;
-    onclick?: () => void;
-    loading?: boolean;
-  };
+	AnchorButtonAttributes & {
+		disabled?: boolean;
+		tooltipContent?: string;
+		triggerClass?: string;
+		iconProps: IconProps;
+		formaction?: string;
+		onclick?: () => void;
+		loading?: boolean;
+	};
 
 export type FABProps = FABVariants &
-  AnchorButtonAttributes & {
-    disabled?: boolean;
-    expanded?: boolean;
-    label?: string;
-    withMenu?: boolean;
-    iconProps: IconProps;
-    formaction?: string;
-    children?: Snippet;
-  };
+	AnchorButtonAttributes & {
+		disabled?: boolean;
+		expanded?: boolean;
+		label?: string;
+		withMenu?: boolean;
+		iconProps: IconProps;
+		formaction?: string;
+		children?: Snippet;
+	};
 
 export type FABMenuProps = FABMenuVariants &
-  HTMLAttributes<HTMLUListElement> & {
-    children: Snippet;
-  };
+	HTMLAttributes<HTMLUListElement> & {
+		children: Snippet;
+	};
 
 export type FABMenuItemProps = FABMenuItemVariants &
-  AnchorButtonAttributes & {
-    loading?: boolean;
-    children: Snippet;
-    iconProps: IconProps;
-    formaction?: string;
-  };
+	AnchorButtonAttributes & {
+		loading?: boolean;
+		children: Snippet;
+		iconProps: IconProps;
+		formaction?: string;
+	};

@@ -1,46 +1,42 @@
 <script lang="ts">
-  import clsx from "clsx";
-  import {
-    fabMenuItem,
-    Icon,
-    LoadingIndicator,
-    type FABMenuItemProps,
-  } from "$lib/components";
+	import clsx from 'clsx';
+	import { fabMenuItem, type FABMenuItemProps } from '$lib/components/index.js';
+	import { Icon, LoadingIndicator } from '$lib/utils/index.js';
 
-  let {
-    class: className,
-    variant = "secondary",
-    loading,
-    children,
-    iconProps,
-    formaction,
-    ...restProps
-  }: FABMenuItemProps = $props();
+	let {
+		class: className,
+		variant = 'secondary',
+		loading,
+		children,
+		iconProps,
+		formaction,
+		...restProps
+	}: FABMenuItemProps = $props();
 
-  const { base, icon } = $derived(fabMenuItem({ variant }));
+	const { base, icon } = $derived(fabMenuItem({ variant }));
 
-  const btnCls = $derived(base({ class: clsx(className) }));
+	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
 {#if restProps.href !== undefined}
-  <a {...restProps} class={btnCls}>
-    {#if iconProps}
-      <Icon class={icon()} {...iconProps} />
-    {/if}
+	<a {...restProps} class={btnCls}>
+		{#if iconProps}
+			<Icon class={icon()} {...iconProps} />
+		{/if}
 
-    {@render children?.()}
-  </a>
+		{@render children?.()}
+	</a>
 {:else}
-  <button {...restProps} class={btnCls} {formaction}>
-    {#if iconProps}
-      {#if loading}
-        <LoadingIndicator />
-      {:else}
-        <Icon class={icon()} {...iconProps} />
-      {/if}
-    {:else if loading}
-      <LoadingIndicator />
-    {/if}
-    {@render children?.()}
-  </button>
+	<button {...restProps} class={btnCls} {formaction}>
+		{#if iconProps}
+			{#if loading}
+				<LoadingIndicator />
+			{:else}
+				<Icon class={icon()} {...iconProps} />
+			{/if}
+		{:else if loading}
+			<LoadingIndicator />
+		{/if}
+		{@render children?.()}
+	</button>
 {/if}

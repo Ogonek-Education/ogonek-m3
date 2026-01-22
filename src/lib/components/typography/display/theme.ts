@@ -1,7 +1,7 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv, type VariantProps } from 'tailwind-variants';
 
 export type HeadingVariants = VariantProps<typeof display>;
 
 export const display = tv({
-  base: "font-serif lg:md-sys-typescale-display-large md:md-sys-typescale-display-medium md-sys-typescale-display-small",
+	base: 'font-serif lg:md-sys-typescale-display-large md:md-sys-typescale-display-medium md-sys-typescale-display-small'
 });

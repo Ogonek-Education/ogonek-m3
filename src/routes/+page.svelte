@@ -23,12 +23,7 @@
 		ListItem,
 		Icon,
 		Multipart,
-		WordCard,
-		Navbar,
-		Lessons,
-		Tasks,
 		Tooltip,
-		Words,
 		Slider,
 		Button,
 		Search,
@@ -149,14 +144,10 @@
 </script>
 
 <svelte:head>
-	<title>Brand Assets | Ogonëk</title>
+	<title>Components | Ogonëk M3</title>
 </svelte:head>
 
-<Navbar>
-	<Words />
-	<Lessons />
-	<Tasks />
-</Navbar>
+<!-- TODO NAVBAR SHOWCASE -->
 <div class="bg-md-sys-color-background flex flex-col gap-12 p-12">
 	<Display>Buttons</Display>
 	<VStack class="items-end">
@@ -246,144 +237,7 @@
 		<Card type="outlined">Outline</Card>
 		<Card type="filled">Filled</Card>
 	</div>
-	<Display>Flashcards</Display>
-	<div class="grid gap-6 xl:grid-cols-2">
-		<div class="space-y-3">
-			<Title>Учебная карточка</Title>
-			<Body class="text-md-sys-color-on-surface-variant">
-				Лицо и оборот одной карточки: компактный текст, статус и мягкая подсветка темы колоды.
-			</Body>
-			<div class="grid gap-3 md:grid-cols-2">
-				<WordCard card={demoCard} />
-				<WordCard card={demoCard} forceTurn />
-			</div>
-		</div>
-	</div>
-	<Display>Learning view</Display>
-	<div class="grid items-start gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-		<div
-			class={flashcardFilled({
-				class: 'bg-md-sys-color-surface-container-high shadow-elevation-2 space-y-5 px-6 py-6'
-			})}
-			aria-label="Learning flashcard demo"
-		>
-			<div class="flex items-center justify-between">
-				<Label class={`rounded-full px-3 py-1 ${demoCard.tagTone}`}>
-					{demoCard.deck}
-				</Label>
-				<Label class="text-md-sys-color-primary">
-					{showAnswerDemo ? 'Ответ' : 'Вопрос'}
-				</Label>
-			</div>
-			{#if !showAnswerDemo}
-				<div class="space-y-2">
-					<Display class="text-md-sys-color-on-surface leading-tight">
-						{demoCard.front}
-					</Display>
-					<Body class="text-md-sys-color-on-surface-variant">
-						Говорить; используется с предлогом «con», чтобы подчеркнуть собеседника.
-					</Body>
-				</div>
-				<div class="text-md-sys-color-on-surface-variant flex items-center justify-between text-sm">
-					<div class="flex items-center gap-2">
-						<Icon name="volume_up" class="text-md-sys-color-primary" />
-						<span>Прослушать</span>
-					</div>
-					<Button variant="tonal" onclick={toggleAnswerDemo}>Показать ответ</Button>
-				</div>
-			{:else}
-				<div class="space-y-3">
-					<Title class="text-md-sys-color-on-surface">Я говорю, ты говоришь, он/она говорит</Title>
-					<Body class="text-md-sys-color-on-surface-variant">
-						{demoCard.back}
-					</Body>
-					<Label class="text-md-sys-color-tertiary flex items-center gap-2">
-						<Icon name="tips_and_updates" />
-						{demoCard.tip}
-					</Label>
-				</div>
-				<div class="grid gap-3 md:grid-cols-3">
-					{#each qualityButtons as quality (quality.value)}
-						<button
-							type="button"
-							class={`focus-visible:outline-md-sys-color-primary flex flex-col gap-1 rounded-xl px-4 py-3 text-left transition focus-visible:outline-2 ${quality.tone} ${selectedQuality === quality.value ? 'ring-md-sys-color-primary ring-2' : ''}`}
-							onclick={() => chooseQuality(quality.value)}
-						>
-							<div class="flex items-center justify-between">
-								<span class="font-medium">{quality.label}</span>
-								<Icon name={quality.icon} />
-							</div>
-							<span class="text-sm opacity-80">{quality.helper}</span>
-						</button>
-					{/each}
-				</div>
-				<Button variant="text" class="self-start" onclick={toggleAnswerDemo}>Скрыть ответ</Button>
-			{/if}
-		</div>
-		<div class="space-y-3">
-			<Title>Экран обучения</Title>
-			<Body class="text-md-sys-color-on-surface-variant">
-				Тонкие контейнеры, контрастные чипы и крупная типографика. Кнопки оценки — три уровня без
-				ввода текста.
-			</Body>
-			<div class="grid gap-3">
-				<div
-					class={flashcardOutlined({
-						class:
-							'bg-md-sys-color-surface-container-low flex items-center justify-between px-5 py-4'
-					})}
-				>
-					<div class="space-y-1">
-						<Label class="text-md-sys-color-primary">Очередь</Label>
-						<Title>12 карточек</Title>
-					</div>
-					<div class="flex gap-2">
-						<Label
-							class="bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container rounded-full px-3 py-1"
-							>Новые · 5</Label
-						>
-						<Label
-							class="bg-md-sys-color-tertiary-container text-md-sys-color-on-tertiary-container rounded-full px-3 py-1"
-							>Повторить · 7</Label
-						>
-					</div>
-				</div>
-				<div
-					class={flashcardOutlined({
-						class: 'bg-md-sys-color-surface-container-low space-y-2 px-5 py-4'
-					})}
-				>
-					<Label class="text-md-sys-color-primary">Прогресс</Label>
-					<div class="flex items-center justify-between text-sm">
-						<span class="text-md-sys-color-on-surface-variant">Сессия</span>
-						<span class="text-md-sys-color-on-surface font-medium">8/12</span>
-					</div>
-					<div
-						class="bg-md-sys-color-surface-container-highest h-2 w-full overflow-hidden rounded-full"
-					>
-						<div class="bg-md-sys-color-primary h-full w-2/3"></div>
-					</div>
-					<div class="text-md-sys-color-on-surface-variant grid grid-cols-3 gap-2 text-sm">
-						<div
-							class="bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container rounded-lg px-3 py-1"
-						>
-							Легко · 3
-						</div>
-						<div
-							class="bg-md-sys-color-tertiary-container text-md-sys-color-on-tertiary-container rounded-lg px-3 py-1"
-						>
-							Норм · 5
-						</div>
-						<div
-							class="bg-md-sys-color-error-container text-md-sys-color-on-error-container rounded-lg px-3 py-1"
-						>
-							Сложно · 2
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<Display>Dialogues</Display>
 	<Button
 		onclick={() => {

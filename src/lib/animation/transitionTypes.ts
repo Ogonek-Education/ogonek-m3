@@ -1,7 +1,7 @@
-import type { cubicOut } from "svelte/easing";
+import type { cubicOut } from 'svelte/easing';
 
 export interface TransitionOptions {
-  delay?: number;
-  duration?: number;
-  easing?: typeof cubicOut;
+	delay?: number;
+	duration?: number;
+	easing?: typeof cubicOut;
 }

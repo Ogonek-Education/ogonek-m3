@@ -1,29 +1,23 @@
 <script lang="ts">
-  import { calendarpicker } from "../theme.js";
+	import { calendarpicker } from '../theme.js';
 
-  let {
-    disabled,
-    today,
-    selected,
-    label,
-    onclick,
-  }: {
-    disabled: boolean;
-    today: boolean;
-    selected: boolean;
-    label: string;
-    onclick: () => void;
-  } = $props();
+	let {
+		disabled,
+		today,
+		selected,
+		label,
+		onclick
+	}: {
+		disabled: boolean;
+		today: boolean;
+		selected: boolean;
+		label: string;
+		onclick: () => void;
+	} = $props();
 
-  const { item } = $derived(calendarpicker({ selected, today }));
+	const { item } = $derived(calendarpicker({ selected, today }));
 </script>
 
-<button
-  type="button"
-  class={item()}
-  {disabled}
-  {onclick}
-  data-cy="calendar-picker-day"
->
-  {label}
+<button type="button" class={item()} {disabled} {onclick} data-cy="calendar-picker-day">
+	{label}
 </button>
