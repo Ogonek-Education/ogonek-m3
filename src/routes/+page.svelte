@@ -33,7 +33,7 @@
 		Button,
 		Search,
 		card as cardTheme
-	} from '$lib/index.ts';
+	} from '$lib/index.js';
 	import { nanoid } from 'nanoid';
 
 	let showModal = $state(false);

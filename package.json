@@ -63,6 +63,9 @@
 		"svelte"
 	],
 	"dependencies": {
-		"nanoid": "^5.1.6"
+		"@floating-ui/dom": "^1.7.4",
+		"clsx": "^2.1.1",
+		"nanoid": "^5.1.6",
+		"tailwind-variants": "^3.2.2"
 	}
 }
