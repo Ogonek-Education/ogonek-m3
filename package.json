@@ -1,6 +1,6 @@
 {
 	"name": "ogonek-m3",
-	"version": "0.0.6",
+	"version": "0.0.8",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && pnpm run prepack && pnpx @tailwindcss/cli -i ./src/lib/index.css -o ./src/lib/styles.css",

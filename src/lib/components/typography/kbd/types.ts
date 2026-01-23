@@ -4,5 +4,6 @@ import type { KbdVariants } from './theme.js';
 
 export type KbdProps = HTMLAttributes<HTMLElement> &
 	KbdVariants & {
+		/** Keyboard hint content. */
 		children: Snippet;
 	};

@@ -4,5 +4,6 @@ import type { StackVariants } from './theme.js';
 
 export type StackProps = StackVariants &
 	HTMLAttributes<HTMLDivElement> & {
+		/** Stack content. */
 		children: Snippet;
 	};

@@ -75,6 +75,18 @@
 	.md-component-button-elevated-error {
 		@apply bg-md-sys-color-surface-container-low text-md-sys-color-error shadow-elevation-1 hover:before:bg-md-sys-color-error/8 active:before:bg-md-sys-color-error/10;
 	}
+
+	.text-link {
+		@apply text-md-sys-color-primary underline transition-colors hover:text-md-sys-color-secondary;
+	}
+
+	.text-link.md-sys-typescale-label-small {
+		@apply md-sys-typescale-label-medium;
+		display: inline-flex;
+		align-items: center;
+		min-height: 44px;
+		padding: 6px 8px;
+	}
 }
 
 @utility md-sys-state-focus-indicator {
