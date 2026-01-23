@@ -1,3 +1,15 @@
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@import '../lib/css/light.css';
+@import '../lib/css/elevation.css';
+@import '../lib/css/typescale.css';
+@import '../lib/css/component.css';
+@import '../lib/css/rounding.css';
+@import '../lib/css/motion.css';
+
+@theme {
+	--font-sans: 'Inter', 'Roboto Flex', system-ui, sans-serif;
+	--default-transition-duration: var(--md-sys-motion-duration-spatial);
+	--default-transition-timing-function: var(--md-sys-motion-timing-function-emphasized-decel);
+}

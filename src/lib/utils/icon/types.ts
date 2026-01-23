@@ -17,3 +17,9 @@ export type LoadingIndicatorProps = HTMLAttributes<SVGAElement> &
 		container?: boolean;
 		center?: boolean;
 	};
+
+export type MaterialSymbolsProviderProps = {
+	icons?: string[];
+	extraIcons?: string[];
+	display?: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
+};
