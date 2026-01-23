@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+@import './styles/component.css';
+@import './styles/light.css';
+@import './styles/dark.css';
+@import './styles/typescale.css';
+@import './styles/motion.css';
+@import './styles/rounding.css';
+@import './styles/elevation.css';

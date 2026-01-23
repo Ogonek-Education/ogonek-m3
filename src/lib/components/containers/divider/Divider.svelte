@@ -66,7 +66,7 @@
 	<div {...restProps} class={clsx('flex h-full w-full items-center gap-3', insetClass, className)}>
 		<div class={lineClass}></div>
 		<span
-			class="md-sys-typescale-label-small text-md-sys-color-on-surface-variant whitespace-nowrap"
+			class="md-sys-typescale-label-small whitespace-nowrap text-md-sys-color-on-surface-variant"
 		>
 			{@render children?.()}
 		</span>

@@ -148,7 +148,7 @@
 </svelte:head>
 
 <!-- TODO NAVBAR SHOWCASE -->
-<div class="bg-md-sys-color-background flex flex-col gap-12 p-12">
+<div class="flex flex-col gap-12 bg-md-sys-color-background p-12">
 	<Display>Buttons</Display>
 	<VStack class="items-end">
 		<Title>Default</Title>
@@ -328,7 +328,7 @@
 	<Display>Multipart</Display>
 	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 		{#each multipartDemos as demo (demo.label)}
-			<div class=" bg-md-sys-color-surface-container space-y-3 rounded-xl p-6">
+			<div class=" space-y-3 rounded-xl bg-md-sys-color-surface-container p-6">
 				<Title>{demo.label}</Title>
 				<Multipart {...demo.props} />
 			</div>

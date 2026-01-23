@@ -32,7 +32,7 @@ export const singlePane = tv({
 	slots: {
 		base: 'bg-md-sys-color-surface flex flex-col box-border overflow-clip md:rounded-t-lg',
 		content: 'flex flex-1 flex-col gap-3 w-full md:pb-12',
-		headline: 'md-sys-typescale-title-medium font-serif mb-4'
+		headline: 'md-sys-typescale-title-medium  mb-4'
 	},
 	variants: {
 		centered: {

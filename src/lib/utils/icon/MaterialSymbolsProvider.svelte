@@ -31,5 +31,5 @@
 </script>
 
 <svelte:head>
-	<link rel="stylesheet" href={href} />
+	<link rel="stylesheet" {href} />
 </svelte:head>

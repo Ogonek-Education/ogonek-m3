@@ -1,12 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@import '../lib/css/light.css';
-@import '../lib/css/elevation.css';
-@import '../lib/css/typescale.css';
-@import '../lib/css/component.css';
-@import '../lib/css/rounding.css';
-@import '../lib/css/motion.css';
+@import '../lib/index.css';
 
 @theme {
 	--font-sans: 'Inter', 'Roboto Flex', system-ui, sans-serif;

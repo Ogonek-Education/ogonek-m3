@@ -85,7 +85,7 @@
 	{#each durations as duration}
 		<button
 			type="button"
-			class="md-sys-typescale-body-medium relative rounded-lg px-3 py-1.5 transition-colors
+			class="relative rounded-lg px-3 py-1.5 md-sys-typescale-body-medium transition-colors
                  {selectedDuration === duration
 				? 'bg-md-sys-color-primary  text-md-sys-color-on-primary'
 				: 'bg-md-sys-color-primary-container text-md-sys-color-on-primary-container '}"

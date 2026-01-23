@@ -393,7 +393,7 @@
 		ondrop={handleDrop}
 		aria-label="Область загрузки файлов"
 		aria-disabled={readonly}
-		class={`state-layer group relative block ${readonly ? 'cursor-default opacity-80' : 'cursor-pointer'} focus-within:outline-md-sys-color-primary rounded-lg p-4 focus-within:outline-2 ${
+		class={`group state-layer relative block ${readonly ? 'cursor-default opacity-80' : 'cursor-pointer'} rounded-lg p-4 focus-within:outline-2 focus-within:outline-md-sys-color-primary ${
 			isDragging
 				? ' bg-md-sys-color-primary/6 shadow-elevation-1'
 				: ' bg-md-sys-color-surface-container-high '
@@ -436,7 +436,7 @@
 	{#if fileUploads.length > 0}
 		<div class="space-y-3">
 			{#each fileUploads as fileState (fileState.id)}
-				<div class=" bg-md-sys-color-surface-container-high flex items-center gap-3 rounded-lg p-3">
+				<div class=" flex items-center gap-3 rounded-lg bg-md-sys-color-surface-container-high p-3">
 					{#if fileState.status === 'uploading'}
 						<CircularProgress percent={progressWidth(fileState)} />
 					{:else}
@@ -448,7 +448,7 @@
 					{/if}
 
 					<div class="flex-1 space-y-1 overflow-hidden">
-						<p class="md-sys-typescale-body-large text-md-sys-color-on-surface truncate">
+						<p class="truncate md-sys-typescale-body-large text-md-sys-color-on-surface">
 							{fileState.file.name}
 						</p>
 
