@@ -13,5 +13,7 @@ export const baseIconNames = [
 	'schedule',
 	'check_circle',
 	'error',
-	'delete'
+	'delete',
+	'right_panel_close',
+	'right_panel_open'
 ] as const;

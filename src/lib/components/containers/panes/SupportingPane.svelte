@@ -13,7 +13,9 @@
 		centered = false,
 		class: className,
 		mainClass,
-		supportingClass
+		full = true,
+		supportingClass,
+		collapsible
 	}: SupportingPaneProps = $props();
 
 	let entered = $state(false);
@@ -24,27 +26,30 @@
 		base,
 		main: mainCls,
 		supporting: supportingCls
-	} = $derived(supportingPane({ position, centered }));
+	} = $derived(supportingPane({ position, centered, full }));
 </script>
 
 <div class={base({ class: clsx(className) })}>
 	<div class={mainCls({ class: clsx('relative', mainClass) })}>
-		<div class="top-3 right-3 z-10 hidden h-10 w-10 md:absolute md:block">
-			<ButtonIcon
-				variant="text"
-				tooltipContent={supportingVisible ? 'Скрыть панель' : 'Показать панель'}
-				size="sm"
-				iconProps={{
-					name: supportingVisible ? 'right_panel_close' : 'right_panel_open'
-				}}
-				aria-controls={supportingId}
-				aria-expanded={supportingVisible}
-				aria-label={supportingVisible ? 'Hide supporting pane' : 'Show supporting pane'}
-				onclick={() => {
-					supportingVisible = !supportingVisible;
-				}}
-			/>
-		</div>
+		{#if collapsible}
+			<div class="top-3 right-3 z-10 hidden h-12 w-12 md:absolute md:block">
+				<ButtonIcon
+					triggerClass=""
+					variant="text"
+					tooltipContent={supportingVisible ? 'Скрыть панель' : 'Показать панель'}
+					size="sm"
+					iconProps={{
+						name: supportingVisible ? 'right_panel_close' : 'right_panel_open'
+					}}
+					aria-controls={supportingId}
+					aria-expanded={supportingVisible}
+					aria-label={supportingVisible ? 'Hide supporting pane' : 'Show supporting pane'}
+					onclick={() => {
+						supportingVisible = !supportingVisible;
+					}}
+				/>
+			</div>
+		{/if}
 		{@render main()}
 	</div>
 	{#if supportingVisible}

@@ -30,6 +30,7 @@ export type SupportingPaneProps = SupportingPaneVariants &
 		mainClass?: string;
 		/** Optional class for the supporting pane. */
 		supportingClass?: string;
+		collapsible?: boolean;
 	};
 
 export type SinglePaneProps = SinglePaneVariants &

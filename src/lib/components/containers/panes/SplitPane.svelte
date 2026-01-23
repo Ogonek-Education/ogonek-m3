@@ -12,6 +12,7 @@
 		right,
 		centered,
 		leftWidth = $bindable(396),
+		full = true,
 		minLeft = 280,
 		maxLeft = 720,
 		storageKey = 'splitpane:leftWidth',
@@ -24,9 +25,8 @@
 		left: lCls,
 		right: rCls,
 		handle: hCls,
-		handleGrip,
-		handlePip
-	} = $derived(splitPane({ centered }));
+		handleGrip
+	} = $derived(splitPane({ centered, full }));
 
 	const clampWidth = (next: number) => Math.min(maxLeft, Math.max(minLeft, next));
 
