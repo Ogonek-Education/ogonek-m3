@@ -3,7 +3,7 @@
 	"version": "0.0.18",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && pnpm run prepack && pnpx @tailwindcss/cli -i ./src/lib/index.css -o ./src/lib/styles.css",
+		"build": " @tailwindcss/cli -i ./src/lib/index.css -ovite build && pnpm run prepack && pnpx  ./src/lib/styles.css",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
