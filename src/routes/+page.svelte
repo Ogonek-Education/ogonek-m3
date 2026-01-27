@@ -197,9 +197,7 @@
 			{#snippet trigger()}
 				<Button variant="outlined" iconProps={{ name: 'info' }}>Подсказка снизу</Button>
 			{/snippet}
-			{#snippet children()}
-				<Button variant="text">Действие</Button>
-			{/snippet}
+			<Button variant="text">Действие</Button>
 		</Tooltip>
 	</div>
 	<Divider />

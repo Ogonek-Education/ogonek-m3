@@ -81,9 +81,6 @@
 			}
 		});
 
-		if (rejectedFiles.length > 0) {
-		}
-
 		const newFiles = validFiles.map((file) => ({
 			id: nanoid(),
 			file,
@@ -212,7 +209,9 @@
 							s3Key
 						})
 					});
-				} catch (abortError: any) {}
+				} catch (abortError: any) {
+					console.error(abortError);
+				}
 			}
 		}
 	}
