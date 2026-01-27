@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to Deploy'
+        description: "Version to Deploy"
         required: false
 
 jobs:
@@ -41,6 +41,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
+      - uses: pnpm/action-setup@v4
       - run: pnpm i
       - run: pnpm build
       - run: npm publish
