@@ -258,6 +258,7 @@
 		<Dialogue
 			withState={false}
 			supportingText="Не то чтобы совсем, а все ж-таки давно, жил на Руси кто-то там великий"
+			class="w-2xl"
 			confirmAction="?/update"
 			confirmText="Пизда"
 			toggle={() => (showModal = !showModal)}

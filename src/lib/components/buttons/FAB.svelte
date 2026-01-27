@@ -62,28 +62,26 @@
 			</p>
 		{/if}
 	</a>
-{:else}
+{:else if withMenu && showMenu}
 	<div class="relative z-50" use:clickOutside={() => (showMenu = false)}>
-		{#if withMenu && showMenu}
-			<FABMenu>
-				{@render children?.()}
-			</FABMenu>
-			<ButtonIcon
-				variant="filled"
-				class="shadow-elevation-3"
-				iconProps={{ name: 'close' }}
-				onclick={() => (showMenu = !showMenu)}
-			/>
-		{:else}
-			<button {...restProps} class={btnCls} onclick={(e) => handleClick(e)} {disabled}>
-				<Icon {...iconProps} class={icon()} />
-				<Layer />
-				{#if expanded}
-					<p class={labelClass()}>
-						{label}
-					</p>
-				{/if}
-			</button>
-		{/if}
+		<FABMenu>
+			{@render children?.()}
+		</FABMenu>
+		<ButtonIcon
+			variant="filled"
+			class="shadow-elevation-3"
+			iconProps={{ name: 'close' }}
+			onclick={() => (showMenu = !showMenu)}
+		/>
 	</div>
+{:else}
+	<button {...restProps} class={btnCls} onclick={(e) => handleClick(e)} {disabled}>
+		<Icon {...iconProps} class={icon()} />
+		<Layer />
+		{#if expanded}
+			<p class={labelClass()}>
+				{label}
+			</p>
+		{/if}
+	</button>
 {/if}

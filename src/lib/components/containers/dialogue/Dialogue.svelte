@@ -5,6 +5,7 @@
 	import { dialogue } from './theme.js';
 	import Button from '../../buttons/Button.svelte';
 	import { isLoading } from '$lib/stores.js';
+	import clsx from 'clsx';
 
 	let {
 		withState = false,
@@ -13,7 +14,9 @@
 		confirmText,
 		confirmAction,
 		children,
-		toggle = () => {}
+		class: className,
+		toggle = () => {},
+		...rest
 	}: DialogueProps = $props();
 
 	const { base, inner, headlineContainer, buttonContainer, supportingTextContainer } =
@@ -50,7 +53,8 @@
 	use:outroClass
 >
 	<div
-		class={`${inner()} dialogue-inner`}
+		class={`${inner({ class: clsx(className) })} dialogue-inner`}
+		{...rest}
 		out:hold={{ duration: 500 }}
 		use:outroClass
 		use:clickOutside={() => {
