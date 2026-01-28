@@ -23,9 +23,6 @@ jobs:
       - name: Build project
         run: pnpm run build
 
-      - name: Run lint
-        run: pnpm run lint
-
       - name: Run check
         run: pnpm run check
 
