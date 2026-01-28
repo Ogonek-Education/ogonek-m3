@@ -26,3 +26,11 @@ export type NotButton<T> = Omit<T, 'onclick'>;
 export type ButtonAttrs = HTMLButtonAttributes & Required<Pick<HTMLButtonAttributes, 'onclick'>>;
 
 export type DivAttrs = NotButton<HTMLAttributes<HTMLDivElement>>;
+
+export type {
+	Placement,
+	Middleware,
+	MiddlewareState,
+	Strategy,
+	ComputePositionConfig
+} from '@floating-ui/dom';

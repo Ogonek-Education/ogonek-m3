@@ -37,3 +37,69 @@ You can then import the resulting .css into your app.css. Add the data-theme att
 ## Components
 
 Almost all components have been implemented. Refer to this list to see how to use them. The semantics and props have been kept same. You can literally type in class="text-md-sys-color-on-error-container" and that will 1:1 corresond to what Google writes. [Material Design Components. ](https://m3.material.io/components)
+
+### Typography
+
+> [Typography – Material Design 3](https://m3.material.io/styles/typography/applying-type)
+
+- [x] Body
+- [x] Title
+- [x] Headline
+- [x] Display
+
+### Navigation
+
+- [x] Navigation
+  - [x] Bar
+  - [x] Rail
+- [x] Tabs
+- [x] Menu
+- [x] App Bar – the former navbar. needs attention
+
+### State
+
+- [x] Progress
+- [x] Loading
+- [x] Dialog
+
+### Information
+
+- [ ] Carousel
+- [x] Tooltips
+  - [x] rich
+  - [x] plain
+- [x] List
+- [x] Snackbar
+- [x] Badge
+
+### Input
+
+- [ ] Chips
+- [ ] Slider
+- [ ] Switch
+- [ ] Radio
+- [x] Checkbox
+- [x] Time Picker
+- [x] Date Picker
+- [x] Search
+- [x] Textfield
+
+### Buttons
+
+- [ ] Split Button
+- [x] Segmented Button
+- [x] Button Group
+- [x] Icon Button
+- [x] FAB Menu
+- [x] Button
+- [x] FAB Extended
+- [x] FAB
+
+### Layout
+
+- [ ] Sheet Bottom
+- [ ] Sheet Side
+- [x] Toolbars
+- [x] Tabs
+- [x] Divider
+- [x] Card
