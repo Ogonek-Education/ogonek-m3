@@ -12,7 +12,7 @@
 		value: string;
 		helper?: string;
 		disabled?: boolean;
-		onselect?: (item: unknown) => void;
+		onselect?: (item: any) => void;
 	};
 
 	type BaseProps = {

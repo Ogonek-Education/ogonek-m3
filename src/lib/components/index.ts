@@ -13,6 +13,3 @@ export * from './snackbar/index.js';
 export * from './time/index.js';
 export * from './toolbar/index.js';
 export * from './typography/index.js';
-
-// default exports for components in this folder
-export { default as Avatar } from './Avatar.svelte';
