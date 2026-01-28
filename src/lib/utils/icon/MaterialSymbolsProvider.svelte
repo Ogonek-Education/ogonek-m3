@@ -25,7 +25,7 @@
 
 	const href = $derived.by(() => {
 		const base =
-			'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200';
+			'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap';
 		return `${base}${iconNamesParam}${displayParam}`;
 	});
 </script>

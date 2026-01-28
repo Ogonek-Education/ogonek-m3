@@ -2,6 +2,8 @@
 @plugin '@tailwindcss/typography';
 
 @import '../lib/index.css';
+@import '../lib/styles/theme/light.css';
+@import '../lib/styles/theme/dark.css';
 
 @theme {
 	--font-sans: 'Inter', 'Roboto Flex', system-ui, sans-serif;

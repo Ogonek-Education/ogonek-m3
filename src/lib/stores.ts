@@ -18,6 +18,5 @@ function createToggleStore() {
 }
 
 export const isLoading = createToggleStore();
-export const mobileMenuOpen = createToggleStore();
 export const collapseStore = writable(true);
 export const padding = writable(0);

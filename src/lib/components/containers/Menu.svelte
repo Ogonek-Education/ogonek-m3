@@ -33,7 +33,7 @@
 		error?: boolean;
 		triggerClass?: string;
 		['data-cy']?: string;
-		onselect: (item: unknown) => void;
+		onselect: (item: any) => void;
 	};
 
 	let {
