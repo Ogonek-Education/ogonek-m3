@@ -1,6 +1,6 @@
 {
 	"name": "@ogonek-education/ogonek-m3",
-	"version": "0.0.19",
+	"version": "0.0.21",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "pnpm run prepack",
@@ -8,7 +8,7 @@
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack:lib": "svelte-kit sync && svelte-package",
-		"prepack": "pnpm run prepack:lib && pnpm run build:css && publint",
+		"prepack": "pnpm run prepack:lib && publint && node scripts/generate-components-index.js",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
