@@ -7,7 +7,7 @@ Svelte components and utilities inspired by Material Design 3.
 ## Install
 
 ```bash
-pnpm add ogonek-m3
+npm i @ogonek-education/ogonek-m3
 ```
 
 ## Material Symbols
