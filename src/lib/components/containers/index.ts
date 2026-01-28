@@ -7,3 +7,6 @@ export * from './list/index.js';
 export * from './merger/index.js';
 export * from './panes/index.js';
 export * from './stack/index.js';
+
+// default exports for components in this folder
+export { default as Menu } from './Menu.svelte';
