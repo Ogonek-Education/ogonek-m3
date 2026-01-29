@@ -4,11 +4,11 @@ export type SnackBarVariants = VariantProps<typeof snackbar>;
 
 export const snackbar = tv({
 	slots: {
-		base: 'rounded-xs relative min-h-12 max-h-17 flex z-50 items-center bg-md-sys-color-inverse-surface shadow-elevation-3 state-layer hover:before:bg-md-sys-color-inverse-primary/8 pr-2 pl-4 justify-between h-max py-3',
+		base: 'rounded-xs relative min-h-12 h-max md:max-h-17 flex z-50 items-center bg-md-sys-color-inverse-surface shadow-elevation-3 state-layer hover:before:bg-md-sys-color-inverse-primary/8 pr-2 pl-4 justify-between h-max py-3',
 		label: 'text-md-sys-color-inverse-primary md-sys-typescale-label-large px-3 cursor-pointer ',
 		actionWrapper: 'flex items-center z-40',
 		supportingText:
-			'text-md-sys-color-inverse-on-surface md-sys-typescale-body-medium max-w-[60ch] ',
+			'text-md-sys-color-inverse-on-surface md-sys-typescale-body-medium w-max max-w-[60ch] ',
 		icon: 'size-6 text-md-sys-color-inverse-on-surface mr-1 ml-3'
 	},
 	variants: {

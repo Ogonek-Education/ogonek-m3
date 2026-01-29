@@ -30,6 +30,7 @@
 		card as cardTheme
 	} from '$lib/index.js';
 	import { nanoid } from 'nanoid';
+	import HStack from '$lib/components/containers/stack/HStack.svelte';
 
 	let showModal = $state(false);
 	let showModal2 = $state(false);
@@ -150,8 +151,7 @@
 <!-- TODO NAVBAR SHOWCASE -->
 <div class="flex flex-col gap-12 bg-md-sys-color-background p-12">
 	<Display>Buttons</Display>
-	<VStack class="items-end">
-		<Title>Default</Title>
+	<HStack class="items-start">
 		<Button>Regular</Button>
 		<Button iconProps={{ name: 'home' }}>Regular Icon</Button>
 		<Button variant="tonal">Tonal</Button>
@@ -165,9 +165,8 @@
 			selected={toggle}>Selected</Button
 		>
 		<Button variant="bare" selected={!toggle}>Unselected</Button>
-	</VStack>
+	</HStack>
 	<VStack class="items-end">
-		<Title>FAB</Title>
 		<FAB withMenu iconProps={{ name: 'home' }} color="text">
 			<FABMenuItem iconProps={{ name: 'home' }}>Домой</FABMenuItem>
 			<FABMenuItem iconProps={{ name: 'search' }}>Поиск</FABMenuItem>
@@ -176,8 +175,7 @@
 	</VStack>
 
 	<VStack>
-		<Title>Icon</Title>
-		<ButtonIcon iconProps={{ name: 'home' }} />
+		<ButtonIcon variant="filled" iconProps={{ name: 'home' }} />
 	</VStack>
 	<Display>Tooltips</Display>
 	<div class="flex flex-wrap items-center gap-6">
@@ -298,11 +296,18 @@
 		</div>
 		<div class="space-y-4">
 			<Display>Snackbar</Display>
-			<Snackbar message="Hello" label="Dismiss" fixed={false}></Snackbar>
+			<Snackbar
+				message="
+			Minim quis et proident quis excepteur cillum pariatur irure id tempor ullamco. Ut ullamco Lorem laborum esse duis aute ad nisi consequat pariatur. Laborum cillum deserunt commodo laboris ut excepteur sunt enim in in. "
+				label="Dismiss"
+				static
+				fixed
+			></Snackbar>
 
-			<Snackbar message="With icon" label="Dismiss" showClose fixed={false}></Snackbar>
+			<Snackbar message="With icon" label="Dismiss" showClose static fixed={false}></Snackbar>
 
 			<Snackbar
+				static
 				message="Duis est labore proident sint ex irure enim non dolore elit amet sunt quis."
 				fixed={false}
 			></Snackbar>
