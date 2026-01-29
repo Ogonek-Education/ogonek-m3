@@ -9,4 +9,3 @@ export * from './theme.js';
 // default exports for components in this folder
 export { default as DateField } from './DateField.svelte';
 export { default as DatePickerDocked } from './DatePickerDocked.svelte';
-export { default as DatetimePicker } from './DatetimePicker.svelte';
