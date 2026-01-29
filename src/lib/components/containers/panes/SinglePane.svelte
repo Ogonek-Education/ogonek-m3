@@ -8,7 +8,7 @@
 		children,
 		headline,
 		padding = 'md',
-		centered = 'medium',
+		centered = 'none',
 		background = true,
 		full = true,
 		class: className,

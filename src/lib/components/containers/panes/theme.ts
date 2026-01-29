@@ -73,7 +73,7 @@ export const singlePane = tv({
 
 export const supportingPane = tv({
 	slots: {
-		base: 'flex w-full flex-col gap-6 md:flex-row  py-3 md:p-0',
+		base: 'flex w-full flex-col gap-6 md:flex-row py-3 md:p-0',
 		main: 'bg-md-sys-color-surface box-border rounded-t-lg md:p-6 p-0 grow order-2 md:order-1',
 		supporting:
 			'text-md-sys-color-on-surface-container box-border md:sticky md:top-4 order-1 md:order-2 min-w-min md:w-80 overflow-y-scroll overflow-x-visible px-1'
@@ -98,7 +98,7 @@ export const supportingPane = tv({
 			}
 		},
 		full: {
-			true: 'min-h-dvh',
+			true: { base: 'min-h-dvh' },
 			false: ''
 		}
 	},
