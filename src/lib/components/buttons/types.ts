@@ -9,6 +9,7 @@ import type {
 	FABMenuVariants,
 	FABVariants
 } from './theme.js';
+import type { Placement } from '@floating-ui/dom';
 
 export interface ButtonGroupProps extends ButtonGroupVariants, HTMLAttributes<HTMLDivElement> {
 	/** ButtonGroup content. */
@@ -49,6 +50,7 @@ export type ButtonIconProps = ButtonIconVariants &
 		onclick?: () => void;
 		/** Shows a loading indicator and hides the icon. */
 		loading?: boolean;
+		triggerPlacement?: Placement;
 	};
 
 export type FABProps = FABVariants &

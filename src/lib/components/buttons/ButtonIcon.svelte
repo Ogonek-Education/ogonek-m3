@@ -16,6 +16,7 @@
 		shape = 'round',
 		variation = 'default',
 		triggerClass = '',
+		triggerPlacement = 'top',
 		disabled,
 		formaction,
 		tooltipContent,
@@ -40,7 +41,12 @@
 	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-<Tooltip {triggerClass} variant="snack" supportingText={tooltipContent}>
+<Tooltip
+	{triggerClass}
+	placement={triggerPlacement}
+	variant="snack"
+	supportingText={tooltipContent}
+>
 	{#snippet trigger()}
 		{#if restProps.href !== undefined}
 			<a {...restProps} class={btnCls}>
