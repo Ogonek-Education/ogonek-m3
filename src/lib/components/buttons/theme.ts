@@ -12,7 +12,7 @@ export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 export const button = tv({
 	slots: {
 		base: 'md-component-button-base group min-w-max md-sys-typescale-button-label',
-		icon: ''
+		icon: 'inline-flex items-center justify-center leading-none'
 	},
 	variants: {
 		variant: {
@@ -34,11 +34,11 @@ export const button = tv({
 			xs: '',
 			sm: {
 				base: 'h-10 gap-2 px-4',
-				icon: 'size-5'
+				icon: 'size-5 text-[20px]'
 			},
 			md: {
 				base: 'h-14 px-6 gap-2',
-				icon: 'size-6'
+				icon: 'size-6 text-[24px]'
 			},
 			lg: '',
 			xl: ''
@@ -184,7 +184,7 @@ export const button = tv({
 export const buttonIcon = tv({
 	slots: {
 		base: 'md-component-button-base group max-w-max',
-		icon: ''
+		icon: 'inline-flex items-center justify-center leading-none'
 	},
 	variants: {
 		variant: {
@@ -205,11 +205,11 @@ export const buttonIcon = tv({
 			xs: '',
 			sm: {
 				base: 'size-10 gap-2',
-				icon: 'size-5'
+				icon: 'size-5 text-[20px]'
 			},
 			md: {
 				base: 'size-14 gap-2',
-				icon: 'size-6'
+				icon: 'size-6 text-[24px]'
 			},
 			lg: '',
 			xl: ''

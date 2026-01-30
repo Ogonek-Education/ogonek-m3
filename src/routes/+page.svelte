@@ -155,6 +155,7 @@
 		<Button>Regular</Button>
 		<Button iconProps={{ name: 'home' }}>Regular Icon</Button>
 		<Button variant="tonal">Tonal</Button>
+		<ButtonIcon size="sm" iconProps={{ name: 'delete' }} variant="tonal">Small</ButtonIcon>
 		<Button variant="outlined">Outlined</Button>
 		<Button variant="text">Text</Button>
 		<Button
