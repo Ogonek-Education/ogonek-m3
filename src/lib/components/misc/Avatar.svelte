@@ -1,12 +1,11 @@
 <script lang="ts">
 	import clsx from 'clsx';
 	import { tv, type VariantProps } from 'tailwind-variants';
-	import { page } from '$app/state';
 	import { Layer } from '$lib/utils/index.js';
 
 	const {
-		seed = page.data.context?.user.name ?? 'ogonek',
-		avatarUrl = page.data.context?.profile.avatarUrl,
+		seed = 'ogonek',
+		avatarUrl,
 		alt = 'User avatar',
 		class: className,
 		size = 'lg',
