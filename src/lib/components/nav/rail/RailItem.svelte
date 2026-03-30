@@ -3,7 +3,6 @@
 	import clsx from 'clsx';
 	import type { RailItemProps } from './types.js';
 	import { railElement } from './theme.js';
-	import { collapseStore } from '$lib/stores.js';
 	import { Icon } from '$lib/utils/index.js';
 	import Badge from '../../badge/Badge.svelte';
 	import { Layer } from '$lib/utils/index.js';
@@ -16,6 +15,7 @@
 		class: className,
 		selected,
 		disabled,
+		collapsed = true,
 		iconProps,
 		...rest
 	}: RailItemProps = $props();
@@ -35,7 +35,7 @@
 		icon,
 		iconContainer,
 		label: labelClass
-	} = $derived(railElement({ active: isActive, expanded: !$collapseStore }));
+	} = $derived(railElement({ active: isActive, expanded: !collapsed }));
 
 	function handleClick(event: MouseEvent) {
 		if (!isDisabled) return;

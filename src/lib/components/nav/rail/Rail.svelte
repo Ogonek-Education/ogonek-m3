@@ -1,34 +1,36 @@
 <script lang="ts">
-	import { collapseStore } from '$lib/stores.js';
 	import { ButtonIcon, rail, type RailProps } from '$lib/components/index.js';
 	import { clickOutside } from '$lib/actions/index.js';
 	import clsx from 'clsx';
 
-	let { children, expandable = true, fab, class: className }: RailProps = $props();
+	let {
+		children,
+		expandable = true,
+		fab,
+		collapsed = $bindable(true),
+		class: className
+	}: RailProps = $props();
 
-	function collapse() {
-		collapseStore.set(!$collapseStore);
-	}
-
-	const { base, items, ghost, scrim } = $derived(rail({ expanded: !$collapseStore }));
+	const expanded = $derived(!collapsed);
+	const { base, items, ghost, scrim } = $derived(rail({ expanded }));
 </script>
 
 <div class={ghost()}></div>
-<div class={`${scrim()} rail-scrim`} data-expanded={!$collapseStore}></div>
+<div class={`${scrim()} rail-scrim`} data-expanded={expanded}></div>
 <div
 	class={`${base({ class: clsx(className) })} rail-base`}
-	data-expanded={!$collapseStore}
+	data-expanded={expanded}
 	use:clickOutside={() => {
-		if (!$collapseStore) collapse();
+		if (expanded) collapsed = true;
 	}}
 >
 	{#if expandable}
 		<ButtonIcon
 			type="button"
-			tooltipContent={$collapseStore ? 'Открыть' : 'Закрыть'}
-			iconProps={{ name: `${$collapseStore ? 'menu' : 'menu_open'}` }}
-			class={clsx($collapseStore ? 'cursor-e-resize' : 'cursor-w-resize', '')}
-			onclick={() => collapse()}
+			tooltipContent={collapsed ? 'Открыть' : 'Закрыть'}
+			iconProps={{ name: `${collapsed ? 'menu' : 'menu_open'}` }}
+			class={clsx(collapsed ? 'cursor-e-resize' : 'cursor-w-resize', '')}
+			onclick={() => (collapsed = !collapsed)}
 		/>
 	{/if}
 	{@render fab?.()}

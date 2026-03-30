@@ -14,4 +14,3 @@ export * from './components/misc/index.js';
 export * from './actions/index.js';
 export * from './animation/index.js';
 export * from './utils/index.js';
-export * from './stores.js';

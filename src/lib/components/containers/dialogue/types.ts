@@ -18,4 +18,6 @@ export type DialogueProps = DialogueVariants &
 		children?: Snippet;
 		/** Optional form action for the confirm button. */
 		confirmAction?: string;
+		/** Loading state for the confirm button. */
+		loading?: boolean;
 	};

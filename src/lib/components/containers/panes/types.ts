@@ -18,6 +18,8 @@ export type SplitPaneProps = SplitPaneVariants &
 		storageKey?: string;
 		/** Whether to persist split width. */
 		persist?: boolean;
+		/** Called when the component wants to update external footer padding. */
+		onPaddingChange?: (padding: number) => void;
 	};
 
 export type SupportingPaneProps = SupportingPaneVariants &

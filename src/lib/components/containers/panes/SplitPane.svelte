@@ -2,7 +2,6 @@
 	import type { SplitPaneProps } from './types.js';
 	import { splitPane } from './theme.js';
 	import { onDestroy, onMount } from 'svelte';
-	import { padding } from '$lib/stores.js';
 	import clsx from 'clsx';
 
 	let dragging = $state(false);
@@ -17,6 +16,7 @@
 		maxLeft = 720,
 		storageKey = 'splitpane:leftWidth',
 		persist = true,
+		onPaddingChange,
 		class: className
 	}: SplitPaneProps = $props();
 
@@ -63,16 +63,16 @@
 			}
 		}
 
-		padding.set(leftWidth + footerPaddingOffset);
+		onPaddingChange?.(leftWidth + footerPaddingOffset);
 	});
 
 	onDestroy(() => {
-		padding.set(0);
+		onPaddingChange?.(0);
 	});
 
 	$effect(() => {
 		if (!mounted) return;
-		padding.set(leftWidth + footerPaddingOffset);
+		onPaddingChange?.(leftWidth + footerPaddingOffset);
 	});
 
 	$effect(() => {

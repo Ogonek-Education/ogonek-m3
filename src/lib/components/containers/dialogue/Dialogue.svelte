@@ -4,7 +4,6 @@
 	import type { DialogueProps } from './types.js';
 	import { dialogue } from './theme.js';
 	import Button from '../../buttons/Button.svelte';
-	import { isLoading } from '$lib/stores.js';
 	import clsx from 'clsx';
 
 	let {
@@ -13,6 +12,7 @@
 		supportingText,
 		confirmText,
 		confirmAction,
+		loading = false,
 		children,
 		class: className,
 		toggle = () => {},
@@ -89,7 +89,7 @@
 			>
 			<Button
 				type="submit"
-				loading={$isLoading}
+				{loading}
 				variant="filled"
 				formaction={confirmAction}
 				data-cy="dialogue-confirm">{confirmText}</Button

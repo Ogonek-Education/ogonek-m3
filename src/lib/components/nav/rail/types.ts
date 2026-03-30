@@ -10,7 +10,7 @@ export interface RailItemProps extends RailItemVariants, HTMLAttributes<HTMLAnch
 	href: string;
 	selected?: boolean;
 	name: string;
-
+	collapsed?: boolean;
 	disabled?: boolean;
 }
 
@@ -20,4 +20,5 @@ export type RailProps = RailVariants &
 		showHelp?: boolean;
 		expandable?: boolean;
 		fab?: Snippet;
+		collapsed?: boolean;
 	};

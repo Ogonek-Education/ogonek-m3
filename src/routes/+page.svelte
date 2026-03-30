@@ -37,6 +37,8 @@
 	let showModal3 = $state(false);
 	let showAnswerDemo = $state(false);
 	let selectedQuality = $state<number | null>(null);
+	let railCollapsed = $state(true);
+	let railCollapsedWithBadges = $state(true);
 
 	type DemoMultipart = { label: string; props: Record<string, unknown> };
 	let multipartDemos: DemoMultipart[] = $state([]);
@@ -213,19 +215,52 @@
 	<Display>Navigation</Display>
 	<Title>Rail</Title>
 	<VStack>
-		<Rail>
-			<RailItem name="Главная" href="/" iconProps={{ name: 'home' }}></RailItem>
+		<Rail bind:collapsed={railCollapsed}>
+			<RailItem
+				collapsed={railCollapsed}
+				name="Главная"
+				href="/"
+				iconProps={{ name: 'home' }}
+			></RailItem>
 
-			<RailItem name="Задания" href="/" iconProps={{ name: 'assignment' }}></RailItem>
+			<RailItem
+				collapsed={railCollapsed}
+				name="Задания"
+				href="/"
+				iconProps={{ name: 'assignment' }}
+			></RailItem>
 
-			<RailItem name="Занятия" href="/" iconProps={{ name: 'book' }}></RailItem>
+			<RailItem
+				collapsed={railCollapsed}
+				name="Занятия"
+				href="/"
+				iconProps={{ name: 'book' }}
+			></RailItem>
 		</Rail>
-		<Rail>
-			<RailItem badge={3} name="Главная" href="/" iconProps={{ name: 'home' }}></RailItem>
+		<Rail bind:collapsed={railCollapsedWithBadges}>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Главная"
+				href="/"
+				iconProps={{ name: 'home' }}
+			></RailItem>
 
-			<RailItem badge={3} name="Задания" href="/" iconProps={{ name: 'assignment' }}></RailItem>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Задания"
+				href="/"
+				iconProps={{ name: 'assignment' }}
+			></RailItem>
 
-			<RailItem badge={-1} name="Занятия" href="/" iconProps={{ name: 'book' }}></RailItem>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={-1}
+				name="Занятия"
+				href="/"
+				iconProps={{ name: 'book' }}
+			></RailItem>
 		</Rail>
 	</VStack>
 	<Display>Cards</Display>
