@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { ButtonIcon, rail, type RailProps } from '$lib/components/index.js';
 	import { clickOutside } from '$lib/actions/index.js';
-	import clsx from 'clsx';
 
 	let {
 		children,
@@ -13,12 +12,14 @@
 
 	const expanded = $derived(!collapsed);
 	const { base, items, ghost, scrim } = $derived(rail({ expanded }));
+	const railBaseClass = $derived(`${base({ class: className ?? '' })} rail-base`);
+	const toggleClass = $derived(collapsed ? 'cursor-e-resize' : 'cursor-w-resize');
 </script>
 
 <div class={ghost()}></div>
 <div class={`${scrim()} rail-scrim`} data-expanded={expanded}></div>
 <div
-	class={`${base({ class: clsx(className) })} rail-base`}
+	class={railBaseClass}
 	data-expanded={expanded}
 	use:clickOutside={() => {
 		if (expanded) collapsed = true;
@@ -29,7 +30,7 @@
 			type="button"
 			tooltipContent={collapsed ? 'Открыть' : 'Закрыть'}
 			iconProps={{ name: `${collapsed ? 'menu' : 'menu_open'}` }}
-			class={clsx(collapsed ? 'cursor-e-resize' : 'cursor-w-resize', '')}
+			class={toggleClass}
 			onclick={() => (collapsed = !collapsed)}
 		/>
 	{/if}

@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import clsx from 'clsx';
 	import type { RailItemProps } from './types.js';
 	import { railElement } from './theme.js';
 	import { Icon } from '$lib/utils/index.js';
 	import Badge from '../../badge/Badge.svelte';
-	import { Layer } from '$lib/utils/index.js';
 
 	let {
 		href = '/',
@@ -36,6 +34,7 @@
 		iconContainer,
 		label: labelClass
 	} = $derived(railElement({ active: isActive, expanded: !collapsed }));
+	const rootClass = $derived([base(), className].filter(Boolean).join(' '));
 
 	function handleClick(event: MouseEvent) {
 		if (!isDisabled) return;
@@ -52,7 +51,7 @@
 	tabindex={tabIndex}
 	onclick={handleClick}
 	{...rest}
-	class={clsx(base(), className)}
+	class={rootClass}
 >
 	<div class={content()}>
 		<div class={iconContainer()}>
@@ -60,7 +59,6 @@
 			{#if badge}
 				<Badge size={badge === -1 ? 'sm' : 'lg'} number={badge}></Badge>
 			{/if}
-			<Layer />
 		</div>
 		<p class={labelClass()}>
 			{name}
