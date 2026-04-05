@@ -410,7 +410,7 @@
 
 		<div class="flex flex-col items-center gap-3 text-center">
 			<div
-				class={`flex size-12 items-center justify-center rounded-full transition-colors ${
+				class={`flex size-12 items-center justify-center rounded-full ${
 					isDragging
 						? 'bg-md-sys-color-primary text-md-sys-color-on-primary'
 						: 'bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary'

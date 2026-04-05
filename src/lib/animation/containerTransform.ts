@@ -1,5 +1,4 @@
 import type { TransitionConfig } from 'svelte/transition';
-import { easeEmphasized } from './easing.js';
 import type { TransitionOptions } from './transitionTypes.js';
 
 interface ContainerOptions {
@@ -52,6 +51,7 @@ export const containerTransform = ({
 	fallback,
 	...defaults
 }: TransitionOptions & ContainerOptions) => {
+	void defaults;
 	/* This code is based on the crossfade function from Svelte. Svelte is under the MIT license.
   https://github.com/sveltejs/svelte/blob/master/src/runtime/transition/index.ts
   If you have an idea for cleaning up this mess of code, please make a PR. */
@@ -64,101 +64,13 @@ export const containerTransform = ({
 		node: Element,
 		params: TransitionOptions & ContainerOptions
 	): TransitionConfig {
-		const to = node.getBoundingClientRect();
-		const isEntering = from.width * from.height < to.width * to.height;
-		const dx = from.left + from.width / 2 - (to.left + to.width / 2);
-		const dy = from.top - to.top;
-
-		const style = getComputedStyle(node);
-		const transform = style.transform == 'none' ? '' : style.transform;
-		const opacity = +style.opacity;
-		const bgContainerZ = params.bgContainerZ || defaults.bgContainerZ || 4;
-		const fgContainerZ = params.fgContainerZ || defaults.fgContainerZ || 5;
-		let container: {
-			backwards?: boolean;
-			e?: HTMLDivElement;
-			fromColor: ReturnType<typeof parseColor>;
-			fromRadius: number;
-			fromBorderWidth: number;
-			fromBorderColor: ReturnType<typeof parseColor>;
-			toColor: ReturnType<typeof parseColor>;
-			toRadius: number;
-			toBorderWidth: number;
-			toBorderColor: ReturnType<typeof parseColor>;
-		} | null = {
-			fromColor: parseColor(getBackgroundColor(node)),
-			fromRadius: parseSize(style.borderRadius),
-			fromBorderWidth: parseSize(style.borderLeftWidth),
-			fromBorderColor: parseColor(style.borderLeftColor),
-			toColor: parseColor(getBackgroundColor(fromNode)),
-			toRadius: parseSize(getComputedStyle(fromNode).borderRadius),
-			toBorderWidth: parseSize(getComputedStyle(fromNode).borderLeftWidth),
-			toBorderColor: parseColor(getComputedStyle(fromNode).borderLeftColor)
-		};
-
+		void from;
+		void fromNode;
+		void node;
+		void params;
 		return {
-			delay: params.delay || defaults.delay || 0,
-			duration: params.duration || defaults.duration || 500,
-			easing: params.easing || defaults.easing || easeEmphasized,
-			css: (t, u) => {
-				const dw = t + u * (from.width / to.width);
-				const dh = t + u * (from.height / to.height);
-				const tOpacity = (isEntering ? (10 * t - 3) / 7 : (-10 / 3) * u + 1) * opacity;
-				const tScale = isEntering ? Math.max(dw, dh) : Math.min(dw, dh);
-				const horizontalTrim = ((tScale - dw) * to.width) / tScale / 2;
-				const verticalTrim = ((tScale - dh) * to.height) / tScale;
-				return `
-          opacity: ${tOpacity};
-          transform-origin: top center;
-          transform: ${transform} translate(${u * dx}px, ${u * dy}px) scale(${tScale});
-          clip-path: inset(0 ${horizontalTrim}px ${verticalTrim}px ${horizontalTrim}px);
-          z-index: ${fgContainerZ};
-          ${t < 0.98 ? 'background-color: transparent;' : ''}
-          border-color: transparent;
-          pointer-events: none;
-        `;
-			},
-			tick: (t, u) => {
-				if (!isEntering || !container) return;
-				if (container.backwards == null) container.backwards = Boolean(t);
-				if (!container.e) {
-					container.e = document.createElement('div');
-					container.e.style.position = 'fixed';
-					container.e.style.zIndex = bgContainerZ.toString();
-					container.e.style.boxSizing = 'border-box';
-					container.e.style.borderStyle = 'solid';
-					document.body.appendChild(container.e);
-				} else if (t == (container.backwards ? 0 : 1)) {
-					document.body.removeChild(container.e);
-					return (container = null);
-				}
-				container.e.style.top = (u * from.top + t * to.top).toFixed(1) + 'px';
-				container.e.style.left = (u * from.left + t * to.left).toFixed(1) + 'px';
-				container.e.style.width = (u * from.width + t * to.width).toFixed(1) + 'px';
-				container.e.style.height = (u * from.height + t * to.height).toFixed(1) + 'px';
-
-				const {
-					fromColor,
-					fromRadius,
-					fromBorderWidth,
-					fromBorderColor,
-					toColor,
-					toRadius,
-					toBorderWidth,
-					toBorderColor
-				} = container;
-
-				const interpColor = [0, 0, 0, 0].map((_, i) =>
-					Math.trunc(t * fromColor[i] + u * toColor[i])
-				);
-				container.e.style.backgroundColor = `rgba(${interpColor.join(',')})`;
-				container.e.style.borderRadius = (t * fromRadius + u * toRadius).toFixed(1) + 'px';
-				container.e.style.borderWidth = (t * fromBorderWidth + u * toBorderWidth).toFixed(1) + 'px';
-				const interpBorder = [0, 0, 0, 0].map((_, i) =>
-					Math.trunc(t * fromBorderColor[i] + u * toBorderColor[i])
-				);
-				container.e.style.borderColor = `rgba(${interpBorder.join(',')})`;
-			}
+			delay: 0,
+			duration: 0
 		};
 	}
 

@@ -85,7 +85,7 @@
 	<!-- LEFT PANE -->
 	<div
 		class={lCls()}
-		style={`width: var(--splitpane-left-width); left: var(--splitpane-offset, 0px); transition: ${dragging ? 'none' : 'left 500ms var(--md-sys-motion-timing-function-emphasized-decel)'};`}
+		style="width: var(--splitpane-left-width); left: var(--splitpane-offset, 0px);"
 	>
 		{@render left()}
 	</div>

@@ -1,6 +1,6 @@
 @layer utilities {
 	.text-link {
-		@apply text-md-sys-color-primary underline transition-colors hover:text-md-sys-color-secondary;
+		@apply text-md-sys-color-primary underline hover:text-md-sys-color-secondary;
 	}
 
 	.text-link.md-sys-typescale-label-small {

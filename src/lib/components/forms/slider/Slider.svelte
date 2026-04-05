@@ -1,7 +1,6 @@
 <script lang="ts">
 	import clsx from 'clsx';
 	import { Icon } from '$lib/utils/index.js';
-	import { Spring } from 'svelte/motion';
 	import { slider } from './theme.js';
 	import type { SliderProps } from './types.js';
 
@@ -45,18 +44,14 @@
 	let offsetHeight = $state(600);
 	let inlineSize = $derived(vertical ? offsetHeight : offsetWidth);
 
-	const valueDisplayed = new Spring(value, { stiffness: 0.3, damping: 1 });
 	const updateValue = (e: Event & { currentTarget: EventTarget & HTMLInputElement }) => {
 		const newValue = Number(e.currentTarget.value);
 		e.preventDefault();
 		value = newValue;
 	};
-	$effect(() => {
-		valueDisplayed.target = value;
-	});
 
 	const range = $derived(max - min);
-	const handlePosition = $derived((valueDisplayed.current - min) / range);
+	const handlePosition = $derived((value - min) / range);
 	const stopList = $derived.by(() => {
 		const output: number[] = [];
 		const add = (stopValue: number) => {
@@ -85,7 +80,7 @@
 	<input
 		type="range"
 		oninput={updateValue}
-		value={valueDisplayed.current}
+		{value}
 		{min}
 		{max}
 		{step}

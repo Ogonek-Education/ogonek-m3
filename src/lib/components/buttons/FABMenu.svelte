@@ -2,7 +2,6 @@
 	import clsx from 'clsx';
 	import { fabMenu } from './theme.js';
 	import type { FABMenuProps } from './types.js';
-	import { enterExit } from '$lib/animation/index.js';
 
 	let { children, class: className, position = 'top', ...restProps }: FABMenuProps = $props();
 
@@ -27,7 +26,6 @@
 	style:translate={`${coords.x}px ${coords.y}px`}
 	style:max-height={coords.maxHeight ? `${coords.maxHeight}px` : undefined}
 	style:--enter-exit-origin={`${coords.originY} ${coords.originX}`}
-	in:enterExit
 	{@attach (menu) => {
 		const rect = menu.getBoundingClientRect();
 		const anchorRect = menu.parentElement?.getBoundingClientRect();

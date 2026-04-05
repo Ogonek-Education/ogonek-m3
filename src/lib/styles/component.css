@@ -77,7 +77,7 @@
 	}
 
 	.text-link {
-		@apply text-md-sys-color-primary underline transition-colors hover:text-md-sys-color-secondary;
+		@apply text-md-sys-color-primary underline hover:text-md-sys-color-secondary;
 	}
 
 	.text-link.md-sys-typescale-label-small {
@@ -99,5 +99,5 @@
 }
 
 @utility state-layer {
-	@apply before:pointer-events-none before:absolute before:inset-0 before:transition-all before:duration-350 before:content-[''];
+	@apply before:pointer-events-none before:absolute before:inset-0 before:content-[''];
 }

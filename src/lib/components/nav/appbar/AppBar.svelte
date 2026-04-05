@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { appbar } from './theme.js';
 	import type { AppBarProps } from './types.js';
+	import clsx from 'clsx';
 
 	let {
 		children,
@@ -27,7 +28,7 @@
 		leading: leadingCls,
 		trailing: trailingCls
 	} = $derived(appbar({ scrolled, noLeading, noTrailing }));
-	const navClass = $derived(base({ class: className ?? '' }));
+	const navClass = $derived(base({ class: clsx(className) }));
 </script>
 
 <svelte:window bind:scrollY />

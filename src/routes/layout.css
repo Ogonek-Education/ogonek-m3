@@ -7,6 +7,6 @@
 
 @theme {
 	--font-sans: 'Inter', 'Roboto Flex', system-ui, sans-serif;
-	--default-transition-duration: var(--md-sys-motion-duration-spatial);
+	--default-transition-duration: 0ms;
 	--default-transition-timing-function: var(--md-sys-motion-timing-function-emphasized-decel);
 }

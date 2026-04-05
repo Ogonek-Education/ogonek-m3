@@ -3,7 +3,6 @@
 	import clsx from 'clsx';
 	import type { SearchProps } from './types.js';
 	import { Icon } from '$lib/utils/index.js';
-	import { fade } from 'svelte/transition';
 
 	let {
 		children,
@@ -38,7 +37,7 @@
 	/>
 
 	{#if trailingIconProps && value}
-		<button onclick={trailingClick} class="z-10" in:fade>
+		<button onclick={trailingClick} class="z-10">
 			<Icon {...trailingIconProps} class={trailingIcon()} />
 		</button>
 	{/if}

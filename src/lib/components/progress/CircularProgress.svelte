@@ -32,7 +32,6 @@
 		stroke="var(--color-md-sys-color-secondary-container)"
 		stroke-width={thickness}
 		fill="none"
-		class="transition-[stroke-dashoffset] [transition-timing-function:var(--md-sys-motion-easing-fast)]"
 	/>
 	<circle
 		cx={size / 2}
@@ -44,6 +43,5 @@
 		stroke-dashoffset={(percent / -100) * circumference + circumference}
 		stroke-linecap="round"
 		fill="none"
-		class="transition-[stroke-dashoffset] [transition-timing-function:var(--md-sys-motion-easing-fast)]"
 	/>
 </svg>

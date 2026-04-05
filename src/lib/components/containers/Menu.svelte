@@ -4,7 +4,6 @@
 	import { textfield } from '../forms/index.ts';
 	import Icon from '$lib/utils/icon/Icon.svelte';
 	import Button from '../buttons/Button.svelte';
-	import { enterExit } from '$lib/animation/enterExit.js';
 	import { clickOutside } from '$lib/actions/clickOutside.js';
 
 	type MenuItem = {
@@ -150,7 +149,6 @@
 			style:max-height={`${maxHeight}px`}
 			role="menu"
 			tabindex="-1"
-			transition:enterExit
 			{@attach (menu) => {
 				const menuRect = menu.getBoundingClientRect();
 
@@ -187,7 +185,7 @@
 			{#each items as item (item.value)}
 				<button
 					type="button"
-					class="flex w-full items-start gap-3 px-4 py-2 text-left transition hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-not-allowed disabled:opacity-60"
+					class="flex w-full items-start gap-3 px-4 py-2 text-left hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-not-allowed disabled:opacity-60"
 					class:bg-md-sys-color-secondary-container={item.value === selected}
 					role="menuitemradio"
 					aria-checked={item.value === selected}

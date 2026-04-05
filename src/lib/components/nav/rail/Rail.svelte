@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ButtonIcon, rail, type RailProps } from '$lib/components/index.js';
 	import { clickOutside } from '$lib/actions/index.js';
+	import clsx from 'clsx';
 
 	let {
 		children,
@@ -12,7 +13,7 @@
 
 	const expanded = $derived(!collapsed);
 	const { base, items, ghost, scrim } = $derived(rail({ expanded }));
-	const railBaseClass = $derived(`${base({ class: className ?? '' })} rail-base`);
+	const railBaseClass = $derived(`${base({ class: clsx(className) })} rail-base`);
 	const toggleClass = $derived(collapsed ? 'cursor-e-resize' : 'cursor-w-resize');
 </script>
 
@@ -42,35 +43,9 @@
 </div>
 
 <style>
-	.rail-base {
-		transition:
-			width 500ms var(--md-sys-motion-timing-function-emphasized-decel),
-			padding 500ms var(--md-sys-motion-timing-function-emphasized-decel),
-			background-color 300ms var(--md-sys-motion-timing-function-emphasized-decel),
-			border-radius 300ms var(--md-sys-motion-timing-function-emphasized-decel),
-			box-shadow 300ms var(--md-sys-motion-timing-function-emphasized-decel);
-	}
-
-	.rail-items {
-		transition:
-			opacity 200ms var(--md-sys-motion-timing-function-emphasized-decel),
-			transform 500ms var(--md-sys-motion-timing-function-emphasized-decel);
-	}
-
-	.rail-base[data-expanded='true'] .rail-items {
-		opacity: 1;
-		transform: translateX(0);
-	}
-
-	.rail-base[data-expanded='false'] .rail-items {
-		opacity: 1;
-		transform: translateX(0);
-	}
-
 	.rail-scrim {
 		opacity: 0;
 		pointer-events: none;
-		transition: opacity 300ms var(--md-sys-motion-timing-function-emphasized-decel);
 	}
 
 	.rail-scrim[data-expanded='true'] {

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
 	import { snackbar, type SnackBarProps } from '$lib/index.js';
 	import Icon from '../../utils/icon/Icon.svelte';
 
@@ -43,12 +42,7 @@
 </script>
 
 {#if message && !dismissed}
-	<div
-		class={base()}
-		transition:fade={{ duration: 200 }}
-		data-cy="notification-snackbar"
-		{...restProps}
-	>
+	<div class={base()} data-cy="notification-snackbar" {...restProps}>
 		{#if typeof message === 'string'}
 			<p class={supportingText()}>{message}</p>
 		{:else}

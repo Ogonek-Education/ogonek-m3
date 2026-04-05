@@ -4,7 +4,6 @@
 	import { Textfield } from '$lib/components/index.js';
 	import DatePickerDocked from './DatePickerDocked.svelte';
 	import { clickOutside, positionFloating } from '$lib/actions/index.js';
-	import { enterExit } from '$lib/animation/index.js';
 
 	let {
 		label = 'Дата',
@@ -79,11 +78,7 @@
 	></button>
 
 	{#if picker}
-		<div
-			class="picker"
-			use:positionFloating={{ anchor: anchorEl, offset: 12 }}
-			transition:enterExit
-		>
+		<div class="picker" use:positionFloating={{ anchor: anchorEl, offset: 12 }}>
 			<DatePickerDocked
 				date={value}
 				clearable={!required}

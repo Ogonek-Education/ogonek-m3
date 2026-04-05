@@ -27,7 +27,6 @@
 	<div
 		class={percentClass()}
 		style:width="{percent}%"
-		style="transition: var(--md-sys-motion-easing-fast);"
 	></div>
 	<div class={track()}></div>
 </div>

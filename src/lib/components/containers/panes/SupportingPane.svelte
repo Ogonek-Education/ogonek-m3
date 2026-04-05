@@ -3,8 +3,6 @@
 	import type { SupportingPaneProps } from './types.js';
 	import { supportingPane } from './theme.js';
 	import { ButtonIcon } from '$lib/components/index.js';
-	import { easeEmphasizedDecel } from '$lib/animation/index.js';
-	import { fly } from 'svelte/transition';
 
 	const {
 		main,
@@ -60,7 +58,6 @@
 			})}
 			data-entered={entered}
 			data-position={position}
-			in:fly={{ x: 100, easing: easeEmphasizedDecel }}
 		>
 			{@render supporting()}
 		</aside>

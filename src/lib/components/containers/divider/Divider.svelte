@@ -15,7 +15,7 @@
 	let styling = $derived(hr({ variant, orientation }));
 	let lineClass = $derived(
 		clsx(
-			'bg-md-sys-color-outline-variant transition-colors',
+			'bg-md-sys-color-outline-variant',
 			orientation === 'horizontal' ? 'h-[1px] w-full' : 'w-[1px] h-full'
 		)
 	);
