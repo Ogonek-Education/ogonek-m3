@@ -7,6 +7,7 @@
 	import { tooltip } from './theme.js';
 	import type { TooltipProps } from './types.js';
 	import { floating } from '$lib/actions/index.js';
+	import { fade } from 'svelte/transition';
 
 	let {
 		subhead,
@@ -121,6 +122,7 @@
 </script>
 
 <span
+	in:fade
 	class={triggerCls({ class: clsx(triggerClass) })}
 	bind:this={anchor}
 	onmouseenter={open}
