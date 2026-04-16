@@ -9,6 +9,7 @@
 		supporting,
 		position = 'right',
 		centered = false,
+		rounded = true,
 		class: className,
 		mainClass,
 		full = true,
@@ -24,7 +25,7 @@
 		base,
 		main: mainCls,
 		supporting: supportingCls
-	} = $derived(supportingPane({ position, centered, full }));
+	} = $derived(supportingPane({ position, centered, full, rounded }));
 </script>
 
 <div class={base({ class: clsx(className) })}>

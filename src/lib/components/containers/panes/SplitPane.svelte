@@ -12,6 +12,7 @@
 		centered,
 		leftWidth = $bindable(396),
 		full = true,
+		rounded = true,
 		minLeft = 280,
 		maxLeft = 720,
 		storageKey = 'splitpane:leftWidth',
@@ -27,7 +28,7 @@
 		right: rCls,
 		handle: hCls,
 		handleGrip
-	} = $derived(splitPane({ centered, full, anchor }));
+	} = $derived(splitPane({ centered, full, anchor, rounded }));
 
 	const leftOffset = $derived(anchor === 'viewport' ? 'var(--splitpane-offset, 0px)' : '0px');
 	const handleOffset = $derived(
@@ -91,10 +92,7 @@
 
 <div class={base({ class: clsx(className) })} style={`--splitpane-left-width: ${leftWidth}px;`}>
 	<!-- LEFT PANE -->
-	<div
-		class={lCls()}
-		style={`width: var(--splitpane-left-width); left: ${leftOffset};`}
-	>
+	<div class={lCls()} style={`width: var(--splitpane-left-width); left: ${leftOffset};`}>
 		{@render left()}
 	</div>
 

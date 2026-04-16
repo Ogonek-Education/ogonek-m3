@@ -40,16 +40,25 @@ export const splitPane = tv({
 				right: 'md:min-h-[calc(100dvh-30px)]'
 			},
 			false: ''
+		},
+		rounded: {
+			true: {
+				left: 'md:rounded-t-lg'
+			},
+			false: {
+				left: ''
+			}
 		}
 	},
 	defaultVariants: {
-		anchor: 'viewport'
+		anchor: 'viewport',
+		rounded: true
 	}
 });
 
 export const singlePane = tv({
 	slots: {
-		base: 'flex flex-col box-border overflow-clip md:rounded-t-lg',
+		base: 'flex flex-col box-border overflow-clip',
 		content: 'flex flex-1 flex-col gap-3 w-full md:pb-12',
 		headline: 'md-sys-typescale-title-medium mb-4'
 	},
@@ -81,14 +90,25 @@ export const singlePane = tv({
 		full: {
 			true: 'min-h-dvh',
 			false: ''
+		},
+		rounded: {
+			true: {
+				base: 'md:rounded-t-lg'
+			},
+			false: {
+				base: ''
+			}
 		}
+	},
+	defaultVariants: {
+		rounded: true
 	}
 });
 
 export const supportingPane = tv({
 	slots: {
 		base: 'flex w-full flex-col gap-6 md:flex-row py-3 md:p-0',
-		main: 'bg-md-sys-color-surface box-border rounded-t-lg md:p-6 p-0 grow order-2 md:order-1',
+		main: 'bg-md-sys-color-surface box-border md:p-6 p-0 grow order-2 md:order-1',
 		supporting:
 			'text-md-sys-color-on-surface-container box-border md:sticky md:top-4 order-1 md:order-2 min-w-min md:w-80 overflow-y-scroll overflow-x-visible px-1'
 	},
@@ -114,10 +134,19 @@ export const supportingPane = tv({
 		full: {
 			true: { base: 'min-h-dvh' },
 			false: ''
+		},
+		rounded: {
+			true: {
+				main: 'rounded-t-lg'
+			},
+			false: {
+				main: ''
+			}
 		}
 	},
 	defaultVariants: {
 		position: 'right',
-		centered: true
+		centered: true,
+		rounded: true
 	}
 });
