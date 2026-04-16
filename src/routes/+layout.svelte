@@ -3,8 +3,10 @@
 	import './layout.css';
 
 	const { children } = $props();
+
+	const icons = ['menu', 'house', 'circle'];
 </script>
 
-<MaterialSymbolsProvider />
+<MaterialSymbolsProvider extraIcons={icons} />
 
 {@render children()}

@@ -1,10 +1,13 @@
 <script lang="ts">
-	import { ButtonIcon, rail, type RailProps } from '$lib/components/index.js';
 	import { clickOutside } from '$lib/actions/index.js';
 	import clsx from 'clsx';
+	import type { RailProps } from './types.ts';
+	import ButtonIcon from '$lib/components/buttons/ButtonIcon.svelte';
+	import { rail } from './theme.ts';
 
 	let {
 		children,
+		rounded = false,
 		expandable = true,
 		fab,
 		collapsed = $bindable(true),
@@ -13,12 +16,13 @@
 	}: RailProps = $props();
 
 	const expanded = $derived(!collapsed);
-	const { base, items, ghost, scrim } = $derived(rail({ expanded, anchor }));
+	const { base, items, ghost, scrim } = $derived(rail({ expanded, anchor, rounded }));
 	const railBaseClass = $derived(`${base({ class: clsx(className) })} rail-base`);
 	const toggleClass = $derived(collapsed ? 'cursor-e-resize' : 'cursor-w-resize');
 </script>
 
 <div class={ghost()}></div>
+
 <div class={`${scrim()} rail-scrim`} data-expanded={expanded}></div>
 <div
 	class={railBaseClass}
@@ -36,6 +40,7 @@
 			onclick={() => (collapsed = !collapsed)}
 		/>
 	{/if}
+
 	{@render fab?.()}
 
 	<div class={`${items()} rail-items`}>

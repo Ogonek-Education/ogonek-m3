@@ -5,7 +5,7 @@ export type RailItemVariants = VariantProps<typeof railElement>;
 
 export const rail = tv({
 	slots: {
-		base: 'py-12 hidden bg-md-sys-color-surface-container h-full z-20 flex-col md:flex gap-6',
+		base: 'py-12 hidden bg-md-sys-color-surface-container z-20 flex-col md:flex gap-6',
 		items: 'flex flex-col gap-3 pt-6 scrollbar-none',
 		ghost: 'w-24',
 		scrim: 'xl:hidden inset-0 -z-10'
@@ -29,6 +29,12 @@ export const rail = tv({
 			false: {
 				base: 'w-24 items-center'
 			}
+		},
+		rounded: {
+			true: {
+				base: 'rounded-xl'
+			},
+			false: {}
 		}
 	},
 	defaultVariants: {
