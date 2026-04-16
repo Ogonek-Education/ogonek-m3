@@ -17,6 +17,7 @@
 		storageKey = 'splitpane:leftWidth',
 		persist = true,
 		onPaddingChange,
+		anchor = 'viewport',
 		class: className
 	}: SplitPaneProps = $props();
 
@@ -26,7 +27,14 @@
 		right: rCls,
 		handle: hCls,
 		handleGrip
-	} = $derived(splitPane({ centered, full }));
+	} = $derived(splitPane({ centered, full, anchor }));
+
+	const leftOffset = $derived(anchor === 'viewport' ? 'var(--splitpane-offset, 0px)' : '0px');
+	const handleOffset = $derived(
+		anchor === 'viewport'
+			? 'calc(var(--splitpane-left-width) + var(--splitpane-offset, 0px))'
+			: 'var(--splitpane-left-width)'
+	);
 
 	const clampWidth = (next: number) => Math.min(maxLeft, Math.max(minLeft, next));
 
@@ -85,7 +93,7 @@
 	<!-- LEFT PANE -->
 	<div
 		class={lCls()}
-		style="width: var(--splitpane-left-width); left: var(--splitpane-offset, 0px);"
+		style={`width: var(--splitpane-left-width); left: ${leftOffset};`}
 	>
 		{@render left()}
 	</div>
@@ -98,7 +106,7 @@
 		aria-valuenow={leftWidth}
 		aria-valuemin={minLeft}
 		aria-valuemax={maxLeft}
-		style="left: calc(var(--splitpane-left-width) + var(--splitpane-offset, 0px));"
+		style={`left: ${handleOffset};`}
 		onpointerdown={startDrag}
 		onpointermove={moveDrag}
 		onpointerup={endDrag}

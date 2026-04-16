@@ -20,6 +20,7 @@ export type SplitPaneProps = SplitPaneVariants &
 		persist?: boolean;
 		/** Called when the component wants to update external footer padding. */
 		onPaddingChange?: (padding: number) => void;
+		anchor?: SplitPaneVariants['anchor'];
 	};
 
 export type SupportingPaneProps = SupportingPaneVariants &

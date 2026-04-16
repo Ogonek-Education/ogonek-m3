@@ -21,4 +21,5 @@ export type RailProps = RailVariants &
 		expandable?: boolean;
 		fab?: Snippet;
 		collapsed?: boolean;
+		anchor?: RailVariants['anchor'];
 	};
