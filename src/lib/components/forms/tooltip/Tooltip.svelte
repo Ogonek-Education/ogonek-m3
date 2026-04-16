@@ -122,7 +122,6 @@
 </script>
 
 <span
-	in:fade
 	class={triggerCls({ class: clsx(triggerClass) })}
 	bind:this={anchor}
 	onmouseenter={open}
@@ -136,6 +135,7 @@
 		{#if showScrim}
 			<div
 				class={scrimCls()}
+				in:fade
 				bind:this={scrimEl}
 				aria-hidden="true"
 				style="box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.22); filter: blur(1px);"
@@ -143,6 +143,7 @@
 		{/if}
 		<div
 			class={baseCls}
+			in:fade
 			bind:this={tooltipEl}
 			role="tooltip"
 			aria-hidden={!isOpen}
