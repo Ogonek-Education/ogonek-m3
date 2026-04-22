@@ -6,7 +6,7 @@
 
 <SinglePane
 	><Rail expandable={false} rounded>
-		<RailItem name="Dashboard" href="/app" iconProps={{ name: 'house' }}></RailItem>
+		<RailItem name="Платежный аккаунт" href="/app" iconProps={{ name: 'house' }}></RailItem>
 
 		<RailItem name="Circle" href="/app/circle" iconProps={{ name: 'circle' }} />
 	</Rail></SinglePane
