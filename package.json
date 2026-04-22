@@ -1,6 +1,6 @@
 {
 	"name": "@ogonek-education/ogonek-m3",
-	"version": "0.2.8",
+	"version": "0.2.10",
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",

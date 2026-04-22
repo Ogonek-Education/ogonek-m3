@@ -80,13 +80,6 @@ export const singlePane = tv({
 			},
 			none: ''
 		},
-		padding: {
-			none: '',
-			md: {
-				base: 'p-4 md:p-6 pb-24',
-				content: 'md:py-2'
-			}
-		},
 		full: {
 			true: 'min-h-dvh',
 			false: ''
