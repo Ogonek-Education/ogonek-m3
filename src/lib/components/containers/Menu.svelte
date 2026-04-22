@@ -5,6 +5,8 @@
 	import Icon from '$lib/utils/icon/Icon.svelte';
 	import Button from '../buttons/Button.svelte';
 	import { clickOutside } from '$lib/actions/clickOutside.js';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	type MenuItem = {
 		label: string;
@@ -149,6 +151,8 @@
 			style:max-height={`${maxHeight}px`}
 			role="menu"
 			tabindex="-1"
+			in:enterExit={{ duration: 200, easing: easeEmphasizedDecel }}
+			out:enterExit={{ duration: 150, easing: easeEmphasizedAccel }}
 			{@attach (menu) => {
 				const menuRect = menu.getBoundingClientRect();
 

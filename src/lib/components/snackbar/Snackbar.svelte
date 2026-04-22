@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { snackbar, type SnackBarProps } from '$lib/index.js';
 	import Icon from '../../utils/icon/Icon.svelte';
+	import { Layer } from '$lib/utils/index.js';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	let {
 		message,
@@ -42,7 +45,13 @@
 </script>
 
 {#if message && !dismissed}
-	<div class={base()} data-cy="notification-snackbar" {...restProps}>
+	<div
+		class={base()}
+		data-cy="notification-snackbar"
+		{...restProps}
+		in:enterExit={{ duration: 400, easing: easeEmphasizedDecel }}
+		out:enterExit={{ duration: 200, easing: easeEmphasizedAccel }}
+	>
 		{#if typeof message === 'string'}
 			<p class={supportingText()}>{message}</p>
 		{:else}
@@ -53,11 +62,15 @@
 
 		<div class={actionWrapper()}>
 			{#if label}
-				<button class={labelCls()} onclick={callback}>{label}</button>
+				<button class={`${labelCls()} relative`} onclick={callback}>
+					{label}
+					<Layer />
+				</button>
 			{/if}
 
 			{#if showClose}
 				<button
+					class="relative rounded-full p-1"
 					onclick={() => {
 						dismissed = true;
 						message = '';
@@ -66,6 +79,7 @@
 					data-cy="notification-dismiss"
 				>
 					<Icon class={icon()} name="close" />
+					<Layer />
 				</button>
 			{/if}
 		</div>
