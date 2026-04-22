@@ -3,11 +3,19 @@
 	import { body } from './theme.js';
 	import type { BodyProps } from './types.js';
 
-	let { children, class: className, ...restProps }: BodyProps = $props();
+	let {
+		children,
+		emphasized,
+		size = 'medium',
+		class: className,
+		...restProps
+	}: BodyProps = $props();
 
 	let classP = $derived(
 		body({
-			class: clsx(className)
+			class: clsx(className),
+			emphasized,
+			size
 		})
 	);
 </script>

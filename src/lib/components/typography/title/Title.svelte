@@ -3,9 +3,15 @@
 	import { title } from './theme.js';
 	import type { TitleProps } from './types.js';
 
-	let { children, class: className, ...restProps }: TitleProps = $props();
+	let {
+		children,
+		emphasized,
+		size = 'medium',
+		class: className,
+		...restProps
+	}: TitleProps = $props();
 
-	let titleCls = $derived(title({ class: clsx(className) }));
+	let titleCls = $derived(title({ class: clsx(className), emphasized, size }));
 </script>
 
 <h3 {...restProps} class={titleCls}>

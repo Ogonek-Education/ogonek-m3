@@ -1,11 +1,16 @@
 import { tv } from 'tailwind-variants';
 
-export const labelt = tv({
-	base: 'md-sys-typescale-label-small md:md-sys-typescale-label-medium lg:md-sys-typescale-label-large',
+export const label = tv({
+	base: '',
 	variants: {
-		type: {
-			default: 'font-medium',
-			prominent: 'font-semibold'
+		emphasized: {
+			true: 'font-semibold',
+			false: 'font-medium'
+		},
+		size: {
+			small: 'md-sys-label-display-small',
+			medium: 'md-sys-label-display-medium',
+			large: 'md-sys-label-display-large'
 		}
 	}
 });

@@ -1,7 +1,9 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
+import type { HeadlineVariants } from './theme.ts';
 
-export interface HeadlineProps extends HTMLAttributes<HTMLElement> {
-	/** Headline text content. */
-	children: Snippet;
-}
+export type HeadlineProps = HeadlineVariants &
+	HTMLAttributes<HTMLElement> & {
+		/** Headline text content. */
+		children: Snippet;
+	};

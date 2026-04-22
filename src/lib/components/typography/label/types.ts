@@ -1,11 +1,11 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { VariantProps } from 'tailwind-variants';
-import type { labelt } from './theme.js';
+import type { label } from './theme.js';
 
-export type LabelVariants = VariantProps<typeof labelt>;
+export type LabelVariants = VariantProps<typeof label>;
 
-export type LabelTProps = LabelVariants &
+export type LabelProps = LabelVariants &
 	HTMLAttributes<HTMLElement> & {
 		/** Label text content. */
 		children: Snippet;

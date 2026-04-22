@@ -1,7 +1,9 @@
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
+import type { DisplayVariants } from './theme.ts';
 
-export interface DisplayProps extends HTMLAttributes<HTMLElement> {
-	/** Display text content. */
-	children: Snippet;
-}
+export type DisplayProps = DisplayVariants &
+	HTMLAttributes<HTMLElement> & {
+		/** Display text content. */
+		children: Snippet;
+	};

@@ -3,9 +3,15 @@
 	import { display } from './theme.js';
 	import type { DisplayProps } from './types.js';
 
-	let { children, class: className, ...restProps }: DisplayProps = $props();
+	let {
+		children,
+		emphasized,
+		size = 'medium',
+		class: className,
+		...restProps
+	}: DisplayProps = $props();
 
-	let displayCls = $derived(display({ class: clsx(className) }));
+	let displayCls = $derived(display({ class: clsx(className), emphasized, size }));
 </script>
 
 <h1 {...restProps} class={displayCls}>

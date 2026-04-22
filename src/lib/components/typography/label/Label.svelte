@@ -1,11 +1,17 @@
 <script lang="ts">
 	import clsx from 'clsx';
-	import { labelt } from './theme.js';
-	import type { LabelTProps } from './types.js';
+	import { label } from './theme.js';
+	import type { LabelProps } from './types.js';
 
-	let { children, type = 'default', class: className, ...restProps }: LabelTProps = $props();
+	let {
+		children,
+		size = 'medium',
+		emphasized,
+		class: className,
+		...restProps
+	}: LabelProps = $props();
 </script>
 
-<p {...restProps} class={labelt({ class: clsx(className) })}>
+<p {...restProps} class={label({ class: clsx(className), emphasized, size })}>
 	{@render children()}
 </p>

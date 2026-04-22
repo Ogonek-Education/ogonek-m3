@@ -3,9 +3,15 @@
 	import { headline } from './theme.js';
 	import type { HeadlineProps } from './types.js';
 
-	let { children, class: className, ...restProps }: HeadlineProps = $props();
+	let {
+		children,
+		size = 'medium',
+		emphasized,
+		class: className,
+		...restProps
+	}: HeadlineProps = $props();
 
-	let headlineCls = $derived(headline({ class: clsx(className) }));
+	let headlineCls = $derived(headline({ class: clsx(className), emphasized, size }));
 </script>
 
 <h2 {...restProps} class={headlineCls}>
