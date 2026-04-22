@@ -11,7 +11,7 @@ export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 
 export const button = tv({
 	slots: {
-		base: 'md-component-button-base group min-w-max md-sys-typescale-button-label',
+		base: 'md-component-button-base group max-w-max',
 		icon: 'inline-flex items-center justify-center leading-none'
 	},
 	variants: {
@@ -31,17 +31,23 @@ export const button = tv({
 			error: ''
 		},
 		size: {
-			xs: '',
+			xs: {
+				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium',
+				icon: 'text-[20px] size-5'
+			},
 			sm: {
-				base: 'h-10 gap-2 px-4',
+				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium',
 				icon: 'size-5 text-[20px]'
 			},
 			md: {
-				base: 'h-14 px-6 gap-2',
+				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: '',
-			xl: ''
+			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small', icon: 'size-8 text-[32px]' },
+			xl: {
+				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4',
+				icon: 'text-[40px] size-10'
+			}
 		},
 		shape: {
 			round: 'rounded-full before:rounded-full',
@@ -49,7 +55,7 @@ export const button = tv({
 		},
 		selected: {
 			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary rounded-md',
-			false: 'rounded-full'
+			false: 'rounded-full bg-md-sys-color-surface-container'
 		}
 	},
 	compoundVariants: [

@@ -4,8 +4,7 @@ export const label = tv({
 	base: '',
 	variants: {
 		emphasized: {
-			true: 'font-semibold',
-			false: 'font-medium'
+			true: 'font-semibold'
 		},
 		size: {
 			small: 'md-sys-label-display-small',

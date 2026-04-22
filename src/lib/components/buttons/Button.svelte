@@ -22,7 +22,6 @@
 	}: ButtonMDProps = $props();
 
 	const { base, icon } = $derived(button({ variant, color, shape, size, selected }));
-
 	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 

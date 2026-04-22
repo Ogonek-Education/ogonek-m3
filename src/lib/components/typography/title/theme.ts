@@ -6,7 +6,7 @@ export const title = tv({
 	base: '',
 	variants: {
 		emphasized: {
-			true: 'font-medium'
+			true: 'font-semibold'
 		},
 		size: {
 			small: 'md-sys-typescale-title-small',

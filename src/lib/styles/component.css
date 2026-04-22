@@ -1,6 +1,6 @@
 @layer utilities {
 	.md-component-button-base {
-		@apply state-layer relative inline-flex min-h-12 min-w-12 items-center justify-center md-sys-state-focus-indicator select-none disabled:cursor-not-allowed disabled:bg-md-sys-color-on-surface/10 disabled:text-md-sys-color-on-surface/38 disabled:before:bg-md-sys-color-on-surface/38;
+		@apply state-layer relative inline-flex  items-center justify-center md-sys-state-focus-indicator select-none disabled:cursor-not-allowed disabled:bg-md-sys-color-on-surface/10 disabled:text-md-sys-color-on-surface/38 disabled:before:bg-md-sys-color-on-surface/38;
 	}
 
 	.md-component-button-filled-primary {
@@ -31,7 +31,7 @@
 	}
 
 	.md-component-button-outline-default {
-		@apply text-md-sys-color-on-surface-variant outline outline-md-sys-color-outline-variant hover:before:bg-md-sys-color-surface-variant/8 active:before:bg-md-sys-color-surface-variant/10;
+		@apply text-md-sys-color-on-surface-variant outline-2 outline-md-sys-color-outline-variant hover:before:bg-md-sys-color-surface-variant/8 active:before:bg-md-sys-color-surface-variant/10;
 	}
 	.md-component-button-outline-primary {
 		@apply text-md-sys-color-primary outline outline-md-sys-color-primary hover:before:bg-md-sys-color-primary/8 active:before:bg-md-sys-color-primary/10;

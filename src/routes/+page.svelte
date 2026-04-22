@@ -153,11 +153,11 @@
 <!-- TODO NAVBAR SHOWCASE -->
 <div class="flex flex-col gap-12 bg-md-sys-color-background p-12">
 	<Display>Buttons</Display>
-	<HStack class="items-start">
+	<Headline>Regular Buttons</Headline>
+	<div class="grid grid-cols-6 items-center gap-y-12">
 		<Button>Regular</Button>
 		<Button iconProps={{ name: 'home' }}>Regular Icon</Button>
 		<Button variant="tonal">Tonal</Button>
-		<ButtonIcon size="sm" iconProps={{ name: 'delete' }} variant="tonal">Small</ButtonIcon>
 		<Button variant="outlined">Outlined</Button>
 		<Button variant="text">Text</Button>
 		<Button
@@ -168,7 +168,16 @@
 			selected={toggle}>Selected</Button
 		>
 		<Button variant="bare" selected={!toggle}>Unselected</Button>
-	</HStack>
+		<Button size="xs">XSmall</Button>
+		<Button size="sm">Small</Button>
+		<Button size="lg">Large</Button>
+		<Button size="xl">XLarge</Button>
+	</div>
+	<Headline>Icon Buttons</Headline>
+	<div class="grid grid-cols-6 place-content-center-safe gap-12">
+		<ButtonIcon size="sm" iconProps={{ name: 'delete' }} variant="tonal">Small</ButtonIcon>
+	</div>
+	<Headline>FABs</Headline>
 	<VStack class="items-end">
 		<FAB withMenu iconProps={{ name: 'home' }} color="text">
 			<FABMenuItem iconProps={{ name: 'home' }}>Домой</FABMenuItem>
@@ -216,25 +225,13 @@
 	<Title>Rail</Title>
 	<VStack>
 		<Rail bind:collapsed={railCollapsed}>
-			<RailItem
-				collapsed={railCollapsed}
-				name="Главная"
-				href="/"
-				iconProps={{ name: 'home' }}
+			<RailItem collapsed={railCollapsed} name="Главная" href="/" iconProps={{ name: 'home' }}
 			></RailItem>
 
-			<RailItem
-				collapsed={railCollapsed}
-				name="Задания"
-				href="/"
-				iconProps={{ name: 'assignment' }}
+			<RailItem collapsed={railCollapsed} name="Задания" href="/" iconProps={{ name: 'assignment' }}
 			></RailItem>
 
-			<RailItem
-				collapsed={railCollapsed}
-				name="Занятия"
-				href="/"
-				iconProps={{ name: 'book' }}
+			<RailItem collapsed={railCollapsed} name="Занятия" href="/" iconProps={{ name: 'book' }}
 			></RailItem>
 		</Rail>
 		<Rail bind:collapsed={railCollapsedWithBadges}>
