@@ -4,6 +4,8 @@
 	import { dialogue } from './theme.js';
 	import Button from '../../buttons/Button.svelte';
 	import clsx from 'clsx';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	let {
 		withState = false,
@@ -22,7 +24,12 @@
 		$derived(dialogue());
 </script>
 
-<div aria-label="scrim" class={`${base()} dialogue-base`}>
+<div
+	aria-label="scrim"
+	class={`${base()} dialogue-base`}
+	in:enterExit={{ duration: 300, easing: easeEmphasizedDecel }}
+	out:enterExit={{ duration: 200, easing: easeEmphasizedAccel }}
+>
 	<div
 		class={`${inner({ class: clsx(className) })} dialogue-inner`}
 		{...rest}

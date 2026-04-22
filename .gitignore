@@ -9,7 +9,7 @@ node_modules
 /build
 /dist
 *.tgz
-
+.claude
 # OS
 .DS_Store
 Thumbs.db

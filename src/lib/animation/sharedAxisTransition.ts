@@ -1,4 +1,5 @@
 import type { TransitionOptions } from './transitionTypes.js';
+import { easeEmphasized } from './easing.js';
 
 type SharedAxisOptions =
 	| {
@@ -39,9 +40,23 @@ export const sharedAxisTransition = (
 	options: TransitionOptions & SharedAxisOptions
 ) => {
 	void node;
-	void options;
 	return {
-		delay: 0,
-		duration: 0
+		delay: options.delay,
+		duration: options.duration ?? 500,
+		easing: options.easing ?? easeEmphasized,
+		css: (t: number, u: number) => {
+			const opacity = (t - 0.35) * (1 / 0.35);
+			if (options.direction == 'Z') {
+				const factor = options.leaving ? u * 0.1 + 1 : t * 0.2 + 0.8;
+				let css = `transform: scale(${factor.toFixed(3)});`;
+				if (!options.leaving) css += `opacity: ${opacity.toFixed(3)};`;
+				return css;
+			}
+			const factor = u * (options.rightSeam ? -30 : 30);
+			return (
+				`transform: translate${options.direction}(${factor.toFixed(3)}px);` +
+				`opacity: ${opacity.toFixed(3)}`
+			);
+		}
 	};
 };

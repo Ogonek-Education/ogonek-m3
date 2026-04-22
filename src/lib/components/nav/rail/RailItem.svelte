@@ -2,7 +2,7 @@
 	import { page } from '$app/state';
 	import type { RailItemProps } from './types.js';
 	import { railElement } from './theme.js';
-	import { Icon } from '$lib/utils/index.js';
+	import { Icon, Layer } from '$lib/utils/index.js';
 	import Badge from '../../badge/Badge.svelte';
 
 	let {
@@ -53,6 +53,7 @@
 	{...rest}
 	class={rootClass}
 >
+	<Layer />
 	<div class={content()}>
 		<div class={iconContainer()}>
 			<Icon {...iconProps} class={icon()} wght={isActive ? 600 : 400} fill={isActive ? 1 : 0} />
