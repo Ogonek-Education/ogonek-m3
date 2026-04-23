@@ -32,13 +32,9 @@
 <div
 	class={root({ class: clsx(className) })}
 	onpointerdown={(e) => {
-		if (!disabled) {
-			startX = e.clientX;
-		}
+		if (!disabled) startX = e.clientX;
 	}}
-	ondragstart={(e) => {
-		e.preventDefault();
-	}}
+	ondragstart={(e) => e.preventDefault()}
 >
 	<input
 		type="checkbox"
@@ -54,24 +50,16 @@
 		}}
 	/>
 	<div class={handle()}>
-		{#if icons != 'none'}
+		{#if icons !== 'none'}
+			<!-- checked icon: visible when checked -->
 			<Icon
-				class={icon({
-					class: clsx(
-						'checked-icon hidden peer-checked:flex peer-checked:scale-[0.667] peer-checked:opacity-100',
-						checkedIconProps.class
-					)
-				})}
+				class={icon({ class: 'group-has-[:checked]:opacity-100' })}
 				{...checkedIconProps}
 			/>
-			{#if icons == 'both'}
+			{#if icons === 'both'}
+				<!-- unchecked icon: visible when not checked -->
 				<Icon
-					class={icon({
-						class: clsx(
-							'unchecked-icon flex scale-[0.667] opacity-100 peer-checked:hidden',
-							uncheckedIconProps.class
-						)
-					})}
+					class={icon({ class: 'opacity-100 group-has-[:checked]:opacity-0' })}
 					{...uncheckedIconProps}
 				/>
 			{/if}

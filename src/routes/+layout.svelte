@@ -4,7 +4,17 @@
 
 	const { children } = $props();
 
-	const icons = ['menu', 'house', 'circle'];
+	const icons = [
+		'menu',
+		'house',
+		'circle',
+		'note_stack',
+		'assignment',
+		'book',
+		'notifications',
+		'mail',
+		'chat'
+	];
 </script>
 
 <MaterialSymbolsProvider extraIcons={icons} />

@@ -151,8 +151,8 @@
 			style:max-height={`${maxHeight}px`}
 			role="menu"
 			tabindex="-1"
-			in:enterExit={{ duration: 200, easing: easeEmphasizedDecel }}
-			out:enterExit={{ duration: 150, easing: easeEmphasizedAccel }}
+			in:enterExit={{ duration: 200, easing: easeEmphasizedDecel, mode: 'scale' }}
+			out:enterExit={{ duration: 150, easing: easeEmphasizedAccel, mode: 'scale' }}
 			{@attach (menu) => {
 				const menuRect = menu.getBoundingClientRect();
 

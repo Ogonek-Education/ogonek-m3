@@ -8,6 +8,7 @@ export const textfield = tv({
       group w-full h-14 px-0 bg-md-sys-color-surface-container-highest
       rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center
       after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-md-sys-color-on-surface-variant
+      after:transition-[height,background-color] after:duration-200
       hover:after:bg-md-sys-color-on-surface
       focus-within:after:bg-md-sys-color-primary
       focus-within:after:h-[2px]
@@ -30,6 +31,7 @@ export const textfield = tv({
       md-sys-typescale-body-large
       text-md-sys-color-on-surface-variant
       pointer-events-none
+      transition-[top,font-size,line-height,color,transform] duration-200 ease-in-out
 
       peer-focus:text-md-sys-color-primary
       peer-invalid:text-md-sys-color-error

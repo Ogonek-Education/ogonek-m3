@@ -2,6 +2,8 @@
 	import clsx from 'clsx';
 	import { fabMenu } from './theme.js';
 	import type { FABMenuProps } from './types.js';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	let { children, class: className, position = 'top', ...restProps }: FABMenuProps = $props();
 
@@ -23,6 +25,8 @@
 	class={base({
 		class: clsx(className, 'fab-menu overflow-y-auto')
 	})}
+	in:enterExit={{ duration: 300, easing: easeEmphasizedDecel, mode: 'scale' }}
+	out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'scale' }}
 	style:translate={`${coords.x}px ${coords.y}px`}
 	style:max-height={coords.maxHeight ? `${coords.maxHeight}px` : undefined}
 	style:--enter-exit-origin={`${coords.originY} ${coords.originX}`}
@@ -71,6 +75,6 @@
 
 <style>
 	.fab-menu {
-		transform-origin: top;
+		transform-origin: var(--enter-exit-origin, bottom right);
 	}
 </style>

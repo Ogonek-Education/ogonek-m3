@@ -33,6 +33,8 @@
 	<div
 		class={`${inner({ class: clsx(className) })} dialogue-inner`}
 		{...rest}
+		in:enterExit={{ duration: 400, easing: easeEmphasizedDecel, mode: 'dialog' }}
+		out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'dialog' }}
 		use:clickOutside={() => {
 			if (withState) {
 				window.history.back();

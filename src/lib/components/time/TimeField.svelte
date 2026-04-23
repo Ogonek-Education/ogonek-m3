@@ -2,6 +2,8 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { Textfield, TimepickerInput } from '$lib/components/index.js';
 	import { clickOutside, positionFloating } from '$lib/actions/index.js';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	let {
 		label = 'Время',
@@ -55,7 +57,13 @@
 	></button>
 
 	{#if picker}
-		<div class="picker" use:positionFloating={{ anchor: anchorEl, offset: 12 }}>
+		<div
+			class="picker"
+			use:positionFloating={{ anchor: anchorEl, offset: 12 }}
+			in:enterExit={{ duration: 200, easing: easeEmphasizedDecel, mode: 'scale' }}
+			out:enterExit={{ duration: 150, easing: easeEmphasizedAccel, mode: 'scale' }}
+			style="transform-origin: top center;"
+		>
 			<TimepickerInput time={value} close={() => (picker = false)} setTime={(t) => (value = t)} />
 		</div>
 	{/if}

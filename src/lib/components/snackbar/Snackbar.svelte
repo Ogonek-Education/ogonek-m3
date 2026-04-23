@@ -49,8 +49,8 @@
 		class={base()}
 		data-cy="notification-snackbar"
 		{...restProps}
-		in:enterExit={{ duration: 400, easing: easeEmphasizedDecel }}
-		out:enterExit={{ duration: 200, easing: easeEmphasizedAccel }}
+		in:enterExit={{ duration: 400, easing: easeEmphasizedDecel, mode: 'slide-up' }}
+		out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'slide-up' }}
 	>
 		{#if typeof message === 'string'}
 			<p class={supportingText()}>{message}</p>

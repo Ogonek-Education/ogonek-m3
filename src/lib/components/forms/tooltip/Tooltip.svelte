@@ -7,7 +7,8 @@
 	import { tooltip } from './theme.js';
 	import type { TooltipProps } from './types.js';
 	import { floating } from '$lib/actions/index.js';
-	import { fade } from 'svelte/transition';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
 	let {
 		subhead,
@@ -135,7 +136,8 @@
 		{#if showScrim}
 			<div
 				class={scrimCls()}
-				in:fade
+				in:enterExit={{ duration: 150, easing: easeEmphasizedDecel }}
+				out:enterExit={{ duration: 100, easing: easeEmphasizedAccel }}
 				bind:this={scrimEl}
 				aria-hidden="true"
 				style="box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.22); filter: blur(1px);"
@@ -143,7 +145,8 @@
 		{/if}
 		<div
 			class={baseCls}
-			in:fade
+			in:enterExit={{ duration: 150, easing: easeEmphasizedDecel, mode: 'scale' }}
+			out:enterExit={{ duration: 100, easing: easeEmphasizedAccel, mode: 'scale' }}
 			bind:this={tooltipEl}
 			role="tooltip"
 			aria-hidden={!isOpen}

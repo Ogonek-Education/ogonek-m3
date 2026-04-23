@@ -389,45 +389,47 @@ export const buttonGroup = tv({
 
 export const fab = tv({
 	slots: {
-		base: 'md-component-button-base relative z-50 before:rounded-lg',
+		base: 'md-component-button-base relative z-50',
 		icon: '',
-		label: 'text-medium '
+		label: ''
 	},
 	variants: {
 		config: {
 			primary: {
-				base: 'md-component-button-filled-primary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10',
+				base: 'md-component-button-filled-primary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10',
 				icon: 'text-md-sys-color-on-primary',
 				label: 'text-md-sys-color-on-primary'
 			},
 			secondary: {
-				base: 'md-component-button-filled-secondary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-secondary/10 active:before:bg-md-sys-color-on-secondary/10',
+				base: 'md-component-button-filled-secondary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-secondary/10 active:before:bg-md-sys-color-on-secondary/10',
 				icon: 'text-md-sys-color-on-secondary',
 				label: 'text-md-sys-color-on-secondary'
 			},
 			tertiary: {
-				base: 'md-component-button-filled-tertiary shadow-elevation-1 hover:shadow-elevation-2 rounded-lg focus:before:bg-md-sys-color-on-tertiary/10 active:before:bg-md-sys-color-on-tertiary/10',
+				base: 'md-component-button-filled-tertiary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-tertiary/10 active:before:bg-md-sys-color-on-tertiary/10',
 				icon: 'text-md-sys-color-on-tertiary',
 				label: 'text-md-sys-color-on-tertiary'
 			}
 		},
 		expanded: {
-			true: 'gap-2 px-4',
+			true: 'gap-3 px-4',
 			false: 'aspect-square'
 		},
 		size: {
+			small: {
+				base: 'h-10 rounded-xl before:rounded-xl',
+				icon: 'size-6 text-[24px]',
+				label: 'md-sys-typescale-label-large'
+			},
 			regular: {
-				base: 'h-14',
-				icon: 'size-6',
+				base: 'h-14 rounded-2xl before:rounded-2xl',
+				icon: 'size-6 text-[24px]',
 				label: 'md-sys-typescale-fab-label'
 			},
-			medium: {
-				base: 'h-20',
-				icon: 'size-7'
-			},
 			large: {
-				base: 'h-24',
-				icon: 'size-9'
+				base: 'h-24 rounded-[28px] before:rounded-[28px]',
+				icon: 'size-9 text-[36px]',
+				label: 'md-sys-typescale-headline-small'
 			}
 		}
 	}
@@ -445,7 +447,7 @@ export const fabMenu = tv({
 export const fabMenuItem = tv({
 	slots: {
 		base: 'md-component-button-base group relative max-w-max h-14 rounded-full before:rounded-full gap-2 px-6 md-sys-typescale-fab-label z-50 shadow-elevation-2 hover:shadow-elevation-3',
-		icon: 'size-6'
+		icon: 'size-6 text-[24px]'
 	},
 	variants: {
 		variant: {
