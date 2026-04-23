@@ -43,7 +43,10 @@ export const button = tv({
 				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-shape:1.75rem] [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
+			lg: {
+				base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]',
+				icon: 'size-8 text-[32px]'
+			},
 			xl: {
 				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-shape:4.25rem] [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
@@ -54,7 +57,7 @@ export const button = tv({
 			square: '[--btn-shape-override:0.375rem]'
 		},
 		selected: {
-			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.375rem]',
+			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.75rem]',
 			false: 'bg-md-sys-color-surface-container'
 		}
 	},
@@ -220,7 +223,10 @@ export const buttonIcon = tv({
 				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-shape:1.75rem] [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
+			lg: {
+				base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]',
+				icon: 'size-8 text-[32px]'
+			},
 			xl: {
 				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-shape:4.25rem] [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
@@ -236,7 +242,7 @@ export const buttonIcon = tv({
 			square: '[--btn-shape-override:0.75rem]'
 		},
 		selected: {
-			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.375rem]',
+			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.75rem]',
 			false: 'bg-md-sys-color-surface-container'
 		},
 		variation: {

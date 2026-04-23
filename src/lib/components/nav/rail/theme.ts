@@ -44,17 +44,17 @@ export const rail = tv({
 
 export const railElement = tv({
 	slots: {
-		base: 'group relative z-30 flex items-center',
-		content: 'flex min-w-0 items-center rounded-full gap-0.5 py-1.5',
-		icon: 'size-6',
-		iconContainer: 'relative rounded-full',
+		base: 'group relative z-30 flex',
+		content: 'flex items-center min-w-0 rounded-full gap-0.5 py-1.5',
+		iconContainer: 'relative rounded-full items-center justify-center inline-flex',
+		icon: 'text-[24px]',
 		label: ''
 	},
 	variants: {
 		active: {
 			true: {
 				content: 'text-md-sys-color-on-secondary-container',
-				label: 'font-bold ',
+				label: 'font-bold',
 				iconContainer:
 					'group-hover:text-md-sys-color-secondary  bg-md-sys-color-secondary-container'
 			},
@@ -66,14 +66,14 @@ export const railElement = tv({
 		expanded: {
 			true: {
 				base: 'justify-start',
-				content: 'items-center p-4 gap-3',
+				content: 'p-4 gap-3',
 				iconContainer: '',
 				label: 'md-sys-typescale-label-large'
 			},
 			false: {
-				iconContainer: 'py-1.5 px-4',
 				base: 'text-center justify-center',
-				content: 'items-center flex-col',
+				content: 'flex-col',
+				iconContainer: 'py-1.5 px-4',
 				label: 'md-sys-typescale-label-medium'
 			}
 		}

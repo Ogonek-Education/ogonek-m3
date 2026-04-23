@@ -53,9 +53,9 @@
 	{...rest}
 	class={rootClass}
 >
-	<Layer />
 	<div class={content()}>
 		<div class={iconContainer()}>
+			<Layer />
 			<Icon {...iconProps} class={icon()} wght={isActive ? 600 : 400} fill={isActive ? 1 : 0} />
 			{#if badge}
 				<Badge size={badge === -1 ? 'sm' : 'lg'} number={badge}></Badge>

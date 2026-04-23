@@ -18,6 +18,8 @@
 		originY: 'top',
 		maxHeight: 0
 	});
+
+	// TODO: out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'scale' }} – if you can solve how to eliminate another button from appearing here, use this too
 </script>
 
 <ul
@@ -26,7 +28,6 @@
 		class: clsx(className, 'fab-menu overflow-y-auto')
 	})}
 	in:enterExit={{ duration: 300, easing: easeEmphasizedDecel, mode: 'scale' }}
-	out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'scale' }}
 	style:translate={`${coords.x}px ${coords.y}px`}
 	style:max-height={coords.maxHeight ? `${coords.maxHeight}px` : undefined}
 	style:--enter-exit-origin={`${coords.originY} ${coords.originX}`}
