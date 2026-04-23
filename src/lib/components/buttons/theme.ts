@@ -11,7 +11,7 @@ export type FABMenuItemVariants = VariantProps<typeof fabMenuItem>;
 
 export const button = tv({
 	slots: {
-		base: 'md-component-button-base group max-w-max',
+		base: 'md-component-button-base md-btn-morph group max-w-max',
 		icon: 'inline-flex items-center justify-center leading-none'
 	},
 	variants: {
@@ -32,25 +32,25 @@ export const button = tv({
 		},
 		size: {
 			xs: {
-				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium',
+				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
 				icon: 'text-[20px] size-5'
 			},
 			sm: {
-				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium',
+				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
 				icon: 'size-5 text-[20px]'
 			},
 			md: {
-				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium',
+				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small', icon: 'size-8 text-[32px]' },
+			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
 			xl: {
-				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4',
+				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
 			}
 		},
 		shape: {
-			round: 'rounded-full before:rounded-full',
+			round: 'rounded-full',
 			square: 'rounded-md'
 		},
 		selected: {
@@ -189,7 +189,7 @@ export const button = tv({
 
 export const buttonIcon = tv({
 	slots: {
-		base: 'md-component-button-base group max-w-max',
+		base: 'md-component-button-base md-btn-morph group max-w-max',
 		icon: 'inline-flex items-center justify-center leading-none'
 	},
 	variants: {
@@ -209,20 +209,20 @@ export const buttonIcon = tv({
 		},
 		size: {
 			xs: {
-				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium',
+				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
 				icon: 'text-[20px] size-5'
 			},
 			sm: {
-				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium',
+				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
 				icon: 'size-5 text-[20px]'
 			},
 			md: {
-				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium',
+				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small', icon: 'size-8 text-[32px]' },
+			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
 			xl: {
-				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4',
+				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
 			}
 		},
@@ -232,7 +232,7 @@ export const buttonIcon = tv({
 			default: 'aspect-square'
 		},
 		shape: {
-			round: 'rounded-full before:rounded-full',
+			round: 'rounded-full',
 			square: 'rounded-xl'
 		},
 		selected: {

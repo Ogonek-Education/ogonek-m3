@@ -3,6 +3,19 @@
 		@apply state-layer relative inline-flex  items-center justify-center md-sys-state-focus-indicator select-none disabled:cursor-not-allowed disabled:bg-md-sys-color-on-surface/10 disabled:text-md-sys-color-on-surface/38 disabled:before:bg-md-sys-color-on-surface/38;
 	}
 
+	.md-btn-morph {
+		transition: border-radius 200ms var(--md-sys-motion-easing-fast-spatial);
+
+		&::before {
+			border-radius: inherit;
+			transition: border-radius 200ms var(--md-sys-motion-easing-fast-spatial);
+		}
+
+		&:active:not(:disabled) {
+			border-radius: var(--btn-pressed-shape, 9999px);
+		}
+	}
+
 	.md-component-button-filled-primary {
 		@apply bg-md-sys-color-primary text-md-sys-color-on-primary hover:before:bg-md-sys-color-on-primary/8 active:before:bg-md-sys-color-on-primary/10;
 	}
