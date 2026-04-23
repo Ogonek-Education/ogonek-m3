@@ -34,6 +34,10 @@ export type SupportingPaneProps = SupportingPaneVariants &
 		/** Optional class for the supporting pane. */
 		supportingClass?: string;
 		collapsible?: boolean;
+		/** Width of the supporting pane in px (viewport anchor mode). Default 320. */
+		supportingWidth?: number;
+		/** Top offset of the fixed supporting pane in px (viewport anchor mode). Default 0. */
+		supportingTop?: number;
 	};
 
 export type SinglePaneProps = SinglePaneVariants &

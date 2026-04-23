@@ -103,9 +103,21 @@ export const supportingPane = tv({
 		base: 'flex w-full flex-col gap-6 md:flex-row',
 		main: 'bg-md-sys-color-surface box-border grow order-2 md:order-1',
 		supporting:
-			'text-md-sys-color-on-surface-container box-border md:sticky md:top-4 order-1 md:order-2 min-w-min md:w-80 overflow-y-scroll overflow-x-visible'
+			'text-md-sys-color-on-surface-container box-border order-1 md:order-2 min-w-min md:w-80 overflow-x-visible'
 	},
 	variants: {
+		anchor: {
+			// supporting scrolls independently; main scrolls the page
+			viewport: {
+				supporting:
+					'md:fixed md:top-[var(--supporting-pane-top,0px)] md:bottom-0 md:w-[var(--supporting-pane-width,320px)] md:overflow-y-auto scrollbar-none',
+				main: 'md:ml-[var(--supporting-pane-width,320px)]'
+			},
+			// supporting sticks as user scrolls the page (classic sticky)
+			parent: {
+				supporting: 'md:sticky md:top-4 overflow-y-scroll'
+			}
+		},
 		position: {
 			right: {
 				base: 'md:flex-row',
@@ -138,6 +150,7 @@ export const supportingPane = tv({
 		}
 	},
 	defaultVariants: {
+		anchor: 'parent',
 		position: 'right',
 		centered: true,
 		rounded: true

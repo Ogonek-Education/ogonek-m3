@@ -7,6 +7,7 @@
 	const {
 		main,
 		supporting,
+		anchor = 'parent',
 		position = 'right',
 		centered = false,
 		rounded = true,
@@ -14,7 +15,9 @@
 		mainClass,
 		full = true,
 		supportingClass,
-		collapsible
+		collapsible,
+		supportingWidth = 320,
+		supportingTop = 0
 	}: SupportingPaneProps = $props();
 
 	let entered = $state(false);
@@ -25,10 +28,16 @@
 		base,
 		main: mainCls,
 		supporting: supportingCls
-	} = $derived(supportingPane({ position, centered, full, rounded }));
+	} = $derived(supportingPane({ anchor, position, centered, full, rounded }));
+
+	const cssVars = $derived(
+		anchor === 'viewport'
+			? `--supporting-pane-width: ${supportingWidth}px; --supporting-pane-top: ${supportingTop}px;`
+			: ''
+	);
 </script>
 
-<div class={base({ class: clsx(className) })}>
+<div class={base({ class: clsx(className) })} style={cssVars}>
 	<div class={mainCls({ class: clsx('relative', mainClass) })}>
 		{#if collapsible}
 			<div class="top-3 right-3 z-10 hidden h-12 w-12 md:absolute md:block">
