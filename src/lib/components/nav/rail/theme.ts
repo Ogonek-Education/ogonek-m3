@@ -5,29 +5,31 @@ export type RailItemVariants = VariantProps<typeof railElement>;
 
 export const rail = tv({
 	slots: {
-		base: 'py-12 hidden  bg-md-sys-color-surface-container z-20 flex-col md:flex gap-6',
+		base: 'py-12 hidden bg-md-sys-color-surface-container z-20 flex-col md:flex gap-6',
 		items: 'flex flex-col gap-3 pt-6 scrollbar-none',
-		ghost: 'w-24',
+		ghost: 'hidden md:block shrink-0',
 		scrim: 'xl:hidden inset-0 -z-10'
 	},
 	variants: {
 		anchor: {
 			viewport: {
-				base: 'fixed',
+				base: 'fixed top-[var(--rail-top,0px)] bottom-0 left-0',
 				scrim: 'fixed'
 			},
 			parent: {
-				base: 'absolute',
+				base: 'absolute top-[var(--rail-top,0px)] bottom-0 left-0',
 				scrim: 'absolute'
 			}
 		},
 		expanded: {
 			true: {
 				base: 'pl-9 w-60 items-start bg-md-sys-color-surface-container-highest xl:bg-md-sys-color-surface-container rounded-r-lg',
+				ghost: 'w-60',
 				scrim: 'z-20 bg-black/40'
 			},
 			false: {
-				base: 'w-24 items-center'
+				base: 'w-24 items-center',
+				ghost: 'w-24'
 			}
 		},
 		rounded: {

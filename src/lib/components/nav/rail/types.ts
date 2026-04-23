@@ -22,4 +22,6 @@ export type RailProps = RailVariants &
 		fab?: Snippet;
 		collapsed?: boolean;
 		anchor?: RailVariants['anchor'];
+		/** Top offset in px for viewport/parent anchor (e.g. height of a top bar). Default 0. */
+		railTop?: number;
 	};

@@ -12,6 +12,7 @@
 		fab,
 		collapsed = $bindable(true),
 		anchor = 'viewport',
+		railTop = 0,
 		class: className
 	}: RailProps = $props();
 
@@ -19,6 +20,7 @@
 	const { base, items, ghost, scrim } = $derived(rail({ expanded, anchor, rounded }));
 	const railBaseClass = $derived(`${base({ class: clsx(className) })} rail-base`);
 	const toggleClass = $derived(collapsed ? 'cursor-e-resize' : 'cursor-w-resize');
+	const cssVars = $derived(`--rail-top: ${railTop}px;`);
 </script>
 
 <div class={ghost()}></div>
@@ -26,6 +28,7 @@
 <div class={`${scrim()} rail-scrim`} data-expanded={expanded}></div>
 <div
 	class={railBaseClass}
+	style={cssVars}
 	data-expanded={expanded}
 	use:clickOutside={() => {
 		if (expanded) collapsed = true;
