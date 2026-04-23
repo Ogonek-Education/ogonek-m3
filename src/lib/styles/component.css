@@ -4,16 +4,17 @@
 	}
 
 	.md-btn-morph {
-		transition: border-radius 200ms var(--md-sys-motion-easing-emphasized-accel);
+		border-radius: var(--btn-shape-override, var(--btn-shape, 9999px));
+		transition: border-radius 200ms var(--md-sys-motion-timing-function-emphasized-accel);
 
 		&::before {
 			border-radius: inherit;
-			transition: border-radius 200ms var(--md-sys-motion-easing-emphasized-accel);
+			transition: border-radius 200ms var(--md-sys-motion-timing-function-emphasized-accel);
 		}
 
 		&:active:not(:disabled) {
-			border-radius: var(--btn-pressed-shape, 9999px) !important;
-			transition-timing-function: var(--md-sys-motion-easing-emphasized-decel);
+			border-radius: var(--btn-pressed-shape, var(--btn-shape-override, var(--btn-shape, 9999px))) !important;
+			transition-timing-function: var(--md-sys-motion-timing-function-emphasized-decel);
 		}
 	}
 

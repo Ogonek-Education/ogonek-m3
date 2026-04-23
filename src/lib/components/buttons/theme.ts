@@ -32,30 +32,30 @@ export const button = tv({
 		},
 		size: {
 			xs: {
-				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
+				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-shape:1rem] [--btn-pressed-shape:4px]',
 				icon: 'text-[20px] size-5'
 			},
 			sm: {
-				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
+				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-shape:1.25rem] [--btn-pressed-shape:4px]',
 				icon: 'size-5 text-[20px]'
 			},
 			md: {
-				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-pressed-shape:12px]',
+				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-shape:1.75rem] [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
+			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
 			xl: {
-				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-pressed-shape:28px]',
+				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-shape:4.25rem] [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
 			}
 		},
 		shape: {
-			round: 'rounded-full',
-			square: 'rounded-md'
+			round: '',
+			square: '[--btn-shape-override:0.375rem]'
 		},
 		selected: {
-			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary rounded-md',
-			false: 'rounded-full bg-md-sys-color-surface-container'
+			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.375rem]',
+			false: 'bg-md-sys-color-surface-container'
 		}
 	},
 	compoundVariants: [
@@ -209,20 +209,20 @@ export const buttonIcon = tv({
 		},
 		size: {
 			xs: {
-				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
+				base: 'h-8 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-shape:1rem] [--btn-pressed-shape:4px]',
 				icon: 'text-[20px] size-5'
 			},
 			sm: {
-				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-pressed-shape:4px]',
+				base: 'h-10 gap-2 px-4 md-sys-typescale-label-large font-medium [--btn-shape:1.25rem] [--btn-pressed-shape:4px]',
 				icon: 'size-5 text-[20px]'
 			},
 			md: {
-				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-pressed-shape:12px]',
+				base: 'h-14 px-6 gap-2 md-sys-typescale-title-medium font-medium [--btn-shape:1.75rem] [--btn-pressed-shape:12px]',
 				icon: 'size-6 text-[24px]'
 			},
-			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
+			lg: { base: 'h-24 px-12 gap-3 md-sys-typescale-headline-small [--btn-shape:3rem] [--btn-pressed-shape:16px]', icon: 'size-8 text-[32px]' },
 			xl: {
-				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-pressed-shape:28px]',
+				base: 'h-34 px-16 md-sys-typescale-headline-large gap-4 [--btn-shape:4.25rem] [--btn-pressed-shape:28px]',
 				icon: 'text-[40px] size-10'
 			}
 		},
@@ -232,12 +232,12 @@ export const buttonIcon = tv({
 			default: 'aspect-square'
 		},
 		shape: {
-			round: 'rounded-full',
-			square: 'rounded-xl'
+			round: '',
+			square: '[--btn-shape-override:0.75rem]'
 		},
 		selected: {
-			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary rounded-md',
-			false: 'rounded-full bg-md-sys-color-surface-container'
+			true: 'bg-md-sys-color-primary text-md-sys-color-on-primary [--btn-shape-override:0.375rem]',
+			false: 'bg-md-sys-color-surface-container'
 		},
 		variation: {
 			toggle: '',
