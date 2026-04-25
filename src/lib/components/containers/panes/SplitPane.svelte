@@ -19,7 +19,9 @@
 		persist = true,
 		onPaddingChange,
 		anchor = 'viewport',
-		class: className
+		class: className,
+		leftClass,
+		rightClass
 	}: SplitPaneProps = $props();
 
 	const {
@@ -92,7 +94,7 @@
 
 <div class={base({ class: clsx(className) })} style={`--splitpane-left-width: ${leftWidth}px;`}>
 	<!-- LEFT PANE -->
-	<div class={lCls()} style={`width: var(--splitpane-left-width); left: ${leftOffset};`}>
+	<div class={lCls({ class: leftClass })} style={`width: var(--splitpane-left-width); left: ${leftOffset};`}>
 		{@render left()}
 	</div>
 
@@ -118,7 +120,7 @@
 	</div>
 
 	<!-- RIGHT PANE -->
-	<div class={rCls()}>
+	<div class={rCls({ class: rightClass })}>
 		{@render right()}
 	</div>
 </div>
