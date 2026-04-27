@@ -25,7 +25,10 @@
 	const ariaDisabled = $derived(isDisabled ? true : undefined);
 	const tabIndex = $derived(isDisabled ? -1 : undefined);
 	const isActive = $derived(
-		selected || page.url.pathname === href || (href !== '/' && page.url.pathname.startsWith(href))
+		selected ||
+			page.url.pathname === href ||
+			(href !== '/' && page.url.pathname.startsWith(href)) ||
+			page.url.href == href
 	);
 	const {
 		base,
