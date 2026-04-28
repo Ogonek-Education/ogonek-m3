@@ -8,12 +8,12 @@
 
 <button
 	type="button"
-	class="md-sys-typescale-label-large relative flex h-12 w-full cursor-pointer items-center gap-3 border-none bg-transparent px-3 text-md-sys-color-on-surface whitespace-nowrap disabled:cursor-default disabled:opacity-38"
+	class="relative flex h-12 w-full cursor-pointer items-center gap-3 border-none bg-transparent px-3 md-sys-typescale-label-large whitespace-nowrap text-md-sys-color-on-surface disabled:cursor-default disabled:opacity-38"
 	{disabled}
 	{onclick}
 >
 	{#if iconProps}
-		<Icon class="size-6 text-md-sys-color-on-surface-variant" {...iconProps} />
+		<Icon class="size-6 text-[24px] text-md-sys-color-on-surface-variant" {...iconProps} />
 	{/if}
 	{@render children()}
 	<Layer />

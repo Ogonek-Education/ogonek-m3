@@ -8,7 +8,7 @@ export const listiem = tv({
 		overline: 'md-sys-typescale-label-small line-clamp-1',
 		headline: 'text-md-sys-color-on-surface md-sys-typescale-body-large line-clamp-1',
 		supporting: 'md-sys-typescale-label-small line-clamp-2',
-		trailing: 'size-6 inline-flex items-start ml-auto'
+		trailing: 'size-6 text-[24px] inline-flex items-start ml-auto'
 	},
 	variants: {
 		lines: {

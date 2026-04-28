@@ -8,7 +8,7 @@
 		wght = 400,
 		grad = 0,
 		opsz = 24,
-		class: className = 'size-6'
+		class: className = 'size-6 text-[24px]'
 	}: IconProps = $props();
 
 	const wrapperClass = 'inline-flex items-center justify-center leading-none';

@@ -13,7 +13,7 @@ export const navitem = tv({
 	slots: {
 		base: 'justify-center flex flex-col gap-1',
 		content: 'items-center flex',
-		icon: 'size-6',
+		icon: 'size-6 text-[24px]',
 		iconContainer: 'relative rounded-full py-1.5 px-4',
 		label: 'md-sys-typescale-label-medium'
 	},

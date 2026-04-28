@@ -9,7 +9,7 @@ export const snackbar = tv({
 		actionWrapper: 'flex items-center z-40',
 		supportingText:
 			'text-md-sys-color-inverse-on-surface md-sys-typescale-body-medium max-w-[60ch] ',
-		icon: 'size-6 text-md-sys-color-inverse-on-surface mr-1 ml-3'
+		icon: 'size-6 text-[24px] text-md-sys-color-inverse-on-surface mr-1 ml-3'
 	},
 	variants: {
 		fixed: {

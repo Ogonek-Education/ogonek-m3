@@ -12,7 +12,7 @@ export const headerpicker = tv({
 		base: 'flex justify-between items-center pt-5 pb-7.5 z-10',
 		buttonWrapper: 'flex group',
 		button: 'text-md-sys-color-on-surface-variant disabled:opacity-38',
-		icon: 'size-6 text-md-sys-color-on-surface relative state-layer hover:before:bg-md-sys-color-on-surface/8 before:rounded-full',
+		icon: 'size-6 text-[24px] text-md-sys-color-on-surface relative state-layer hover:before:bg-md-sys-color-on-surface/8 before:rounded-full',
 		centralButton:
 			'flex-1 inline-flex text-md-sys-color-on-surface-variant disabled:opacity-40 size-6 items-center justify-center md-sys-typescale-label-large relative state-layer hover:before:bg-md-sys-color-on-surface/8 before:rounded-full px-10'
 	},

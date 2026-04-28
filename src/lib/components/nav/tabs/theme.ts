@@ -11,7 +11,7 @@ export const tab = tv({
 	slots: {
 		base: 'relative state-layer flex flex-col items-center w-full py-2',
 		label: '',
-		icon: 'size-6'
+		icon: 'size-6 text-[24px]'
 	},
 	variants: {
 		type: {

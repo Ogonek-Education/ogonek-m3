@@ -44,13 +44,13 @@ export const textfield = tv({
 		leadingIcon: `
       text-md-sys-color-on-surface-variant size-6
       group-focus-within:text-md-sys-color-primary
-      peer-invalid:text-md-sys-color-error ml-3
+      peer-invalid:text-md-sys-color-error ml-3 text-[24px]
     `,
 
 		trailingIcon: `
     mr-3 text-md-sys-color-on-surface-variant size-6
       group-focus-within:text-md-sys-color-primary
-      peer-invalid:text-md-sys-color-error z-20
+      peer-invalid:text-md-sys-color-error z-20 text-[24px]
     `,
 
 		supportingText: `

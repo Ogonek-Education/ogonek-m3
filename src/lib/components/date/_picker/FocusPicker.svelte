@@ -20,9 +20,9 @@
 		{@const { item } = focuspicker({ selected })}
 		<button type="button" class={item()} onclick={activate} use:conditionalScroll={selected}>
 			{#if selected}
-				<Icon class="ml-3 size-6" name="check" />
+				<Icon class="ml-3 size-6 text-[24px]" name="check" />
 			{:else}
-				<div class="ml-3 block size-6"></div>
+				<div class="ml-3 block size-6 text-[24px]"></div>
 			{/if}
 			{name}
 		</button>

@@ -94,7 +94,10 @@
 
 <div class={base({ class: clsx(className) })} style={`--splitpane-left-width: ${leftWidth}px;`}>
 	<!-- LEFT PANE -->
-	<div class={lCls({ class: leftClass })} style={`width: var(--splitpane-left-width); left: ${leftOffset};`}>
+	<div
+		class={lCls({ class: leftClass })}
+		style={`width: var(--splitpane-left-width); left: ${leftOffset};`}
+	>
 		{@render left()}
 	</div>
 

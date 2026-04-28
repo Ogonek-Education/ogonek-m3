@@ -416,7 +416,7 @@
 						: 'bg-md-sys-color-primary-container text-md-sys-color-on-primary-container group-hover:bg-md-sys-color-primary group-hover:text-md-sys-color-on-primary'
 				}`}
 			>
-				<Icon name="file_upload" class="size-6" />
+				<Icon name="file_upload" />
 			</div>
 
 			<div class="space-y-1">
@@ -442,7 +442,7 @@
 						<div
 							class={`flex size-10 items-center justify-center rounded-full ${statusTone(fileState.status)}`}
 						>
-							<Icon class="size-6" name={statusIcon(fileState.status)} />
+							<Icon name={statusIcon(fileState.status)} />
 						</div>
 					{/if}
 
