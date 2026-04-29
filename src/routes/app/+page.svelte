@@ -1,7 +1,9 @@
 <script lang="ts">
+	import ListItem from '$lib/components/containers/list/ListItem.svelte';
+	import SplitPane from '$lib/components/containers/panes/SplitPane.svelte';
+	import SupportingPane from '$lib/components/containers/panes/SupportingPane.svelte';
 	import Rail from '$lib/components/nav/rail/Rail.svelte';
 	import RailItem from '$lib/components/nav/rail/RailItem.svelte';
-	import { ListItem, SplitPane, SupportingPane } from '$lib/index.ts';
 </script>
 
 <Rail expandable={false}>
