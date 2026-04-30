@@ -4,7 +4,8 @@
 	 */
 	import clsx from 'clsx';
 	import { fabMenuItem, type FABMenuItemProps } from '$lib/components/index.js';
-	import { Icon, LoadingIndicator } from '$lib/utils/index.js';
+	import { Icon, LoadingIndicator, Layer } from '$lib/utils/index.js';
+	import { Button, type ButtonRootProps } from 'bits-ui';
 
 	let {
 		class: className,
@@ -17,29 +18,19 @@
 	}: FABMenuItemProps = $props();
 
 	const { base, icon } = $derived(fabMenuItem({ variant }));
-
 	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-{#if restProps.href !== undefined}
-	<a {...restProps} class={btnCls}>
-		{#if iconProps}
+<Button.Root {formaction} class={btnCls} {...(restProps as ButtonRootProps)}>
+	{#if iconProps}
+		{#if loading}
+			<LoadingIndicator />
+		{:else}
 			<Icon class={icon()} {...iconProps} />
 		{/if}
-
-		{@render children?.()}
-	</a>
-{:else}
-	<button {...restProps} class={btnCls} {formaction}>
-		{#if iconProps}
-			{#if loading}
-				<LoadingIndicator />
-			{:else}
-				<Icon class={icon()} {...iconProps} />
-			{/if}
-		{:else if loading}
-			<LoadingIndicator />
-		{/if}
-		{@render children?.()}
-	</button>
-{/if}
+	{:else if loading}
+		<LoadingIndicator />
+	{/if}
+	{@render children?.()}
+	<Layer />
+</Button.Root>

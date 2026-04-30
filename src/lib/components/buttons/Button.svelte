@@ -11,11 +11,10 @@
 	 * @see https://m3.material.io/components/all-buttons
 	 */
 	import type { ButtonMDProps } from './types.js';
-	import { Icon } from '$lib/utils/index.js';
+	import { Icon, LoadingIndicator, Layer } from '$lib/utils/index.js';
 	import { button } from './theme.js';
 	import clsx from 'clsx';
-	import { LoadingIndicator } from '$lib/utils/index.js';
-	import { Layer } from '$lib/utils/index.js';
+	import { Button, type ButtonRootProps } from 'bits-ui';
 
 	let {
 		children,
@@ -36,29 +35,18 @@
 	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-{#if restProps.href !== undefined}
-	<a {...restProps} class={btnCls}>
-		{#if iconProps}
-			<Icon class={icon()} {...iconProps} />
-		{/if}
-		<Layer />
-
-		{@render children?.()}
-	</a>
-{:else}
-	<button {disabled} {...restProps} class={btnCls} {formaction}>
-		{#if iconProps}
-			{#if loading}
-				<LoadingIndicator container={variant === 'filled'} class={icon()} />
-			{:else}
-				<Icon class={icon()} {...iconProps} />
-				{@render children?.()}
-			{/if}
-		{:else if loading}
-			<LoadingIndicator container={variant === 'filled'} />
+<Button.Root {disabled} {formaction} class={btnCls} {...(restProps as ButtonRootProps)}>
+	{#if iconProps}
+		{#if loading}
+			<LoadingIndicator container={variant === 'filled'} class={icon()} />
 		{:else}
+			<Icon class={icon()} {...iconProps} />
 			{@render children?.()}
 		{/if}
-		<Layer />
-	</button>
-{/if}
+	{:else if loading}
+		<LoadingIndicator container={variant === 'filled'} />
+	{:else}
+		{@render children?.()}
+	{/if}
+	<Layer />
+</Button.Root>

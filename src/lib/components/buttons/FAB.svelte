@@ -16,10 +16,10 @@
 	import ButtonIcon from './ButtonIcon.svelte';
 	import { Layer, Icon } from '$lib/utils/index.js';
 	import { clickOutside } from '$lib/actions/index.js';
+	import { Button, type ButtonRootProps } from 'bits-ui';
 
 	let {
 		children,
-		color = 'primary',
 		disabled,
 		formaction,
 		size = 'regular',
@@ -33,46 +33,23 @@
 	}: FABProps = $props();
 
 	const { base, icon, label: labelClass } = $derived(fab({ size, config, expanded }));
-	let btnCls = $derived(
-		base({
-			class: clsx(className)
-		})
-	);
+	const btnCls = $derived(base({ class: clsx(className) }));
 
 	let showMenu = $state(false);
 
-	function handleClick(e: any) {
+	function handleClick(e: MouseEvent) {
 		if (disabled) {
 			e.preventDefault();
 			return;
 		}
-
 		if (withMenu) {
 			e.preventDefault();
 			showMenu = true;
-			return;
-		} else if (restProps.onclick) {
-			restProps.onclick(e);
 		}
 	}
 </script>
 
-{#if restProps.href !== undefined}
-	<a
-		{...restProps}
-		class={btnCls}
-		aria-disabled={disabled}
-		onclick={(event) => disabled && event.preventDefault()}
-	>
-		<Icon {...iconProps} class={icon()} />
-		<Layer />
-		{#if expanded}
-			<p class={labelClass()}>
-				{label}
-			</p>
-		{/if}
-	</a>
-{:else if withMenu && showMenu}
+{#if withMenu && showMenu}
 	<div class="relative z-50" use:clickOutside={() => (showMenu = false)}>
 		<FABMenu>
 			{@render children?.()}
@@ -85,7 +62,7 @@
 		/>
 	</div>
 {:else}
-	<button {...restProps} class={btnCls} onclick={(e) => handleClick(e)} {disabled}>
+	<Button.Root {disabled} {formaction} class={btnCls} onclick={handleClick} {...(restProps as ButtonRootProps)}>
 		<Icon {...iconProps} class={icon()} />
 		<Layer />
 		{#if expanded}
@@ -93,5 +70,5 @@
 				{label}
 			</p>
 		{/if}
-	</button>
+	</Button.Root>
 {/if}

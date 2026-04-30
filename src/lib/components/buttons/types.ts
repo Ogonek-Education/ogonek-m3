@@ -123,8 +123,10 @@ export type ButtonIconProps = ButtonIconVariants &
 		href?: string;
 		/** The `formaction` attribute for the button when used in a form. */
 		formaction?: string;
-		/** Callback for the button click event. */
-		onclick?: () => void;
+		/** Whether the toggle button is pressed (only meaningful when `variation === 'toggle'`). */
+		pressed?: boolean;
+		/** Callback when the pressed state changes (only meaningful when `variation === 'toggle'`). */
+		onPressedChange?: (pressed: boolean) => void;
 		/** Whether the button is in a loading state. Displays a loading indicator instead of the icon. */
 		loading?: boolean;
 		/** The side of the tooltip relative to the button. */
