@@ -27,37 +27,34 @@
 </script>
 
 <DropdownMenu.Item {disabled} onSelect={handleSelect}>
-	{#snippet child({ props })}
-		<button
-			{...props}
-			{...restProps}
-			type="button"
-			class={clsx(
-				'relative flex w-full cursor-pointer items-start gap-3 border-none bg-transparent px-3 py-2 text-left md-sys-typescale-label-large whitespace-nowrap text-md-sys-color-on-surface hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-default disabled:opacity-38',
-				selected && 'bg-md-sys-color-secondary-container'
-			)}
-			{disabled}
-		>
-			{#if iconProps}
-				<Icon class="size-6 text-[24px] text-md-sys-color-on-surface-variant" {...iconProps} />
-			{/if}
+	<button
+		{...restProps}
+		type="button"
+		class={clsx(
+			'relative flex w-full cursor-pointer items-start gap-3 border-none bg-transparent px-3 py-2 text-left md-sys-typescale-label-large whitespace-nowrap text-md-sys-color-on-surface hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-default disabled:opacity-38',
+			selected && 'bg-md-sys-color-secondary-container'
+		)}
+		{disabled}
+	>
+		{#if iconProps}
+			<Icon class="size-6 text-[24px] text-md-sys-color-on-surface-variant" {...iconProps} />
+		{/if}
 
-			<div class="flex flex-1 flex-col gap-1">
-				<span class="md-sys-typescale-body-large text-md-sys-color-on-surface">
-					{@render children()}
+		<div class="flex flex-1 flex-col gap-1">
+			<span class="md-sys-typescale-body-large text-md-sys-color-on-surface">
+				{@render children()}
+			</span>
+			{#if helper}
+				<span class="md-sys-typescale-body-medium text-md-sys-color-on-surface-variant">
+					{helper}
 				</span>
-				{#if helper}
-					<span class="md-sys-typescale-body-medium text-md-sys-color-on-surface-variant">
-						{helper}
-					</span>
-				{/if}
-			</div>
-
-			{#if selected}
-				<Icon aria-hidden="true" name="check" />
 			{/if}
+		</div>
 
-			<Layer />
-		</button>
-	{/snippet}
+		{#if selected}
+			<Icon aria-hidden="true" name="check" />
+		{/if}
+
+		<Layer />
+	</button>
 </DropdownMenu.Item>

@@ -43,7 +43,6 @@
 	} from '$lib/index.js';
 	import { nanoid } from 'nanoid';
 	import SinglePane from '$lib/components/containers/panes/SinglePane.svelte';
-
 	let showModal = $state(false);
 	let showModal2 = $state(false);
 	let showModal3 = $state(false);

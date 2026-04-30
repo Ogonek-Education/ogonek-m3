@@ -69,10 +69,7 @@
 		</Select.Trigger>
 
 		<Select.Portal>
-			<Select.Content
-				class={cls.content({ class: contentClass })}
-				sideOffset={4}
-			>
+			<Select.Content class={cls.content({ class: contentClass })} sideOffset={4}>
 				<Select.Viewport>
 					{#if items && items.length > 0}
 						{#each items as item}

@@ -5,6 +5,8 @@
 @import '../lib/styles/theme/light.css';
 @import '../lib/styles/theme/dark.css';
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
 	--font-sans: 'Inter', 'Roboto Flex', system-ui, sans-serif;
 	--default-transition-duration: 0ms;
