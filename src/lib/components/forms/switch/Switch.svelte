@@ -10,8 +10,8 @@
 	import { Icon } from '$lib/utils/index.js';
 	import { toggle } from './theme.js';
 	import type { SwitchProps } from './types.js';
+	import { Switch } from 'bits-ui';
 
-	// MUST BE WRAPPED IN A <label>
 	let {
 		checked = $bindable(false),
 		disabled = false,
@@ -19,7 +19,7 @@
 		uncheckedIconProps = { name: 'close' },
 		icons = 'checked',
 		class: className,
-		...extra
+		...restProps
 	}: SwitchProps = $props();
 
 	let startX: number | undefined = $state();
@@ -31,46 +31,43 @@
 		startX = undefined;
 	};
 
-	const { root, input, handle, hover, icon } = $derived(toggle({ icons }));
+	const { root, handle, hover, icon, input, iconChecked, iconUnchecked } = $derived(
+		toggle({ icons })
+	);
+	const rootClass = $derived(String(root({ class: className })));
 </script>
 
 <svelte:window onpointerup={handleMouseUp} />
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div
-	class={root({ class: clsx(className) })}
+
+<Switch.Root
+	bind:checked
+	{disabled}
+	{...restProps}
+	class={clsx(rootClass, 'group') as any}
 	onpointerdown={(e) => {
 		if (!disabled) startX = e.clientX;
 	}}
 	ondragstart={(e) => e.preventDefault()}
 >
-	<input
-		type="checkbox"
-		role="switch"
-		{disabled}
-		bind:checked
-		{...extra}
-		class={input()}
-		onkeydown={(e) => {
-			if (e.code == 'Enter') checked = !checked;
-			if (e.code == 'ArrowLeft') checked = false;
-			if (e.code == 'ArrowRight') checked = true;
-		}}
-	/>
-	<div class={handle()}>
-		{#if icons !== 'none'}
-			<!-- checked icon: visible when checked -->
-			<Icon
-				class={icon({ class: 'group-has-[:checked]:opacity-100' })}
-				{...checkedIconProps}
-			/>
-			{#if icons === 'both'}
-				<!-- unchecked icon: visible when not checked -->
-				<Icon
-					class={icon({ class: 'opacity-100 group-has-[:checked]:opacity-0' })}
-					{...uncheckedIconProps}
-				/>
-			{/if}
-		{/if}
-	</div>
-	<div class={hover()}></div>
-</div>
+	{#snippet child({ props })}
+		<button {...props} type="button" class={clsx(rootClass, 'group')}>
+			<!-- Track (formerly the input) -->
+			<div class={String(input())}></div>
+
+			<!-- Thumb -->
+			<div class={String(handle())}>
+				{#if icons !== 'none'}
+					<!-- checked icon -->
+					<Icon class={clsx(icon(), iconChecked())} {...checkedIconProps} />
+					{#if icons === 'both'}
+						<!-- unchecked icon -->
+						<Icon class={clsx(icon(), iconUnchecked())} {...uncheckedIconProps} />
+					{/if}
+				{/if}
+			</div>
+
+			<!-- State layer -->
+			<div class={String(hover())}></div>
+		</button>
+	{/snippet}
+</Switch.Root>

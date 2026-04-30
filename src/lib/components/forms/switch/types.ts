@@ -1,14 +1,15 @@
 import type { IconProps } from '$lib/utils/index.js';
-import type { HTMLInputAttributes } from 'svelte/elements';
+import type { SwitchRootProps } from 'bits-ui';
 import type { SwitchVariants } from './theme.js';
 
 /**
  * Props for the Switch component.
  */
 export type SwitchProps = SwitchVariants &
-	Omit<HTMLInputAttributes, 'size'> & {
+	Omit<SwitchRootProps, 'checked' | 'disabled'> & {
 		/**
 		 * Whether the switch is checked.
+		 * @bindable
 		 */
 		checked?: boolean;
 
