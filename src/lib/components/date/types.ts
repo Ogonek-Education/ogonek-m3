@@ -1,10 +1,11 @@
 import type { DateValue } from '@internationalized/date';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { Snippet } from 'svelte';
+import type { TextfieldProps } from '../forms/index.ts';
 
 /**
  * Common props for Date components.
- * 
+ *
  * Note: We use DateValue from @internationalized/date.
  * To create a DateValue from a string, use:
  * ```ts
@@ -43,7 +44,7 @@ export interface DateFieldProps extends BaseDateProps {
 	/**
 	 * The current value of the date field.
 	 */
-	value?: DateValue | undefined;
+	value?: DateValue;
 }
 
 export interface DatePickerProps extends DateFieldProps {

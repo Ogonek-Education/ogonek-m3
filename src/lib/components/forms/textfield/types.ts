@@ -2,6 +2,7 @@ import type { IconProps } from '$lib/utils/index.js';
 import type { Snippet } from 'svelte';
 import type { HTMLInputAttributes } from 'svelte/elements';
 import type { TextFieldVariants } from './theme.js';
+import type { DateValue } from '@internationalized/date';
 
 /**
  * Props for the Textfield component.
@@ -11,7 +12,7 @@ export type TextfieldProps = TextFieldVariants &
 		/**
 		 * The current value of the text field.
 		 */
-		value?: string | number | null;
+		value?: string | number | null | DateValue;
 
 		/**
 		 * The label text for the text field.

@@ -611,7 +611,6 @@
 	<!-- TIME & DATE -->
 	<Display>Time & Date</Display>
 	<div class="grid grid-cols-2 gap-4">
-		<DateField label="Дата" />
 		<TimepickerInput
 			setTime={(t) => console.debug('set time', t)}
 			close={() => console.debug('closed')}
@@ -621,6 +620,7 @@
 		<LoadingIndicator container />
 	</div>
 
+	<DateField label="Дата" />
 	<Divider />
 
 	<!-- MULTIPART -->
