@@ -1,8 +1,8 @@
-import type { HTMLInputAttributes } from 'svelte/elements';
+import type { CheckboxRootProps } from 'bits-ui';
 import type { CheckboxM3Variants } from './theme.js';
 
 export type CheckboxProps = CheckboxM3Variants &
-	Omit<HTMLInputAttributes, 'children' | 'color' | 'type'> & {
+	Omit<CheckboxRootProps, 'children' | 'checked' | 'indeterminate'> & {
 		/**
 		 * The text label for the checkbox.
 		 */
@@ -13,16 +13,13 @@ export type CheckboxProps = CheckboxM3Variants &
 		supportingText?: string;
 		/**
 		 * Whether the checkbox is in an indeterminate state.
+		 * @bindable
 		 */
 		indeterminate?: boolean;
 		/**
-		 * Array for grouping multiple checkboxes.
-		 */
-		group?: unknown[];
-		/**
 		 * The value associated with the checkbox.
 		 */
-		value?: string | number | boolean;
+		value?: string;
 		/**
 		 * Whether the checkbox is checked.
 		 * @bindable
