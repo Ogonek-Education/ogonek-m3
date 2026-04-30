@@ -43,6 +43,7 @@
 	} from '$lib/index.js';
 	import { nanoid } from 'nanoid';
 	import HStack from '$lib/components/containers/stack/HStack.svelte';
+	import SinglePane from '$lib/components/containers/panes/SinglePane.svelte';
 
 	let showModal = $state(false);
 	let showModal2 = $state(false);
@@ -193,7 +194,7 @@
 	<title>Components | Ogonëk M3</title>
 </svelte:head>
 
-<div class="flex flex-col gap-12 bg-md-sys-color-background p-12">
+<SinglePane class="ml-24 p-12" contentClass="gap-12">
 	<!-- BUTTONS -->
 	<Display>Buttons</Display>
 	<Headline>Regular Buttons</Headline>
@@ -204,7 +205,13 @@
 		<Button variant="outlined">Outlined</Button>
 		<Button variant="text">Text</Button>
 		<Button variant="elevated">Elevated</Button>
-		<Button variant="bare" onclick={() => { toggle = !toggle; }} selected={toggle}>Selected</Button>
+		<Button
+			variant="bare"
+			onclick={() => {
+				toggle = !toggle;
+			}}
+			selected={toggle}>Selected</Button
+		>
 		<Button variant="bare" selected={!toggle}>Unselected</Button>
 		<Button size="xs">XSmall</Button>
 		<Button size="sm">Small</Button>
@@ -260,12 +267,19 @@
 	<!-- TOOLTIPS -->
 	<Display>Tooltips</Display>
 	<div class="flex flex-wrap items-center gap-6">
-		<Tooltip subhead="Домой" supportingText="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки.">
+		<Tooltip
+			subhead="Домой"
+			supportingText="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки."
+		>
 			{#snippet trigger()}
 				<ButtonIcon aria-label="Домой" iconProps={{ name: 'home' }} />
 			{/snippet}
 		</Tooltip>
-		<Tooltip placement="bottom" subhead="Быстрая подсказка" supportingText="Доступна кнопкой Tab и закрывается, когда курсор уходит.">
+		<Tooltip
+			placement="bottom"
+			subhead="Быстрая подсказка"
+			supportingText="Доступна кнопкой Tab и закрывается, когда курсор уходит."
+		>
 			{#snippet trigger()}
 				<Button variant="outlined" iconProps={{ name: 'info' }}>Подсказка снизу</Button>
 			{/snippet}
@@ -298,13 +312,41 @@
 	<VStack>
 		<Rail bind:collapsed={railCollapsed}>
 			<RailItem collapsed={railCollapsed} name="Главная" href="/" iconProps={{ name: 'home' }} />
-			<RailItem collapsed={railCollapsed} name="Задания" href="/assignments" iconProps={{ name: 'assignment' }} />
-			<RailItem collapsed={railCollapsed} name="Занятия" href="/lessons" iconProps={{ name: 'book' }} />
+			<RailItem
+				collapsed={railCollapsed}
+				name="Задания"
+				href="/assignments"
+				iconProps={{ name: 'assignment' }}
+			/>
+			<RailItem
+				collapsed={railCollapsed}
+				name="Занятия"
+				href="/lessons"
+				iconProps={{ name: 'book' }}
+			/>
 		</Rail>
 		<Rail bind:collapsed={railCollapsedWithBadges}>
-			<RailItem collapsed={railCollapsedWithBadges} badge={3} name="Главная" href="/" iconProps={{ name: 'home' }} />
-			<RailItem collapsed={railCollapsedWithBadges} badge={3} name="Задания" href="/assignments" iconProps={{ name: 'assignment' }} />
-			<RailItem collapsed={railCollapsedWithBadges} badge={-1} name="Занятия" href="/lessons" iconProps={{ name: 'book' }} />
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Главная"
+				href="/"
+				iconProps={{ name: 'home' }}
+			/>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Задания"
+				href="/assignments"
+				iconProps={{ name: 'assignment' }}
+			/>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={-1}
+				name="Занятия"
+				href="/lessons"
+				iconProps={{ name: 'book' }}
+			/>
 		</Rail>
 	</VStack>
 
@@ -346,9 +388,23 @@
 	<!-- DIALOGUES -->
 	<Display>Dialogues</Display>
 	<div class="flex flex-wrap gap-4">
-		<Button onclick={() => { showModal = !showModal; }}>Simple Dialogue</Button>
-		<Button variant="tonal" onclick={() => { showModal2 = !showModal2; }}>With Headline</Button>
-		<Button variant="outlined" onclick={() => { showModal3 = !showModal3; }}>Long Content</Button>
+		<Button
+			onclick={() => {
+				showModal = !showModal;
+			}}>Simple Dialogue</Button
+		>
+		<Button
+			variant="tonal"
+			onclick={() => {
+				showModal2 = !showModal2;
+			}}>With Headline</Button
+		>
+		<Button
+			variant="outlined"
+			onclick={() => {
+				showModal3 = !showModal3;
+			}}>Long Content</Button
+		>
 	</div>
 	{#if showModal}
 		<Dialogue
@@ -385,7 +441,7 @@
 
 	<!-- TEXT FIELDS -->
 	<Display>Text Fields</Display>
-	<div class="grid grid-cols-2 gap-4 max-w-3xl">
+	<div class="grid max-w-3xl grid-cols-2 gap-4">
 		<Textfield label="Default" id="tf1" />
 		<Textfield label="With value" value="Hello world" id="tf2" />
 		<Textfield label="With supporting text" id="tf3">
@@ -461,7 +517,7 @@
 	</div>
 
 	<Headline>Select</Headline>
-	<div class="flex flex-wrap gap-4 max-w-md">
+	<div class="flex max-w-md flex-wrap gap-4">
 		<Select
 			bind:value={selectValue}
 			items={selectItems}
@@ -499,7 +555,11 @@
 	<!-- SNACKBAR -->
 	<Display>Snackbar</Display>
 	<div class="flex gap-4">
-		<Button onclick={() => { snackbarMsg = 'Это уведомление исчезнет через 5 секунд'; }}>
+		<Button
+			onclick={() => {
+				snackbarMsg = 'Это уведомление исчезнет через 5 секунд';
+			}}
+		>
 			Show Snackbar
 		</Button>
 	</div>
@@ -528,7 +588,7 @@
 	<!-- PROGRESS -->
 	<Display>Progress</Display>
 	<Headline>Linear Progress</Headline>
-	<div class="flex flex-col gap-6 max-w-xl">
+	<div class="flex max-w-xl flex-col gap-6">
 		<LinearProgress percent={30} />
 		<LinearProgress percent={65} />
 		<LinearProgress percent={100} />
@@ -545,7 +605,7 @@
 	</div>
 
 	<Headline>Wavy Linear Progress</Headline>
-	<div class="flex flex-col gap-4 max-w-xl">
+	<div class="flex max-w-xl flex-col gap-4">
 		<WavyLinearProgress percent={60} />
 	</div>
 
@@ -577,12 +637,17 @@
 	<Display>Lists</Display>
 	<div class="grid grid-cols-2 gap-4">
 		<ul class="max-w-5xl">
-			{#each Array(5).fill({ headline: 'Lesson', overline: 'Interesting', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' }) as lesson}
-				<ListItem headline={lesson.headline} overline={lesson.overline} supporting={lesson.supporting} href={lesson.href} />
+			{#each Array(5).fill( { headline: 'Lesson', overline: 'Interesting', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
+				<ListItem
+					headline={lesson.headline}
+					overline={lesson.overline}
+					supporting={lesson.supporting}
+					href={lesson.href}
+				/>
 			{/each}
 		</ul>
 		<ul class="max-w-5xl">
-			{#each Array(5).fill({ headline: 'Task', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' }) as lesson}
+			{#each Array(5).fill( { headline: 'Task', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
 				<ListItem headline={lesson.headline} supporting={lesson.supporting} href={lesson.href}>
 					{#snippet trailing()}
 						<Icon name="check" />
@@ -636,4 +701,4 @@
 			</div>
 		{/each}
 	</div>
-</div>
+</SinglePane>
