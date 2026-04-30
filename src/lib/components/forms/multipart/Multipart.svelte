@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * @component
+	 * Multipart file upload component that supports chunked uploads for large files.
+	 * Follows Material 3 design principles for file uploaders.
+	 */
 	import { onDestroy } from 'svelte';
 	import { Icon, formatPercentage, Layer } from '$lib/utils/index.js';
 	import { ButtonIcon, CircularProgress, Label, Title, HStack } from '$lib/components/index.js';
@@ -23,18 +28,32 @@
 		etag: string;
 	}
 
+	/**
+	 * Internal state for a single file upload.
+	 */
 	interface FileUploadState {
+		/** Unique identifier for the upload session */
 		id: string;
+		/** The file being uploaded */
 		file: File;
+		/** Upload progress tracking */
 		progress: {
+			/** Number of chunks uploaded */
 			uploaded: number;
+			/** Total number of chunks */
 			total: number;
+			/** Total bytes uploaded */
 			bytes: number;
+			/** Total size of the file in bytes */
 			totalBytes: number;
+			/** Percentage of upload completed (0-100) */
 			percentComplete: number;
 		};
+		/** Current status of the upload */
 		status: UploadStatus;
+		/** Optional error message if status is 'error' */
 		errorMessage?: string;
+		/** AbortController for cancelling the upload */
 		abortController?: AbortController;
 	}
 
@@ -46,11 +65,17 @@
 		title = 'Загрузка файлов',
 		label = 'Область загрузки файлов'
 	}: {
+		/** Unique ID of the task associated with these uploads */
 		taskId?: string | null;
+		/** ID of the folder where files will be stored */
 		folderId?: string | null;
+		/** Whether the upload area is interactive */
 		readonly?: boolean;
-		title?: string;
+		/** Initial list of files to display */
 		initialUploads?: FileUploadState[];
+		/** Title displayed above the upload area */
+		title?: string;
+		/** Accessibility label for the upload zone */
 		label?: string;
 	} = $props();
 

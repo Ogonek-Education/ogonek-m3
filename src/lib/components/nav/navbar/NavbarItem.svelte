@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Material 3 Navigation Bar Item.
+	 *
+	 * A single destination within a navigation bar.
+	 */
 	import { page } from '$app/state';
 	import clsx from 'clsx';
 	import { Icon, Layer } from '$lib/utils/index.js';

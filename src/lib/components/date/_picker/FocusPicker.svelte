@@ -1,4 +1,8 @@
 <script lang="ts">
+	/**
+	 * FocusPicker is used to select a month or year from a list.
+	 * @internal
+	 */
 	import { Icon } from '$lib/utils/index.js';
 	import { focuspicker } from '../theme.js';
 
@@ -6,11 +10,19 @@
 		if (shouldScroll) node.scrollIntoView({ block: 'nearest' });
 	};
 
-	let {
-		options
-	}: {
-		options: { name: string; selected: boolean; activate: () => void }[];
-	} = $props();
+	interface Props {
+		/** Array of options to display in the picker. */
+		options: {
+			/** Display name of the option. */
+			name: string;
+			/** Whether the option is currently selected. */
+			selected: boolean;
+			/** Callback function when the option is selected. */
+			activate: () => void;
+		}[];
+	}
+
+	let { options }: Props = $props();
 
 	const { base } = focuspicker();
 </script>

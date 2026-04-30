@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Menus display a list of choices on temporary surfaces.
+	 *
+	 * @see https://m3.material.io/components/menus/guidelines
+	 */
 	import type { IconProps } from '$lib/utils/index.js';
 	import clsx from 'clsx';
 	import { textfield } from '../forms/index.ts';
@@ -8,32 +13,71 @@
 	import { enterExit } from '$lib/animation/enterExit.js';
 	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
 
+	/**
+	 * Represents an item in the menu.
+	 */
 	type MenuItem = {
+		/** The display label of the item. */
 		label: string;
+		/** The unique value of the item. */
 		value: string;
+		/** Optional supporting text shown below the label. */
 		helper?: string;
+		/** Whether the item is disabled. */
 		disabled?: boolean;
+		/** Callback function when the item is selected. */
 		onselect?: (item: any) => void;
 	};
 
+	/**
+	 * Props for the Menu component.
+	 */
 	type BaseProps = {
+		/** Array of menu items to display. */
 		items: MenuItem[];
+		/** Accessible label for the menu trigger. */
 		label?: string;
+		/** The value of the currently selected item. */
 		selected: string;
+		/**
+		 * Alignment of the menu relative to the trigger.
+		 * @default 'start'
+		 */
 		align?: 'start' | 'end';
+		/**
+		 * Maximum height of the menu in pixels.
+		 * @default 320
+		 */
 		maxHeight?: number;
+		/**
+		 * Prefix for data-cy attributes on menu items.
+		 * @default 'menu-item'
+		 */
 		itemDataCyPrefix?: string;
+		/** Data-cy attribute for testing. */
 		dataCy?: string;
+		/** Data-cy attribute for testing. */
 		'data-cy'?: string;
+		/**
+		 * The visual style of the trigger element.
+		 * @default 'button'
+		 */
 		triggerVariant?: 'button' | 'textfield';
+		/** Label for the textfield trigger. */
 		triggerLabel?: string;
+		/** Value for the textfield trigger. */
 		triggerValue?: any;
+		/** Props for the leading icon of the trigger. */
 		triggerLeadingIconProps?: IconProps;
+		/** Props for the trailing icon of the trigger. */
 		triggerTrailingIconProps?: IconProps;
+		/** Whether the menu trigger is disabled. */
 		disabled?: boolean;
+		/** Whether the menu trigger is in an error state. */
 		error?: boolean;
+		/** Additional CSS classes for the trigger element. */
 		triggerClass?: string;
-		['data-cy']?: string;
+		/** Callback function when an item is selected. */
 		onselect: (item: any) => void;
 	};
 

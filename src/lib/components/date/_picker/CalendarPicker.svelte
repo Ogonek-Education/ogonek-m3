@@ -1,18 +1,28 @@
 <script lang="ts">
+	/**
+	 * CalendarPicker displays a grid of days for a specific month.
+	 * @internal
+	 */
 	import Item from './Item.svelte';
 	import { calendarpicker } from '../theme.js';
+
+	interface Props {
+		/** The month to display (0-11). */
+		focusedMonth: number;
+		/** The year to display. */
+		focusedYear: number;
+		/** Optional function to validate if a date can be selected. */
+		dateValidator: (date: string) => boolean;
+		/** The currently chosen date in ISO format. */
+		chosenDate: string;
+	}
 
 	let {
 		focusedMonth,
 		focusedYear,
 		dateValidator,
 		chosenDate = $bindable()
-	}: {
-		focusedMonth: number;
-		focusedYear: number;
-		dateValidator: (date: string) => boolean;
-		chosenDate: string;
-	} = $props();
+	}: Props = $props();
 
 	const makeCalendar = (year: number, month: number) => {
 		const firstDay = new Date(year, month, 1);

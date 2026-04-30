@@ -1,4 +1,11 @@
 <script lang="ts">
+	/**
+	 * Material 3 Linear Progress Indicator.
+	 *
+	 * Linear progress indicators display progress along a fixed track.
+	 *
+	 * @see https://m3.material.io/components/progress-indicators/overview#linear-progress-indicators
+	 */
 	import clsx from 'clsx';
 	import { tv } from 'tailwind-variants';
 
@@ -6,7 +13,14 @@
 		percent,
 		height = 4,
 		class: className
-	}: { percent: number; height?: number; class?: string } = $props();
+	}: {
+		/** The current progress percentage (0-100). */
+		percent: number;
+		/** The height of the progress bar in pixels. Defaults to 4. */
+		height?: number;
+		/** Additional CSS classes for the container. */
+		class?: string;
+	} = $props();
 
 	const linearProgress = tv({
 		slots: {

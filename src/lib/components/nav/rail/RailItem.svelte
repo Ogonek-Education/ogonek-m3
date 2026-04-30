@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Material 3 Navigation Rail Item.
+	 *
+	 * A single destination within a navigation rail.
+	 */
 	import { page } from '$app/state';
 	import type { RailItemProps } from './types.js';
 	import { railElement } from './theme.js';

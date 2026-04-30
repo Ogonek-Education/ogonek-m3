@@ -1,16 +1,13 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	/**
+	 * Side sheets are supplementary surfaces which are anchored to the edge of the screen.
+	 *
+	 * @see https://m3.material.io/components/side-sheets/guidelines
+	 */
+	import type { SideSheetProps } from './types.js';
 	import ButtonIcon from '$lib/components/buttons/ButtonIcon.svelte';
 
-	let {
-		headline,
-		children,
-		close
-	}: {
-		headline: string;
-		children: Snippet;
-		close: () => void;
-	} = $props();
+	let { headline, children, close }: SideSheetProps = $props();
 </script>
 
 <div class="flex flex-col">

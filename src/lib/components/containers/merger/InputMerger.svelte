@@ -1,7 +1,21 @@
 <script lang="ts">
+	/**
+	 * InputMerger is a container that groups multiple input components together visually.
+	 */
 	import clsx from 'clsx';
 
-	let { children, class: className = '' } = $props();
+	interface Props {
+		/**
+		 * The input components to be merged.
+		 */
+		children: import('svelte').Snippet;
+		/**
+		 * Additional CSS classes for the container.
+		 */
+		class?: string;
+	}
+
+	let { children, class: className = '' }: Props = $props();
 </script>
 
 <div

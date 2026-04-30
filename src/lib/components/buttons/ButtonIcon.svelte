@@ -1,4 +1,14 @@
 <script lang="ts">
+	/**
+	 * Icon buttons help people take minor actions and are often used in app bars.
+	 *
+	 * - Standard: Low emphasis
+	 * - Filled: High emphasis
+	 * - Filled Tonal: Medium-high emphasis
+	 * - Outlined: Medium emphasis
+	 *
+	 * @see https://m3.material.io/components/icon-buttons/overview
+	 */
 	import type { ButtonIconProps } from './types.js';
 	import { Icon } from '$lib/utils/index.js';
 	import { buttonIcon } from './theme.js';
@@ -16,7 +26,8 @@
 		shape = 'round',
 		variation = 'default',
 		triggerClass = '',
-		triggerPlacement = 'top',
+		triggerSide = 'top',
+		triggerAlign = 'center',
 		disabled,
 		formaction,
 		tooltipContent,
@@ -43,7 +54,8 @@
 
 <Tooltip
 	{triggerClass}
-	placement={triggerPlacement}
+	side={triggerSide}
+	align={triggerAlign}
 	variant="snack"
 	supportingText={tooltipContent}
 >

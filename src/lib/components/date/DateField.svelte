@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * DateField is a text field that allows users to enter a date or pick it from a calendar.
+	 *
+	 * @see https://m3.material.io/components/date-pickers/guidelines
+	 */
 	import type { Snippet } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { Textfield } from '$lib/components/index.js';
@@ -6,6 +11,42 @@
 	import { clickOutside, positionFloating } from '$lib/actions/index.js';
 	import { enterExit } from '$lib/animation/enterExit.js';
 	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
+
+	interface Props extends HTMLInputAttributes {
+		/**
+		 * The label for the date field.
+		 * @default 'Дата'
+		 */
+		label?: string;
+		/**
+		 * The current value of the date field in ISO format (YYYY-MM-DD).
+		 */
+		value?: string;
+		/**
+		 * Whether the date field is required.
+		 * @default false
+		 */
+		required?: boolean;
+		/**
+		 * Whether the date field is disabled.
+		 * @default false
+		 */
+		disabled?: boolean;
+		/**
+		 * Whether the date field is in an error state.
+		 * @default false
+		 */
+		error?: boolean;
+		/**
+		 * The title for the date picker overlay.
+		 * @default 'Pick date'
+		 */
+		datePickerTitle?: string;
+		/**
+		 * Supporting text snippet displayed below the field.
+		 */
+		supportingText?: Snippet;
+	}
 
 	let {
 		label = 'Дата',
@@ -16,15 +57,7 @@
 		datePickerTitle = 'Pick date',
 		supportingText,
 		...restProps
-	}: {
-		label: string;
-		value?: string;
-		required?: boolean;
-		disabled?: boolean;
-		error?: boolean;
-		datePickerTitle?: string;
-		supportingText?: Snippet;
-	} & HTMLInputAttributes = $props();
+	}: Props = $props();
 
 	const id = $props.id();
 	const inputProps = restProps as Record<string, unknown>;

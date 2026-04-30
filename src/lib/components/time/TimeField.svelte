@@ -1,4 +1,10 @@
 <script lang="ts">
+	/**
+	 * TimeField component provides a text input that opens a Timepicker overlay when interacted with.
+	 * It combines a Material 3 Textfield with a TimepickerInput for intuitive time selection.
+	 *
+	 * @see https://m3.material.io/components/time-pickers/overview
+	 */
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { Textfield, TimepickerInput } from '$lib/components/index.js';
 	import { clickOutside, positionFloating } from '$lib/actions/index.js';
@@ -14,15 +20,22 @@
 		datePickerTitle = 'Pick date',
 		...restProps
 	}: {
+		/** The label for the text field. */
 		label?: string;
+		/** The current time value (bindable). */
 		value?: string;
+		/** Whether the field is required for form submission. */
 		required?: boolean;
+		/** Whether the field is disabled. */
 		disabled?: boolean;
+		/** Whether the field is in an error state. */
 		error?: boolean;
+		/** Title for the picker overlay. */
 		datePickerTitle?: string;
 	} & HTMLInputAttributes = $props();
 
 	const id = $props.id();
+
 
 	let picker = $state(false);
 	let anchorEl = $state<HTMLDivElement>();

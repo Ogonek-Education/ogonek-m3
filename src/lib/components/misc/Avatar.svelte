@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Avatars can be used to represent people or objects.
+	 *
+	 * @see https://m3.material.io/components/avatars/overview
+	 */
 	import clsx from 'clsx';
 	import { tv, type VariantProps } from 'tailwind-variants';
 	import { Layer } from '$lib/utils/index.js';
@@ -11,10 +16,15 @@
 		size = 'lg',
 		onclick
 	}: {
+		/** The seed for the generated avatar if no avatarUrl is provided. */
 		seed?: string;
+		/** The URL of the avatar image. If null or undefined, a generated avatar will be used. */
 		avatarUrl?: string | null;
+		/** The alt text for the avatar image. */
 		alt?: string;
+		/** Callback for when the avatar is clicked. If provided, the avatar is wrapped in a button. */
 		onclick?: () => void;
+		/** Additional CSS classes for the avatar element. */
 		class?: string;
 	} & AvatarVariants = $props();
 

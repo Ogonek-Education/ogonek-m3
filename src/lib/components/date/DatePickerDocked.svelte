@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * DatePickerDocked is the calendar overlay used to pick dates.
+	 *
+	 * @see https://m3.material.io/components/date-pickers/guidelines
+	 */
 	import Button from '../buttons/Button.svelte';
 	import CalendarPicker from './_picker/CalendarPicker.svelte';
 	import FocusPicker from './_picker/FocusPicker.svelte';
@@ -6,6 +11,47 @@
 	import { datetimepicker } from './theme.js';
 
 	const now = new Date();
+
+	interface Props {
+		/**
+		 * The currently selected date in ISO format (YYYY-MM-DD).
+		 */
+		date?: string;
+		/**
+		 * Whether the date can be cleared.
+		 */
+		clearable: boolean;
+		/**
+		 * The month currently displayed in the picker (0-11).
+		 */
+		focusedMonth?: number;
+		/**
+		 * The year currently displayed in the picker.
+		 */
+		focusedYear?: number;
+		/**
+		 * The earliest year selectable in the picker.
+		 * @default now - 50 years
+		 */
+		startYear?: number;
+		/**
+		 * The latest year selectable in the picker.
+		 * @default now + 10 years
+		 */
+		endYear?: number;
+		/**
+		 * Optional function to validate if a date can be selected.
+		 */
+		dateValidator?: (date: string) => boolean;
+		/**
+		 * Callback function to close the picker.
+		 */
+		close: () => void;
+		/**
+		 * Callback function to set the selected date.
+		 */
+		setDate: (date: string) => void;
+	}
 
 	let {
 		date = '',
@@ -17,17 +63,7 @@
 		dateValidator = (_date: string) => true,
 		close,
 		setDate
-	}: {
-		date?: string;
-		clearable: boolean;
-		focusedMonth?: number;
-		focusedYear?: number;
-		startYear?: number;
-		endYear?: number;
-		dateValidator?: (date: string) => boolean;
-		close: () => void;
-		setDate: (date: string) => void;
-	} = $props();
+	}: Props = $props();
 
 	let currentView: 'calendar' | 'year' | 'month' = $state('calendar');
 	let chosenDate = $state(date);

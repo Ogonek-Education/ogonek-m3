@@ -1,4 +1,11 @@
 <script lang="ts">
+	/**
+	 * Material 3 Tabs.
+	 *
+	 * Tabs organize content into high-level categories and allow users to switch between them.
+	 *
+	 * @see https://m3.material.io/components/tabs/overview
+	 */
 	import { tabHolder, type TabHolderProps } from '$lib/components/index.js';
 	import Tab from './Tab.svelte';
 

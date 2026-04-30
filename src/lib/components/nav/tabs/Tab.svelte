@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Material 3 Tab.
+	 *
+	 * A single tab item within a TabHolder.
+	 */
 	import { Icon, Layer } from '$lib/utils/index.js';
 	import { tab } from './theme.js';
 	import type { TabProps } from './types.js';

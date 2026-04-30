@@ -1,6 +1,23 @@
 <script lang="ts">
+	/**
+	 * CalendarHeader displays the controls to navigate months and years.
+	 * @internal
+	 */
 	import { Icon } from '$lib/utils/index.js';
 	import { headerpicker } from '../theme.js';
+
+	interface Props {
+		/** The current view of the date picker. */
+		currentView: 'calendar' | 'year' | 'month';
+		/** The currently focused month (0-11). */
+		focusedMonth: number;
+		/** The currently focused year. */
+		focusedYear: number;
+		/** The earliest year selectable. */
+		startYear: number;
+		/** The latest year selectable. */
+		endYear: number;
+	}
 
 	let {
 		currentView = $bindable(),
@@ -8,13 +25,7 @@
 		focusedYear = $bindable(),
 		startYear,
 		endYear
-	}: {
-		currentView: 'calendar' | 'year' | 'month';
-		focusedMonth: number;
-		focusedYear: number;
-		startYear: number;
-		endYear: number;
-	} = $props();
+	}: Props = $props();
 
 	const yearClick = () => (currentView = currentView == 'calendar' ? 'year' : 'calendar');
 	const monthClick = () => (currentView = currentView == 'calendar' ? 'month' : 'calendar');

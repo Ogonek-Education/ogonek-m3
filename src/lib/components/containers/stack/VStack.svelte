@@ -1,4 +1,7 @@
 <script lang="ts">
+	/**
+	 * VStack is a vertical flex container.
+	 */
 	import clsx from 'clsx';
 	import { stack } from './theme.js';
 	import type { StackProps } from './types.js';

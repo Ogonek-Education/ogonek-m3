@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Wavy linear progress indicators help users visualize a particular wait time that's indeterminate or determinate.
+	 *
+	 * @see https://m3.material.io/components/progress-indicators/overview
+	 */
 	import { linear, trackOpacity } from './_wavy.js';
 
 	let {
@@ -8,10 +13,15 @@
 		percent,
 		class: className
 	}: {
+		/** The width of the SVG viewBox. */
 		width?: number;
+		/** The height of the SVG viewBox. */
 		height?: number;
+		/** The thickness of the progress line. */
 		thickness?: number;
+		/** The completion percentage (0-100). */
 		percent: number;
+		/** Additional CSS classes for the SVG element. */
 		class?: string;
 	} = $props();
 

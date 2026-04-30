@@ -1,4 +1,14 @@
 <script lang="ts">
+	/**
+	 * Dialogs provide important information or prompt users for a decision.
+	 * 
+	 * A dialog is a type of modal window that appears in front of app content 
+	 * to provide critical information or ask for a decision. 
+	 * Dialogs disable all app functionality when they appear, and remain 
+	 * on screen until confirmed, dismissed, or a required action has been taken.
+	 * 
+	 * @see https://m3.material.io/components/dialogs/overview
+	 */
 	import { clickOutside } from '$lib/actions/index.js';
 	import type { DialogueProps } from './types.js';
 	import { dialogue } from './theme.js';

@@ -1,4 +1,11 @@
 <script lang="ts" generics="T">
+	/**
+	 * Material 3 Select.
+	 *
+	 * Select components (implemented here via native select) allow users to choose one option from a list.
+	 *
+	 * @see https://m3.material.io/components/menus/overview
+	 */
 	import { select as selectCls } from './theme.js';
 	import clsx from 'clsx';
 	import type { SelectProps } from './types.js';

@@ -1,4 +1,11 @@
 <script lang="ts">
+	/**
+	 * Material 3 Navigation Rail.
+	 *
+	 * Navigation rails provide access to primary destinations in apps when using tablet and desktop screens.
+	 *
+	 * @see https://m3.material.io/components/navigation-rail/overview
+	 */
 	import { clickOutside } from '$lib/actions/index.js';
 	import clsx from 'clsx';
 	import type { RailProps } from './types.ts';

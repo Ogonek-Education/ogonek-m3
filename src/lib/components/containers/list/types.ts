@@ -8,21 +8,43 @@ export type ActionProps =
 	| ({ label: true } & NotButton<HTMLLabelAttributes>)
 	| ({ href: string | null } & NotButton<HTMLAnchorAttributes>);
 
+/**
+ * Props for the ListItem component.
+ * Lists are continuous, vertical indexes of text or images.
+ */
 export type ListitemProps = {
-	/** Optional leading slot (icon/avatar). */
+	/** 
+	 * Optional leading slot, typically used for an icon, avatar, or checkbox.
+	 */
 	leading?: Snippet;
-	/** Marks item as selected. */
+	/** 
+	 * Whether the list item is in a selected state.
+	 */
 	selected?: boolean;
-	/** Optional overline text. */
+	/** 
+	 * Optional overline text displayed above the headline.
+	 */
 	overline?: string | null;
-	/** Primary headline text. */
+	/** 
+	 * The primary headline text of the list item.
+	 */
 	headline?: string;
-	/** Supporting text content. */
+	/** 
+	 * Supporting text content displayed below the headline.
+	 */
 	supporting?: string | null;
-	/** Optional trailing slot. */
+	/** 
+	 * Optional trailing slot, typically used for an icon, metadata, or switch.
+	 */
 	trailing?: Snippet;
-	/** Number of text lines to reserve. */
+	/** 
+	 * The number of text lines to reserve space for.
+	 * If not provided, it's calculated based on presence of overline and supporting text.
+	 */
 	lines?: 1 | 2 | 3;
-	/** Render as child element instead of default root. */
+	/** 
+	 * If true, the component will not wrap its content in an `<li>` element.
+	 * Useful for when the parent already provides the list item container.
+	 */
 	asChild?: boolean;
 } & ActionProps;

@@ -1,19 +1,24 @@
 <script lang="ts">
+	/**
+	 * Item represents a single day in the calendar picker.
+	 * @internal
+	 */
 	import { calendarpicker } from '../theme.js';
 
-	let {
-		disabled,
-		today,
-		selected,
-		label,
-		onclick
-	}: {
+	interface Props {
+		/** Whether the day is disabled. */
 		disabled: boolean;
+		/** Whether the day is today. */
 		today: boolean;
+		/** Whether the day is currently selected. */
 		selected: boolean;
+		/** The display label for the day. */
 		label: string;
+		/** Callback function when the day is clicked. */
 		onclick: () => void;
-	} = $props();
+	}
+
+	let { disabled, today, selected, label, onclick }: Props = $props();
 
 	const { item } = $derived(calendarpicker({ selected, today }));
 </script>

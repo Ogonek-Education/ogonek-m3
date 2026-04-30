@@ -1,5 +1,10 @@
 <script lang="ts">
+	/**
+	 * ToolbarItem represents an individual action or navigation element within a Toolbar.
+	 * It typically consists of an icon and an optional label.
+	 */
 	import { Icon } from '$lib/utils/index.js';
+
 	import { toolbaritem } from './theme.js';
 	import type { ToolbarItemProps } from './types.js';
 

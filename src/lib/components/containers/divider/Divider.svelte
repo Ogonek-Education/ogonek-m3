@@ -1,4 +1,12 @@
 <script lang="ts">
+	/**
+	 * Dividers are thin lines that group content in lists and layouts.
+	 * 
+	 * Dividers help organize content by establishing hierarchy and making 
+	 * information easier to scan. They can be horizontal or vertical.
+	 * 
+	 * @see https://m3.material.io/components/divider/overview
+	 */
 	import clsx from 'clsx';
 	import { hr } from './theme.js';
 	import type { HrProps } from './types.js';

@@ -1,4 +1,7 @@
 <script lang="ts">
+	/**
+	 * An individual action within a FAB menu.
+	 */
 	import clsx from 'clsx';
 	import { fabMenuItem, type FABMenuItemProps } from '$lib/components/index.js';
 	import { Icon, LoadingIndicator } from '$lib/utils/index.js';

@@ -1,4 +1,9 @@
 <script lang="ts">
+	/**
+	 * Snackbars provide brief messages about app processes at the bottom of the screen.
+	 *
+	 * @see https://m3.material.io/components/snackbars/overview
+	 */
 	import { snackbar, type SnackBarProps } from '$lib/index.js';
 	import Icon from '../../utils/icon/Icon.svelte';
 	import { Layer } from '$lib/utils/index.js';

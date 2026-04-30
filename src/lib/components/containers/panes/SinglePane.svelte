@@ -1,4 +1,7 @@
 <script lang="ts">
+	/**
+	 * SinglePane provides a centered or full-width container for content.
+	 */
 	import clsx from 'clsx';
 	import { singlePane } from './theme.js';
 	import type { SinglePaneProps } from './types.js';
@@ -14,12 +17,7 @@
 		class: className,
 		contentClass,
 		...rest
-	}: {
-		children: Snippet;
-		headline?: string;
-		class?: string;
-		contentClass?: string;
-	} & SinglePaneProps = $props();
+	}: SinglePaneProps = $props();
 
 	const {
 		base,
