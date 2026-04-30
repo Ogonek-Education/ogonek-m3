@@ -1,4 +1,8 @@
 <script lang="ts">
+	/**
+	 * A helper that handles google icons. Should not be used directly.
+	 * Use the App.svelte component instead
+	 */
 	import { baseIconNames } from './base-icons.js';
 	import type { MaterialSymbolsProviderProps } from './types.js';
 

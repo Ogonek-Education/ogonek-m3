@@ -1,4 +1,10 @@
 <script lang="ts">
+	/**
+	 * Tooltips provide informative text when users hover over, focus on, or tap an element.
+	 * Plain tooltips are used for simple labels, while rich tooltips can contain formatted text and images.
+	 *
+	 * @see https://m3.material.io/components/tooltips/overview
+	 */
 	import clsx from 'clsx';
 	import Body from '../../typography/body/Body.svelte';
 	import Title from '../../typography/title/Title.svelte';

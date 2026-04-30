@@ -5,5 +5,5 @@ export * from "./theme.js";
 export * from "./types.js";
 
 // default exports for components in this folder
-export { default as Body } from "./Body.svelte";
+export { default as App } from "./App.svelte";
 

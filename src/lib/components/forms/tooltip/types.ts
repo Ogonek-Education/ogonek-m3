@@ -1,4 +1,3 @@
-import type { DivAttrs } from '$lib/utils/index.js';
 import type { Snippet } from 'svelte';
 import type { TooltipVariants } from './theme.js';
 import type { TooltipTriggerProps, TooltipRootProps, TooltipContentProps } from 'bits-ui';

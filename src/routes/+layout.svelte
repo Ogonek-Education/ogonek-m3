@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { MaterialSymbolsProvider } from '$lib/index.js';
+	import { App } from '$lib/index.js';
 	import './layout.css';
 
 	const { children } = $props();
 
+	// These icons will be pre-loaded by the MaterialSymbolsProvider inside App
 	const icons = [
 		'menu',
 		'house',
@@ -13,10 +14,24 @@
 		'book',
 		'notifications',
 		'mail',
-		'chat'
+		'chat',
+		'settings',
+		'search',
+		'favorite',
+		'share',
+		'delete',
+		'edit',
+		'add',
+		'info',
+		'help',
+		'warning',
+		'check',
+		'calendar_month',
+		'person',
+		'close'
 	];
 </script>
 
-<MaterialSymbolsProvider extraIcons={icons} />
-
-{@render children()}
+<App iconProviderProps={{ extraIcons: icons }}>
+	{@render children()}
+</App>
