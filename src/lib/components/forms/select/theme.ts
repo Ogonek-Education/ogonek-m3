@@ -59,7 +59,7 @@ export const select = tv({
       shadow-elevation-3 py-2 outline-none
     `,
 		item: `
-      relative flex w-full cursor-pointer select-none items-center
+      relative flex w-full cursor-pointer select-none
       px-4 py-3 outline-none
       md-sys-typescale-body-large text-md-sys-color-on-surface
       hover:bg-md-sys-color-on-surface/8

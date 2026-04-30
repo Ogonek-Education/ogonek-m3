@@ -1,5 +1,5 @@
 import type { Snippet } from 'svelte';
-import type { SelectRootProps } from 'bits-ui';
+import type { SelectItemProps, SelectRootProps } from 'bits-ui';
 import type { SelectVariants } from './theme.js';
 import type { IconProps } from '$lib/utils/index.js';
 
@@ -32,28 +32,25 @@ export type SelectOptionType = {
 /**
  * Props for the Select component.
  */
-export interface SelectProps<T extends string | string[]>
-	extends SelectVariants,
-		Omit<SelectRootProps, 'children' | 'value' | 'type' | 'items'> {
+export type SelectProps = SelectVariants & {
 	/**
-	 * The type of select.
+	 * The root props
 	 */
-	type?: 'single' | 'multiple';
+	rootProps?: SelectRootProps;
 
+	/**
+	 * Whether the select is open
+	 */
+	open?: boolean;
 	/**
 	 * The value of the selected item(s).
 	 */
-	value?: T;
-
-	/**
-	 * Custom options or additional content for the select element.
-	 */
-	children?: Snippet;
+	value?: string | string[];
 
 	/**
 	 * Array of options to display in the select.
 	 */
-	items?: SelectOptionType[];
+	items?: SelectItemProps[];
 
 	/**
 	 * The floating label text.
@@ -76,11 +73,6 @@ export interface SelectProps<T extends string | string[]>
 	leadingIconProps?: IconProps;
 
 	/**
-	 * Additional CSS classes for the root element.
-	 */
-	class?: string;
-
-	/**
 	 * Additional CSS classes for the trigger element.
 	 */
 	triggerClass?: string;
@@ -99,4 +91,4 @@ export interface SelectProps<T extends string | string[]>
 	 * Name for the hidden input (for form submission).
 	 */
 	name?: string;
-}
+};

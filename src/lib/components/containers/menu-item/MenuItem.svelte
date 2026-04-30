@@ -9,6 +9,7 @@
 	import Layer from '$lib/utils/Layer.svelte';
 	import { DropdownMenu } from 'bits-ui';
 	import clsx from 'clsx';
+	import { tv } from 'tailwind-variants';
 
 	let {
 		iconProps,
@@ -24,18 +25,21 @@
 	// bits-ui fires onSelect at the Item level; avoid wiring onclick to the
 	// native button as well or it would fire twice on every click.
 	const handleSelect = $derived(onSelect ?? (onclick ? () => onclick() : undefined));
+
+	const itemClass = $derived(
+		tv({
+			base: 'relative flex w-full cursor-pointer items-start gap-3 border-none bg-transparent px-4 py-3 text-left md-sys-typescale-body-large whitespace-nowrap text-md-sys-color-on-surface hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-default disabled:opacity-38',
+			variants: {
+				selected: {
+					true: 'bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container'
+				}
+			}
+		})({ selected })
+	);
 </script>
 
 <DropdownMenu.Item {disabled} onSelect={handleSelect}>
-	<button
-		{...restProps}
-		type="button"
-		class={clsx(
-			'relative flex w-full cursor-pointer items-start gap-3 border-none bg-transparent px-3 py-2 text-left md-sys-typescale-label-large whitespace-nowrap text-md-sys-color-on-surface hover:bg-md-sys-color-on-surface/8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-md-sys-color-primary disabled:cursor-default disabled:opacity-38',
-			selected && 'bg-md-sys-color-secondary-container'
-		)}
-		{disabled}
-	>
+	<button {...restProps} type="button" class={itemClass} {disabled}>
 		{#if iconProps}
 			<Icon class="size-6 text-[24px] text-md-sys-color-on-surface-variant" {...iconProps} />
 		{/if}

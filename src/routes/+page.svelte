@@ -128,13 +128,11 @@
 	];
 
 	const selectItems = [
-		{ value: 'ru', name: 'Русский' },
-		{ value: 'en', name: 'English' },
-		{ value: 'de', name: 'Deutsch' },
-		{ value: 'fr', name: 'Français' }
+		{ value: 'ru', label: 'Русский' },
+		{ value: 'en', label: 'English' },
+		{ value: 'de', label: 'Deutsch' },
+		{ value: 'fr', label: 'Français' }
 	];
-
-	import { Tooltip as TooltipBits } from 'bits-ui';
 </script>
 
 <svelte:head>
@@ -457,12 +455,7 @@
 
 	<Headline>Select</Headline>
 	<div class="flex max-w-md flex-wrap gap-4">
-		<Select
-			bind:value={selectValue}
-			items={selectItems}
-			placeholder="Выберите язык"
-			class="w-full"
-		/>
+		<Select bind:value={selectValue} items={selectItems} placeholder="Выберите язык" />
 		<Body>Selected: {selectValue || '—'}</Body>
 	</div>
 
