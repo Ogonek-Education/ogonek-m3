@@ -188,6 +188,7 @@
 
 		background-color: currentColor;
 		opacity: 0;
+		transition: opacity var(--md-sys-motion-duration-fast, 150ms) var(--md-sys-motion-timing-function, cubic-bezier(0.34, 0.8, 0.34, 1));
 
 		&:not(
 				:global(input:disabled + label) > .tint,

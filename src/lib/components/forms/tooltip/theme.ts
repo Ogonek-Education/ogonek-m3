@@ -4,16 +4,18 @@ export type TooltipVariants = VariantProps<typeof tooltip>;
 
 export const tooltip = tv({
 	slots: {
-		base: 'min-w-60 py-3 px-4 flex flex-col gap-3 shadow-elevation-2 rounded-md relative state-layer hover:before:bg-md-sys-color-primary/8 before:rounded-md z-40 pointer-events-auto',
+		base: 'min-w-60 py-3 px-4  shadow-elevation-2 rounded-md relative z-40 pointer-events-auto',
 		subhead: '',
 		supportingText: '',
 		trigger: 'relative inline-flex'
 	},
 	variants: {
 		variant: {
-			rich: {},
+			rich: {
+				base: 'flex flex-col gap-3'
+			},
 			snack: {
-				base: 'min-w-0 max-w-50 bg-md-sys-color-inverse-surface text-md-sys-color-inverse-on-surface md-sys-typescale-body-small px-3 py-2 shadow-elevation-3 before:rounded-md',
+				base: 'inlie-flex min-w-0 max-w-50 bg-md-sys-color-inverse-surface text-md-sys-color-inverse-on-surface md-sys-typescale-body-small px-3 py-2 shadow-elevation-3 before:rounded-md',
 				supportingText: 'text-md-sys-color-inverse-on-surface md-sys-typescale-body-small',
 				textContainer: ''
 			}

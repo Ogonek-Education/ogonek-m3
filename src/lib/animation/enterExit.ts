@@ -16,6 +16,8 @@ export const enterExit = (node: Element, options: TransitionOptions = {}): Trans
 					return `opacity: ${t}; transform: translateY(${(1 - t) * 12}px);`;
 				case 'dialog':
 					return `opacity: ${t}; transform: translateY(${(1 - t) * -24}px) scale(${0.9 + t * 0.1});`;
+				case 'dialog-m3':
+					return `opacity: ${t}; transform: scale(${0.9 + t * 0.1});`;
 				default:
 					return `opacity: ${t};`;
 			}

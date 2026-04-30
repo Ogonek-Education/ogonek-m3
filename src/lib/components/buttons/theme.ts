@@ -402,17 +402,17 @@ export const fab = tv({
 	variants: {
 		config: {
 			primary: {
-				base: 'md-component-button-filled-primary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-primary/10 active:before:bg-md-sys-color-on-primary/10',
+				base: 'md-component-button-filled-primary shadow-elevation-1 hover:shadow-elevation-2',
 				icon: 'text-md-sys-color-on-primary',
 				label: 'text-md-sys-color-on-primary'
 			},
 			secondary: {
-				base: 'md-component-button-filled-secondary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-secondary/10 active:before:bg-md-sys-color-on-secondary/10',
+				base: 'md-component-button-filled-secondary shadow-elevation-1 hover:shadow-elevation-2',
 				icon: 'text-md-sys-color-on-secondary',
 				label: 'text-md-sys-color-on-secondary'
 			},
 			tertiary: {
-				base: 'md-component-button-filled-tertiary shadow-elevation-1 hover:shadow-elevation-2 focus:before:bg-md-sys-color-on-tertiary/10 active:before:bg-md-sys-color-on-tertiary/10',
+				base: 'md-component-button-filled-tertiary shadow-elevation-1 hover:shadow-elevation-2',
 				icon: 'text-md-sys-color-on-tertiary',
 				label: 'text-md-sys-color-on-tertiary'
 			}

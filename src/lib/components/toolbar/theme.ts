@@ -20,9 +20,8 @@ export const toolbaritem = tv({
 	},
 	variants: {
 		selected: {
-			true: 'bg-md-sys-color-secondary-container text-mg-sys-color-on-secondary-container hover:before:bg-md-sys-color-on-secondary-container/8',
-			false:
-				'bg-md-sys-color-surface-container text-md-sys-color-surface-container hover:before:bg-md-sys-color-on-surface-variant/8'
+			true: 'bg-md-sys-color-secondary-container text-mg-sys-color-on-secondary-container',
+			false: 'bg-md-sys-color-surface-container text-md-sys-color-surface-container'
 		}
 	}
 });

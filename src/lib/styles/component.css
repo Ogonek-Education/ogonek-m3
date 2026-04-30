@@ -1,6 +1,7 @@
 @layer utilities {
 	.md-component-button-base {
 		@apply state-layer relative inline-flex  items-center justify-center md-sys-state-focus-indicator select-none disabled:cursor-not-allowed disabled:bg-md-sys-color-on-surface/10 disabled:text-md-sys-color-on-surface/38 disabled:before:bg-md-sys-color-on-surface/38;
+		transition: box-shadow var(--md-sys-motion-duration, 200ms) var(--md-sys-motion-timing-function, cubic-bezier(0.34, 0.8, 0.34, 1));
 	}
 
 	.md-btn-morph {
@@ -19,59 +20,59 @@
 	}
 
 	.md-component-button-filled-primary {
-		@apply bg-md-sys-color-primary text-md-sys-color-on-primary hover:before:bg-md-sys-color-on-primary/8 active:before:bg-md-sys-color-on-primary/10;
+		@apply bg-md-sys-color-primary text-md-sys-color-on-primary;
 	}
 	.md-component-button-filled-secondary {
-		@apply bg-md-sys-color-secondary text-md-sys-color-on-secondary hover:before:bg-md-sys-color-on-secondary/8 active:before:bg-md-sys-color-on-secondary/10;
+		@apply bg-md-sys-color-secondary text-md-sys-color-on-secondary;
 	}
 	.md-component-button-filled-tertiary {
-		@apply bg-md-sys-color-tertiary text-md-sys-color-on-tertiary hover:before:bg-md-sys-color-on-tertiary/8 active:before:bg-md-sys-color-on-tertiary/10;
+		@apply bg-md-sys-color-tertiary text-md-sys-color-on-tertiary;
 	}
 
 	.md-component-button-filled-error {
-		@apply bg-md-sys-color-error text-md-sys-color-on-error hover:before:bg-md-sys-color-on-error/8 active:before:bg-md-sys-color-on-error/10;
+		@apply bg-md-sys-color-error text-md-sys-color-on-error;
 	}
 
 	.md-component-button-tonal-primary {
-		@apply bg-md-sys-color-primary-container text-md-sys-color-on-primary-container hover:before:bg-md-sys-color-on-primary/8 active:before:bg-md-sys-color-on-primary/10;
+		@apply bg-md-sys-color-primary-container text-md-sys-color-on-primary-container;
 	}
 	.md-component-button-tonal-secondary {
-		@apply bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container hover:before:bg-md-sys-color-on-secondary/8 active:before:bg-md-sys-color-on-secondary/10;
+		@apply bg-md-sys-color-secondary-container text-md-sys-color-on-secondary-container;
 	}
 	.md-component-button-tonal-tertiary {
-		@apply bg-md-sys-color-tertiary-container text-md-sys-color-on-tertiary-container hover:before:bg-md-sys-color-on-tertiary/8 active:before:bg-md-sys-color-on-tertiary/10;
+		@apply bg-md-sys-color-tertiary-container text-md-sys-color-on-tertiary-container;
 	}
 	.md-component-button-tonal-error {
-		@apply bg-md-sys-color-error-container text-md-sys-color-on-error-container hover:before:bg-md-sys-color-on-error/8 active:before:bg-md-sys-color-on-error/10;
+		@apply bg-md-sys-color-error-container text-md-sys-color-on-error-container;
 	}
 
 	.md-component-button-outline-default {
-		@apply text-md-sys-color-on-surface-variant outline-2 outline-md-sys-color-outline-variant hover:before:bg-md-sys-color-surface-variant/8 active:before:bg-md-sys-color-surface-variant/10;
+		@apply text-md-sys-color-on-surface-variant outline-2 outline-md-sys-color-outline-variant;
 	}
 	.md-component-button-outline-primary {
-		@apply text-md-sys-color-primary outline outline-md-sys-color-primary hover:before:bg-md-sys-color-primary/8 active:before:bg-md-sys-color-primary/10;
+		@apply text-md-sys-color-primary outline outline-md-sys-color-primary;
 	}
 	.md-component-button-outline-secondary {
-		@apply text-md-sys-color-secondary outline outline-md-sys-color-secondary hover:before:bg-md-sys-color-secondary/8 active:before:bg-md-sys-color-secondary/10;
+		@apply text-md-sys-color-secondary outline outline-md-sys-color-secondary;
 	}
 	.md-component-button-outline-tertiary {
-		@apply text-md-sys-color-tertiary outline outline-md-sys-color-tertiary hover:before:bg-md-sys-color-tertiary/8 active:before:bg-md-sys-color-tertiary/10;
+		@apply text-md-sys-color-tertiary outline outline-md-sys-color-tertiary;
 	}
 	.md-component-button-outline-error {
-		@apply text-md-sys-color-error outline outline-md-sys-color-error hover:before:bg-md-sys-color-error/8 active:before:bg-md-sys-color-error/10;
+		@apply text-md-sys-color-error outline outline-md-sys-color-error;
 	}
 
 	.md-component-button-text-primary {
-		@apply text-md-sys-color-primary hover:before:bg-md-sys-color-primary/8 active:before:bg-md-sys-color-primary/10;
+		@apply text-md-sys-color-primary;
 	}
 	.md-component-button-text-secondary {
-		@apply text-md-sys-color-secondary hover:before:bg-md-sys-color-secondary/8 active:before:bg-md-sys-color-secondary/10;
+		@apply text-md-sys-color-secondary;
 	}
 	.md-component-button-text-tertiary {
-		@apply text-md-sys-color-tertiary hover:before:bg-md-sys-color-tertiary/8 active:before:bg-md-sys-color-tertiary/10;
+		@apply text-md-sys-color-tertiary;
 	}
 	.md-component-button-text-error {
-		@apply text-md-sys-color-error hover:before:bg-md-sys-color-error/8 active:before:bg-md-sys-color-error/10;
+		@apply text-md-sys-color-error;
 	}
 
 	.md-component-button-elevated-default {
@@ -79,20 +80,21 @@
 	}
 
 	.md-component-button-elevated-primary {
-		@apply bg-md-sys-color-surface-container-low text-md-sys-color-primary shadow-elevation-1 hover:before:bg-md-sys-color-primary/8 active:before:bg-md-sys-color-primary/10;
+		@apply bg-md-sys-color-surface-container-low text-md-sys-color-primary shadow-elevation-1;
 	}
 	.md-component-button-elevated-secondary {
-		@apply bg-md-sys-color-surface-container-low text-md-sys-color-secondary shadow-elevation-1 hover:before:bg-md-sys-color-secondary/8 active:before:bg-md-sys-color-secondary/10;
+		@apply bg-md-sys-color-surface-container-low text-md-sys-color-secondary shadow-elevation-1;
 	}
 	.md-component-button-elevated-tertiary {
-		@apply bg-md-sys-color-surface-container-low text-md-sys-color-tertiary shadow-elevation-1 hover:before:bg-md-sys-color-tertiary/8 active:before:bg-md-sys-color-tertiary/10;
+		@apply bg-md-sys-color-surface-container-low text-md-sys-color-tertiary shadow-elevation-1;
 	}
 	.md-component-button-elevated-error {
-		@apply bg-md-sys-color-surface-container-low text-md-sys-color-error shadow-elevation-1 hover:before:bg-md-sys-color-error/8 active:before:bg-md-sys-color-error/10;
+		@apply bg-md-sys-color-surface-container-low text-md-sys-color-error shadow-elevation-1;
 	}
 
 	.text-link {
 		@apply text-md-sys-color-primary underline hover:text-md-sys-color-secondary;
+		transition: color var(--md-sys-motion-duration, 200ms) var(--md-sys-motion-timing-function, cubic-bezier(0.34, 0.8, 0.34, 1));
 	}
 
 	.text-link.md-sys-typescale-label-small {
@@ -115,4 +117,7 @@
 
 @utility state-layer {
 	@apply before:pointer-events-none before:absolute before:inset-0 before:content-[''];
+	&::before {
+		transition: background-color var(--md-sys-motion-duration-fast, 150ms) var(--md-sys-motion-timing-function, cubic-bezier(0.34, 0.8, 0.34, 1));
+	}
 }

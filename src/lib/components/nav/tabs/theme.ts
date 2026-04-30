@@ -22,11 +22,11 @@ export const tab = tv({
 		},
 		active: {
 			true: {
-				base: 'text-md-sys-color-primary border-md-sys-color-primary hover:before:bg-md-sys-color-primary/8'
+				base: 'text-md-sys-color-primary border-md-sys-color-primary'
 			},
 			false: {
-				base: 'text-md-sys-color-on-surface-variant border-transparent hover:md-sys-color-on-surface hover:before:md-sys-color-on-surface/8',
-				icon: 'hover:md-sys-color-on-surface'
+				base: 'text-md-sys-color-on-surface-variant border-transparent',
+				icon: ''
 			}
 		}
 	}

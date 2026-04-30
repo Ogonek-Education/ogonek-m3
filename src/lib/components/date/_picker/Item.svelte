@@ -4,6 +4,7 @@
 	 * @internal
 	 */
 	import { calendarpicker } from '../theme.js';
+	import { Layer } from '$lib/utils/index.js';
 
 	interface Props {
 		/** Whether the day is disabled. */
@@ -24,5 +25,6 @@
 </script>
 
 <button type="button" class={item()} {disabled} {onclick} data-cy="calendar-picker-day">
+	<Layer />
 	{label}
 </button>

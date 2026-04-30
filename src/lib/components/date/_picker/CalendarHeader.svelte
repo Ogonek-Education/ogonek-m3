@@ -3,7 +3,7 @@
 	 * CalendarHeader displays the controls to navigate months and years.
 	 * @internal
 	 */
-	import { Icon } from '$lib/utils/index.js';
+	import { Icon, Layer } from '$lib/utils/index.js';
 	import { headerpicker } from '../theme.js';
 
 	interface Props {
@@ -42,6 +42,7 @@
 			class={button()}
 			onclick={() => (focusedMonth = (focusedMonth - 1 + 12) % 12)}
 		>
+			<Layer />
 			<Icon class={icon()} name="chevron_left" />
 		</button>
 		<button
@@ -50,10 +51,12 @@
 			onclick={monthClick}
 			disabled={currentView == 'year'}
 		>
+			<Layer />
 			{getShortMonth(focusedMonth)}
 			<Icon class={icon()} name="arrow_drop_down" />
 		</button>
 		<button type="button" class={button()} onclick={() => (focusedMonth = (focusedMonth + 1) % 12)}>
+			<Layer />
 			<Icon class={icon()} name="chevron_right" />
 		</button>
 	</div>
@@ -64,6 +67,7 @@
 			disabled={focusedYear <= startYear}
 			onclick={() => focusedYear--}
 		>
+			<Layer />
 			<Icon class={icon()} name="chevron_left" />
 		</button>
 		<button
@@ -72,6 +76,7 @@
 			onclick={yearClick}
 			disabled={currentView == 'month'}
 		>
+			<Layer />
 			{focusedYear}
 			<Icon class={icon()} name="arrow_drop_down" />
 		</button>
@@ -81,6 +86,7 @@
 			disabled={focusedYear >= endYear}
 			onclick={() => focusedYear++}
 		>
+			<Layer />
 			<Icon class={icon()} name="chevron_right" />
 		</button>
 	</div>
