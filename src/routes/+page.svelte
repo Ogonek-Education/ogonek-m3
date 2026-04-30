@@ -215,11 +215,11 @@
 		<!-- TOOLTIPS -->
 		<Display>Tooltips</Display>
 		<div class="flex flex-wrap items-center gap-6">
-			<Tooltip supportingText="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки.">
-				{#snippet trigger()}
-					<ButtonIcon aria-label="Домой" iconProps={{ name: 'home' }} />
-				{/snippet}
-			</Tooltip>
+			<ButtonIcon
+				tooltipContent="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки."
+				aria-label="Домой"
+				iconProps={{ name: 'home' }}
+			/>
 			<Tooltip
 				subhead="Быстрая подсказка"
 				variant="rich"
@@ -230,11 +230,7 @@
 				{/snippet}
 				<Button variant="text">Действие</Button>
 			</Tooltip>
-			<Tooltip supportingText="Tooltip справа от элемента.">
-				{#snippet trigger()}
-					<ButtonIcon iconProps={{ name: 'help' }} variant="text" />
-				{/snippet}
-			</Tooltip>
+			<ButtonIcon tooltipContent="Еще один" iconProps={{ name: 'help' }} variant="text" />
 		</div>
 
 		<Divider />

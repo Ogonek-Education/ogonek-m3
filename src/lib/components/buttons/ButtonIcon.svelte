@@ -52,13 +52,7 @@
 	const btnCls = $derived(base({ class: clsx(className) }));
 </script>
 
-<Tooltip
-	{triggerClass}
-	side={triggerSide}
-	align={triggerAlign}
-	variant="snack"
-	supportingText={tooltipContent}
->
+<Tooltip {triggerClass} variant="snack" supportingText={tooltipContent}>
 	{#snippet trigger()}
 		{#if restProps.href !== undefined}
 			<a {...restProps} class={btnCls}>

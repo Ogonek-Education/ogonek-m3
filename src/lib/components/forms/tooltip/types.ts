@@ -1,26 +1,32 @@
 import type { DivAttrs } from '$lib/utils/index.js';
-import type { Placement } from '@floating-ui/dom';
 import type { Snippet } from 'svelte';
 import type { TooltipVariants } from './theme.js';
-import type { FloatingParams } from '$lib/actions/floating.js';
+import type { TooltipTriggerProps, TooltipRootProps, TooltipContentProps } from 'bits-ui';
 
 export type TooltipProps = TooltipVariants &
-	DivAttrs & {
+	TooltipRootProps & {
+		/** Larger, emphasized text displayed at the top of the tooltip (Rich tooltips only) */
 		subhead?: string | null;
-		tutorial?: boolean;
+		/** Content for rich tooltips */
 		children?: Snippet;
+		/** Secondary text providing additional context */
 		supportingText?: string | null;
-		text?: string | null;
+		/** The element that triggers the tooltip on hover or focus */
 		trigger?: Snippet;
+		/** CSS class applied to the trigger element */
 		triggerClass?: string;
-		placement?: Placement;
-		offset?: number;
-		openDelay?: number;
-		closeDelay?: number;
-		strategy?: FloatingParams['strategy'];
+		/** Additional props passed to the underlying Tooltip.Trigger component */
+		triggerProps?: TooltipTriggerProps;
+		/** Additional props passed to the underlying Tooltip.Content component */
+		contentProps?: TooltipContentProps;
+		/** Time in milliseconds to wait before showing the tooltip */
+		delayDuration?: number;
+		/** Whether the tooltip is currently visible */
 		isOpen?: boolean;
-		interaction?: 'hover' | 'manual';
+		/** Tooltip style variant: 'snack' for simple tooltips, 'rich' for more complex content */
 		variant?: 'rich' | 'snack';
+		/** Whether to show an arrow pointing to the trigger */
 		showArrow?: boolean;
-		showScrim?: boolean;
+		/** Custom CSS class for the tooltip content */
+		class?: string;
 	};
