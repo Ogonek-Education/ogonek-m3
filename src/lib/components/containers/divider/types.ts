@@ -1,13 +1,13 @@
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SeparatorRootProps } from 'bits-ui';
 import type { HrVariants } from './theme.js';
 
 /**
  * Props for the Divider component.
  * Dividers are thin lines that group content in lists and layouts.
  */
-export interface HrProps extends HrVariants, HTMLAttributes<HTMLElement> {
-	/** 
+export interface HrProps extends HrVariants, Omit<SeparatorRootProps, 'children' | 'orientation'> {
+	/**
 	 * Optional content to be rendered within the divider (horizontal only).
 	 * If provided, the divider will show the content centered between two lines.
 	 */

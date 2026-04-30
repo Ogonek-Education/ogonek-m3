@@ -1,12 +1,14 @@
 <script lang="ts">
 	/**
 	 * Dividers are thin lines that group content in lists and layouts.
-	 * 
-	 * Dividers help organize content by establishing hierarchy and making 
+	 *
+	 * Dividers help organize content by establishing hierarchy and making
 	 * information easier to scan. They can be horizontal or vertical.
-	 * 
+	 * Powered by bits-ui for accessibility.
+	 *
 	 * @see https://m3.material.io/components/divider/overview
 	 */
+	import { Separator } from 'bits-ui';
 	import clsx from 'clsx';
 	import { hr } from './theme.js';
 	import type { HrProps } from './types.js';
@@ -17,6 +19,7 @@
 		children,
 		variant = 'full',
 		orientation = 'horizontal',
+		decorative = true,
 		...restProps
 	}: HrProps = $props();
 
@@ -53,7 +56,13 @@
 </script>
 
 {#if variant === 'wavy'}
-	<div {...restProps} bind:this={host} class={clsx('w-full', insetClass, className)}>
+	<div
+		{...restProps}
+		bind:this={host}
+		class={clsx('w-full', insetClass, className)}
+		role={decorative ? 'none' : 'separator'}
+		aria-orientation={orientation}
+	>
 		<svg
 			viewBox={`0 0 ${Math.max(width, 1)} ${waveHeight}`}
 			class="block w-full"
@@ -71,15 +80,23 @@
 		</svg>
 	</div>
 {:else if children && orientation === 'horizontal'}
-	<div {...restProps} class={clsx('flex h-full w-full items-center gap-3', insetClass, className)}>
+	<div
+		{...restProps}
+		class={clsx('flex h-full w-full items-center gap-3', insetClass, className)}
+		role={decorative ? 'none' : 'separator'}
+		aria-orientation="horizontal"
+	>
 		<div class={lineClass}></div>
-		<span
-			class="md-sys-typescale-label-small whitespace-nowrap text-md-sys-color-on-surface-variant"
-		>
+		<span class="md-sys-typescale-label-small whitespace-nowrap text-md-sys-color-on-surface-variant">
 			{@render children?.()}
 		</span>
 		<div class={lineClass}></div>
 	</div>
 {:else}
-	<div {...restProps} class={clsx(styling, className)}></div>
+	<Separator.Root
+		{...restProps}
+		{orientation}
+		{decorative}
+		class={clsx(styling, className)}
+	/>
 {/if}
