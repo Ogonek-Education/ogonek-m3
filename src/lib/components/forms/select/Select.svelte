@@ -12,6 +12,8 @@
 	import { Icon } from '$lib/utils/index.js';
 	import type { SelectProps } from './types.js';
 	import clsx from 'clsx';
+	import { enterExit } from '$lib/animation/enterExit.js';
+	import { easeEmphasizedDecel } from '$lib/animation/easing.js';
 
 	let {
 		value = $bindable(),
@@ -69,27 +71,43 @@
 		</Select.Trigger>
 
 		<Select.Portal>
-			<Select.Content class={cls.content({ class: contentClass })} sideOffset={4}>
-				<Select.Viewport>
-					{#if items && items.length > 0}
-						{#each items as item}
-							<Select.Item
-								value={item.value}
-								label={String(item.label ?? item.name ?? item.value)}
-								disabled={item.disabled}
-								class={cls.item()}
+			<Select.Content forceMount class={cls.content({ class: contentClass })} sideOffset={4}>
+				{#snippet child({ wrapperProps, props, open })}
+					{#if open}
+						<div {...wrapperProps}>
+							<div
+								{...props}
+								class="max-w-sm min-w-64 rounded-xl bg-md-sys-color-surface-container-high ring-1 shadow-elevation-3 ring-md-sys-color-outline/40"
+								transition:enterExit={{
+									duration: 200,
+									easing: easeEmphasizedDecel,
+									mode: 'scale'
+								}}
 							>
-								{#snippet children({ selected })}
-									<span class="flex-1">{item.label ?? item.name ?? item.value}</span>
-									{#if selected}
-										<Icon name="check" class="size-5" />
+								<Select.Viewport>
+									{#if items && items.length > 0}
+										{#each items as item}
+											<Select.Item
+												value={item.value}
+												label={String(item.label ?? item.name ?? item.value)}
+												disabled={item.disabled}
+												class={cls.item()}
+											>
+												{#snippet children({ selected })}
+													<span class="flex-1">{item.label ?? item.name ?? item.value}</span>
+													{#if selected}
+														<Icon aria-hidden="true" name="check" />
+													{/if}
+												{/snippet}
+											</Select.Item>
+										{/each}
 									{/if}
-								{/snippet}
-							</Select.Item>
-						{/each}
+									{@render children?.()}
+								</Select.Viewport>
+							</div>
+						</div>
 					{/if}
-					{@render children?.()}
-				</Select.Viewport>
+				{/snippet}
 			</Select.Content>
 		</Select.Portal>
 	</div>

@@ -33,11 +33,6 @@ export type MenuProps = {
 	 */
 	align?: 'start' | 'end';
 	/**
-	 * Maximum height of the menu in pixels.
-	 * @default 320
-	 */
-	maxHeight?: number;
-	/**
 	 * Prefix for data-cy attributes on menu items.
 	 * @default 'menu-item'
 	 */
@@ -67,8 +62,6 @@ export type MenuProps = {
 	triggerClass?: string;
 	/** Supporting text shown below the textfield trigger. */
 	supportingText?: string;
-	/** Custom items rendered inside the menu content. */
-	children?: Snippet;
 	/** Callback function when an item is selected. */
 	onselect?: (value: string) => void;
 };

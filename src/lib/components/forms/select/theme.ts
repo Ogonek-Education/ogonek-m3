@@ -67,7 +67,7 @@ export const select = tv({
       data-[selected]:bg-md-sys-color-secondary-container
       data-[selected]:text-md-sys-color-on-secondary-container
       data-[disabled]:pointer-events-none data-[disabled]:opacity-50
-      transition-colors duration-150
+      transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl
     `,
 		group: `
       p-1

@@ -19,7 +19,6 @@
 		label = 'Open menu',
 		selected,
 		align = 'start',
-		maxHeight = 320,
 		onselect,
 		itemDataCyPrefix = 'menu-item',
 		triggerVariant = 'button',
@@ -32,8 +31,7 @@
 		dataCy,
 		'data-cy': dataCyAttr,
 		triggerClass,
-		supportingText,
-		children
+		supportingText
 	}: MenuProps = $props();
 
 	let openState = $state(false);
@@ -110,8 +108,7 @@
 					<div {...wrapperProps}>
 						<div
 							{...props}
-							class="max-w-sm min-w-64 overflow-auto rounded-xl bg-md-sys-color-surface-container-high ring-1 shadow-elevation-3 ring-md-sys-color-outline/40"
-							style:max-height={`${maxHeight}px`}
+							class="max-w-sm min-w-64 rounded-xl bg-md-sys-color-surface-container-high ring-1 shadow-elevation-3 ring-md-sys-color-outline/40"
 							transition:enterExit={{
 								duration: 200,
 								easing: easeEmphasizedDecel,
