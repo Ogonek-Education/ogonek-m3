@@ -141,506 +141,504 @@
 <svelte:head>
 	<title>Components | Ogonëk M3</title>
 </svelte:head>
-<TooltipBits.Provider>
-	<SinglePane class="ml-24 p-12" contentClass="gap-12">
-		<!-- BUTTONS -->
-		<Display>Buttons</Display>
-		<Headline>Regular Buttons</Headline>
-		<div class="grid grid-cols-6 items-center gap-y-12">
-			<Button>Filled</Button>
-			<Button iconProps={{ name: 'home' }}>With Icon</Button>
-			<Button variant="tonal">Tonal</Button>
-			<Button variant="outlined">Outlined</Button>
-			<Button variant="text">Text</Button>
-			<Button variant="elevated">Elevated</Button>
-			<Button
-				variant="bare"
-				onclick={() => {
-					toggle = !toggle;
-				}}
-				selected={toggle}>Selected</Button
-			>
-			<Button variant="bare" selected={!toggle}>Unselected</Button>
-			<Button size="xs">XSmall</Button>
-			<Button size="sm">Small</Button>
-			<Button size="lg">Large</Button>
-			<Button size="xl">XLarge</Button>
-		</div>
-		<Headline>Button Colors</Headline>
-		<div class="grid grid-cols-5 items-center gap-4">
-			<Button color="primary">Primary</Button>
-			<Button color="secondary">Secondary</Button>
-			<Button color="tertiary">Tertiary</Button>
-			<Button color="error">Error</Button>
-			<Button variant="tonal" color="secondary">Tonal Secondary</Button>
-			<Button variant="outlined" color="tertiary">Outline Tertiary</Button>
-			<Button variant="elevated" color="secondary">Elevated Secondary</Button>
-			<Button variant="text" color="error">Text Error</Button>
-		</div>
-		<Headline>Icon Buttons</Headline>
-		<div class="flex flex-wrap items-center gap-6">
-			<ButtonIcon iconProps={{ name: 'delete' }} variant="filled" />
-			<ButtonIcon iconProps={{ name: 'favorite' }} variant="tonal" />
-			<ButtonIcon iconProps={{ name: 'share' }} variant="outlined" />
-			<ButtonIcon iconProps={{ name: 'settings' }} variant="text" />
-			<ButtonIcon size="xs" iconProps={{ name: 'home' }} variant="tonal" />
-			<ButtonIcon size="sm" iconProps={{ name: 'home' }} variant="tonal" />
-			<ButtonIcon size="md" iconProps={{ name: 'home' }} variant="tonal" />
-			<ButtonIcon size="lg" iconProps={{ name: 'home' }} variant="tonal" />
-			<ButtonIcon size="xl" iconProps={{ name: 'home' }} variant="tonal" />
-		</div>
-		<Headline>FABs</Headline>
-		<div class="flex flex-wrap items-end gap-6">
-			<FAB size="small" iconProps={{ name: 'edit' }} />
-			<FAB iconProps={{ name: 'edit' }} />
-			<FAB size="large" iconProps={{ name: 'edit' }} />
-		</div>
-		<div class="flex flex-wrap items-end gap-6">
-			<FAB iconProps={{ name: 'edit' }} config="primary" />
-			<FAB iconProps={{ name: 'edit' }} config="secondary" />
-			<FAB iconProps={{ name: 'edit' }} config="tertiary" />
-		</div>
-		<div class="flex flex-wrap items-end gap-6">
-			<FAB label="Compose" expanded iconProps={{ name: 'edit' }} />
-			<FAB label="Compose" expanded size="large" iconProps={{ name: 'edit' }} />
-			<FAB withMenu iconProps={{ name: 'add' }} config="primary">
-				<FABMenuItem iconProps={{ name: 'home' }}>Главная</FABMenuItem>
-				<FABMenuItem iconProps={{ name: 'search' }}>Поиск</FABMenuItem>
-				<FABMenuItem iconProps={{ name: 'person' }}>Профиль</FABMenuItem>
-			</FAB>
-		</div>
+<SinglePane class="ml-24 p-12" contentClass="gap-12">
+	<!-- BUTTONS -->
+	<Display>Buttons</Display>
+	<Headline>Regular Buttons</Headline>
+	<div class="grid grid-cols-6 items-center gap-y-12">
+		<Button>Filled</Button>
+		<Button iconProps={{ name: 'home' }}>With Icon</Button>
+		<Button variant="tonal">Tonal</Button>
+		<Button variant="outlined">Outlined</Button>
+		<Button variant="text">Text</Button>
+		<Button variant="elevated">Elevated</Button>
+		<Button
+			variant="bare"
+			onclick={() => {
+				toggle = !toggle;
+			}}
+			selected={toggle}>Selected</Button
+		>
+		<Button variant="bare" selected={!toggle}>Unselected</Button>
+		<Button size="xs">XSmall</Button>
+		<Button size="sm">Small</Button>
+		<Button size="lg">Large</Button>
+		<Button size="xl">XLarge</Button>
+	</div>
+	<Headline>Button Colors</Headline>
+	<div class="grid grid-cols-5 items-center gap-4">
+		<Button color="primary">Primary</Button>
+		<Button color="secondary">Secondary</Button>
+		<Button color="tertiary">Tertiary</Button>
+		<Button color="error">Error</Button>
+		<Button variant="tonal" color="secondary">Tonal Secondary</Button>
+		<Button variant="outlined" color="tertiary">Outline Tertiary</Button>
+		<Button variant="elevated" color="secondary">Elevated Secondary</Button>
+		<Button variant="text" color="error">Text Error</Button>
+	</div>
+	<Headline>Icon Buttons</Headline>
+	<div class="flex flex-wrap items-center gap-6">
+		<ButtonIcon iconProps={{ name: 'delete' }} variant="filled" />
+		<ButtonIcon iconProps={{ name: 'favorite' }} variant="tonal" />
+		<ButtonIcon iconProps={{ name: 'share' }} variant="outlined" />
+		<ButtonIcon iconProps={{ name: 'settings' }} variant="text" />
+		<ButtonIcon size="xs" iconProps={{ name: 'home' }} variant="tonal" />
+		<ButtonIcon size="sm" iconProps={{ name: 'home' }} variant="tonal" />
+		<ButtonIcon size="md" iconProps={{ name: 'home' }} variant="tonal" />
+		<ButtonIcon size="lg" iconProps={{ name: 'home' }} variant="tonal" />
+		<ButtonIcon size="xl" iconProps={{ name: 'home' }} variant="tonal" />
+	</div>
+	<Headline>FABs</Headline>
+	<div class="flex flex-wrap items-end gap-6">
+		<FAB size="small" iconProps={{ name: 'edit' }} />
+		<FAB iconProps={{ name: 'edit' }} />
+		<FAB size="large" iconProps={{ name: 'edit' }} />
+	</div>
+	<div class="flex flex-wrap items-end gap-6">
+		<FAB iconProps={{ name: 'edit' }} config="primary" />
+		<FAB iconProps={{ name: 'edit' }} config="secondary" />
+		<FAB iconProps={{ name: 'edit' }} config="tertiary" />
+	</div>
+	<div class="flex flex-wrap items-end gap-6">
+		<FAB label="Compose" expanded iconProps={{ name: 'edit' }} />
+		<FAB label="Compose" expanded size="large" iconProps={{ name: 'edit' }} />
+		<FAB withMenu iconProps={{ name: 'add' }} config="primary">
+			<FABMenuItem iconProps={{ name: 'home' }}>Главная</FABMenuItem>
+			<FABMenuItem iconProps={{ name: 'search' }}>Поиск</FABMenuItem>
+			<FABMenuItem iconProps={{ name: 'person' }}>Профиль</FABMenuItem>
+		</FAB>
+	</div>
 
-		<Divider />
+	<Divider />
 
-		<!-- TOOLTIPS -->
-		<Display>Tooltips</Display>
-		<div class="flex flex-wrap items-center gap-6">
-			<ButtonIcon
-				tooltipContent="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки."
-				aria-label="Домой"
+	<!-- TOOLTIPS -->
+	<Display>Tooltips</Display>
+	<div class="flex flex-wrap items-center gap-6">
+		<ButtonIcon
+			tooltipContent="Наведи или сфокусируйся на иконке, чтобы увидеть текст подсказки."
+			aria-label="Домой"
+			iconProps={{ name: 'home' }}
+		/>
+		<Tooltip
+			subhead="Быстрая подсказка"
+			variant="rich"
+			supportingText="Доступна кнопкой Tab и закрывается, когда курсор уходит."
+		>
+			{#snippet trigger()}
+				<Button variant="outlined" iconProps={{ name: 'info' }}>Подсказка снизу</Button>
+			{/snippet}
+			<Button variant="text">Действие</Button>
+		</Tooltip>
+		<ButtonIcon tooltipContent="Еще один" iconProps={{ name: 'help' }} variant="text" />
+	</div>
+
+	<Divider />
+
+	<!-- TYPOGRAPHY -->
+	<Display>Typography</Display>
+	<div class="grid grid-cols-3 items-end gap-12">
+		<Display>Display</Display>
+		<Headline>Headline</Headline>
+		<Title>Title</Title>
+		<Body>Body text for reading content at comfortable size.</Body>
+		<Label>Label small</Label>
+	</div>
+
+	<Divider />
+
+	<!-- NAVIGATION -->
+	<Display>Navigation</Display>
+	<Title>Rail</Title>
+	<VStack>
+		<Rail bind:collapsed={railCollapsed}>
+			<RailItem collapsed={railCollapsed} name="Главная" href="/" iconProps={{ name: 'home' }} />
+			<RailItem
+				collapsed={railCollapsed}
+				name="Задания"
+				href="/assignments"
+				iconProps={{ name: 'assignment' }}
+			/>
+			<RailItem
+				collapsed={railCollapsed}
+				name="Занятия"
+				href="/lessons"
+				iconProps={{ name: 'book' }}
+			/>
+		</Rail>
+		<Rail bind:collapsed={railCollapsedWithBadges}>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Главная"
+				href="/"
 				iconProps={{ name: 'home' }}
 			/>
-			<Tooltip
-				subhead="Быстрая подсказка"
-				variant="rich"
-				supportingText="Доступна кнопкой Tab и закрывается, когда курсор уходит."
-			>
-				{#snippet trigger()}
-					<Button variant="outlined" iconProps={{ name: 'info' }}>Подсказка снизу</Button>
-				{/snippet}
-				<Button variant="text">Действие</Button>
-			</Tooltip>
-			<ButtonIcon tooltipContent="Еще один" iconProps={{ name: 'help' }} variant="text" />
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={3}
+				name="Задания"
+				href="/assignments"
+				iconProps={{ name: 'assignment' }}
+			/>
+			<RailItem
+				collapsed={railCollapsedWithBadges}
+				badge={-1}
+				name="Занятия"
+				href="/lessons"
+				iconProps={{ name: 'book' }}
+			/>
+		</Rail>
+	</VStack>
+
+	<Title>Tabs</Title>
+	<TabHolder items={tabItems} tab={activeTab} />
+	<Body>Active tab: {activeTab}</Body>
+
+	<Title>Navbar (Bottom)</Title>
+	<div class="relative h-24 overflow-hidden rounded-2xl bg-md-sys-color-surface-container">
+		<Navbar>
+			<NavbarItem href="/" label="Главная" iconProps={{ name: 'home' }} />
+			<NavbarItem href="/lessons" label="Занятия" iconProps={{ name: 'book' }} badge={2} />
+			<NavbarItem href="/tasks" label="Задания" iconProps={{ name: 'assignment' }} />
+			<NavbarItem href="/profile" label="Профиль" iconProps={{ name: 'person' }} />
+		</Navbar>
+	</div>
+
+	<Divider />
+
+	<!-- CARDS -->
+	<Display>Cards</Display>
+	<div class="flex gap-4">
+		<Card class="p-4">
+			<Title>Elevated</Title>
+			<Body>Default card with elevation shadow.</Body>
+		</Card>
+		<Card type="outlined" class="p-4">
+			<Title>Outlined</Title>
+			<Body>Card with an outline border.</Body>
+		</Card>
+		<Card type="filled" class="p-4">
+			<Title>Filled</Title>
+			<Body>Card with filled background.</Body>
+		</Card>
+	</div>
+
+	<Divider />
+
+	<!-- DIALOGUES -->
+	<Display>Dialogues</Display>
+	<div class="flex flex-wrap gap-4">
+		<Button
+			onclick={() => {
+				showModal = !showModal;
+			}}>Simple Dialogue</Button
+		>
+		<Button
+			variant="tonal"
+			onclick={() => {
+				showModal2 = !showModal2;
+			}}>With Headline</Button
+		>
+		<Button
+			variant="outlined"
+			onclick={() => {
+				showModal3 = !showModal3;
+			}}>Long Content</Button
+		>
+	</div>
+	{#if showModal}
+		<Dialogue
+			withState={false}
+			supportingText="Не то чтобы совсем, а все ж-таки давно, жил на Руси кто-то там великий"
+			class="w-2xl"
+			confirmAction="?/update"
+			confirmText="Подтвердить"
+			toggle={() => (showModal = !showModal)}
+		/>
+	{/if}
+	{#if showModal2}
+		<Dialogue
+			withState={false}
+			headline="Сбросить настройки?"
+			supportingText="Все изменения будут потеряны."
+			confirmAction="?/update"
+			confirmText="Сбросить"
+			toggle={() => (showModal2 = !showModal2)}
+		/>
+	{/if}
+	{#if showModal3}
+		<Dialogue
+			withState={false}
+			supportingText="Anim sunt eiusmod deserunt Lorem. Tempor dolor voluptate fugiat elit sint ipsum ea. Enim proident velit sit Lorem esse. Nostrud cupidatat ut duis aute consectetur veniam pariatur voluptate exercitation."
+			confirmAction="?/update"
+			headline="Длинный текст"
+			confirmText="Lorem"
+			toggle={() => (showModal3 = !showModal3)}
+		/>
+	{/if}
+
+	<Divider />
+
+	<!-- TEXT FIELDS -->
+	<Display>Text Fields</Display>
+	<div class="grid max-w-3xl grid-cols-2 gap-4">
+		<Textfield label="Default" id="tf1" />
+		<Textfield label="With value" value="Hello world" id="tf2" />
+		<Textfield label="With supporting text" id="tf3">
+			{#snippet supportingText()}
+				Helper text goes here
+			{/snippet}
+		</Textfield>
+		<Textfield leadingIconProps={{ name: 'search' }} label="Search" id="tf4" />
+		<Textfield trailingIconProps={{ name: 'close' }} label="Clearable" id="tf5" />
+		<Textfield disabled label="Disabled" value="Can't edit" id="tf6" />
+		<Textfield error trailingIconProps={{ name: 'warning' }} label="Error state" id="tf7">
+			{#snippet supportingText()}
+				This field has an error
+			{/snippet}
+		</Textfield>
+		<Textfield label="Character limit" characterLimit={50} value="" id="tf8" />
+	</div>
+
+	<Divider />
+
+	<!-- FORMS -->
+	<Display>Forms</Display>
+	<Headline>Checkbox</Headline>
+	<div class="flex flex-wrap gap-8">
+		<label class="flex cursor-pointer items-center gap-3">
+			<Checkbox bind:checked={checkbox1} />
+			<Body>Unchecked</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3">
+			<Checkbox bind:checked={checkbox2} />
+			<Body>Checked</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3">
+			<Checkbox indeterminate />
+			<Body>Indeterminate</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3">
+			<Checkbox error />
+			<Body>Error</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3 opacity-60">
+			<Checkbox disabled />
+			<Body>Disabled</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3 opacity-60">
+			<Checkbox disabled checked />
+			<Body>Disabled Checked</Body>
+		</label>
+	</div>
+
+	<Headline>Switch</Headline>
+	<div class="flex flex-wrap gap-8">
+		<label class="flex cursor-pointer items-center gap-3">
+			<Switch bind:checked={switchOn} />
+			<Body>{switchOn ? 'On' : 'Off'}</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3">
+			<Switch bind:checked={switchIcons} icons="both" />
+			<Body>Both icons</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3">
+			<Switch icons="none" />
+			<Body>No icons</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3 opacity-60">
+			<Switch disabled />
+			<Body>Disabled</Body>
+		</label>
+		<label class="flex cursor-pointer items-center gap-3 opacity-60">
+			<Switch disabled checked />
+			<Body>Disabled On</Body>
+		</label>
+	</div>
+
+	<Headline>Select</Headline>
+	<div class="flex max-w-md flex-wrap gap-4">
+		<Select
+			bind:value={selectValue}
+			items={selectItems}
+			placeholder="Выберите язык"
+			class="w-full"
+		/>
+		<Body>Selected: {selectValue || '—'}</Body>
+	</div>
+
+	<Divider />
+
+	<!-- MENU -->
+	<Display>Menu</Display>
+	<div class="flex gap-4">
+		<Menu
+			items={menuItems}
+			label="Действия"
+			selected={selectedMenu}
+			onselect={(v) => (selectedMenu = v)}
+		/>
+		<Menu
+			items={menuItems}
+			label="Align end"
+			align="end"
+			selected={selectedMenu}
+			onselect={(v) => (selectedMenu = v)}
+		/>
+	</div>
+	{#if selectedMenu}
+		<Body>Selected: {selectedMenu}</Body>
+	{/if}
+
+	<Divider />
+
+	<!-- SNACKBAR -->
+	<Display>Snackbar</Display>
+	<div class="flex gap-4">
+		<Button
+			onclick={() => {
+				snackbarMsg = 'Это уведомление исчезнет через 5 секунд';
+			}}
+		>
+			Show Snackbar
+		</Button>
+	</div>
+	<div class="space-y-4">
+		<Snackbar
+			message="Long persistent message about something important that happened in the app."
+			label="Dismiss"
+			static
+			fixed={false}
+		/>
+		<Snackbar message="With close button" label="Action" showClose static fixed={false} />
+		<Snackbar static message="No action, no close" fixed={false} />
+	</div>
+	{#if snackbarMsg}
+		<Snackbar
+			message={snackbarMsg}
+			label="OK"
+			callback={() => (snackbarMsg = '')}
+			showClose={false}
+			fixed
+		/>
+	{/if}
+
+	<Divider />
+
+	<!-- PROGRESS -->
+	<Display>Progress</Display>
+	<Headline>Linear Progress</Headline>
+	<div class="flex max-w-xl flex-col gap-6">
+		<LinearProgress percent={30} />
+		<LinearProgress percent={65} />
+		<LinearProgress percent={100} />
+	</div>
+
+	<Headline>Circular Progress</Headline>
+	<div class="flex flex-wrap items-center gap-6">
+		<CircularProgress percent={25} />
+		<CircularProgress percent={50} />
+		<CircularProgress percent={75} />
+		<CircularProgress percent={100} />
+		<CircularProgress percent={60} size={64} thickness={6} />
+		<CircularProgress percent={60} size={32} thickness={3} />
+	</div>
+
+	<Headline>Wavy Linear Progress</Headline>
+	<div class="flex max-w-xl flex-col gap-4">
+		<WavyLinearProgress percent={60} />
+	</div>
+
+	<Divider />
+
+	<!-- BADGES & AVATAR -->
+	<Display>Badges & Avatars</Display>
+	<div class="flex flex-wrap items-center gap-8">
+		<div class="relative inline-flex">
+			<ButtonIcon iconProps={{ name: 'notifications' }} variant="text" />
+			<Badge size="sm" number={1} class="absolute -top-1 -right-1" />
 		</div>
-
-		<Divider />
-
-		<!-- TYPOGRAPHY -->
-		<Display>Typography</Display>
-		<div class="grid grid-cols-3 items-end gap-12">
-			<Display>Display</Display>
-			<Headline>Headline</Headline>
-			<Title>Title</Title>
-			<Body>Body text for reading content at comfortable size.</Body>
-			<Label>Label small</Label>
+		<div class="relative inline-flex">
+			<ButtonIcon iconProps={{ name: 'mail' }} variant="text" />
+			<Badge size="lg" number={5} class="absolute -top-1 -right-1" />
 		</div>
+		<div class="relative inline-flex">
+			<ButtonIcon iconProps={{ name: 'chat' }} variant="text" />
+			<Badge size="lg" number={120} class="absolute -top-1 -right-1" />
+		</div>
+		<Avatar seed="alice" size="sm" />
+		<Avatar seed="bob" size="md" />
+		<Avatar seed="carol" size="lg" />
+	</div>
 
-		<Divider />
+	<Divider />
 
-		<!-- NAVIGATION -->
-		<Display>Navigation</Display>
-		<Title>Rail</Title>
-		<VStack>
-			<Rail bind:collapsed={railCollapsed}>
-				<RailItem collapsed={railCollapsed} name="Главная" href="/" iconProps={{ name: 'home' }} />
-				<RailItem
-					collapsed={railCollapsed}
-					name="Задания"
-					href="/assignments"
-					iconProps={{ name: 'assignment' }}
+	<!-- LISTS -->
+	<Display>Lists</Display>
+	<div class="grid grid-cols-2 gap-4">
+		<ul class="max-w-5xl">
+			{#each Array(5).fill( { headline: 'Lesson', overline: 'Interesting', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
+				<ListItem
+					headline={lesson.headline}
+					overline={lesson.overline}
+					supporting={lesson.supporting}
+					href={lesson.href}
 				/>
-				<RailItem
-					collapsed={railCollapsed}
-					name="Занятия"
-					href="/lessons"
-					iconProps={{ name: 'book' }}
-				/>
-			</Rail>
-			<Rail bind:collapsed={railCollapsedWithBadges}>
-				<RailItem
-					collapsed={railCollapsedWithBadges}
-					badge={3}
-					name="Главная"
-					href="/"
-					iconProps={{ name: 'home' }}
-				/>
-				<RailItem
-					collapsed={railCollapsedWithBadges}
-					badge={3}
-					name="Задания"
-					href="/assignments"
-					iconProps={{ name: 'assignment' }}
-				/>
-				<RailItem
-					collapsed={railCollapsedWithBadges}
-					badge={-1}
-					name="Занятия"
-					href="/lessons"
-					iconProps={{ name: 'book' }}
-				/>
-			</Rail>
-		</VStack>
-
-		<Title>Tabs</Title>
-		<TabHolder items={tabItems} tab={activeTab} />
-		<Body>Active tab: {activeTab}</Body>
-
-		<Title>Navbar (Bottom)</Title>
-		<div class="relative h-24 overflow-hidden rounded-2xl bg-md-sys-color-surface-container">
-			<Navbar>
-				<NavbarItem href="/" label="Главная" iconProps={{ name: 'home' }} />
-				<NavbarItem href="/lessons" label="Занятия" iconProps={{ name: 'book' }} badge={2} />
-				<NavbarItem href="/tasks" label="Задания" iconProps={{ name: 'assignment' }} />
-				<NavbarItem href="/profile" label="Профиль" iconProps={{ name: 'person' }} />
-			</Navbar>
-		</div>
-
-		<Divider />
-
-		<!-- CARDS -->
-		<Display>Cards</Display>
-		<div class="flex gap-4">
-			<Card class="p-4">
-				<Title>Elevated</Title>
-				<Body>Default card with elevation shadow.</Body>
-			</Card>
-			<Card type="outlined" class="p-4">
-				<Title>Outlined</Title>
-				<Body>Card with an outline border.</Body>
-			</Card>
-			<Card type="filled" class="p-4">
-				<Title>Filled</Title>
-				<Body>Card with filled background.</Body>
-			</Card>
-		</div>
-
-		<Divider />
-
-		<!-- DIALOGUES -->
-		<Display>Dialogues</Display>
-		<div class="flex flex-wrap gap-4">
-			<Button
-				onclick={() => {
-					showModal = !showModal;
-				}}>Simple Dialogue</Button
-			>
-			<Button
-				variant="tonal"
-				onclick={() => {
-					showModal2 = !showModal2;
-				}}>With Headline</Button
-			>
-			<Button
-				variant="outlined"
-				onclick={() => {
-					showModal3 = !showModal3;
-				}}>Long Content</Button
-			>
-		</div>
-		{#if showModal}
-			<Dialogue
-				withState={false}
-				supportingText="Не то чтобы совсем, а все ж-таки давно, жил на Руси кто-то там великий"
-				class="w-2xl"
-				confirmAction="?/update"
-				confirmText="Подтвердить"
-				toggle={() => (showModal = !showModal)}
-			/>
-		{/if}
-		{#if showModal2}
-			<Dialogue
-				withState={false}
-				headline="Сбросить настройки?"
-				supportingText="Все изменения будут потеряны."
-				confirmAction="?/update"
-				confirmText="Сбросить"
-				toggle={() => (showModal2 = !showModal2)}
-			/>
-		{/if}
-		{#if showModal3}
-			<Dialogue
-				withState={false}
-				supportingText="Anim sunt eiusmod deserunt Lorem. Tempor dolor voluptate fugiat elit sint ipsum ea. Enim proident velit sit Lorem esse. Nostrud cupidatat ut duis aute consectetur veniam pariatur voluptate exercitation."
-				confirmAction="?/update"
-				headline="Длинный текст"
-				confirmText="Lorem"
-				toggle={() => (showModal3 = !showModal3)}
-			/>
-		{/if}
-
-		<Divider />
-
-		<!-- TEXT FIELDS -->
-		<Display>Text Fields</Display>
-		<div class="grid max-w-3xl grid-cols-2 gap-4">
-			<Textfield label="Default" id="tf1" />
-			<Textfield label="With value" value="Hello world" id="tf2" />
-			<Textfield label="With supporting text" id="tf3">
-				{#snippet supportingText()}
-					Helper text goes here
-				{/snippet}
-			</Textfield>
-			<Textfield leadingIconProps={{ name: 'search' }} label="Search" id="tf4" />
-			<Textfield trailingIconProps={{ name: 'close' }} label="Clearable" id="tf5" />
-			<Textfield disabled label="Disabled" value="Can't edit" id="tf6" />
-			<Textfield error trailingIconProps={{ name: 'warning' }} label="Error state" id="tf7">
-				{#snippet supportingText()}
-					This field has an error
-				{/snippet}
-			</Textfield>
-			<Textfield label="Character limit" characterLimit={50} value="" id="tf8" />
-		</div>
-
-		<Divider />
-
-		<!-- FORMS -->
-		<Display>Forms</Display>
-		<Headline>Checkbox</Headline>
-		<div class="flex flex-wrap gap-8">
-			<label class="flex cursor-pointer items-center gap-3">
-				<Checkbox bind:checked={checkbox1} />
-				<Body>Unchecked</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3">
-				<Checkbox bind:checked={checkbox2} />
-				<Body>Checked</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3">
-				<Checkbox indeterminate />
-				<Body>Indeterminate</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3">
-				<Checkbox error />
-				<Body>Error</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3 opacity-60">
-				<Checkbox disabled />
-				<Body>Disabled</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3 opacity-60">
-				<Checkbox disabled checked />
-				<Body>Disabled Checked</Body>
-			</label>
-		</div>
-
-		<Headline>Switch</Headline>
-		<div class="flex flex-wrap gap-8">
-			<label class="flex cursor-pointer items-center gap-3">
-				<Switch bind:checked={switchOn} />
-				<Body>{switchOn ? 'On' : 'Off'}</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3">
-				<Switch bind:checked={switchIcons} icons="both" />
-				<Body>Both icons</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3">
-				<Switch icons="none" />
-				<Body>No icons</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3 opacity-60">
-				<Switch disabled />
-				<Body>Disabled</Body>
-			</label>
-			<label class="flex cursor-pointer items-center gap-3 opacity-60">
-				<Switch disabled checked />
-				<Body>Disabled On</Body>
-			</label>
-		</div>
-
-		<Headline>Select</Headline>
-		<div class="flex max-w-md flex-wrap gap-4">
-			<Select
-				bind:value={selectValue}
-				items={selectItems}
-				placeholder="Выберите язык"
-				class="w-full"
-			/>
-			<Body>Selected: {selectValue || '—'}</Body>
-		</div>
-
-		<Divider />
-
-		<!-- MENU -->
-		<Display>Menu</Display>
-		<div class="flex gap-4">
-			<Menu
-				items={menuItems}
-				label="Действия"
-				selected={selectedMenu}
-				onselect={(v) => (selectedMenu = v)}
-			/>
-			<Menu
-				items={menuItems}
-				label="Align end"
-				align="end"
-				selected={selectedMenu}
-				onselect={(v) => (selectedMenu = v)}
-			/>
-		</div>
-		{#if selectedMenu}
-			<Body>Selected: {selectedMenu}</Body>
-		{/if}
-
-		<Divider />
-
-		<!-- SNACKBAR -->
-		<Display>Snackbar</Display>
-		<div class="flex gap-4">
-			<Button
-				onclick={() => {
-					snackbarMsg = 'Это уведомление исчезнет через 5 секунд';
-				}}
-			>
-				Show Snackbar
-			</Button>
-		</div>
-		<div class="space-y-4">
-			<Snackbar
-				message="Long persistent message about something important that happened in the app."
-				label="Dismiss"
-				static
-				fixed={false}
-			/>
-			<Snackbar message="With close button" label="Action" showClose static fixed={false} />
-			<Snackbar static message="No action, no close" fixed={false} />
-		</div>
-		{#if snackbarMsg}
-			<Snackbar
-				message={snackbarMsg}
-				label="OK"
-				callback={() => (snackbarMsg = '')}
-				showClose={false}
-				fixed
-			/>
-		{/if}
-
-		<Divider />
-
-		<!-- PROGRESS -->
-		<Display>Progress</Display>
-		<Headline>Linear Progress</Headline>
-		<div class="flex max-w-xl flex-col gap-6">
-			<LinearProgress percent={30} />
-			<LinearProgress percent={65} />
-			<LinearProgress percent={100} />
-		</div>
-
-		<Headline>Circular Progress</Headline>
-		<div class="flex flex-wrap items-center gap-6">
-			<CircularProgress percent={25} />
-			<CircularProgress percent={50} />
-			<CircularProgress percent={75} />
-			<CircularProgress percent={100} />
-			<CircularProgress percent={60} size={64} thickness={6} />
-			<CircularProgress percent={60} size={32} thickness={3} />
-		</div>
-
-		<Headline>Wavy Linear Progress</Headline>
-		<div class="flex max-w-xl flex-col gap-4">
-			<WavyLinearProgress percent={60} />
-		</div>
-
-		<Divider />
-
-		<!-- BADGES & AVATAR -->
-		<Display>Badges & Avatars</Display>
-		<div class="flex flex-wrap items-center gap-8">
-			<div class="relative inline-flex">
-				<ButtonIcon iconProps={{ name: 'notifications' }} variant="text" />
-				<Badge size="sm" number={1} class="absolute -top-1 -right-1" />
-			</div>
-			<div class="relative inline-flex">
-				<ButtonIcon iconProps={{ name: 'mail' }} variant="text" />
-				<Badge size="lg" number={5} class="absolute -top-1 -right-1" />
-			</div>
-			<div class="relative inline-flex">
-				<ButtonIcon iconProps={{ name: 'chat' }} variant="text" />
-				<Badge size="lg" number={120} class="absolute -top-1 -right-1" />
-			</div>
-			<Avatar seed="alice" size="sm" />
-			<Avatar seed="bob" size="md" />
-			<Avatar seed="carol" size="lg" />
-		</div>
-
-		<Divider />
-
-		<!-- LISTS -->
-		<Display>Lists</Display>
-		<div class="grid grid-cols-2 gap-4">
-			<ul class="max-w-5xl">
-				{#each Array(5).fill( { headline: 'Lesson', overline: 'Interesting', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
-					<ListItem
-						headline={lesson.headline}
-						overline={lesson.overline}
-						supporting={lesson.supporting}
-						href={lesson.href}
-					/>
-				{/each}
-			</ul>
-			<ul class="max-w-5xl">
-				{#each Array(5).fill( { headline: 'Task', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
-					<ListItem headline={lesson.headline} supporting={lesson.supporting} href={lesson.href}>
-						{#snippet trailing()}
-							<Icon name="check" />
-						{/snippet}
-					</ListItem>
-				{/each}
-			</ul>
-		</div>
-
-		<Divider />
-
-		<!-- SEARCH -->
-		<Display>Search</Display>
-		<div class="grid grid-cols-2 gap-4">
-			<Search />
-			<Search trailingIconProps={{ name: 'search' }} />
-		</div>
-
-		<Divider />
-
-		<!-- SLIDER -->
-		<Display>Slider</Display>
-		<div class="max-w-md">
-			<Slider value={5} />
-		</div>
-
-		<Divider />
-
-		<!-- TIME & DATE -->
-		<Display>Time & Date</Display>
-		<div class="grid grid-cols-2 gap-4">
-			<DateField label="Дата" />
-			<TimepickerInput
-				setTime={(t) => console.debug('set time', t)}
-				close={() => console.debug('closed')}
-				time="09:41"
-			/>
-			<LoadingIndicator />
-			<LoadingIndicator container />
-		</div>
-
-		<Divider />
-
-		<!-- MULTIPART -->
-		<Display>Multipart Upload</Display>
-		<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-			{#each multipartDemos as demo (demo.label)}
-				<div class="space-y-3 rounded-xl bg-md-sys-color-surface-container p-6">
-					<Title>{demo.label}</Title>
-					<Multipart {...demo.props} />
-				</div>
 			{/each}
-		</div>
-	</SinglePane>
-</TooltipBits.Provider>
+		</ul>
+		<ul class="max-w-5xl">
+			{#each Array(5).fill( { headline: 'Task', supporting: 'Adipisicing ullamco veniam enim aliqua cupidatat velit deserunt ipsum.', href: '/' } ) as lesson}
+				<ListItem headline={lesson.headline} supporting={lesson.supporting} href={lesson.href}>
+					{#snippet trailing()}
+						<Icon name="check" />
+					{/snippet}
+				</ListItem>
+			{/each}
+		</ul>
+	</div>
+
+	<Divider />
+
+	<!-- SEARCH -->
+	<Display>Search</Display>
+	<div class="grid grid-cols-2 gap-4">
+		<Search />
+		<Search trailingIconProps={{ name: 'search' }} />
+	</div>
+
+	<Divider />
+
+	<!-- SLIDER -->
+	<Display>Slider</Display>
+	<div class="max-w-md">
+		<Slider value={5} />
+	</div>
+
+	<Divider />
+
+	<!-- TIME & DATE -->
+	<Display>Time & Date</Display>
+	<div class="grid grid-cols-2 gap-4">
+		<DateField label="Дата" />
+		<TimepickerInput
+			setTime={(t) => console.debug('set time', t)}
+			close={() => console.debug('closed')}
+			time="09:41"
+		/>
+		<LoadingIndicator />
+		<LoadingIndicator container />
+	</div>
+
+	<Divider />
+
+	<!-- MULTIPART -->
+	<Display>Multipart Upload</Display>
+	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+		{#each multipartDemos as demo (demo.label)}
+			<div class="space-y-3 rounded-xl bg-md-sys-color-surface-container p-6">
+				<Title>{demo.label}</Title>
+				<Multipart {...demo.props} />
+			</div>
+		{/each}
+	</div>
+</SinglePane>

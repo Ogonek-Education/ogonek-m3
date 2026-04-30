@@ -17,7 +17,7 @@ export type TooltipProps = TooltipVariants &
 		/** Additional props passed to the underlying Tooltip.Trigger component */
 		triggerProps?: TooltipTriggerProps;
 		/** Additional props passed to the underlying Tooltip.Content component */
-		contentProps?: TooltipContentProps;
+		contentProps?: Omit<TooltipContentProps, 'forceMount'>;
 		/** Time in milliseconds to wait before showing the tooltip */
 		delayDuration?: number;
 		/** Whether the tooltip is currently visible */

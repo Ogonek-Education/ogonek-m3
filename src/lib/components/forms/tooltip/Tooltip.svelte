@@ -12,6 +12,7 @@
 	import { tooltip } from './theme.js';
 	import type { TooltipProps } from './types.js';
 	import { Tooltip } from 'bits-ui';
+	import { enterExit, easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/index.js';
 
 	let {
 		subhead,
@@ -58,23 +59,44 @@
 		{/if}
 
 		{#if hasTooltipContent}
-			<Tooltip.Content {...contentProps} class={baseCls}>
-				{#if variant === 'rich'}
-					<Layer />
-					{#if subhead}
-						<Title class={subheadCls()}>
-							{subhead}
-						</Title>
+			<Tooltip.Content {...contentProps} forceMount>
+				{#snippet child({ wrapperProps, props, open })}
+					{#if open}
+						<div {...wrapperProps}>
+							<div
+								{...props}
+								class={baseCls}
+								in:enterExit={{
+									duration: variant === 'rich' ? 200 : 150,
+									easing: easeEmphasizedDecel,
+									mode: 'scale'
+								}}
+								out:enterExit={{
+									duration: variant === 'rich' ? 150 : 75,
+									easing: easeEmphasizedAccel,
+									mode: 'scale'
+								}}
+							>
+								{#if variant === 'rich'}
+									<Layer />
+									{#if subhead}
+										<Title class={subheadCls()}>
+											{subhead}
+										</Title>
+									{/if}
+									<Body class={supportingTextCls()}>
+										{supportingText}
+									</Body>
+									{@render children?.()}
+								{:else if supportingText}
+									<Body class={supportingTextCls()}>
+										{supportingText}
+									</Body>
+								{/if}
+							</div>
+						</div>
 					{/if}
-					<Body class={supportingTextCls()}>
-						{supportingText}
-					</Body>
-					{@render children?.()}
-				{:else if supportingText}
-					<Body class={supportingTextCls()}>
-						{supportingText}
-					</Body>
-				{/if}
+				{/snippet}
 			</Tooltip.Content>
 		{/if}
 	</Tooltip.Portal>
