@@ -6,4 +6,8 @@ export * from "./types.js";
 
 // default exports for components in this folder
 export { default as Select } from "./Select.svelte";
+export { default as SelectGroup } from "./SelectGroup.svelte";
+export { default as SelectItem } from "./SelectItem.svelte";
+export { default as SelectLabel } from "./SelectLabel.svelte";
+export { default as SelectSeparator } from "./SelectSeparator.svelte";
 

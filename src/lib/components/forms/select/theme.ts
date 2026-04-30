@@ -4,88 +4,102 @@ export type SelectVariants = VariantProps<typeof select>;
 
 export const select = tv({
 	slots: {
-		base: `
-    group h-14 w-full bg-md-sys-color-surface-container-highest
-      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center border-b
-      border-md-sys-color-on-surface-variant
-      hover:border-md-sys-color-on-surface
-      focus-within:border-md-sys-color-primary
-      focus-within:border-b-2
+		root: 'relative w-full',
+		trigger: `
+      group w-full h-14 px-0 bg-md-sys-color-surface-container-highest
+      rounded-t-xs state-layer before:rounded-xs hover:before:bg-md-sys-color-on-surface/8 relative flex items-center
+      after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:bg-md-sys-color-on-surface-variant
+      after:transition-[height,background-color] after:duration-200
+      hover:after:bg-md-sys-color-on-surface
+      data-[state=open]:after:bg-md-sys-color-primary
+      data-[state=open]:after:h-[2px]
       disabled:bg-md-sys-color-on-surface/4
-      disabled:border-md-sys-color-on-surface/12 outline-none md-sys-typescale-body-large text-md-sys-color-on-surface disabled:text-md-sys-color-on-surface/38 px-4
+      disabled:after:bg-md-sys-color-on-surface/12
+      cursor-pointer
+    `,
+		inputWrapper: `
+      relative flex-1 px-4 flex flex-col justify-center items-start overflow-hidden
+    `,
+		value: `
+      peer w-full bg-transparent outline-none
+      md-sys-typescale-body-large text-md-sys-color-on-surface
+      disabled:text-md-sys-color-on-surface/38
+      truncate text-left
+    `,
+		label: `
+      absolute left-4 top-1/2 -translate-y-1/2
+      md-sys-typescale-body-large
+      text-md-sys-color-on-surface-variant
+      pointer-events-none
+      transition-[top,font-size,line-height,color,transform] duration-200 ease-in-out
+
+      group-data-[state=open]:text-md-sys-color-primary
+      group-data-[invalid]:text-md-sys-color-error
+
+      group-data-[state=open]:top-1.5 group-data-[state=open]:md-sys-typescale-body-small group-data-[state=open]:-translate-y-1
+    `,
+		labelFloating: `
+      top-1.5 md-sys-typescale-body-small -translate-y-1
+    `,
+		leadingIcon: `
+      text-md-sys-color-on-surface-variant size-6
+      group-data-[state=open]:text-md-sys-color-primary
+      group-data-[invalid]:text-md-sys-color-error ml-3 text-[24px]
+    `,
+		trailingIcon: `
+      mr-3 text-md-sys-color-on-surface-variant size-6
+      group-data-[state=open]:text-md-sys-color-primary
+      group-data-[invalid]:text-md-sys-color-error z-20 text-[24px]
+      transition-transform duration-200
+      group-data-[state=open]:rotate-180
+    `,
+		content: `
+      z-50 min-w-[var(--bits-select-trigger-width)] max-h-96 overflow-y-auto
+      rounded-sm bg-md-sys-color-surface-container-high
+      shadow-elevation-3 py-2 outline-none
+    `,
+		item: `
+      relative flex w-full cursor-pointer select-none items-center
+      px-4 py-3 outline-none
+      md-sys-typescale-body-large text-md-sys-color-on-surface
+      hover:bg-md-sys-color-on-surface/8
+      focus:bg-md-sys-color-on-surface/8
+      data-[selected]:bg-md-sys-color-secondary-container
+      data-[selected]:text-md-sys-color-on-secondary-container
+      data-[disabled]:pointer-events-none data-[disabled]:opacity-50
+      transition-colors duration-150
+    `,
+		group: `
+      p-1
+    `,
+		groupLabel: `
+      px-4 py-2 md-sys-typescale-label-medium
+      text-md-sys-color-primary
+    `,
+		separator: `
+      -mx-1 my-1 h-px bg-md-sys-color-outline-variant
+    `,
+		supportingText: `
+      px-4 pt-1 flex justify-between
+      md-sys-typescale-body-small
+      text-md-sys-color-on-surface-variant
+      group-data-[invalid]:text-md-sys-color-error
     `
 	},
 	variants: {
-		disabled: {
-			true: 'cursor-not-allowed opacity-50',
-			false: ''
-		},
-		size: {
-			sm: 'padding-narrow',
-			md: 'padding-default',
-			lg: 'padding-default text-xl md:text-2xl'
-		}
-	}
-});
-
-export const multiSelect = tv({
-	slots: {
-		base: 'relative border border-stone-300 w-full flex items-center gap-2 dark:border-stone-600 ring-primary-500 dark:ring-primary-500 focus-visible:outline-hidden',
-		select: '',
-		dropdown:
-			'absolute z-50 p-3 flex flex-col gap-1 max-h-64 bg-white border border-stone-300 dark:bg-stone-700 dark:border-stone-600 start-0 top-[calc(100%+1rem)] rounded-2xl cursor-pointer overflow-y-scroll w-full',
-		item: 'py-2 px-3 rounded-2xl text-stone-600 hover:text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:text-stone-300 dark:hover:bg-stone-600',
-		close: 'p-0 focus:ring-stone-400 dark:text-text-white',
-		span: '',
-		placeholder: 'text-text-tertiary',
-		svg: 'ms-1 h-3 w-3 cursor-pointer text-stone-800 dark:text-text-white'
-	},
-	variants: {
-		size: {
-			sm: 'px-2.5 py-2.5 min-h-[2.4rem] text-xs',
-			md: 'px-2.5 py-2.5 min-h-[2.7rem] text-sm',
-			lg: 'px-3 py-3 min-h-[3.2rem] sm:text-base'
+		error: {
+			true: {
+				trigger: 'after:bg-md-sys-color-error data-[state=open]:after:bg-md-sys-color-error',
+				label: 'text-md-sys-color-error',
+				supportingText: 'text-md-sys-color-error',
+				leadingIcon: 'text-md-sys-color-error',
+				trailingIcon: 'text-md-sys-color-error'
+			}
 		},
 		disabled: {
 			true: {
-				base: 'cursor-not-allowed opacity-50 pointer-events-none',
-				item: 'cursor-not-allowed opacity-50',
-				close: 'cursor-not-allowed'
-			},
-			false: {
-				base: 'focus-within:border-primary-500 dark:focus-within:border-primary-500 focus-within:ring-1'
-			}
-		},
-		active: {
-			true: {
-				item: 'bg-primary-100 text-primary-500 dark:bg-primary-500 dark:text-primary-100 hover:bg-primary-100 dark:hover:bg-primary-500 hover:text-primary-600 dark:hover:text-primary-100'
-			}
-		},
-		selected: {
-			true: {
-				item: 'bg-stone-100 text-black font-semibold hover:text-black dark:text-text-white dark:bg-stone-600 dark:hover:text-text-white'
-			}
-		},
-		grouped: {
-			false: { base: 'rounded-2xl', select: 'rounded-2xl' },
-			true: {
-				base: 'first:rounded-s-2xl last:rounded-e-2xl not-first:-ms-px group',
-				select: 'group-first:rounded-s-2xl group-last:rounded-e-2xl group-not-first:-ms-px h-full'
+				root: 'pointer-events-none opacity-60'
 			}
 		}
-	},
-	// Add compoundVariants here
-	compoundVariants: [
-		{
-			selected: true,
-			active: true,
-			class: {
-				item: 'bg-primary-200 dark:bg-primary-600 text-primary-700 dark:text-primary-100 font-semibold' // Adjust colors as needed
-			}
-		}
-	],
-	defaultVariants: {
-		underline: false,
-		size: 'md'
 	}
 });
