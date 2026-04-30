@@ -1,21 +1,25 @@
 <script lang="ts">
 	/**
 	 * Dialogs provide important information or prompt users for a decision.
-	 * 
-	 * A dialog is a type of modal window that appears in front of app content 
-	 * to provide critical information or ask for a decision. 
-	 * Dialogs disable all app functionality when they appear, and remain 
+	 *
+	 * A dialog is a type of modal window that appears in front of app content
+	 * to provide critical information or ask for a decision.
+	 * Dialogs disable all app functionality when they appear, and remain
 	 * on screen until confirmed, dismissed, or a required action has been taken.
-	 * 
+	 *
 	 * @see https://m3.material.io/components/dialogs/overview
 	 */
-	import { clickOutside } from '$lib/actions/index.js';
-	import type { DialogueProps } from './types.js';
 	import { dialogue } from './theme.js';
+	import type { DialogueProps } from './types.js';
+	import { Dialog } from 'bits-ui';
 	import Button from '../../buttons/Button.svelte';
 	import clsx from 'clsx';
 	import { enterExit } from '$lib/animation/enterExit.js';
-	import { easeEmphasizedDecel, easeEmphasizedAccel } from '$lib/animation/easing.js';
+	import {
+		easeEmphasized,
+		easeEmphasizedDecel,
+		easeEmphasizedAccel
+	} from '$lib/animation/easing.js';
 
 	let {
 		withState = false,
@@ -32,59 +36,96 @@
 
 	const { base, inner, headlineContainer, buttonContainer, supportingTextContainer } =
 		$derived(dialogue());
-</script>
 
-<div
-	aria-label="scrim"
-	class={`${base()} dialogue-base`}
-	in:enterExit={{ duration: 300, easing: easeEmphasizedDecel }}
-	out:enterExit={{ duration: 200, easing: easeEmphasizedAccel }}
->
-	<div
-		class={`${inner({ class: clsx(className) })} dialogue-inner`}
-		{...rest}
-		in:enterExit={{ duration: 400, easing: easeEmphasizedDecel, mode: 'dialog' }}
-		out:enterExit={{ duration: 200, easing: easeEmphasizedAccel, mode: 'dialog' }}
-		use:clickOutside={() => {
+	let isOpen = $state(false);
+
+	$effect(() => {
+		isOpen = true;
+	});
+
+	const handleOpenChange = (open: boolean) => {
+		if (!open) {
 			if (withState) {
 				window.history.back();
 			} else {
 				toggle();
 			}
-		}}
-	>
-		{#if headline}
-			<h1 class={headlineContainer()}>
-				{headline}
-			</h1>
-		{/if}
-		<p class={supportingTextContainer()}>
-			{supportingText}
-		</p>
-		{@render children?.()}
-		<div class={`${buttonContainer()} dialogue-buttons`}>
-			<Button
-				type="button"
-				variant="text"
-				data-cy="dialogue-cancel"
-				onclick={() => {
-					if (withState) {
-						window.history.back();
-					} else {
-						toggle();
-					}
-				}}>Отмена</Button
-			>
-			<Button
-				type="submit"
-				{loading}
-				variant="filled"
-				formaction={confirmAction}
-				data-cy="dialogue-confirm">{confirmText}</Button
-			>
+		}
+	};
+
+	const id = $derived(rest.id ?? undefined);
+</script>
+
+<Dialog.Root bind:open={isOpen} onOpenChange={handleOpenChange}>
+	<Dialog.Portal>
+		<Dialog.Overlay forceMount>
+			{#snippet child({ props, open })}
+				{#if open}
+					<div
+						{...props}
+						class={`${base()} dialogue-base`}
+						transition:enterExit={{
+							duration: 500,
+							easing: easeEmphasizedDecel
+						}}
+					></div>
+				{/if}
+			{/snippet}
+		</Dialog.Overlay>
+		<div class="fixed inset-0 z-40 flex items-center justify-center pointer-events-none">
+			<Dialog.Content forceMount {...rest} {id}>
+				{#snippet child({ props, open })}
+					{#if open}
+						<div
+							{...props}
+							class={`${inner({ class: clsx(className) })} dialogue-inner pointer-events-auto`}
+							transition:enterExit={{
+								duration: 500,
+								easing: easeEmphasized,
+								mode: 'dialog-m3'
+							}}
+						>
+							{#if headline}
+								<Dialog.Title>
+									{#snippet child({ props })}
+										<h1 {...props} class={headlineContainer()}>
+											{headline}
+										</h1>
+									{/snippet}
+								</Dialog.Title>
+							{/if}
+							<Dialog.Description>
+								{#snippet child({ props })}
+									<p {...props} class={supportingTextContainer()}>
+										{supportingText}
+									</p>
+								{/snippet}
+							</Dialog.Description>
+
+							{@render children?.()}
+
+							<div class={`${buttonContainer()} dialogue-buttons`}>
+								<Button
+									type="button"
+									variant="text"
+									data-cy="dialogue-cancel"
+									onclick={() => (isOpen = false)}>Отмена</Button
+								>
+								<Button
+									type="submit"
+									{loading}
+									variant="filled"
+									formaction={confirmAction}
+									data-cy="dialogue-confirm">{confirmText}</Button
+								>
+							</div>
+						</div>
+					{/if}
+				{/snippet}
+			</Dialog.Content>
 		</div>
-	</div>
-</div>
+	</Dialog.Portal>
+</Dialog.Root>
 
 <style>
 	.dialogue-base {
