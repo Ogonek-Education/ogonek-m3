@@ -19,6 +19,18 @@ export interface MenuItemProps {
 	 */
 	onclick?: () => void;
 	/**
+	 * Callback function for the bits-ui onSelect event.
+	 */
+	onSelect?: (event: Event) => void;
+	/**
+	 * Whether the item is selected.
+	 */
+	selected?: boolean;
+	/**
+	 * Optional supporting text.
+	 */
+	helper?: string;
+	/**
 	 * The content of the menu item, typically a label.
 	 */
 	children: Snippet;

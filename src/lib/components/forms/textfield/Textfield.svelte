@@ -13,7 +13,6 @@
 
 	let {
 		value = $bindable(),
-		elementRef = $bindable(),
 		supportingText,
 		leadingIconProps,
 		trailingIconProps,
@@ -25,10 +24,20 @@
 		disabled = false,
 		error = false,
 		trailingOnClick,
+		inputChild,
+		trailingIcon,
 		...restProps
 	}: TextfieldProps = $props();
 
 	const cls = $derived(textfield({ disabled, error }));
+	const inputProps = $derived({
+		id,
+		class: cls.input({ class: clsx(className) }),
+		'aria-invalid': error,
+		disabled,
+		placeholder,
+		...restProps
+	});
 </script>
 
 <div class="relative w-full">
@@ -38,20 +47,18 @@
 		{/if}
 
 		<div class={cls.inputWrapper()}>
-			<input
-				{id}
-				bind:value
-				class={cls.input({ class: clsx(className) })}
-				aria-invalid={error}
-				{disabled}
-				{placeholder}
-				{...restProps}
-			/>
+			{#if inputChild}
+				{@render inputChild({ props: inputProps })}
+			{:else}
+				<input bind:value {...inputProps} />
+			{/if}
 
 			<label class={cls.label()} for={id}>{label}</label>
 		</div>
 
-		{#if trailingIconProps}
+		{#if trailingIcon}
+			{@render trailingIcon()}
+		{:else if trailingIconProps}
 			<button type="button" onclick={trailingOnClick}>
 				<Icon class={cls.trailingIcon()} {...trailingIconProps} />
 			</button>

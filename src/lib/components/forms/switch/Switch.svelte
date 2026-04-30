@@ -34,7 +34,7 @@
 	const { root, handle, hover, icon, input, iconChecked, iconUnchecked } = $derived(
 		toggle({ icons })
 	);
-	const rootClass = $derived(String(root({ class: className })));
+	const rootClass = $derived(String(root({ class: className as any })));
 </script>
 
 <svelte:window onpointerup={handleMouseUp} />

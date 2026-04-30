@@ -6,12 +6,10 @@ export * from "./bottom-sheet/index.js";
 export * from "./dialogue/index.js";
 export * from "./divider/index.js";
 export * from "./list/index.js";
+export * from "./menu/index.js";
 export * from "./menu-item/index.js";
 export * from "./merger/index.js";
 export * from "./panes/index.js";
 export * from "./side-sheet/index.js";
 export * from "./stack/index.js";
-
-// default exports for components in this folder
-export { default as Menu } from "./Menu.svelte";
 

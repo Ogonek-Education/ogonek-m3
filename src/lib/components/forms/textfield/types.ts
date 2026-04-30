@@ -57,4 +57,14 @@ export type TextfieldProps = TextFieldVariants &
 		 * Callback function when the trailing icon is clicked.
 		 */
 		trailingOnClick?: () => void;
+
+		/**
+		 * Snippet to override the default input element.
+		 */
+		inputChild?: Snippet<[{ props: Record<string, any> }]>;
+
+		/**
+		 * Optional snippet for trailing icon override
+		 */
+		trailingIcon?: Snippet;
 	};

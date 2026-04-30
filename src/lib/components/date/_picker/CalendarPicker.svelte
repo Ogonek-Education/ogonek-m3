@@ -3,7 +3,7 @@
 	 * CalendarPicker displays a grid of days for a specific month.
 	 * @internal
 	 */
-	import Item from './Item.svelte';
+	import { Item } from './index.js';
 	import { calendarpicker } from '../theme.js';
 
 	interface Props {
@@ -17,12 +17,7 @@
 		chosenDate: string;
 	}
 
-	let {
-		focusedMonth,
-		focusedYear,
-		dateValidator,
-		chosenDate = $bindable()
-	}: Props = $props();
+	let { focusedMonth, focusedYear, dateValidator, chosenDate = $bindable() }: Props = $props();
 
 	const makeCalendar = (year: number, month: number) => {
 		const firstDay = new Date(year, month, 1);
